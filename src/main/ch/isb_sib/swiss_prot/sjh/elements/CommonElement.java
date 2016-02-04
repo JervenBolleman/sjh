@@ -2,7 +2,6 @@ package ch.isb_sib.swiss_prot.sjh.elements;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -15,7 +14,7 @@ public abstract class CommonElement
     implements Element
 {
 	private final GlobalAttribute[] attributes;
-	private final Stream<Element> childeren;
+	private final Stream<? extends Element> childeren;
 
 	protected abstract byte[] getName();
 
@@ -36,7 +35,7 @@ public abstract class CommonElement
 		if (childeren != null)
 		{
 			stream.write('>');
-			Iterator<Element> iter = childeren
+			Iterator<? extends Element> iter = childeren
 			    .filter(Objects::nonNull)
 			    .iterator();
 			while (iter.hasNext())
@@ -53,14 +52,14 @@ public abstract class CommonElement
 		}
 	}
 
-	protected CommonElement(GlobalAttribute[] ga, Stream<Element> childeren)
+	protected CommonElement(GlobalAttribute[] ga, Stream<? extends Element> childeren)
 	{
 		super();
 		this.attributes = ga;
 		this.childeren = childeren;
 	}
 
-	protected CommonElement(Stream<Element> childeren)
+	protected CommonElement(Stream<? extends Element> childeren)
 	{
 		super();
 		this.attributes = null;

@@ -2,9 +2,9 @@ package ch.isb_sib.swiss_prot.sjh;
 
 import org.junit.Test;
 
-import ch.isb_sib.swiss_prot.sjh.elements.Body;
 import ch.isb_sib.swiss_prot.sjh.elements.HTML;
-import ch.isb_sib.swiss_prot.sjh.elements.Head;
+import ch.isb_sib.swiss_prot.sjh.elements.meta.Head;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.Body;
 
 import static ch.isb_sib.swiss_prot.sjh.Elements.*;
 import static java.nio.charset.StandardCharsets.UTF_8;

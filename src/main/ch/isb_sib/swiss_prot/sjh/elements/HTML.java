@@ -18,6 +18,8 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.Style;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.TabIndex;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.ATitle;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Translate;
+import ch.isb_sib.swiss_prot.sjh.elements.meta.Head;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.Body;
 
 
 public class HTML

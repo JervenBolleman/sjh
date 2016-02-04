@@ -2,16 +2,15 @@ package ch.isb_sib.swiss_prot.sjh;
 
 import java.util.stream.Stream;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.content.CrossOrigin;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Href;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Rel;
-import ch.isb_sib.swiss_prot.sjh.elements.Body;
 import ch.isb_sib.swiss_prot.sjh.elements.HTML;
-import ch.isb_sib.swiss_prot.sjh.elements.Head;
-import ch.isb_sib.swiss_prot.sjh.elements.Link;
-import ch.isb_sib.swiss_prot.sjh.elements.MetaContent;
 import ch.isb_sib.swiss_prot.sjh.elements.Text;
-import ch.isb_sib.swiss_prot.sjh.elements.Title;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.MetaContent;
+import ch.isb_sib.swiss_prot.sjh.elements.meta.Head;
+import ch.isb_sib.swiss_prot.sjh.elements.meta.Link;
+import ch.isb_sib.swiss_prot.sjh.elements.meta.Title;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.Body;
 
 
 public class Elements
