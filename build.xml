@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="sjh" default="package" basedir="." 
+	xmlns:ivy="antlib:fr.jayasoft.ivy.ant"
+>
+
+	<path id="class.path">
+		<pathelement location="build" />
+		<fileset dir="lib" includes="*.jar" />
+	</path>
+
+	<tstamp>
+		<format property="date" pattern="yyyyMMdd" />
+	</tstamp>
+
+	<!-- host-specific properties -->
+	<property environment="env" />
+	<property name="host" value="${env.HOST}" />
+	<fail unless="host" />
+	<property file="build.properties.${host}" />
+	<property file="build.properties.common" />
+	<property name="repository.dir" location="${repository.path}" />
+
+	<property name="project.jar" value="dist/sjh.jar" />
+	<property name="project.zip" value="dist/sjh-${release.version}.zip" />
+	<ivy:settings id="ivy.normal.settings" file="${ivy.settings.file}" />
+
+	<target name="build" depends="lib:fetch">
+
+		<mkdir dir="build" />
+
+        <javac
+            includeantruntime="false" 
+			destdir="build"
+			classpathref="class.path"
+			source="1.8"
+			target="1.8"
+			optimize="yes"
+			debug="yes"
+			debuglevel="lines,vars,source"
+			fork="no"
+		>
+			<src path="src/main" />
+		</javac>
+
+		<copy todir="build">
+			<fileset dir="src/main" includes="**/*.properties,**/*.xml" />
+		</copy>
+
+	</target>
+
+
+	<target name="doc" 
+		description="Build documentation"
+		depends="doc:verify"
+		unless="doc.skip"
+	>
+
+		<delete dir="doc/api" quiet="yes" />
+		<mkdir dir="doc/api" />
+
+		<javadoc
+			destdir="doc/api"
+			classpathref="class.path" 
+			additionalparam="-quiet"
+			access="public"
+			notree="yes"
+			noindex="yes"
+			nodeprecatedlist="yes"
+			nohelp="yes"
+			source="1.8"
+		>
+			<packageset dir="src/main">
+				<include name="org/expasy/**" />
+			</packageset>
+			<link offline="yes" packagelistloc="doc/external/java" href="http://docs.oracle.com/javase/8/docs/api/" />
+		</javadoc>
+	</target>
+
+
+	<target name="doc:verify">
+
+		<uptodate 
+			property="doc.skip"
+			targetfile="doc/api/index.html"
+		>
+			<srcfiles dir="src/main" includes="**/*.java" />
+		</uptodate>
+
+	</target>
+
+
+	<target 
+		name="package" 
+		depends="jar"
+		description="Package project"
+	>
+
+		<zip destfile="${project.zip}" update="no" level="9">
+			<zipfileset dir="." prefix="expasy4j-annotations">
+				<exclude name="build/**" />
+				<exclude name="dist/*.zip" />
+				<exclude name="doc/src/**" />
+			</zipfileset>
+		</zip>
+
+	</target>
+
+
+	<target 
+		name="jar" 
+		depends="jar:verify"
+		unless="jar.skip"
+	>
+
+		<mkdir dir="dist" />
+
+		<jar 
+			jarfile="${project.jar}" 
+			update="no"
+			index="yes"
+		>
+			<fileset dir="build" includes="org/expasy/**" excludes="**/*Test.class" />
+		</jar>
+
+	</target>
+
+
+	<target name="jar:verify" depends="build">
+
+		<uptodate 
+			property="jar.skip"
+			targetfile="${project.jar}"
+		>
+			<srcfiles dir="build" />
+		</uptodate>
+
+	</target>
+
+
+	<target 
+		name="test" 
+		depends="build"
+		description="Run tests"
+	>
+
+		<mkdir dir="${test.path}" />
+
+		<junit 
+			printsummary="no" 
+			haltonfailure="no" 
+			haltonerror="no"
+			errorproperty="test.failed"
+			failureproperty="test.failed"
+			includeantruntime="yes"
+			fork="no" 
+		>
+			<classpath refid="class.path" />
+
+			<sysproperty 
+				key="org.apache.commons.logging.Log" 
+				value="org.apache.commons.logging.impl.SimpleLog"
+			/>
+
+			<formatter type="xml" />
+
+			<batchtest todir="${test.path}">
+				<fileset dir="build">
+					<include name="org/expasy/**/*Test.class" />
+				</fileset>
+			</batchtest>
+		</junit>
+
+		<junitreport todir="${test.path}">
+			<fileset dir="${test.path}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${test.path}" />
+		</junitreport>
+
+		<delete>
+			<fileset dir="${test.path}">
+				<include name="TEST-*.xml" />
+			</fileset>
+		</delete>
+
+		<fail if="test.failed" />
+
+	</target>
+
+	<target name="lib:fetch">
+		<ivy:resolve file="lib/ivy.xml" conf="default" />
+		<ivy:retrieve pattern="lib/[artifact].[ext]" />
+		<ivy:report todir="lib" outputpattern="index.html" graph="no" />
+	</target>
+
+	<target name="-check-ivy-status">
+		<echo>Ivy status ${ivy.status}</echo>
+		<condition property="is.release.status" value="true">
+			<equals arg1="${ivy.status}" arg2="release" casesensitive="false" />
+		</condition>
+	</target>
+
+	<target name="jar:publishrelease" depends="-check-ivy-status" if="${is.release.status}">
+		<echo>Publishing for ${release.version}</echo>
+		<resourcecount property="release.published.count">
+			<dirset dir="${repository.path}/isb-sib/${ant.project.name}/" erroronmissingdir="false">
+				<patternset>
+					<include name="${release.version}*" />
+				</patternset>
+			</dirset>
+		</resourcecount>
+		<echo>${release.published.count} before</echo>
+		<ivy:publish artifactspattern="dist/[artifact].[ext]" resolver="expasy4j-libs" validate="yes" overwrite="yes" forcedeliver="yes" pubrevision="${release.version}.${release.published.count}" />
+		<delete quiet="yes" file="dist/ivy.xml" />
+	</target>
+
+	<target name="jar:publishintegration" depends="lib:fetch,jar" unless="${is.release.status}">
+		<echo>Publish intergration build</echo>
+		<ivy:publish artifactspattern="dist/[artifact].[ext]" resolver="expasy4j-libs" validate="yes" overwrite="yes" forcedeliver="yes" />
+		<delete quiet="yes" file="dist/ivy.xml" />
+	</target>
+
+	<target name="jar:publish" depends="lib:fetch,jar,jar:publishrelease,jar:publishintegration" />
+
+
+	<target name="clean" description="Remove all generated files">
+		<delete dir="build" quiet="yes" />
+		<delete dir="dist" quiet="yes" />
+		<delete dir="doc/api" quiet="yes" />
+		<delete dir="doc/src" quiet="yes" />
+		<delete dir="${test.path}" quiet="yes" />
+		<delete>
+			<fileset dir="lib" excludes="*.xml,ivy.jar,jsch.jar,.gitignore" />
+		</delete>
+	</target>
+
+</project>

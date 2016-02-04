@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://ivyrep.jayasoft.org/ivy-doc.xsl"?>
+
+<ivy-module
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://jayasoft.org//ivy/ivy.xsd" version="1.1"
+>
+	
+	<info 
+		organisation="isb-sib" 
+		revision="${release.version}"
+		status="${release.status}"
+		module="expasy4j-annotations"
+	>
+		<license name="GPL" url="http://www.opensource.org/licenses/gpl-license.php"/>
+		<description homepage="http://dev.isb-sib.ch/projects/expasy4j-sesame/"/>
+	</info>
+	
+	<configurations>
+		<conf name="build"/>
+		<conf name="runtime"/>
+		<conf name="default" extends="build,runtime"/>
+	</configurations>
+	
+	<publications>
+		<artifact name="expasy4j-annotations" type="jar"/>
+	</publications>
+	
+</ivy-module>
