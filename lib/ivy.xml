@@ -25,5 +25,8 @@
 	<publications>
 		<artifact name="expasy4j-annotations" type="jar"/>
 	</publications>
-	
+
+    <dependencies>
+        <dependency org="junit" name="junit" rev="4+" conf="build->default"/>
+    </dependencies>
 </ivy-module>
