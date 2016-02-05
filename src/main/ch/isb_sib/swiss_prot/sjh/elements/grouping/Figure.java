@@ -6,13 +6,16 @@ import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
-import ch.isb_sib.swiss_prot.sjh.elements.Element;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
 
 
 public class Figure
     extends CommonElement
+    implements FlowContent, SectioningContent, PalpabaleContent
 {
-	private final static byte[] NAME = "body".getBytes(UTF_8);
+	private final static byte[] NAME = "figure".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()
@@ -20,17 +23,17 @@ public class Figure
 		return NAME;
 	}
 
-	public Figure(GlobalAttribute[] ga, Stream<Element> childeren)
+	public Figure(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren, FigCaption caption)
 	{
-		super(ga, childeren);
+		super(ga, Stream.concat(childeren, Stream.of(caption)));
 	}
 
-	public Figure()
+	public Figure(GlobalAttribute[] ga, FigCaption caption, Stream<? extends FlowContent> childeren)
 	{
-		super();
+		super(ga, Stream.concat(Stream.of(caption), childeren));
 	}
 
-	public Figure(Stream<Element> childeren)
+	public Figure(Stream<? extends FlowContent> childeren)
 	{
 		super(childeren);
 	}

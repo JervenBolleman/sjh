@@ -6,13 +6,15 @@ import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
-import ch.isb_sib.swiss_prot.sjh.elements.Element;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 
 
 public class UL
     extends CommonElement
+    implements FlowContent, PalpabaleContent
 {
-	private final static byte[] NAME = "body".getBytes(UTF_8);
+	private final static byte[] NAME = "ul".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()
@@ -20,7 +22,7 @@ public class UL
 		return NAME;
 	}
 
-	public UL(GlobalAttribute[] ga, Stream<Element> childeren)
+	public UL(GlobalAttribute[] ga, Stream<LI> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,7 +32,7 @@ public class UL
 		super();
 	}
 
-	public UL(Stream<Element> childeren)
+	public UL(Stream<LI> childeren)
 	{
 		super(childeren);
 	}

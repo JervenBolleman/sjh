@@ -8,13 +8,14 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 
-public class DL
+public class Pre
     extends CommonElement
     implements FlowContent, PalpabaleContent
 {
-	private final static byte[] NAME = "dl".getBytes(UTF_8);
+	private final static byte[] NAME = "pre".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()
@@ -22,17 +23,17 @@ public class DL
 		return NAME;
 	}
 
-	public DL(GlobalAttribute[] ga, Stream<? extends DtOrDd> childeren)
+	public Pre(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren)
 	{
 		super(ga, childeren);
 	}
 
-	public DL()
+	public Pre()
 	{
 		super();
 	}
 
-	public DL(Stream<? extends DtOrDd> childeren)
+	public Pre(Stream<? extends PhrasingContent> childeren)
 	{
 		super(childeren);
 	}

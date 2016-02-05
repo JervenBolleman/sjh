@@ -6,13 +6,14 @@ import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
-import ch.isb_sib.swiss_prot.sjh.elements.Element;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 
 
 public class DD
     extends CommonElement
+    implements DtOrDd
 {
-	private final static byte[] NAME = "body".getBytes(UTF_8);
+	private final static byte[] NAME = "dd".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()
@@ -20,7 +21,7 @@ public class DD
 		return NAME;
 	}
 
-	public DD(GlobalAttribute[] ga, Stream<Element> childeren)
+	public DD(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,7 +31,7 @@ public class DD
 		super();
 	}
 
-	public DD(Stream<Element> childeren)
+	public DD(Stream<? extends FlowContent> childeren)
 	{
 		super(childeren);
 	}

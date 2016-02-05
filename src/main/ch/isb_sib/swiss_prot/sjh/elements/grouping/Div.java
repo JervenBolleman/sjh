@@ -6,13 +6,15 @@ import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
-import ch.isb_sib.swiss_prot.sjh.elements.Element;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 
 
 public class Div
     extends CommonElement
+    implements FlowContent, PalpabaleContent
 {
-	private final static byte[] NAME = "body".getBytes(UTF_8);
+	private final static byte[] NAME = "div".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()
@@ -20,7 +22,7 @@ public class Div
 		return NAME;
 	}
 
-	public Div(GlobalAttribute[] ga, Stream<Element> childeren)
+	public Div(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,7 +32,7 @@ public class Div
 		super();
 	}
 
-	public Div(Stream<Element> childeren)
+	public Div(Stream<? extends FlowContent> childeren)
 	{
 		super(childeren);
 	}

@@ -95,6 +95,6 @@ public abstract class CommonElement
 
 	protected Stream<Attribute> getElementSpecificAttributes()
 	{
-		return Stream.of();
+		return Stream.empty();
 	}
 }

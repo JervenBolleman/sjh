@@ -6,13 +6,16 @@ import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
-import ch.isb_sib.swiss_prot.sjh.elements.Element;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 
 public class P
     extends CommonElement
+    implements FlowContent, PalpabaleContent
 {
-	private final static byte[] NAME = "body".getBytes(UTF_8);
+	private final static byte[] NAME = "p".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()
@@ -20,7 +23,7 @@ public class P
 		return NAME;
 	}
 
-	public P(GlobalAttribute[] ga, Stream<Element> childeren)
+	public P(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,7 +33,7 @@ public class P
 		super();
 	}
 
-	public P(Stream<Element> childeren)
+	public P(Stream<? extends PhrasingContent> childeren)
 	{
 		super(childeren);
 	}

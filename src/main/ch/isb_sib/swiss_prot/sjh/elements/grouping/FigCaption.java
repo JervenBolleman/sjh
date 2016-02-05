@@ -6,13 +6,13 @@ import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
-import ch.isb_sib.swiss_prot.sjh.elements.Element;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 
 
 public class FigCaption
     extends CommonElement
 {
-	private final static byte[] NAME = "body".getBytes(UTF_8);
+	private final static byte[] NAME = "figcaption".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()
@@ -20,7 +20,7 @@ public class FigCaption
 		return NAME;
 	}
 
-	public FigCaption(GlobalAttribute[] ga, Stream<Element> childeren)
+	public FigCaption(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,7 +30,7 @@ public class FigCaption
 		super();
 	}
 
-	public FigCaption(Stream<Element> childeren)
+	public FigCaption(Stream<? extends FlowContent> childeren)
 	{
 		super(childeren);
 	}

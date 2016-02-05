@@ -7,10 +7,12 @@ import java.util.stream.Stream;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.Element;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningRoot;
 
 
 public class Body
     extends CommonElement
+    implements SectioningRoot
 {
 	private final static byte[] NAME = "body".getBytes(UTF_8);
 
