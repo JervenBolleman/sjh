@@ -14,7 +14,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 public class Track
     extends CommonElement
 {
-	private final static byte[] NAME = "source".getBytes(UTF_8);
+	private final static byte[] NAME = "track".getBytes(UTF_8);
 	private final Src src;
 	private final Type type;
 

@@ -15,7 +15,7 @@ public class Rb
     extends CommonElement
     implements FlowContent, PhrasingContent, PalpabaleContent
 {
-	private final static byte[] NAME = "rt".getBytes(UTF_8);
+	private final static byte[] NAME = "rb".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()

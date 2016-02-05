@@ -39,7 +39,7 @@ public class HtmlWithHeadTest
 	public void basichtmlheadlink()
 	    throws IOException
 	{
-		Head head = head(title("test"), link(href("/"), rel("home")));
+		Head head = head(title("test"), link(Attributes.href("/"), Attributes.rel("home")));
 		Body body = body();
 		HTML html = html(head, body);
 

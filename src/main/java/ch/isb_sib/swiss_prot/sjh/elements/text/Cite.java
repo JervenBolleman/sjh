@@ -1,4 +1,4 @@
-package ch.isb_sib.swiss_prot.sjh.elements.text.ruby;
+package ch.isb_sib.swiss_prot.sjh.elements.text;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -11,11 +11,11 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 
-public class Rt
+public class Cite
     extends CommonElement
     implements FlowContent, PhrasingContent, PalpabaleContent
 {
-	private final static byte[] NAME = "rt".getBytes(UTF_8);
+	private final static byte[] NAME = "cite".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()
@@ -23,17 +23,17 @@ public class Rt
 		return NAME;
 	}
 
-	public Rt(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren)
+	public Cite(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren)
 	{
 		super(ga, childeren);
 	}
 
-	public Rt()
+	public Cite()
 	{
 		super();
 	}
 
-	public Rt(Stream<? extends PhrasingContent> childeren)
+	public Cite(Stream<? extends PhrasingContent> childeren)
 	{
 		super(childeren);
 	}

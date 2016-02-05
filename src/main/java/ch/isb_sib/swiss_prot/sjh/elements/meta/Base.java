@@ -14,7 +14,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 public class Base
     extends CommonElement
 {
-	private final static byte[] NAME = "html".getBytes(UTF_8);
+	private final static byte[] NAME = "base".getBytes(UTF_8);
 	private final Href href;
 	private final Target target;
 

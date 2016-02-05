@@ -34,16 +34,24 @@ public abstract class CommonElement
 		}
 		if (childeren != null)
 		{
-			stream.write('>');
+
 			Iterator<? extends Element> iter = childeren
-			    .filter(Objects::nonNull)
 			    .iterator();
-			while (iter.hasNext())
-				iter.next().render(stream);
-			stream.write('<');
-			stream.write('/');
-			stream.write(getName());
-			stream.write('>');
+			if (iter.hasNext())
+			{
+				stream.write('>');
+				while (iter.hasNext())
+					iter.next().render(stream);
+				stream.write('<');
+				stream.write('/');
+				stream.write(getName());
+				stream.write('>');
+			}
+			else
+			{
+				stream.write('/');
+				stream.write('>');
+			}
 		}
 		else
 		{
@@ -56,14 +64,14 @@ public abstract class CommonElement
 	{
 		super();
 		this.attributes = ga;
-		this.childeren = childeren;
+		this.childeren = childeren.filter(Objects::nonNull);
 	}
 
 	protected CommonElement(Stream<? extends Element> childeren)
 	{
 		super();
 		this.attributes = null;
-		this.childeren = childeren;
+		this.childeren = childeren.filter(Objects::nonNull);
 	}
 
 	protected CommonElement(GlobalAttribute[] ga)
