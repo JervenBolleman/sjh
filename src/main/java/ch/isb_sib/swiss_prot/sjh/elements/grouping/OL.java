@@ -6,10 +6,10 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.content.Type;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Reversed;
 import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Start;
-import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Type;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;

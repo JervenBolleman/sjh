@@ -5,8 +5,8 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.Cite;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
-import ch.isb_sib.swiss_prot.sjh.attributes.grouping.BlockQuoteCite;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningRoot;
@@ -17,7 +17,7 @@ public class BlockQuote
     implements FlowContent, SectioningRoot
 {
 	private final static byte[] NAME = "blockquote".getBytes(UTF_8);
-	private final BlockQuoteCite cite;
+	private final Cite cite;
 
 	@Override
 	protected byte[] getName()
@@ -25,7 +25,7 @@ public class BlockQuote
 		return NAME;
 	}
 
-	public BlockQuote(GlobalAttribute[] ga, BlockQuoteCite cite, Stream<? extends FlowContent> childeren)
+	public BlockQuote(GlobalAttribute[] ga, Cite cite, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 		this.cite = cite;

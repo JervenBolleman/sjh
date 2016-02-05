@@ -8,7 +8,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 public class OnEnded
     implements EventAttribute
 {
-	private static final byte[] NAME = Attribute.fromString("onemptied");
+	private static final byte[] NAME = Attribute.fromString("onended");
 
 	private final byte[] value;
 

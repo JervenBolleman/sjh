@@ -8,7 +8,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 public class Lang
     implements GlobalAttribute
 {
-	private static final byte[] NAME = Attribute.fromString("accesskey");
+	private static final byte[] NAME = Attribute.fromString("lang");
 
 	private final byte[] value;
 

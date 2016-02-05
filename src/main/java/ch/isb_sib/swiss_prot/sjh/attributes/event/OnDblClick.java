@@ -1,18 +1,18 @@
-package ch.isb_sib.swiss_prot.sjh.attributes.grouping;
+package ch.isb_sib.swiss_prot.sjh.attributes.event;
 
 import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
 
-public class Type
-    implements Attribute
+public class OnDblClick
+    implements EventAttribute
 {
-	private static final byte[] NAME = Attribute.fromString("type");
+	private static final byte[] NAME = Attribute.fromString("ondblclick");
 
 	private final byte[] value;
 
-	public Type(String value)
+	public OnDblClick(String value)
 	{
 		Objects.nonNull(value);
 		this.value = Attribute.fromString(value);

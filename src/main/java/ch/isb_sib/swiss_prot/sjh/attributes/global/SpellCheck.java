@@ -8,7 +8,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 public class SpellCheck
     implements GlobalAttribute
 {
-	private static final byte[] NAME = Attribute.fromString("style");
+	private static final byte[] NAME = Attribute.fromString("spellcheck");
 
 	private final byte[] value;
 
