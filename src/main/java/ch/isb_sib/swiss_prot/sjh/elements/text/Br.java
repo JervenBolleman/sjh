@@ -13,7 +13,7 @@ public class Br
     extends CommonElement
     implements FlowContent, PhrasingContent, PalpabaleContent
 {
-	private final static byte[] NAME = "wbr".getBytes(UTF_8);
+	private final static byte[] NAME = "br".getBytes(UTF_8);
 
 	@Override
 	protected byte[] getName()
