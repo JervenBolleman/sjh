@@ -6,18 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.stream.Stream;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.global.AccessKey;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.Clazz;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.Dir;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.Hidden;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.Id;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.Lang;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.SpellCheck;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.Style;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.TabIndex;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.ATitle;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.Translate;
 import ch.isb_sib.swiss_prot.sjh.elements.meta.Head;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.Body;
 
