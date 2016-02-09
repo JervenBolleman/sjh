@@ -81,6 +81,35 @@ import ch.isb_sib.swiss_prot.sjh.attributes.event.OnTimeUpdate;
 import ch.isb_sib.swiss_prot.sjh.attributes.event.OnToggle;
 import ch.isb_sib.swiss_prot.sjh.attributes.event.OnVolumeChange;
 import ch.isb_sib.swiss_prot.sjh.attributes.event.OnWaiting;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Accept;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.AcceptCharset;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Action;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.AutoComplete;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.AutoFocus;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Checked;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.DirName;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Disabled;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.EncType;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.For;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.FormAction;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.FormEnctype;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.FormMethod;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.FormNoValidate;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.FormTarget;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.InputMode;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.List;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Max;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Method;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Min;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.MinLength;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Multiple;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.NoValidate;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Pattern;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.PlaceHolder;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.ReadOnly;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Required;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Size;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Step;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.ATitle;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.AccessKey;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Clazz;
@@ -611,4 +640,34 @@ public class Attributes
 	{
 		return new Download(value);
 	}
+	
+	public static Accept accept(String string){return new Accept(string);}
+	public static AcceptCharset acceptCharset(String string){return new AcceptCharset(string);}
+	public static Action action(String string){return new Action(string);}
+	public static AutoComplete autoComplete(String string){return new AutoComplete(string);}
+	public static AutoFocus autoFocus(String string){return new AutoFocus(string);}
+	public static Checked checked(String string){return new Checked(string);}
+	public static DirName dirName(String string){return new DirName(string);}
+	public static Disabled disabled(String string){return new Disabled(string);}
+	public static EncType encType(String string){return new EncType(string);}
+	public static For fora(String string){return new For(string);}
+	public static FormAction formAction(String string){return new FormAction(string);}
+	public static FormEnctype formEnctype(String string){return new FormEnctype(string);}
+	public static FormMethod formMethod(String string){return new FormMethod(string);}
+	public static FormNoValidate formNoValidate(String string){return new FormNoValidate(string);}
+	public static FormTarget formTarget(String string){return new FormTarget(string);}
+	public static InputMode inputMode(String string){return new InputMode(string);}
+	public static List list(String string){return new List(string);}
+	public static Max max(String string){return new Max(string);}
+	public static Method method(String string){return new Method(string);}
+	public static Min min(String string){return new Min(string);}
+	public static MinLength minLength(String string){return new MinLength(string);}
+	public static Multiple multiple(String string){return new Multiple(string);}
+	public static NoValidate noValidate(String string){return new NoValidate(string);}
+	public static Pattern pattern(String string){return new Pattern(string);}
+	public static PlaceHolder placeHolder(String string){return new PlaceHolder(string);}
+	public static ReadOnly readOnly(String string){return new ReadOnly(string);}
+	public static Required required(String string){return new Required(string);}
+	public static Size size(String string){return new Size(string);}
+	public static Step step(String string){return new Step(string);}
 }

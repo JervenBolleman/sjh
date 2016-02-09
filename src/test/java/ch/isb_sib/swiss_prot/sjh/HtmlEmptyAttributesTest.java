@@ -14,6 +14,7 @@ import java.time.temporal.TemporalAccessor;
 import org.junit.Test;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.AcceptCharset;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.ATitle;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Clazz;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.HttpEquiv;
@@ -41,6 +42,8 @@ public class HtmlEmptyAttributesTest
 						test(el, "title=\"test\"");
 					else if (el instanceof HttpEquiv)
 						test(el, "http-equiv=\"test\"");
+					else if (el instanceof AcceptCharset)
+						test(el, "accept-charset=\"test\"");
 					else
 						test(el, name.toLowerCase() + "=\"test\"");
 				}
