@@ -1510,149 +1510,7 @@ public class Elements
 		return new Audio(new GlobalAttribute[] { clazz });
 	}
 
-	public static Source source(Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Source(new GlobalAttribute[] { clazz }, null, null, null, null, null);
-	}
 
-	public static Track track(Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Track(new GlobalAttribute[] { clazz }, null, null);
-	}
-
-	public static Map map(Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Map(new GlobalAttribute[] { clazz }, null, childeren);
-	}
-
-	public static Article article(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Article(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static Section section(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Section(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static Nav nav(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Nav(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static Aside aside(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Aside(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static H1 h1(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new H1(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static H2 h2(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new H2(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static H3 h3(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new H3(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static H4 h4(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new H4(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static H5 h5(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new H5(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static H6 h6(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new H6(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static Header header(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Header(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static Footer footer(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Footer(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static Address address(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Address(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static P p(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new P(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static Pre pre(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new Pre(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static BlockQuote blockquote(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new BlockQuote(new GlobalAttribute[] { id , clazz}, null, childeren);
-	}
-
-	public static OL ol(Id id, Clazz clazz, Stream<LI> childeren)
-	{
-		GlobalAttribute[] ga = new GlobalAttribute[] { id , clazz};
-		Reversed reversed = (Reversed) null;
-		Start start = (Start) null;
-		Type type = (Type) null;
-		return new OL(ga, reversed, start, type, childeren);
-	}
-
-	public static UL ul(Id id, Clazz clazz, Stream<LI> childeren)
-	{
-		return new UL(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static LI li(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new LI(new GlobalAttribute[] { id , clazz}, childeren, null);
-	}
-
-	public static DL dl(Id id, Clazz clazz, Stream<? extends DtOrDd> childeren)
-	{
-		return new DL(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static DT dt(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new DT(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static DD dd(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new DD(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static FigCaption figcaption(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new FigCaption(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static Div div(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Div(new GlobalAttribute[] { id , clazz}, childeren);
-	}
-
-	public static Main main(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
-	{
-		return new Main(new GlobalAttribute[] { id , clazz}, childeren);
-	}
 
 	public static A a(Id id, Clazz clazz)
 	{
@@ -1679,9 +1537,9 @@ public class Elements
 		return new Cite(new GlobalAttribute[] { id, clazz }, Stream.empty());
 	}
 
-	public static Q q(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	public static Q q(Id id, Clazz clazz)
 	{
-		return new Q(new GlobalAttribute[] { id, clazz }, childeren, null);
+		return new Q(new GlobalAttribute[] { id, clazz }, Stream.empty(), null);
 	}
 
 	public static Dfn dfn(Id id, Clazz clazz)
@@ -1694,9 +1552,9 @@ public class Elements
 		return new Abbr(new GlobalAttribute[] { id, clazz }, Stream.empty());
 	}
 
-	public static Data data(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	public static Data data(Id id, Clazz clazz)
 	{
-		return new Data(new GlobalAttribute[] { id, clazz }, childeren, null);
+		return new Data(new GlobalAttribute[] { id, clazz }, Stream.empty(), null);
 	}
 
 	public static Time time(Id id, Clazz clazz, DateTime dt)
@@ -1707,6 +1565,20 @@ public class Elements
 	public static Code code(Id id, Clazz clazz)
 	{
 		return new Code(new GlobalAttribute[] { id, clazz }, Stream.empty());
+	}
+	public static Bdi bdi(Id id, Clazz clazz)
+	{
+		return new Bdi(new GlobalAttribute[] { id, clazz }, Stream.empty());
+	}
+
+	public static Bdo bdo(Id id, Clazz clazz)
+	{
+		return new Bdo(new GlobalAttribute[] { id, clazz }, Stream.empty());
+	}
+
+	public static Span span(Id id, Clazz clazz)
+	{
+		return new Span(new GlobalAttribute[] { id, clazz }, Stream.empty());
 	}
 
 	public static Var var(Id id, Clazz clazz)
@@ -1779,20 +1651,6 @@ public class Elements
 		return new Rp(new GlobalAttribute[] { id, clazz }, Stream.empty());
 	}
 
-	public static Bdi bdi(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new Bdi(new GlobalAttribute[] { id, clazz }, childeren);
-	}
-
-	public static Bdo bdo(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new Bdo(new GlobalAttribute[] { id, clazz }, childeren);
-	}
-
-	public static Span span(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
-	{
-		return new Span(new GlobalAttribute[] { id, clazz }, childeren);
-	}
 
 	public static Br br(Id id, Clazz clazz)
 	{
@@ -1887,6 +1745,139 @@ public class Elements
 		return new Aside(new GlobalAttribute[] { id, clazz });
 	}
 
+	public static Map map(Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Map(new GlobalAttribute[] { clazz }, null, childeren);
+	}
+
+	public static Article article(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Article(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static Section section(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Section(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static Nav nav(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Nav(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static Aside aside(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Aside(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static H1 h1(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	{
+		return new H1(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static H2 h2(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	{
+		return new H2(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static H3 h3(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	{
+		return new H3(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static H4 h4(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	{
+		return new H4(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static H5 h5(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	{
+		return new H5(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static H6 h6(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	{
+		return new H6(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static Header header(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Header(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static Footer footer(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Footer(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static Address address(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Address(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static P p(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	{
+		return new P(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static Pre pre(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
+	{
+		return new Pre(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static BlockQuote blockquote(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new BlockQuote(new GlobalAttribute[] { id, clazz }, null, childeren);
+	}
+
+	public static OL ol(Id id, Clazz clazz, Stream<LI> childeren)
+	{
+		GlobalAttribute[] ga = new GlobalAttribute[] { id, clazz };
+		Reversed reversed = (Reversed) null;
+		Start start = (Start) null;
+		Type type = (Type) null;
+		return new OL(ga, reversed, start, type, childeren);
+	}
+
+	public static UL ul(Id id, Clazz clazz, Stream<LI> childeren)
+	{
+		return new UL(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static LI li(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new LI(new GlobalAttribute[] { id, clazz }, childeren, null);
+	}
+
+	public static DL dl(Id id, Clazz clazz, Stream<? extends DtOrDd> childeren)
+	{
+		return new DL(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static DT dt(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new DT(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static DD dd(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new DD(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static FigCaption figcaption(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new FigCaption(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static Div div(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Div(new GlobalAttribute[] { id, clazz }, childeren);
+	}
+
+	public static Main main(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
+	{
+		return new Main(new GlobalAttribute[] { id, clazz }, childeren);
+	}
 	public static H1 h1(Id id, Clazz clazz)
 	{
 		return new H1(new GlobalAttribute[] { id, clazz }, Stream.empty());
@@ -2037,9 +2028,9 @@ public class Elements
 		return new Cite(new GlobalAttribute[] { id, clazz }, childeren);
 	}
 
-	public static Q q(Id id, Clazz clazz)
+	public static Q q(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
 	{
-		return new Q(new GlobalAttribute[] { id, clazz }, Stream.empty(), null);
+		return new Q(new GlobalAttribute[] { id, clazz }, childeren, null);
 	}
 
 	public static Dfn dfn(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
@@ -2052,9 +2043,9 @@ public class Elements
 		return new Abbr(new GlobalAttribute[] { id, clazz }, childeren);
 	}
 
-	public static Data data(Id id, Clazz clazz)
+	public static Data data(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
 	{
-		return new Data(new GlobalAttribute[] { id, clazz }, Stream.empty(), null);
+		return new Data(new GlobalAttribute[] { id, clazz }, childeren, null);
 	}
 
 	public static Time time(Id id, Clazz clazz, DateTime dt, Stream<? extends PhrasingContent> childeren)
@@ -2137,19 +2128,19 @@ public class Elements
 		return new Rp(new GlobalAttribute[] { id, clazz }, childeren);
 	}
 
-	public static Bdi bdi(Id id, Clazz clazz)
+	public static Bdi bdi(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
 	{
-		return new Bdi(new GlobalAttribute[] { id, clazz }, Stream.empty());
+		return new Bdi(new GlobalAttribute[] { id, clazz }, childeren);
 	}
 
-	public static Bdo bdo(Id id, Clazz clazz)
+	public static Bdo bdo(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
 	{
-		return new Bdo(new GlobalAttribute[] { id, clazz }, Stream.empty());
+		return new Bdo(new GlobalAttribute[] { id, clazz }, childeren);
 	}
 
-	public static Span span(Id id, Clazz clazz)
+	public static Span span(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren)
 	{
-		return new Span(new GlobalAttribute[] { id, clazz }, Stream.empty());
+		return new Span(new GlobalAttribute[] { id, clazz }, childeren);
 	}
 
 	public static Object object(Id id, Clazz clazz, Stream<Param> params)
@@ -2170,7 +2161,7 @@ public class Elements
 
 	public static Param param(Id id, Clazz clazz, Value value)
 	{
-		return new Param(new GlobalAttribute[] { id , clazz }, null, value);
+		return new Param(new GlobalAttribute[] { id, clazz }, null, value);
 	}
 
 	public static Video video(Id id, Clazz clazz, Stream<Track> tracks)
@@ -2188,5 +2179,292 @@ public class Elements
 	public static Map map(Id id, Clazz clazz, Stream<? extends FlowContent> childeren)
 	{
 		return new Map(new GlobalAttribute[] { id, clazz }, null, childeren);
+	}
+
+	public static A a(Id id, Clazz clazz, Element... childeren)
+	{
+		return new A(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Em em(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Em(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Strong strong(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Strong(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Small small(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Small(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static S s(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new S(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Cite cite(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Cite(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Q q(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Q(new GlobalAttribute[] { id, clazz }, Stream.of(childeren), null);
+	}
+
+	public static Dfn dfn(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Dfn(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Abbr abbr(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Abbr(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Data data(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Data(new GlobalAttribute[] { id, clazz }, Stream.of(childeren), null);
+	}
+
+	public static Time time(Id id, Clazz clazz, DateTime dt, PhrasingContent... childeren)
+	{
+		return new Time(new GlobalAttribute[] { id, clazz }, Stream.of(childeren), dt);
+	}
+
+	public static Code code(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Code(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Var var(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Var(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Samp samp(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Samp(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Kbd kbd(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Kbd(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Sub sub(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Sub(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Sup sup(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Sup(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static I i(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new I(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static B b(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new B(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static U u(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new U(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Mark mark(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Mark(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Ruby ruby(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Ruby(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Rb rb(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Rb(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Rt rt(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Rt(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Rtc rtc(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Rtc(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Rp rp(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Rp(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Bdi bdi(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Bdi(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Bdo bdo(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Bdo(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Span span(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Span(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Object object(Id id, Clazz clazz, Param... params)
+	{
+		return new Object(new GlobalAttribute[] { id, clazz }, null, null, null, null, null, null, null, null,
+		    Stream.of(params));
+	}
+
+	public static Video video(Id id, Clazz clazz, Track... tracks)
+	{
+		return new Video(new GlobalAttribute[] { id, clazz }, null, null, null, null, null, null, null, null, null,
+		    null, (Height) null,
+		    Stream.of(tracks));
+	}
+
+	public static Audio audio(Id id, Clazz clazz, Track tracks)
+	{
+		return new Audio(new GlobalAttribute[] { id, clazz }, Stream.of(tracks));
+	}
+
+	public static Map map(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new Map(new GlobalAttribute[] { id, clazz }, null, Stream.of(childeren));
+	}
+
+	public static Nav nav(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new Nav(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Aside aside(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new Aside(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static H1 h1(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new H1(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static H2 h2(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new H2(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static H3 h3(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new H3(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static H4 h4(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new H4(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static H5 h5(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new H5(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static H6 h6(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new H6(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Header header(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new Header(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Footer footer(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new Footer(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Address address(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new Address(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static P p(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new P(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Pre pre(Id id, Clazz clazz, PhrasingContent... childeren)
+	{
+		return new Pre(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static BlockQuote blockquote(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new BlockQuote(new GlobalAttribute[] { id, clazz }, null, Stream.of(childeren));
+	}
+
+	public static OL ol(Id id, Clazz clazz, LI... childeren)
+	{
+		GlobalAttribute[] ga = new GlobalAttribute[] { id, clazz };
+		Reversed reversed = (Reversed) null;
+		Start start = (Start) null;
+		Type type = (Type) null;
+		return new OL(ga, reversed, start, type, Stream.of(childeren));
+	}
+
+	public static UL ul(Id id, Clazz clazz, LI... childeren)
+	{
+		return new UL(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static LI li(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new LI(new GlobalAttribute[] { id, clazz }, Stream.of(childeren), null);
+	}
+
+	public static DL dl(Id id, Clazz clazz, DtOrDd... childeren)
+	{
+		return new DL(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static DT dt(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new DT(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static DD dd(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new DD(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static FigCaption figcaption(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new FigCaption(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Div div(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new Div(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Main main(Id id, Clazz clazz, FlowContent... childeren)
+	{
+		return new Main(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
 	}
 }

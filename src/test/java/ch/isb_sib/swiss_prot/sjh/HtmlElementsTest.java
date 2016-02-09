@@ -119,7 +119,7 @@ public class HtmlElementsTest
 	}
 
 	@Test
-	public void idAndClazzAndChild()
+	public void idAndClazzAndChildStream()
 	    throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{
 		Method[] methods = Elements.class.getDeclaredMethods();
@@ -127,7 +127,7 @@ public class HtmlElementsTest
 		for (Method method : methods)
 		{
 
-			if (method.getParameterCount() == 3)
+			if (method.getParameterCount() == 3 && !method.isVarArgs())
 			{
 				String name = method.getReturnType().getSimpleName();
 				Class<?>[] pts = method.getParameterTypes();
@@ -174,6 +174,65 @@ public class HtmlElementsTest
 				}
 			}
 		}
+		assertTrue("Make sure we test ", countFlow > 10);
+		assertTrue("Make sure we test ", countPhrase > 10);
+		assertEquals("Make sure we test ", countLI, 2);
+	}
+
+	@Test
+	public void idAndClazzAndChildVarArg()
+	    throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
+	{
+		Method[] methods = Elements.class.getDeclaredMethods();
+		int countFlow = 0, countPhrase = 0, countLI = 0;
+		for (Method method : methods)
+		{
+
+			if (method.getParameterCount() == 3 && method.isVarArgs())
+			{
+				String name = method.getReturnType().getSimpleName();
+				Class<?>[] pts = method.getParameterTypes();
+
+				if (pts[0].equals(Id.class) && pts[1].equals(Clazz.class))
+				{
+					Class<?> array = pts[2];
+					assertTrue(array.isArray());
+					try
+					{
+						if (array.getComponentType().equals(FlowContent.class))
+						{
+							Element el = (Element) method.invoke(null, new Id("test"), new Clazz("test"),
+							    new FlowContent[] { Elements.div() });
+							test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"><div/></"
+								    + name.toLowerCase() + ">");
+							countFlow++;
+						}
+						else if (array.getComponentType().equals(PhrasingContent.class))
+						{
+							Element el = (Element) method.invoke(null, new Id("test"), new Clazz("test"),
+							    new PhrasingContent[] { Elements.span() });
+							test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"><span/></"
+							    + name.toLowerCase() + ">");
+							countPhrase++;
+
+						}
+						else if (array.getComponentType().equals(LI.class))
+						{
+							Element el = (Element) method.invoke(null, new Id("test"), new Clazz("test"),
+							    new LI[] { Elements.li() });
+							if (!(el instanceof HTML))
+								test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"><li/></"
+								    + name.toLowerCase() + ">");
+							countLI++;
+						}
+					} catch (IllegalArgumentException e)
+					{
+						fail(method.toString());
+					}
+				}
+			}
+		}
+
 		assertTrue("Make sure we test ", countFlow > 10);
 		assertTrue("Make sure we test ", countPhrase > 10);
 		assertEquals("Make sure we test ", countLI, 2);
