@@ -151,6 +151,11 @@ public class Elements
 		return new Body();
 	}
 
+	public static Body body(Element... content)
+	{
+		return new Body(Stream.of(content));
+	}
+
 	public static Article article()
 	{
 		return new Article();
@@ -952,6 +957,11 @@ public class Elements
 	public static LI li(Id id)
 	{
 		return new LI(new GlobalAttribute[] { id }, Stream.empty(), null);
+	}
+
+	public static LI li(String string)
+	{
+		return new LI(Stream.of(new Text(string)));
 	}
 
 	public static DL dl(Id id)
@@ -2466,5 +2476,608 @@ public class Elements
 	public static Main main(Id id, Clazz clazz, FlowContent... childeren)
 	{
 		return new Main(new GlobalAttribute[] { id, clazz }, Stream.of(childeren));
+	}
+
+	public static Article article(FlowContent... childeren)
+	{
+		return new Article(Stream.of(childeren));
+	}
+
+	public static Section section(FlowContent... childeren)
+	{
+		return new Section(Stream.of(childeren));
+	}
+
+	public static Nav nav(FlowContent... childeren)
+	{
+		return new Nav(Stream.of(childeren));
+	}
+
+	public static Aside aside(FlowContent... childeren)
+	{
+		return new Aside(Stream.of(childeren));
+	}
+
+	public static H1 h1(PhrasingContent... childeren)
+	{
+		return new H1(Stream.of(childeren));
+	}
+
+	public static H2 h2(PhrasingContent... childeren)
+	{
+		return new H2(Stream.of(childeren));
+	}
+
+	public static H3 h3(PhrasingContent... childeren)
+	{
+		return new H3(Stream.of(childeren));
+	}
+
+	public static H4 h4(PhrasingContent... childeren)
+	{
+		return new H4(Stream.of(childeren));
+	}
+
+	public static H5 h5(PhrasingContent... childeren)
+	{
+		return new H5(Stream.of(childeren));
+	}
+
+	public static H6 h6(PhrasingContent... childeren)
+	{
+		return new H6(Stream.of(childeren));
+	}
+
+	public static Header header(FlowContent... childeren)
+	{
+		return new Header(Stream.of(childeren));
+	}
+
+	public static Footer footer(FlowContent... childeren)
+	{
+		return new Footer(Stream.of(childeren));
+	}
+
+	public static Address address(FlowContent... childeren)
+	{
+		return new Address(Stream.of(childeren));
+	}
+
+	public static P p(PhrasingContent... childeren)
+	{
+		return new P(Stream.of(childeren));
+	}
+
+	public static Pre pre(PhrasingContent... childeren)
+	{
+		return new Pre(Stream.of(childeren));
+	}
+
+	public static BlockQuote blockquote(FlowContent... childeren)
+	{
+		return new BlockQuote(Stream.of(childeren));
+	}
+
+	public static OL ol(Stream<LI> childeren)
+	{
+		Reversed reversed = (Reversed) null;
+		Start start = (Start) null;
+		Type type = (Type) null;
+		return new OL(null, reversed, start, type, childeren);
+	}
+
+	public static UL ul(LI... childeren)
+	{
+		return new UL(Stream.of(childeren));
+	}
+
+	public static LI li(FlowContent... childeren)
+	{
+		return new LI(Stream.of(childeren));
+	}
+
+	public static DL dl(DtOrDd... childeren)
+	{
+		return new DL(Stream.of(childeren));
+	}
+
+	public static DT dt(FlowContent... childeren)
+	{
+		return new DT(Stream.of(childeren));
+	}
+
+	public static DD dd(FlowContent... childeren)
+	{
+		return new DD(Stream.of(childeren));
+	}
+
+	public static FigCaption figcaption(FlowContent... childeren)
+	{
+		return new FigCaption(Stream.of(childeren));
+	}
+
+	public static Div div(FlowContent... childeren)
+	{
+		return new Div(Stream.of(childeren));
+	}
+
+	public static Main main(FlowContent... childeren)
+	{
+		return new Main(Stream.of(childeren));
+	}
+	
+	public static A a(Id id,Clazz clazz, String string){return new A(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Abbr abbr(Id id,Clazz clazz, String string){return new Abbr(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static B b(Id id,Clazz clazz, String string){return new B(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Bdi bdi(Id id,Clazz clazz, String string){return new Bdi(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Bdo bdo(Id id,Clazz clazz, String string){return new Bdo(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Cite cite(Id id,Clazz clazz, String string){return new Cite(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Code code(Id id,Clazz clazz, String string){return new Code(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Data data(Id id,Clazz clazz, String string){return new Data(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)),null);}
+	public static Dfn ffn(Id id,Clazz clazz, String string){return new Dfn(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Em em(Id id,Clazz clazz, String string){return new Em(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static I i(Id id,Clazz clazz, String string){return new I(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Kbd kbd(Id id,Clazz clazz, String string){return new Kbd(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Mark mark(Id id,Clazz clazz, String string){return new Mark(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Q q(Id id,Clazz clazz, String string){return new Q(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)),null);}
+	public static S s(Id id,Clazz clazz, String string){return new S(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Samp samp(Id id,Clazz clazz, String string){return new Samp(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Small small(Id id,Clazz clazz, String string){return new Small(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Span span(Id id,Clazz clazz, String string){return new Span(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Strong strong(Id id,Clazz clazz, String string){return new Strong(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Sub sub(Id id,Clazz clazz, String string){return new Sub(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Sup sup(Id id,Clazz clazz, String string){return new Sup(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static U u(Id id,Clazz clazz, String string){return new U(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Var var(Id id,Clazz clazz, String string){return new Var(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+
+	public static A a(Id id, String string)
+	{
+		return new A(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Abbr abbr(Id id, String string)
+	{
+		return new Abbr(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static B b(Id id, String string)
+	{
+		return new B(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Bdi bdi(Id id, String string)
+	{
+		return new Bdi(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Bdo bdo(Id id, String string)
+	{
+		return new Bdo(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Cite cite(Id id, String string)
+	{
+		return new Cite(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Code code(Id id, String string)
+	{
+		return new Code(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Data data(Id id, String string)
+	{
+		return new Data(new GlobalAttribute[] { id }, Stream.of(new Text(string)), null);
+	}
+
+	public static Dfn ffn(Id id, String string)
+	{
+		return new Dfn(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Em em(Id id, String string)
+	{
+		return new Em(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static I i(Id id, String string)
+	{
+		return new I(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Kbd kbd(Id id, String string)
+	{
+		return new Kbd(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Mark mark(Id id, String string)
+	{
+		return new Mark(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Q q(Id id, String string)
+	{
+		return new Q(new GlobalAttribute[] { id }, Stream.of(new Text(string)), null);
+	}
+
+	public static S s(Id id, String string)
+	{
+		return new S(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Samp samp(Id id, String string)
+	{
+		return new Samp(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Small small(Id id, String string)
+	{
+		return new Small(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Span span(Id id, String string)
+	{
+		return new Span(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Strong strong(Id id, String string)
+	{
+		return new Strong(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Sub sub(Id id, String string)
+	{
+		return new Sub(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Sup sup(Id id, String string)
+	{
+		return new Sup(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static U u(Id id, String string)
+	{
+		return new U(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Var var(Id id, String string)
+	{
+		return new Var(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static A a(Clazz clazz, String string)
+	{
+		return new A(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Abbr abbr(Clazz clazz, String string)
+	{
+		return new Abbr(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static B b(Clazz clazz, String string)
+	{
+		return new B(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Bdi bdi(Clazz clazz, String string)
+	{
+		return new Bdi(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Bdo bdo(Clazz clazz, String string)
+	{
+		return new Bdo(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Cite cite(Clazz clazz, String string)
+	{
+		return new Cite(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Code code(Clazz clazz, String string)
+	{
+		return new Code(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Data data(Clazz clazz, String string)
+	{
+		return new Data(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)), null);
+	}
+
+	public static Dfn ffn(Clazz clazz, String string)
+	{
+		return new Dfn(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Em em(Clazz clazz, String string)
+	{
+		return new Em(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static I i(Clazz clazz, String string)
+	{
+		return new I(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Kbd kbd(Clazz clazz, String string)
+	{
+		return new Kbd(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Mark mark(Clazz clazz, String string)
+	{
+		return new Mark(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Q q(Clazz clazz, String string)
+	{
+		return new Q(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)), null);
+	}
+
+	public static S s(Clazz clazz, String string)
+	{
+		return new S(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Samp samp(Clazz clazz, String string)
+	{
+		return new Samp(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Small small(Clazz clazz, String string)
+	{
+		return new Small(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Span span(Clazz clazz, String string)
+	{
+		return new Span(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Strong strong(Clazz clazz, String string)
+	{
+		return new Strong(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Sub sub(Clazz clazz, String string)
+	{
+		return new Sub(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Sup sup(Clazz clazz, String string)
+	{
+		return new Sup(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static U u(Clazz clazz, String string)
+	{
+		return new U(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Var var(Clazz clazz, String string)
+	{
+		return new Var(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+	
+	public static H1 h1(Id id,Clazz clazz, String string){return new H1(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static H2 h2(Id id,Clazz clazz, String string){return new H2(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static H3 h3(Id id,Clazz clazz, String string){return new H3(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static H4 h4(Id id,Clazz clazz, String string){return new H4(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static H5 h5(Id id,Clazz clazz, String string){return new H5(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static H6 h6(Id id,Clazz clazz, String string){return new H6(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Address address(Id id,Clazz clazz, String string){return new Address(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Article article(Id id,Clazz clazz, String string){return new Article(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Aside aside(Id id,Clazz clazz, String string){return new Aside(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Body body(Id id,Clazz clazz, String string){return new Body(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Footer footer(Id id,Clazz clazz, String string){return new Footer(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Header header(Id id,Clazz clazz, String string){return new Header(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Nav nav(Id id,Clazz clazz, String string){return new Nav(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Section section(Id id,Clazz clazz, String string){return new Section(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static BlockQuote BlockQuote(Id id,Clazz clazz, String string){return new BlockQuote(new GlobalAttribute[]{ id , clazz }, null, Stream.of(new Text(string)));}
+	public static Div Div(Id id,Clazz clazz, String string){return new Div(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static LI LI(Id id,Clazz clazz, String string){return new LI(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)), null);}
+	public static Main Main(Id id,Clazz clazz, String string){return new Main(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static P P(Id id,Clazz clazz, String string){return new P(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+	public static Pre Pre(Id id,Clazz clazz, String string){return new Pre(new GlobalAttribute[]{ id , clazz }, Stream.of(new Text(string)));}
+
+	public static H1 h1(Id id, String string)
+	{
+		return new H1(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static H2 h2(Id id, String string)
+	{
+		return new H2(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static H3 h3(Id id, String string)
+	{
+		return new H3(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static H4 h4(Id id, String string)
+	{
+		return new H4(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static H5 h5(Id id, String string)
+	{
+		return new H5(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static H6 h6(Id id, String string)
+	{
+		return new H6(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Address address(Id id, String string)
+	{
+		return new Address(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Article article(Id id, String string)
+	{
+		return new Article(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Aside aside(Id id, String string)
+	{
+		return new Aside(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Body body(Id id, String string)
+	{
+		return new Body(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Footer footer(Id id, String string)
+	{
+		return new Footer(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Header header(Id id, String string)
+	{
+		return new Header(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Nav nav(Id id, String string)
+	{
+		return new Nav(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Section section(Id id, String string)
+	{
+		return new Section(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static BlockQuote BlockQuote(Id id, String string)
+	{
+		return new BlockQuote(new GlobalAttribute[] { id }, null, Stream.of(new Text(string)));
+	}
+
+	public static Div Div(Id id, String string)
+	{
+		return new Div(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static LI LI(Id id, String string)
+	{
+		return new LI(new GlobalAttribute[] { id }, Stream.of(new Text(string)), null);
+	}
+
+	public static Main Main(Id id, String string)
+	{
+		return new Main(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static P P(Id id, String string)
+	{
+		return new P(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static Pre Pre(Id id, String string)
+	{
+		return new Pre(new GlobalAttribute[] { id }, Stream.of(new Text(string)));
+	}
+
+	public static H1 h1(Clazz clazz, String string)
+	{
+		return new H1(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static H2 h2(Clazz clazz, String string)
+	{
+		return new H2(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static H3 h3(Clazz clazz, String string)
+	{
+		return new H3(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static H4 h4(Clazz clazz, String string)
+	{
+		return new H4(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static H5 h5(Clazz clazz, String string)
+	{
+		return new H5(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static H6 h6(Clazz clazz, String string)
+	{
+		return new H6(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Address address(Clazz clazz, String string)
+	{
+		return new Address(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Article article(Clazz clazz, String string)
+	{
+		return new Article(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Aside aside(Clazz clazz, String string)
+	{
+		return new Aside(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Body body(Clazz clazz, String string)
+	{
+		return new Body(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Footer footer(Clazz clazz, String string)
+	{
+		return new Footer(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Header header(Clazz clazz, String string)
+	{
+		return new Header(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Nav nav(Clazz clazz, String string)
+	{
+		return new Nav(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Section section(Clazz clazz, String string)
+	{
+		return new Section(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static BlockQuote BlockQuote(Clazz clazz, String string)
+	{
+		return new BlockQuote(new GlobalAttribute[] { clazz }, null, Stream.of(new Text(string)));
+	}
+
+	public static Div Div(Clazz clazz, String string)
+	{
+		return new Div(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static LI LI(Clazz clazz, String string)
+	{
+		return new LI(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)), null);
+	}
+
+	public static Main Main(Clazz clazz, String string)
+	{
+		return new Main(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static P P(Clazz clazz, String string)
+	{
+		return new P(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
+	}
+
+	public static Pre Pre(Clazz clazz, String string)
+	{
+		return new Pre(new GlobalAttribute[] { clazz }, Stream.of(new Text(string)));
 	}
 }

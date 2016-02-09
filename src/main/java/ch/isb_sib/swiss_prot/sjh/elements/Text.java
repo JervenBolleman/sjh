@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Objects;
 
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 
 public class Text
-    implements Element, PhrasingContent
+    implements Element, PhrasingContent, FlowContent
 {
 	private final byte[] value;
 
