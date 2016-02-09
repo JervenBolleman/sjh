@@ -74,7 +74,12 @@ public class Audio
 
 	public Audio(GlobalAttribute[] ga)
 	{
-		super(ga);
+		this(ga, Stream.empty());
+	}
+
+	public Audio(GlobalAttribute[] ga, Stream<Track> track)
+	{
+		super(ga, track);
 		this.src = null;
 		this.co = null;
 		this.preload = null;
