@@ -2,6 +2,7 @@ package ch.isb_sib.swiss_prot.sjh;
 
 import org.junit.Test;
 
+import ch.isb_sib.swiss_prot.sjh.Attributes;
 import ch.isb_sib.swiss_prot.sjh.elements.HTML;
 import ch.isb_sib.swiss_prot.sjh.elements.meta.Head;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.Body;
