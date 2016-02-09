@@ -64,6 +64,25 @@ public class Users {
 }
 ```
 
+
+
+```java
+//First make the head of the page
+Head head = head(title("test"));
+
+//Then we map a list of user names to li elements using streams.
+Stream<LI> map = users
+    .stream()
+    .map(u -> li(u));
+OL orderedListOfUser = ol(map);
+
+//Then we add a body tag with as child elements the ordered list of user names
+Body body = body(orderedListOfUser);
+
+//Make the whole page by having a root element html with the head and body child elements
+HTML html = html(head, body);
+```
+
 Which means if you decide to refactor the getPrefferedName() into getNickName(), your standard refactoring tools will be able to change it. Unlike when you are using JSPX or JSF.
 
 
