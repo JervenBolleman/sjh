@@ -143,6 +143,9 @@ import ch.isb_sib.swiss_prot.sjh.attributes.meta.Charset;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Content;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.HttpEquiv;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Name;
+import ch.isb_sib.swiss_prot.sjh.attributes.script.Async;
+import ch.isb_sib.swiss_prot.sjh.attributes.script.Defer;
+import ch.isb_sib.swiss_prot.sjh.attributes.script.Nonce;
 
 
 public class Attributes
@@ -693,4 +696,8 @@ public class Attributes
 	public static Low low(String string){return new Low(string);}
 	public static High high(String string){return new High(string);}
 	public static Optimum optimum(String string){return new Optimum(string);}
+	
+	public static Async async(String string){return new Async(string);}
+	public static Defer defer(String string){return new Defer(string);}
+	public static Nonce nonce(String string){return new Nonce(string);}
 }
