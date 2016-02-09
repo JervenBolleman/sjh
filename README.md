@@ -1,3 +1,4 @@
+![travis](https://api.travis-ci.org/JervenBolleman/sjh.svg?branch=master)
 # What is SJH
 
 A proof of concept for generating HTML using java directly, hopefully no uglier than necesarry. While making it difficult to generate invalid HTML by leveraging the typesystem. 
