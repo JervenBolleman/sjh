@@ -14,7 +14,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.Element;
 import ch.isb_sib.swiss_prot.sjh.elements.HTML;
 
 
-public class HtmlEmptyElementsTest
+public class HtmlElementsTest
 {
 	@Test
 	public void basic()
