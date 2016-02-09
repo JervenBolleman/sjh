@@ -27,7 +27,7 @@ public class HtmlEmptyElementsTest
 			if (method.getParameterCount() == 0)
 			{
 				String name = method.getReturnType().getSimpleName();
-				Element el = (Element) method.invoke(null, null);
+				Element el = (Element) method.invoke(null, (Object[]) null);
 				if (!(el instanceof HTML))
 					test(el, "<" + name.toLowerCase() + "/>");
 			}
