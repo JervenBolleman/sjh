@@ -86,7 +86,9 @@ import ch.isb_sib.swiss_prot.sjh.attributes.form.AcceptCharset;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Action;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.AutoComplete;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.AutoFocus;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Challenge;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Checked;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Cols;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.DirName;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Disabled;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.EncType;
@@ -96,20 +98,29 @@ import ch.isb_sib.swiss_prot.sjh.attributes.form.FormEnctype;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.FormMethod;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.FormNoValidate;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.FormTarget;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.High;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.InputMode;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.KeyType;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.List;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Low;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Max;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.MaxLength;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Menu;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Method;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Min;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.MinLength;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Multiple;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.NoValidate;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Optimum;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Pattern;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.PlaceHolder;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.ReadOnly;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Required;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Rows;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Selected;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Size;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Step;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Wrap;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.ATitle;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.AccessKey;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Clazz;
@@ -670,4 +681,16 @@ public class Attributes
 	public static Required required(String string){return new Required(string);}
 	public static Size size(String string){return new Size(string);}
 	public static Step step(String string){return new Step(string);}
+	public static Menu menu(String string){return new Menu(string);}
+	public static Selected selected(String string){return new Selected(string);}
+	
+	public static Cols cols(String string){return new Cols(string);}
+	public static MaxLength maxLength(String string){return new MaxLength(string);}
+	public static Rows rows(String string){return new Rows(string);}
+	public static Wrap wrap(String string){return new Wrap(string);}
+	public static KeyType keytype(String string){return new KeyType(string);}
+	public static Challenge challenge(String string){return new Challenge(string);}
+	public static Low low(String string){return new Low(string);}
+	public static High high(String string){return new High(string);}
+	public static Optimum optimum(String string){return new Optimum(string);}
 }
