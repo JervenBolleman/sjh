@@ -72,9 +72,9 @@ public class Audio
 		this.controls = controls;
 	}
 
-	public Audio()
+	public Audio(GlobalAttribute[] ga)
 	{
-		super();
+		super(ga);
 		this.src = null;
 		this.co = null;
 		this.preload = null;

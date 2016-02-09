@@ -62,6 +62,17 @@ public class A
 		this.type = null;
 	}
 
+	public A(GlobalAttribute[] ga, Stream<Element> childeren)
+	{
+		super(ga, childeren);
+		this.href = null;
+		this.target = null;
+		this.download = null;
+		this.rel = null;
+		this.hreflang = null;
+		this.type = null;
+	}
+
 	@Override
 	protected Stream<Attribute> getElementSpecificAttributes()
 	{

@@ -37,4 +37,9 @@ public class Aside
 	{
 		super(childeren);
 	}
+
+	public Aside(GlobalAttribute[] globalAttributes)
+	{
+		super(globalAttributes);
+	}
 }

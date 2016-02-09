@@ -28,6 +28,11 @@ public class Article
 		super(ga, childeren);
 	}
 
+	public Article(GlobalAttribute[] ga)
+	{
+		super(ga);
+	}
+
 	public Article()
 	{
 		super();

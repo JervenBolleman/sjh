@@ -37,4 +37,9 @@ public class Nav
 	{
 		super(childeren);
 	}
+
+	public Nav(GlobalAttribute[] globalAttributes)
+	{
+		super(globalAttributes);
+	}
 }

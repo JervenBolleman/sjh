@@ -71,6 +71,20 @@ public class Area
 		this.type = null;
 	}
 
+	public Area(GlobalAttribute[] ga)
+	{
+		super(ga);
+		this.alt = null;
+		this.coords = null;
+		this.download = null;
+		this.href = null;
+		this.hreflang = null;
+		this.rel = null;
+		this.target = null;
+		this.shape = null;
+		this.type = null;
+	}
+
 	@Override
 	protected Stream<Attribute> getElementSpecificAttributes()
 	{

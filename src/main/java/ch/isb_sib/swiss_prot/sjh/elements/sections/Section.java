@@ -37,4 +37,9 @@ public class Section
 	{
 		super(childeren);
 	}
+
+	public Section(GlobalAttribute[] ga)
+	{
+		super(ga);
+	}
 }
