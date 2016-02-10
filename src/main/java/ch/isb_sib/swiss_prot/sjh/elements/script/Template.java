@@ -10,11 +10,12 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.MetaContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
+import ch.isb_sib.swiss_prot.sjh.elements.table.ColOrTemplate;
 
 
 public class Template
     extends CommonElement
-    implements FlowContent, PhrasingContent, MetaContent, PalpabaleContent
+    implements FlowContent, PhrasingContent, MetaContent, PalpabaleContent, ColOrTemplate
 {
 	private final static byte[] NAME = "template".getBytes(UTF_8);
 

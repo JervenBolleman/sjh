@@ -146,6 +146,15 @@ import ch.isb_sib.swiss_prot.sjh.attributes.meta.Name;
 import ch.isb_sib.swiss_prot.sjh.attributes.script.Async;
 import ch.isb_sib.swiss_prot.sjh.attributes.script.Defer;
 import ch.isb_sib.swiss_prot.sjh.attributes.script.Nonce;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.Abbr;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.Border;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.ColSpan;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.Headers;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.RowSpan;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.Scope;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.Sortable;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.Sorted;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.Span;
 
 
 public class Attributes
@@ -700,4 +709,40 @@ public class Attributes
 	public static Async async(String string){return new Async(string);}
 	public static Defer defer(String string){return new Defer(string);}
 	public static Nonce nonce(String string){return new Nonce(string);}
+
+    public static Abbr abbr(String string) {
+	return new Abbr(string);
+    }
+
+    public static Border border(String string) {
+	return new Border(string);
+    }
+
+    public static ColSpan colSpan(String string) {
+	return new ColSpan(string);
+    }
+
+    public static Headers headers(String string) {
+	return new Headers(string);
+    }
+
+    public static RowSpan rowSpan(String string) {
+	return new RowSpan(string);
+    }
+
+    public static Scope scope(String string) {
+	return new Scope(string);
+    }
+
+    public static Sortable sortable(String string) {
+	return new Sortable(string);
+    }
+
+    public static Sorted sorted(String string) {
+	return new Sorted(string);
+    }
+
+    public static Span span(String string) {
+	return new Span(string);
+    }
 }
