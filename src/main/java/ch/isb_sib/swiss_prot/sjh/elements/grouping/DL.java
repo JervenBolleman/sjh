@@ -9,31 +9,23 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 
+public class DL extends CommonElement implements FlowContent, PalpabaleContent {
+    private final static byte[] NAME = "dl".getBytes(UTF_8);
 
-public class DL
-    extends CommonElement
-    implements FlowContent, PalpabaleContent
-{
-	private final static byte[] NAME = "dl".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public DL(Stream<GlobalAttribute> ga, Stream<? extends DtOrDd> childeren) {
+	super(ga, childeren);
+    }
 
-	public DL(Stream<GlobalAttribute> ga, Stream<? extends DtOrDd> childeren)
-	{
-		super(ga, childeren);
-	}
+    public DL() {
+	super();
+    }
 
-	public DL()
-	{
-		super();
-	}
-
-	public DL(Stream<? extends DtOrDd> childeren)
-	{
+    public DL(Stream<? extends DtOrDd> childeren) {
 	super(Stream.<GlobalAttribute> empty(), childeren);
-	}
+    }
 }

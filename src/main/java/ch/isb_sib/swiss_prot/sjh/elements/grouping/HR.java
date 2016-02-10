@@ -8,26 +8,19 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 
+public class HR extends CommonElement implements FlowContent {
+    private final static byte[] NAME = "hr".getBytes(UTF_8);
 
-public class HR
-    extends CommonElement
-    implements FlowContent
-{
-	private final static byte[] NAME = "hr".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
-
-	public HR(Stream<GlobalAttribute> ga)
-	{
+    public HR(Stream<GlobalAttribute> ga) {
 	super(ga, Stream.empty());
-	}
+    }
 
-	public HR()
-	{
-		super();
-	}
+    public HR() {
+	super();
+    }
 }

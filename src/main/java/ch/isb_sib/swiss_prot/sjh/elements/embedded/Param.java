@@ -10,40 +10,32 @@ import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Value;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Name;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 
+public class Param extends CommonElement {
+    private final static byte[] NAME = "param".getBytes(UTF_8);
+    private final Name name;
+    private final Value value;
 
-public class Param
-    extends CommonElement
-{
-	private final static byte[] NAME = "param".getBytes(UTF_8);
-	private final Name name;
-	private final Value value;
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
-
-	public Param(Stream<GlobalAttribute> ga, Name name, Value value)
-	{
+    public Param(Stream<GlobalAttribute> ga, Name name, Value value) {
 	super(ga, Stream.empty());
-		this.name = name;
-		this.value = value;
-	}
+	this.name = name;
+	this.value = value;
+    }
 
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes()
-	{
-		if (name != null)
-		{
-			if (value != null)
-				return Stream.of(name, value);
-			else
-				return Stream.of(name);
-		}
-		else if (value != null)
-			return Stream.of(value);
-		else
-			return Stream.empty();
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	if (name != null) {
+	    if (value != null)
+		return Stream.of(name, value);
+	    else
+		return Stream.of(name);
+	} else if (value != null)
+	    return Stream.of(value);
+	else
+	    return Stream.empty();
+    }
 }

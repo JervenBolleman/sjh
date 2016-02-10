@@ -9,24 +9,18 @@ import java.util.Objects;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
+public class Text implements Element, PhrasingContent, FlowContent {
+    private final byte[] value;
 
-public class Text
-    implements Element, PhrasingContent, FlowContent
-{
-	private final byte[] value;
+    @Override
+    public void render(OutputStream stream) throws IOException {
+	stream.write(value);
+    }
 
-	@Override
-	public void render(OutputStream stream)
-	    throws IOException
-	{
-		stream.write(value);
-	}
-
-	public Text(String value)
-	{
-		super();
-		Objects.nonNull(value);
-		this.value = value.getBytes(UTF_8);
-	}
+    public Text(String value) {
+	super();
+	Objects.nonNull(value);
+	this.value = value.getBytes(UTF_8);
+    }
 
 }

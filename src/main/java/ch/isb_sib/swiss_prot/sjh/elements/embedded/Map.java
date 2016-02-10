@@ -12,32 +12,25 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
+public class Map extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
+    private final static byte[] NAME = "map".getBytes(UTF_8);
+    private final Name name;
 
-public class Map
-    extends CommonElement
-    implements FlowContent, PhrasingContent, PalpabaleContent
-{
-	private final static byte[] NAME = "map".getBytes(UTF_8);
-	private final Name name;
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public Map(Stream<GlobalAttribute> ga, Name name, Stream<? extends FlowContent> childeren) {
+	super(ga, childeren);
+	this.name = name;
+    }
 
-	public Map(Stream<GlobalAttribute> ga, Name name, Stream<? extends FlowContent> childeren)
-	{
-		super(ga, childeren);
-		this.name = name;
-	}
-
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes()
-	{
-		if (name != null)
-			return Stream.of(name);
-		else
-			return Stream.empty();
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	if (name != null)
+	    return Stream.of(name);
+	else
+	    return Stream.empty();
+    }
 }

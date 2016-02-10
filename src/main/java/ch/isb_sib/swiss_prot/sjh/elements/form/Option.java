@@ -15,38 +15,35 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.Text;
 
 public class Option extends CommonElement implements OptionOrOptGroup {
-	private final static byte[] NAME = "option".getBytes(UTF_8);
-	private final Disabled disabled;
-	private final Label label;
-	private final Selected selected;
-	private final Value value;
+    private final static byte[] NAME = "option".getBytes(UTF_8);
+    private final Disabled disabled;
+    private final Label label;
+    private final Selected selected;
+    private final Value value;
 
-	@Override
-	protected byte[] getName() {
-		return NAME;
-	}
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label,
-			Selected selected, Value value) {
+    public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label, Selected selected, Value value) {
 	super(ga, Stream.empty());
-		this.disabled = disabled;
-		this.label = label;
-		this.selected = selected;
-		this.value = value;
-	}
+	this.disabled = disabled;
+	this.label = label;
+	this.selected = selected;
+	this.value = value;
+    }
 
-	public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label,
-			Selected selected, Text text) {
-		super(ga, Stream.of(text));
-		this.disabled = disabled;
-		this.label = label;
-		this.selected = selected;
-		this.value = null;
-	}
+    public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label, Selected selected, Text text) {
+	super(ga, Stream.of(text));
+	this.disabled = disabled;
+	this.label = label;
+	this.selected = selected;
+	this.value = null;
+    }
 
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes() {
-		return Stream.of(disabled, label, selected, value).filter(
-				Objects::nonNull);
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	return Stream.of(disabled, label, selected, value).filter(Objects::nonNull);
+    }
 }

@@ -9,26 +9,19 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 
+public class Header extends CommonElement implements FlowContent, PalpabaleContent {
+    private final static byte[] NAME = "header".getBytes(UTF_8);
 
-public class Header
-    extends CommonElement
-    implements FlowContent, PalpabaleContent
-{
-	private final static byte[] NAME = "header".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public Header(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
+	super(ga, childeren);
+    }
 
-	public Header(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
-	{
-		super(ga, childeren);
-	}
-
-	public Header()
-	{
-		super();
-	}
+    public Header() {
+	super();
+    }
 }

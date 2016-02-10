@@ -10,26 +10,19 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
 
+public class Aside extends CommonElement implements FlowContent, SectioningContent, PalpabaleContent {
+    private final static byte[] NAME = "aside".getBytes(UTF_8);
 
-public class Aside
-    extends CommonElement
-    implements FlowContent, SectioningContent, PalpabaleContent
-{
-	private final static byte[] NAME = "aside".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public Aside(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
+	super(ga, childeren);
+    }
 
-	public Aside(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
-	{
-		super(ga, childeren);
-	}
-
-	public Aside()
-	{
-		super();
-	}
+    public Aside() {
+	super();
+    }
 }

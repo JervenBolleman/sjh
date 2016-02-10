@@ -16,38 +16,37 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Output extends CommonElement implements FlowContent,
-		PhrasingContent, InteractiveContent, PalpabaleContent {
-	private final static byte[] NAME = "output".getBytes(UTF_8);
-	private final Form form;
-	private final For fora;
-	private final Name name;
+public class Output extends CommonElement
+	implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+    private final static byte[] NAME = "output".getBytes(UTF_8);
+    private final Form form;
+    private final For fora;
+    private final Name name;
 
-	@Override
-	protected byte[] getName() {
-		return NAME;
-	}
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	public Output(Stream<GlobalAttribute> ga, For fora, Form form, Name name) {
+    public Output(Stream<GlobalAttribute> ga, For fora, Form form, Name name) {
 	super(ga, Stream.empty());
-		this.fora = fora;
-		this.form = form;
-		this.name = name;
+	this.fora = fora;
+	this.form = form;
+	this.name = name;
 
-	}
+    }
 
-	public Output(Stream<GlobalAttribute> ga, For fora, Form form, Name name,
-			Stream<? extends PhrasingContent> childeren) {
-		super(ga, childeren);
-		this.fora = fora;
-		this.form = form;
-		this.name = name;
+    public Output(Stream<GlobalAttribute> ga, For fora, Form form, Name name,
+	    Stream<? extends PhrasingContent> childeren) {
+	super(ga, childeren);
+	this.fora = fora;
+	this.form = form;
+	this.name = name;
 
-	}
+    }
 
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes() {
-		return Stream.of(this.form, this.fora, this.name).filter(
-				Objects::nonNull);
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	return Stream.of(this.form, this.fora, this.name).filter(Objects::nonNull);
+    }
 }

@@ -10,20 +10,19 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 public class Legend extends CommonElement {
-	private final static byte[] NAME = "legend".getBytes(UTF_8);
+    private final static byte[] NAME = "legend".getBytes(UTF_8);
 
-	@Override
-	protected byte[] getName() {
-		return NAME;
-	}
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	public Legend(Stream<GlobalAttribute> ga,
-			Stream<? extends PhrasingContent> childreren) {
-		super(ga, childreren);
-	}
+    public Legend(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childreren) {
+	super(ga, childreren);
+    }
 
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes() {
-		return Stream.empty();
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	return Stream.empty();
+    }
 }

@@ -9,25 +9,19 @@ import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Value;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 
+public class LI extends CommonElement {
+    private final static byte[] NAME = "li".getBytes(UTF_8);
 
-public class LI
-    extends CommonElement
-{
-	private final static byte[] NAME = "li".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public LI(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren, Value value) {
+	super(ga, childeren);
+    }
 
-	public LI(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren, Value value)
-	{
-		super(ga, childeren);
-	}
-
-	public LI()
-	{
-		super();
-	}
+    public LI() {
+	super();
+    }
 }

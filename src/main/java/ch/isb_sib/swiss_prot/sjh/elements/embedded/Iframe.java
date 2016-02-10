@@ -20,40 +20,34 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
+public class Iframe extends CommonElement
+	implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent, PalpabaleContent {
+    private final static byte[] NAME = "iframe".getBytes(UTF_8);
+    private final Src src;
+    private final SrcDoc srcdoc;
+    private final Name name;
+    private final SandBox sandbox;
+    private final Width width;
+    private final Height height;
 
-public class Iframe
-    extends CommonElement
-    implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent,
-    PalpabaleContent
-{
-	private final static byte[] NAME = "iframe".getBytes(UTF_8);
-	private final Src src;
-	private final SrcDoc srcdoc;
-	private final Name name;
-	private final SandBox sandbox;
-	private final Width width;
-	private final Height height;
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
-
-	public Iframe(Stream<GlobalAttribute> ga, Src src, SrcDoc srcdoc, Name name, SandBox sandbox, Width width, Height height)
-	{
+    public Iframe(Stream<GlobalAttribute> ga, Src src, SrcDoc srcdoc, Name name, SandBox sandbox, Width width,
+	    Height height) {
 	super(ga, Stream.empty());
-		this.src = src;
-		this.srcdoc = srcdoc;
-		this.name = name;
-		this.sandbox = sandbox;
-		this.width = width;
-		this.height = height;
-	}
+	this.src = src;
+	this.srcdoc = srcdoc;
+	this.name = name;
+	this.sandbox = sandbox;
+	this.width = width;
+	this.height = height;
+    }
 
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes()
-	{
-		return Stream.of(src, srcdoc, name, sandbox, width, height).filter(Objects::nonNull);
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	return Stream.of(src, srcdoc, name, sandbox, width, height).filter(Objects::nonNull);
+    }
 }

@@ -20,62 +20,53 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
+public class A extends CommonElement implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+    private final static byte[] NAME = "a".getBytes(UTF_8);
+    private final Href href;
+    private final Target target;
+    private final Download download;
+    private final Rel rel;
+    private final HrefLang hreflang;
+    private final Type type;
 
-public class A
-    extends CommonElement
-    implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent
-{
-	private final static byte[] NAME = "a".getBytes(UTF_8);
-	private final Href href;
-	private final Target target;
-	private final Download download;
-	private final Rel rel;
-	private final HrefLang hreflang;
-	private final Type type;
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href, Target target, Download download,
+	    Rel rel, HrefLang hreflang, Type type) {
+	super(ga, childeren);
+	this.href = href;
+	this.target = target;
+	this.download = download;
+	this.rel = rel;
+	this.hreflang = hreflang;
+	this.type = type;
+    }
 
-	public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href, Target target, Download download, Rel rel,
-	    HrefLang hreflang, Type type)
-	{
-		super(ga, childeren);
-		this.href = href;
-		this.target = target;
-		this.download = download;
-		this.rel = rel;
-		this.hreflang = hreflang;
-		this.type = type;
-	}
-
-	public A(Stream<Element> childeren)
-	{
+    public A(Stream<Element> childeren) {
 	super(Stream.<GlobalAttribute> empty(), childeren);
-		this.href = null;
-		this.target = null;
-		this.download = null;
-		this.rel = null;
-		this.hreflang = null;
-		this.type = null;
-	}
+	this.href = null;
+	this.target = null;
+	this.download = null;
+	this.rel = null;
+	this.hreflang = null;
+	this.type = null;
+    }
 
-	public A(Stream<GlobalAttribute> ga, Stream<Element> childeren)
-	{
-		super(ga, childeren);
-		this.href = null;
-		this.target = null;
-		this.download = null;
-		this.rel = null;
-		this.hreflang = null;
-		this.type = null;
-	}
+    public A(Stream<GlobalAttribute> ga, Stream<Element> childeren) {
+	super(ga, childeren);
+	this.href = null;
+	this.target = null;
+	this.download = null;
+	this.rel = null;
+	this.hreflang = null;
+	this.type = null;
+    }
 
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes()
-	{
-		return Stream.of(href, target, download, rel, hreflang, type).filter(Objects::nonNull);
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	return Stream.of(href, target, download, rel, hreflang, type).filter(Objects::nonNull);
+    }
 }
