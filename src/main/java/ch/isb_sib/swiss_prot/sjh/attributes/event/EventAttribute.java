@@ -1,9 +1,9 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.event;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 
 
 public interface EventAttribute
-    extends Attribute
+ extends GlobalAttribute
 {
 }
