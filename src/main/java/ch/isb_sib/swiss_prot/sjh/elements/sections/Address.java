@@ -22,7 +22,7 @@ public class Address
 		return NAME;
 	}
 
-	public Address(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
+	public Address(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,10 +30,5 @@ public class Address
 	public Address()
 	{
 		super();
-	}
-
-	public Address(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
 	}
 }

@@ -26,7 +26,7 @@ public class Style
 		return NAME;
 	}
 
-	public Style(GlobalAttribute[] ga, Media media, Type type, Text text)
+	public Style(Stream<GlobalAttribute> ga, Media media, Type type, Text text)
 	{
 		super(ga, Stream.of(text));
 		this.media = media;
@@ -42,7 +42,7 @@ public class Style
 
 	public Style(Text text)
 	{
-		super(Stream.of(text));
+	super(Stream.<GlobalAttribute> empty(), Stream.of(text));
 		this.media = null;
 		this.type = null;
 	}

@@ -34,9 +34,9 @@ public class Meter extends CommonElement implements FlowContent,
 		return NAME;
 	}
 
-	public Meter(GlobalAttribute[] ga, Value value, Min min, Max max, Low low,
+	public Meter(Stream<GlobalAttribute> ga, Value value, Min min, Max max, Low low,
 			High high, Optimum optimum) {
-		super(ga);
+	super(ga, Stream.empty());
 		this.value = value;
 		this.min = min;
 		this.max = max;
@@ -46,7 +46,7 @@ public class Meter extends CommonElement implements FlowContent,
 
 	}
 
-	public Meter(GlobalAttribute[] ga, Value value, Min min, Max max, Low low,
+	public Meter(Stream<GlobalAttribute> ga, Value value, Min min, Max max, Low low,
 			Optimum optimum, High high,
 			Stream<? extends PhrasingContent> childeren) {
 		super(ga, childeren);

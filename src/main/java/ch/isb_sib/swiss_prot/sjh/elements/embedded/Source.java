@@ -31,9 +31,9 @@ public class Source
 		return NAME;
 	}
 
-	public Source(GlobalAttribute[] ga, Kind kind, Src src, Label label, SrcLang srclang, Default def)
+	public Source(Stream<GlobalAttribute> ga, Kind kind, Src src, Label label, SrcLang srclang, Default def)
 	{
-		super(ga);
+	super(ga, Stream.empty());
 		this.kind = kind;
 		this.src = src;
 		this.label = label;

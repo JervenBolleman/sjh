@@ -24,9 +24,9 @@ public class Param
 		return NAME;
 	}
 
-	public Param(GlobalAttribute[] ga, Name name, Value value)
+	public Param(Stream<GlobalAttribute> ga, Name name, Value value)
 	{
-		super(ga);
+	super(ga, Stream.empty());
 		this.name = name;
 		this.value = value;
 	}

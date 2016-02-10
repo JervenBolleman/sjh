@@ -11,31 +11,19 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
 
+public class H6 extends CommonElement implements FlowContent, SectioningContent, PalpabaleContent {
+    private final static byte[] NAME = "h6".getBytes(UTF_8);
 
-public class H6
-    extends CommonElement
-    implements FlowContent, SectioningContent, PalpabaleContent
-{
-	private final static byte[] NAME = "h6".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public H6(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
+	super(ga, childeren);
+    }
 
-	public H6(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren)
-	{
-		super(ga, childeren);
-	}
-
-	public H6()
-	{
-		super();
-	}
-
-	public H6(Stream<? extends PhrasingContent> childeren)
-	{
-		super(childeren);
-	}
+    public H6() {
+	super();
+    }
 }

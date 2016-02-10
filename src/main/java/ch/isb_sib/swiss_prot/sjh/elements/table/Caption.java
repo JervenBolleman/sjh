@@ -16,7 +16,7 @@ public class Caption extends CommonElement {
 	return NAME;
     }
 
-    public Caption(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren) {
+    public Caption(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
 	super(ga, childeren);
     }
 }

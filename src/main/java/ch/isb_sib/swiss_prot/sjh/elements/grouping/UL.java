@@ -22,7 +22,7 @@ public class UL
 		return NAME;
 	}
 
-	public UL(GlobalAttribute[] ga, Stream<LI> childeren)
+	public UL(Stream<GlobalAttribute> ga, Stream<LI> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,10 +30,5 @@ public class UL
 	public UL()
 	{
 		super();
-	}
-
-	public UL(Stream<LI> childeren)
-	{
-		super(childeren);
 	}
 }

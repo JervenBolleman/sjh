@@ -23,7 +23,7 @@ public class Section
 		return NAME;
 	}
 
-	public Section(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
+	public Section(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -31,15 +31,5 @@ public class Section
 	public Section()
 	{
 		super();
-	}
-
-	public Section(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
-	}
-
-	public Section(GlobalAttribute[] ga)
-	{
-		super(ga);
 	}
 }

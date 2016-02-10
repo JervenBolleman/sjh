@@ -23,7 +23,7 @@ public class Kbd
 		return NAME;
 	}
 
-	public Kbd(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren)
+	public Kbd(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -31,10 +31,5 @@ public class Kbd
 	public Kbd()
 	{
 		super();
-	}
-
-	public Kbd(Stream<? extends PhrasingContent> childeren)
-	{
-		super(childeren);
 	}
 }

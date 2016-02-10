@@ -15,7 +15,7 @@ public class TFoot extends CommonElement {
 	return NAME;
     }
 
-    public TFoot(GlobalAttribute[] ga, Stream<TR> children) {
+    public TFoot(Stream<GlobalAttribute> ga, Stream<TR> children) {
 	super(ga, children);
     }
 }

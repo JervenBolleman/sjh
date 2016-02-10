@@ -28,15 +28,15 @@ public class Output extends CommonElement implements FlowContent,
 		return NAME;
 	}
 
-	public Output(GlobalAttribute[] ga, For fora, Form form, Name name) {
-		super(ga);
+	public Output(Stream<GlobalAttribute> ga, For fora, Form form, Name name) {
+	super(ga, Stream.empty());
 		this.fora = fora;
 		this.form = form;
 		this.name = name;
 
 	}
 
-	public Output(GlobalAttribute[] ga, For fora, Form form, Name name,
+	public Output(Stream<GlobalAttribute> ga, For fora, Form form, Name name,
 			Stream<? extends PhrasingContent> childeren) {
 		super(ga, childeren);
 		this.fora = fora;

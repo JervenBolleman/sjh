@@ -26,16 +26,16 @@ public class Option extends CommonElement implements OptionOrOptGroup {
 		return NAME;
 	}
 
-	public Option(GlobalAttribute[] ga, Disabled disabled, Label label,
+	public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label,
 			Selected selected, Value value) {
-		super(ga);
+	super(ga, Stream.empty());
 		this.disabled = disabled;
 		this.label = label;
 		this.selected = selected;
 		this.value = value;
 	}
 
-	public Option(GlobalAttribute[] ga, Disabled disabled, Label label,
+	public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label,
 			Selected selected, Text text) {
 		super(ga, Stream.of(text));
 		this.disabled = disabled;

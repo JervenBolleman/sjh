@@ -18,36 +18,29 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
+public class Embed extends CommonElement
+	implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent, PalpabaleContent {
+    private final static byte[] NAME = "embed".getBytes(UTF_8);
+    private final Src src;
+    private final Width width;
+    private final Height height;
+    private Type type;
 
-public class Embed
-    extends CommonElement
-    implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent,
-    PalpabaleContent
-{
-	private final static byte[] NAME = "embed".getBytes(UTF_8);
-	private final Src src;
-	private final Width width;
-	private final Height height;
-	private Type type;
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public Embed(Stream<GlobalAttribute> ga, Src src, Type type, Width width, Height height) {
+	super(ga, Stream.empty());
+	this.src = src;
+	this.type = type;
+	this.width = width;
+	this.height = height;
+    }
 
-	public Embed(GlobalAttribute[] ga, Src src, Type type, Width width, Height height)
-	{
-		super(ga);
-		this.src = src;
-		this.type = type;
-		this.width = width;
-		this.height = height;
-	}
-
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes()
-	{
-		return Stream.of(src, type, width, height).filter(Objects::nonNull);
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	return Stream.of(src, type, width, height).filter(Objects::nonNull);
+    }
 }

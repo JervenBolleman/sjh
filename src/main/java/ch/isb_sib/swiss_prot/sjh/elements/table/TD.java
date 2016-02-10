@@ -24,7 +24,7 @@ public class TD extends CommonElement {
 	return NAME;
     }
 
-    public TD(GlobalAttribute[] ga, Stream<? extends FlowContent> children, ColSpan colspan, RowSpan rowspan,
+    public TD(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> children, ColSpan colspan, RowSpan rowspan,
 	    Headers headers) {
 	super(ga, children);
 	this.colspan = colspan;

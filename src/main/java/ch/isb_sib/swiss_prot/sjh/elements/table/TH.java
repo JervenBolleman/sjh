@@ -30,7 +30,7 @@ public class TH extends CommonElement implements TROrTH {
 	return NAME;
     }
 
-    public TH(GlobalAttribute[] ga, Stream<? extends FlowContent> children, ColSpan colspan, RowSpan rowspan,
+    public TH(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> children, ColSpan colspan, RowSpan rowspan,
 	    Headers headers, Scope scope, Abbr abbr, Sorted sorted) {
 	super(ga, children);
 	this.colspan = colspan;

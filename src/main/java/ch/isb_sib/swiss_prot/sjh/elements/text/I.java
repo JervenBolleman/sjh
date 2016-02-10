@@ -10,31 +10,19 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
+public class I extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
+    private final static byte[] NAME = "i".getBytes(UTF_8);
 
-public class I
-    extends CommonElement
-    implements FlowContent, PhrasingContent, PalpabaleContent
-{
-	private final static byte[] NAME = "i".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public I(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
+	super(ga, childeren);
+    }
 
-	public I(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren)
-	{
-		super(ga, childeren);
-	}
-
-	public I()
-	{
-		super();
-	}
-
-	public I(Stream<? extends PhrasingContent> childeren)
-	{
-		super(childeren);
-	}
+    public I() {
+	super();
+    }
 }

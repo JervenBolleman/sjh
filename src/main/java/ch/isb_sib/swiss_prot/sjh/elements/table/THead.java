@@ -15,7 +15,7 @@ public class THead extends CommonElement {
 	return NAME;
     }
 
-    public THead(GlobalAttribute[] ga, Stream<TR> children) {
+    public THead(Stream<GlobalAttribute> ga, Stream<TR> children) {
 	super(ga, children);
     }
 }

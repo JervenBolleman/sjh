@@ -22,7 +22,7 @@ public class Footer
 		return NAME;
 	}
 
-	public Footer(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
+	public Footer(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,10 +30,5 @@ public class Footer
 	public Footer()
 	{
 		super();
-	}
-
-	public Footer(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
 	}
 }

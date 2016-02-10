@@ -22,7 +22,7 @@ public class DL
 		return NAME;
 	}
 
-	public DL(GlobalAttribute[] ga, Stream<? extends DtOrDd> childeren)
+	public DL(Stream<GlobalAttribute> ga, Stream<? extends DtOrDd> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -34,6 +34,6 @@ public class DL
 
 	public DL(Stream<? extends DtOrDd> childeren)
 	{
-		super(childeren);
+	super(Stream.<GlobalAttribute> empty(), childeren);
 	}
 }

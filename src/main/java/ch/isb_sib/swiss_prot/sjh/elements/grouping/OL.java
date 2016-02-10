@@ -14,47 +14,38 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 
+public class OL extends CommonElement implements FlowContent, PalpabaleContent {
+    private final static byte[] NAME = "ol".getBytes(UTF_8);
+    private final Reversed rev;
+    private final Start start;
+    private final Type type;
 
-public class OL
-    extends CommonElement
-    implements FlowContent, PalpabaleContent
-{
-	private final static byte[] NAME = "ol".getBytes(UTF_8);
-	private final Reversed rev;
-	private final Start start;
-	private final Type type;
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public OL(Stream<GlobalAttribute> ga, Reversed rev, Start start, Type type, Stream<LI> childeren) {
+	super(ga, childeren);
+	this.rev = rev;
+	this.start = start;
+	this.type = type;
+    }
 
-	public OL(GlobalAttribute[] ga, Reversed rev, Start start, Type type, Stream<LI> childeren)
-	{
-		super(ga, childeren);
-		this.rev = rev;
-		this.start = start;
-		this.type = type;
-	}
+    public OL() {
+	this(Stream.empty());
 
-	public OL()
-	{
-		this(Stream.empty());
+    }
 
-	}
+    public OL(Stream<LI> childeren) {
+	super(Stream.<GlobalAttribute> empty(), childeren);
+	this.rev = null;
+	this.start = null;
+	this.type = null;
+    }
 
-	public OL(Stream<LI> childeren)
-	{
-		super(childeren);
-		this.rev = null;
-		this.start = null;
-		this.type = null;
-	}
-
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes()
-	{
-		return Stream.of(rev, start, type).filter(Objects::nonNull);
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	return Stream.of(rev, start, type).filter(Objects::nonNull);
+    }
 }

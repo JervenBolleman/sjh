@@ -40,9 +40,9 @@ public class Iframe
 		return NAME;
 	}
 
-	public Iframe(GlobalAttribute[] ga, Src src, SrcDoc srcdoc, Name name, SandBox sandbox, Width width, Height height)
+	public Iframe(Stream<GlobalAttribute> ga, Src src, SrcDoc srcdoc, Name name, SandBox sandbox, Width width, Height height)
 	{
-		super(ga);
+	super(ga, Stream.empty());
 		this.src = src;
 		this.srcdoc = srcdoc;
 		this.name = name;

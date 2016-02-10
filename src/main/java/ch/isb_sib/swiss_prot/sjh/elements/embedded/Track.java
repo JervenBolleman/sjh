@@ -24,9 +24,9 @@ public class Track
 		return NAME;
 	}
 
-	public Track(GlobalAttribute[] ga, Src src, Type type)
+	public Track(Stream<GlobalAttribute> ga, Src src, Type type)
 	{
-		super(ga);
+	super(ga, Stream.empty());
 		this.src = src;
 		this.type = type;
 	}

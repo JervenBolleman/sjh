@@ -25,7 +25,7 @@ public class BlockQuote
 		return NAME;
 	}
 
-	public BlockQuote(GlobalAttribute[] ga, Cite cite, Stream<? extends FlowContent> childeren)
+	public BlockQuote(Stream<GlobalAttribute> ga, Cite cite, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 		this.cite = cite;
@@ -34,12 +34,6 @@ public class BlockQuote
 	public BlockQuote()
 	{
 		super();
-		this.cite = null;
-	}
-
-	public BlockQuote(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
 		this.cite = null;
 	}
 

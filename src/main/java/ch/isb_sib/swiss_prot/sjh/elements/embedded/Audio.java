@@ -44,7 +44,7 @@ public class Audio
 		return NAME;
 	}
 
-	public Audio(GlobalAttribute[] ga, Src src, CrossOrigin co, Preload preload, Autoplay autoplay,
+    public Audio(Stream<GlobalAttribute> ga, Src src, CrossOrigin co, Preload preload, Autoplay autoplay,
 	    MediaGroup mediagroup, Loop loop, Muted muted, Controls controls, Stream<Track> tracks)
 	{
 		super(ga, tracks);
@@ -58,7 +58,7 @@ public class Audio
 		this.controls = controls;
 	}
 
-	public Audio(GlobalAttribute[] ga, CrossOrigin co, Preload preload, Autoplay autoplay,
+    public Audio(Stream<GlobalAttribute> ga, CrossOrigin co, Preload preload, Autoplay autoplay,
 	    MediaGroup mediagroup, Loop loop, Muted muted, Controls controls, Stream<Source> sources, Stream<Track> tracks)
 	{
 		super(ga, Stream.concat(sources, tracks));
@@ -72,12 +72,12 @@ public class Audio
 		this.controls = controls;
 	}
 
-	public Audio(GlobalAttribute[] ga)
+    public Audio(Stream<GlobalAttribute> ga)
 	{
 		this(ga, Stream.empty());
 	}
 
-	public Audio(GlobalAttribute[] ga, Stream<Track> track)
+    public Audio(Stream<GlobalAttribute> ga, Stream<Track> track)
 	{
 		super(ga, track);
 		this.src = null;

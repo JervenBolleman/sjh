@@ -21,7 +21,7 @@ public class LI
 		return NAME;
 	}
 
-	public LI(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren, Value value)
+	public LI(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren, Value value)
 	{
 		super(ga, childeren);
 	}
@@ -29,10 +29,5 @@ public class LI
 	public LI()
 	{
 		super();
-	}
-
-	public LI(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
 	}
 }

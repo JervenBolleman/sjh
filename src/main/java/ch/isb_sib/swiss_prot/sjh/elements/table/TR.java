@@ -15,7 +15,7 @@ public class TR extends CommonElement implements TROrTH {
 	return NAME;
     }
 
-    public TR(GlobalAttribute[] ga, Stream<TROrTH> children) {
+    public TR(Stream<GlobalAttribute> ga, Stream<TROrTH> children) {
 	super(ga, children);
     }
 }

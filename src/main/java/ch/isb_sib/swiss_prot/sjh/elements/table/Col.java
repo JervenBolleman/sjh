@@ -18,8 +18,8 @@ public class Col extends CommonElement implements ColOrTemplate {
 	return NAME;
     }
 
-    public Col(GlobalAttribute[] ga, Span span) {
-	super(ga);
+    public Col(Stream<GlobalAttribute> ga, Span span) {
+	super(ga, Stream.empty());
 	this.span = span;
     }
 

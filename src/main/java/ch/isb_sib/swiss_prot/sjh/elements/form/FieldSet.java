@@ -28,7 +28,7 @@ public class FieldSet extends CommonElement implements FlowContent,
 		return NAME;
 	}
 
-	public FieldSet(GlobalAttribute[] ga, Disabled disabled, Form form,
+	public FieldSet(Stream<GlobalAttribute> ga, Disabled disabled, Form form,
 			Name name, Legend legend, Stream<? extends FlowContent> childreren) {
 		super(ga, Stream.concat(Stream.of(legend), childreren));
 		this.disabled = disabled;

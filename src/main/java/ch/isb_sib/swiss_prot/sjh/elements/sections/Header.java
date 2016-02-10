@@ -22,7 +22,7 @@ public class Header
 		return NAME;
 	}
 
-	public Header(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
+	public Header(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,10 +30,5 @@ public class Header
 	public Header()
 	{
 		super();
-	}
-
-	public Header(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
 	}
 }

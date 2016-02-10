@@ -9,31 +9,19 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.Element;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningRoot;
 
+public class Body extends CommonElement implements SectioningRoot {
+    private final static byte[] NAME = "body".getBytes(UTF_8);
 
-public class Body
-    extends CommonElement
-    implements SectioningRoot
-{
-	private final static byte[] NAME = "body".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public Body(Stream<GlobalAttribute> ga, Stream<Element> childeren) {
+	super(ga, childeren);
+    }
 
-	public Body(GlobalAttribute[] ga, Stream<Element> childeren)
-	{
-		super(ga, childeren);
-	}
-
-	public Body()
-	{
-		super();
-	}
-
-	public Body(Stream<Element> childeren)
-	{
-		super(childeren);
-	}
+    public Body() {
+	super();
+    }
 }

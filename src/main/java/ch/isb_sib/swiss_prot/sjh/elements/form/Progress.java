@@ -26,14 +26,14 @@ public class Progress extends CommonElement implements FlowContent,
 		return NAME;
 	}
 
-	public Progress(GlobalAttribute[] ga, Value value, Max max) {
-		super(ga);
+	public Progress(Stream<GlobalAttribute> ga, Value value, Max max) {
+	super(ga, Stream.empty());
 		this.value = value;
 		this.max = max;
 
 	}
 
-	public Progress(GlobalAttribute[] ga, Value value, Max max,
+	public Progress(Stream<GlobalAttribute> ga, Value value, Max max,
 			Stream<? extends PhrasingContent> childeren) {
 		super(ga, childeren);
 		this.value = value;

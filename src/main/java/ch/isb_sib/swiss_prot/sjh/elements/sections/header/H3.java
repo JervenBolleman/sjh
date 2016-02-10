@@ -24,7 +24,7 @@ public class H3
 		return NAME;
 	}
 
-	public H3(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren)
+	public H3(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -32,10 +32,5 @@ public class H3
 	public H3()
 	{
 		super();
-	}
-
-	public H3(Stream<? extends PhrasingContent> childeren)
-	{
-		super(childeren);
 	}
 }

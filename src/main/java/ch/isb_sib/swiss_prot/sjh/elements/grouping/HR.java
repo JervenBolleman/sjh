@@ -2,6 +2,8 @@ package ch.isb_sib.swiss_prot.sjh.elements.grouping;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import java.util.stream.Stream;
+
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
@@ -19,9 +21,9 @@ public class HR
 		return NAME;
 	}
 
-	public HR(GlobalAttribute[] ga)
+	public HR(Stream<GlobalAttribute> ga)
 	{
-		super(ga);
+	super(ga, Stream.empty());
 	}
 
 	public HR()

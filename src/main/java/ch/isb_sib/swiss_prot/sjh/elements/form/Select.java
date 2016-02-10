@@ -38,7 +38,7 @@ public class Select extends CommonElement implements FlowContent,
 		return NAME;
 	}
 
-	public Select(GlobalAttribute[] ga, AutoComplete autoComplete,
+	public Select(Stream<GlobalAttribute> ga, AutoComplete autoComplete,
 			AutoFocus autofocus, Disabled disabled, Form form,
 			Multiple multiple, Required required, Name name, Size size, Stream<OptionOrOptGroup> childreren) {
 		super(ga, childreren);

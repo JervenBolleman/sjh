@@ -12,36 +12,20 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 import ch.isb_sib.swiss_prot.sjh.elements.table.ColOrTemplate;
 
+public class Template extends CommonElement
+	implements FlowContent, PhrasingContent, MetaContent, PalpabaleContent, ColOrTemplate {
+    private final static byte[] NAME = "template".getBytes(UTF_8);
 
-public class Template
-    extends CommonElement
-    implements FlowContent, PhrasingContent, MetaContent, PalpabaleContent, ColOrTemplate
-{
-	private final static byte[] NAME = "template".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public Template(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
+	super(ga, childeren);
+    }
 
-	public Template(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
-	{
-		super(ga, childeren);
-	}
-
-	public Template()
-	{
-		super();
-	}
-
-	public Template(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
-	}
-
-	public Template(GlobalAttribute[] globalAttributes)
-	{
-		super(globalAttributes);
-	}
+    public Template() {
+	super();
+    }
 }

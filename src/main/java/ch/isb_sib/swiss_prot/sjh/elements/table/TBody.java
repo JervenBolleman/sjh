@@ -15,7 +15,7 @@ public class TBody extends CommonElement {
 	return NAME;
     }
 
-    public TBody(GlobalAttribute[] ga, Stream<TR> children) {
+    public TBody(Stream<GlobalAttribute> ga, Stream<TR> children) {
 	super(ga, children);
     }
 }

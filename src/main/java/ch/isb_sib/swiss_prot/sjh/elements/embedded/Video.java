@@ -50,7 +50,7 @@ public class Video
 		return NAME;
 	}
 
-	public Video(GlobalAttribute[] ga, Src src, CrossOrigin co, Poster poster, Preload preload, Autoplay autoplay,
+	public Video(Stream<GlobalAttribute> ga, Src src, CrossOrigin co, Poster poster, Preload preload, Autoplay autoplay,
 	    MediaGroup mediagroup, Loop loop, Muted muted, Controls controls, Width width, Height height,
 	    Stream<Track> tracks)
 	{
@@ -68,7 +68,7 @@ public class Video
 		this.height = height;
 	}
 
-	public Video(GlobalAttribute[] ga, CrossOrigin co, Poster poster, Preload preload, Autoplay autoplay,
+	public Video(Stream<GlobalAttribute> ga, CrossOrigin co, Poster poster, Preload preload, Autoplay autoplay,
 	    MediaGroup mediagroup, Loop loop, Muted muted, Controls controls, Width width, Height height,
 	    Stream<Source> sources, Stream<Track> tracks)
 	{

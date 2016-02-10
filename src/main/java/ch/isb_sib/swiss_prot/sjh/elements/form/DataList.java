@@ -18,12 +18,12 @@ public class DataList extends CommonElement implements FlowContent,
 		return NAME;
 	}
 
-	public DataList(GlobalAttribute[] ga,
+	public DataList(Stream<GlobalAttribute> ga,
 			Stream<? extends PhrasingContent> childeren) {
 		super(ga, childeren);
 	}
 
-	public DataList(GlobalAttribute[] ga, Option... childeren) {
+	public DataList(Stream<GlobalAttribute> ga, Option... childeren) {
 		super(ga, Stream.of(childeren));
 	}
 

@@ -42,10 +42,11 @@ public class Area
 		return NAME;
 	}
 
-	public Area(GlobalAttribute[] ga, Alt alt, Coords coords, Download download, Href href, HrefLang hreflang, Rel rel,
+    public Area(Stream<GlobalAttribute> ga, Alt alt, Coords coords, Download download, Href href, HrefLang hreflang,
+	    Rel rel,
 	    Shape shape, Target target, Type type)
 	{
-		super(ga);
+	super(ga, Stream.empty());
 		this.alt = alt;
 		this.coords = coords;
 		this.download = download;
@@ -57,23 +58,9 @@ public class Area
 		this.type = type;
 	}
 
-	public Area()
+    public Area(Stream<GlobalAttribute> ga)
 	{
-		super();
-		this.alt = null;
-		this.coords = null;
-		this.download = null;
-		this.href = null;
-		this.hreflang = null;
-		this.rel = null;
-		this.target = null;
-		this.shape = null;
-		this.type = null;
-	}
-
-	public Area(GlobalAttribute[] ga)
-	{
-		super(ga);
+	super(ga, Stream.empty());
 		this.alt = null;
 		this.coords = null;
 		this.download = null;

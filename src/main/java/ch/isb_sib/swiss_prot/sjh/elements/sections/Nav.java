@@ -10,36 +10,19 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
 
+public class Nav extends CommonElement implements FlowContent, SectioningContent, PalpabaleContent {
+    private final static byte[] NAME = "nav".getBytes(UTF_8);
 
-public class Nav
-    extends CommonElement
-    implements FlowContent, SectioningContent, PalpabaleContent
-{
-	private final static byte[] NAME = "nav".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public Nav(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
+	super(ga, childeren);
+    }
 
-	public Nav(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
-	{
-		super(ga, childeren);
-	}
-
-	public Nav()
-	{
-		super();
-	}
-
-	public Nav(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
-	}
-
-	public Nav(GlobalAttribute[] globalAttributes)
-	{
-		super(globalAttributes);
-	}
+    public Nav() {
+	super();
+    }
 }

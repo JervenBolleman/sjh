@@ -20,7 +20,7 @@ public class Title
 		return NAME;
 	}
 
-	public Title(GlobalAttribute[] ga, Text text)
+	public Title(Stream<GlobalAttribute> ga, Text text)
 	{
 		super(ga, Stream.of(text));
 	}
@@ -32,6 +32,6 @@ public class Title
 
 	public Title(Text text)
 	{
-		super(Stream.of(text));
+	super(Stream.<GlobalAttribute> empty(), Stream.of(text));
 	}
 }

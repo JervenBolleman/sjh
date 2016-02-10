@@ -17,7 +17,7 @@ public class Legend extends CommonElement {
 		return NAME;
 	}
 
-	public Legend(GlobalAttribute[] ga,
+	public Legend(Stream<GlobalAttribute> ga,
 			Stream<? extends PhrasingContent> childreren) {
 		super(ga, childreren);
 	}

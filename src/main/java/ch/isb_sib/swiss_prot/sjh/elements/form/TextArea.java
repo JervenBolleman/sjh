@@ -52,7 +52,7 @@ public class TextArea extends CommonElement implements FlowContent,
 		return NAME;
 	}
 
-	public TextArea(GlobalAttribute[] ga, AutoComplete autoComplete,
+	public TextArea(Stream<GlobalAttribute> ga, AutoComplete autoComplete,
 			AutoFocus autofocus, Cols cols, DirName dirname, Disabled disabled,
 			Form form, MaxLength maxlength, MinLength minLength, Name name,
 			PlaceHolder placeHolder, ReadOnly readOnly, Required required,

@@ -21,7 +21,7 @@ public class Head
 		return NAME;
 	}
 
-	public Head(GlobalAttribute[] ga, Title title, Base base,
+	public Head(Stream<GlobalAttribute> ga, Title title, Base base,
 	    Stream<MetaContent> metacontent)
 	{
 		super(ga,
@@ -31,17 +31,17 @@ public class Head
 	public Head(Title title, Base base,
 	    Stream<MetaContent> metacontent)
 	{
-		super(concat(title, base, metacontent));
+	super(Stream.<GlobalAttribute> empty(), concat(title, base, metacontent));
 	}
 
 	public Head(Title title)
 	{
-		super(Stream.of(title));
+	super(Stream.<GlobalAttribute> empty(), Stream.of(title));
 	}
 
 	public Head(Title title, Stream<MetaContent> metacontent)
 	{
-		super(Stream.concat(Stream.of(title), metacontent));
+	super(Stream.<GlobalAttribute> empty(), Stream.concat(Stream.of(title), metacontent));
 	}
 
 	private static Stream<Element> concat(Title title, Base base, Stream<MetaContent> metacontent)

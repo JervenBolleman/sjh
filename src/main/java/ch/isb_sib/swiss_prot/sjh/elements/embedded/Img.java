@@ -42,9 +42,9 @@ public class Img
 		return NAME;
 	}
 
-	public Img(GlobalAttribute[] ga, Alt alt, Src src, CrossOrigin co, UseMap um, IsMap im, Width width, Height height)
+	public Img(Stream<GlobalAttribute> ga, Alt alt, Src src, CrossOrigin co, UseMap um, IsMap im, Width width, Height height)
 	{
-		super(ga);
+	super(ga, Stream.empty());
 		this.alt = alt;
 		this.src = src;
 		this.co = co;

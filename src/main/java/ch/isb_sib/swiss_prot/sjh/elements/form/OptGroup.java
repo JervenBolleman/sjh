@@ -21,7 +21,7 @@ public class OptGroup extends CommonElement implements OptionOrOptGroup {
 		return NAME;
 	}
 
-	public OptGroup(GlobalAttribute[] ga, Disabled disabled, Label label, Stream<Option> childreren) {
+	public OptGroup(Stream<GlobalAttribute> ga, Disabled disabled, Label label, Stream<Option> childreren) {
 		super(ga, childreren);
 		this.disabled = disabled;
 		this.label = label;

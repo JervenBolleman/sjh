@@ -34,7 +34,7 @@ public class Script extends CommonElement implements FlowContent, MetaContent {
 		return NAME;
 	}
 
-	public Script(GlobalAttribute[] ga, Src src, Type type, Charset charset,
+	public Script(Stream<GlobalAttribute> ga, Src src, Type type, Charset charset,
 			Async async, Defer defer, CrossOrigin crossOrigin, Nonce nonce,
 			Text content) {
 		super(ga, Stream.of(content));

@@ -23,7 +23,7 @@ public class Aside
 		return NAME;
 	}
 
-	public Aside(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
+	public Aside(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -31,15 +31,5 @@ public class Aside
 	public Aside()
 	{
 		super();
-	}
-
-	public Aside(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
-	}
-
-	public Aside(GlobalAttribute[] globalAttributes)
-	{
-		super(globalAttributes);
 	}
 }

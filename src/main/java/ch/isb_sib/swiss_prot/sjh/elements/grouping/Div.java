@@ -22,7 +22,7 @@ public class Div
 		return NAME;
 	}
 
-	public Div(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
+	public Div(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -30,10 +30,5 @@ public class Div
 	public Div()
 	{
 		super();
-	}
-
-	public Div(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
 	}
 }

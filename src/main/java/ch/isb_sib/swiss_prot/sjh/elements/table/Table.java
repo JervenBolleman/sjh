@@ -23,7 +23,7 @@ public class Table extends CommonElement implements FlowContent, PalpabaleConten
 	return NAME;
     }
 
-    public Table(GlobalAttribute[] ga, Caption caption, Stream<ColGroup> colGroups, THead thead, TFoot tfoot,
+    public Table(Stream<GlobalAttribute> ga, Caption caption, Stream<ColGroup> colGroups, THead thead, TFoot tfoot,
 	    Stream<TBody> tbodies, Stream<TR> rows, Border border, Sortable sortable) {
 	super(ga,
 		Stream.concat(Stream.concat(
@@ -33,7 +33,7 @@ public class Table extends CommonElement implements FlowContent, PalpabaleConten
 	this.sortable = sortable;
     }
 
-    public Table(GlobalAttribute[] ga, Caption caption, Stream<ColGroup> colGroups, THead thead, Stream<TBody> tbodies,
+    public Table(Stream<GlobalAttribute> ga, Caption caption, Stream<ColGroup> colGroups, THead thead, Stream<TBody> tbodies,
 	    Stream<TR> rows, TFoot tfoot, Border border, Sortable sortable) {
 	super(ga,
 		Stream.concat(Stream.concat(Stream.concat(

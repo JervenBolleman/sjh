@@ -20,7 +20,7 @@ public class FigCaption
 		return NAME;
 	}
 
-	public FigCaption(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
+	public FigCaption(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -28,10 +28,5 @@ public class FigCaption
 	public FigCaption()
 	{
 		super();
-	}
-
-	public FigCaption(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
 	}
 }

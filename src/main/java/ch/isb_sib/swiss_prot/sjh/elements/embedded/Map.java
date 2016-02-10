@@ -26,7 +26,7 @@ public class Map
 		return NAME;
 	}
 
-	public Map(GlobalAttribute[] ga, Name name, Stream<? extends FlowContent> childeren)
+	public Map(Stream<GlobalAttribute> ga, Name name, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 		this.name = name;

@@ -18,12 +18,12 @@ public class ColGroup extends CommonElement {
 	return NAME;
     }
 
-    public ColGroup(GlobalAttribute[] ga, Span span) {
-	super(ga);
+    public ColGroup(Stream<GlobalAttribute> ga, Span span) {
+	super(ga, Stream.empty());
 	this.span = span;
     }
 
-    public ColGroup(GlobalAttribute[] ga, Stream<ColOrTemplate> childeren) {
+    public ColGroup(Stream<GlobalAttribute> ga, Stream<ColOrTemplate> childeren) {
 	super(ga, childeren);
 	this.span = null;
     }

@@ -13,7 +13,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 public abstract class CommonElement
     implements Element
 {
-	private final GlobalAttribute[] attributes;
+    private final Stream<GlobalAttribute> attributes;
 	private final Stream<? extends Element> childeren;
 
 	protected abstract byte[] getName();
@@ -60,25 +60,11 @@ public abstract class CommonElement
 		}
 	}
 
-	protected CommonElement(GlobalAttribute[] ga, Stream<? extends Element> childeren)
+    protected CommonElement(Stream<GlobalAttribute> ga, Stream<? extends Element> childeren)
 	{
 		super();
 		this.attributes = ga;
 		this.childeren = childeren.filter(Objects::nonNull);
-	}
-
-	protected CommonElement(Stream<? extends Element> childeren)
-	{
-		super();
-		this.attributes = null;
-		this.childeren = childeren.filter(Objects::nonNull);
-	}
-
-	protected CommonElement(GlobalAttribute[] ga)
-	{
-		super();
-		this.attributes = ga;
-		this.childeren = null;
 	}
 
 	protected CommonElement()
@@ -91,7 +77,7 @@ public abstract class CommonElement
 	private Stream<GlobalAttribute> getGlobalAttributes()
 	{
 		if (attributes != null)
-			return Stream.of(attributes);
+	    return attributes;
 		else
 			return Stream.empty();
 	}

@@ -23,7 +23,7 @@ public class Em
 		return NAME;
 	}
 
-	public Em(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren)
+	public Em(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -31,10 +31,5 @@ public class Em
 	public Em()
 	{
 		super();
-	}
-
-	public Em(Stream<? extends PhrasingContent> childeren)
-	{
-		super(childeren);
 	}
 }

@@ -12,39 +12,31 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
+public class Data extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
+    private final static byte[] NAME = "data".getBytes(UTF_8);
+    private final Value value;
 
-public class Data
-    extends CommonElement
-    implements FlowContent, PhrasingContent, PalpabaleContent
-{
-	private final static byte[] NAME = "data".getBytes(UTF_8);
-	private final Value value;
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public Data(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren, Value value) {
+	super(ga, childeren);
+	this.value = value;
+    }
 
-	public Data(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren, Value value)
-	{
-		super(ga, childeren);
-		this.value = value;
-	}
+    public Data(Stream<? extends PhrasingContent> childeren) {
+	super(Stream.<GlobalAttribute> empty(), childeren);
+	this.value = null;
+    }
 
-	public Data(Stream<? extends PhrasingContent> childeren)
-	{
-		super(childeren);
-		this.value = null;
-	}
-
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes()
-	{
-		if (value != null)
-			return Stream.of(value);
-		else
-			return Stream.empty();
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	if (value != null)
+	    return Stream.of(value);
+	else
+	    return Stream.empty();
+    }
 
 }

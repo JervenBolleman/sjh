@@ -1,6 +1,8 @@
 package ch.isb_sib.swiss_prot.sjh;
 
 import java.time.temporal.TemporalAccessor;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Cite;
 import ch.isb_sib.swiss_prot.sjh.attributes.DateTime;
@@ -124,9 +126,11 @@ import ch.isb_sib.swiss_prot.sjh.attributes.form.Wrap;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.ATitle;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.AccessKey;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Clazz;
+import ch.isb_sib.swiss_prot.sjh.attributes.global.Dir;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.DirAuto;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.DirLTR;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.DirRTL;
+import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Hidden;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Id;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Lang;
@@ -767,5 +771,34 @@ public class Attributes {
 
     public static Span span(String string) {
 	return new Span(string);
+    }
+
+    public static Stream<GlobalAttribute> ga(Id id, ATitle title, Lang lang, Translate translate, Dir dir, Clazz clazz,
+	    Style style) {
+	return Stream.of(id, title, lang, translate, dir, clazz, style).filter(Objects::nonNull);
+    }
+
+    public static Stream<GlobalAttribute> ga(Id id, Clazz clazz, Style style) {
+	return Stream.of(id, clazz, style).filter(Objects::nonNull);
+    }
+
+    public static Stream<GlobalAttribute> ga(Id id, Clazz clazz) {
+	return Stream.of(id, clazz).filter(Objects::nonNull);
+    }
+
+    public static Stream<GlobalAttribute> ga(Id id) {
+	return Stream.of(id);
+    }
+
+    public static Stream<GlobalAttribute> ga(Clazz clazz) {
+	return Stream.of(clazz);
+    }
+
+    public static Stream<GlobalAttribute> ga(Id id, Style style) {
+	return Stream.of(id, style).filter(Objects::nonNull);
+    }
+
+    public static Stream<GlobalAttribute> ga(Clazz clazz, Style style) {
+	return Stream.of(clazz, style).filter(Objects::nonNull);
     }
 }

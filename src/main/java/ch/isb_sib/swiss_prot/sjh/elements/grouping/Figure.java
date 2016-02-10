@@ -23,18 +23,13 @@ public class Figure
 		return NAME;
 	}
 
-	public Figure(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren, FigCaption caption)
+	public Figure(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren, FigCaption caption)
 	{
 		super(ga, Stream.concat(childeren, Stream.of(caption)));
 	}
 
-	public Figure(GlobalAttribute[] ga, FigCaption caption, Stream<? extends FlowContent> childeren)
+	public Figure(Stream<GlobalAttribute> ga, FigCaption caption, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, Stream.concat(Stream.of(caption), childeren));
-	}
-
-	public Figure(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
 	}
 }

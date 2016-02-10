@@ -38,7 +38,7 @@ public class Button extends CommonElement implements FlowContent,
 		return NAME;
 	}
 
-	public Button(GlobalAttribute[] ga, AutoComplete autoComplete,
+	public Button(Stream<GlobalAttribute> ga, AutoComplete autoComplete,
 			AutoFocus autofocus, Disabled disabled, Form form,
 			Multiple multiple, Required required, Name name, Size size, Stream<OptionOrOptGroup> childreren) {
 		super(ga, childreren);

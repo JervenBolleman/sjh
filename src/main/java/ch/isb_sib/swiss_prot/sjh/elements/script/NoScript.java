@@ -23,7 +23,7 @@ public class NoScript
 		return NAME;
 	}
 
-	public NoScript(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
+	public NoScript(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
 	}
@@ -31,15 +31,5 @@ public class NoScript
 	public NoScript()
 	{
 		super();
-	}
-
-	public NoScript(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
-	}
-
-	public NoScript(GlobalAttribute[] globalAttributes)
-	{
-		super(globalAttributes);
 	}
 }

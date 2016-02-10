@@ -39,7 +39,7 @@ public class A
 		return NAME;
 	}
 
-	public A(GlobalAttribute[] ga, Stream<Element> childeren, Href href, Target target, Download download, Rel rel,
+	public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href, Target target, Download download, Rel rel,
 	    HrefLang hreflang, Type type)
 	{
 		super(ga, childeren);
@@ -53,7 +53,7 @@ public class A
 
 	public A(Stream<Element> childeren)
 	{
-		super(childeren);
+	super(Stream.<GlobalAttribute> empty(), childeren);
 		this.href = null;
 		this.target = null;
 		this.download = null;
@@ -62,7 +62,7 @@ public class A
 		this.type = null;
 	}
 
-	public A(GlobalAttribute[] ga, Stream<Element> childeren)
+	public A(Stream<GlobalAttribute> ga, Stream<Element> childeren)
 	{
 		super(ga, childeren);
 		this.href = null;

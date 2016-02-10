@@ -23,23 +23,13 @@ public class Article
 		return NAME;
 	}
 
-	public Article(GlobalAttribute[] ga, Stream<? extends FlowContent> childeren)
+	public Article(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren)
 	{
 		super(ga, childeren);
-	}
-
-	public Article(GlobalAttribute[] ga)
-	{
-		super(ga);
 	}
 
 	public Article()
 	{
 		super();
-	}
-
-	public Article(Stream<? extends FlowContent> childeren)
-	{
-		super(childeren);
 	}
 }

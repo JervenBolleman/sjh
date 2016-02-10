@@ -17,44 +17,36 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.MetaContent;
 
+public class Link extends CommonElement implements MetaContent {
+    private final static byte[] NAME = "link".getBytes(UTF_8);
+    private final Href href;
+    private final CrossOrigin co;
+    private final Rel rel;
+    private final Media media;
+    private final HrefLang hrefLang;
+    private final Type type;
+    private final Sizes size;
 
-public class Link
-    extends CommonElement
-    implements MetaContent
-{
-	private final static byte[] NAME = "link".getBytes(UTF_8);
-	private final Href href;
-	private final CrossOrigin co;
-	private final Rel rel;
-	private final Media media;
-	private final HrefLang hrefLang;
-	private final Type type;
-	private final Sizes size;
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public Link(Stream<GlobalAttribute> ga, Href href, CrossOrigin co, Rel rel, Media media, HrefLang hreflang,
+	    Type type, Sizes size) {
+	super(ga, Stream.empty());
+	this.href = href;
+	this.co = co;
+	this.rel = rel;
+	this.media = media;
+	this.hrefLang = hreflang;
+	this.type = type;
+	this.size = size;
+    }
 
-	public Link(GlobalAttribute[] ga, Href href, CrossOrigin co, Rel rel, Media media, HrefLang hreflang, Type type,
-	    Sizes size)
-	{
-		super(ga);
-		this.href = href;
-		this.co = co;
-		this.rel = rel;
-		this.media = media;
-		this.hrefLang = hreflang;
-		this.type = type;
-		this.size = size;
-	}
-
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes()
-	{
-		return Stream.of(href, co, rel, media, hrefLang, type, size)
-		    .filter(Objects::nonNull);
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	return Stream.of(href, co, rel, media, hrefLang, type, size).filter(Objects::nonNull);
+    }
 
 }

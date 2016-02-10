@@ -44,7 +44,7 @@ public class Object
 		return NAME;
 	}
 
-	public Object(GlobalAttribute[] ga, Data data, Type type, TypeMustMatch typemustmatch, Name name, UseMap um,
+	public Object(Stream<GlobalAttribute> ga, Data data, Type type, TypeMustMatch typemustmatch, Name name, UseMap um,
 	    Form form, Width width, Height height, Stream<Param> param)
 	{
 		super(ga, param);

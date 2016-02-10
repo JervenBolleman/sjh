@@ -26,7 +26,7 @@ public class Q
 		return NAME;
 	}
 
-	public Q(GlobalAttribute[] ga, Stream<? extends PhrasingContent> childeren, Cite cite)
+	public Q(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren, Cite cite)
 	{
 		super(ga, childeren);
 		this.cite = cite;
@@ -34,7 +34,7 @@ public class Q
 
 	public Q(Stream<? extends PhrasingContent> childeren)
 	{
-		super(childeren);
+	super(Stream.<GlobalAttribute> empty(), childeren);
 		this.cite = null;
 	}
 
