@@ -1,4 +1,4 @@
-![travis](https://api.travis-ci.org/JervenBolleman/sjh.svg?branch=master)
+[![travis](https://api.travis-ci.org/JervenBolleman/sjh.svg?branch=master)](https://travis-ci.org/JervenBolleman/sjh)
 # What is SJH
 
 A proof of concept for generating HTML using java directly, hopefully no uglier than necesarry. While making it difficult to generate invalid HTML by leveraging the typesystem. 
@@ -65,6 +65,7 @@ public class Users {
 ```
 
 
+Which means if you decide to refactor the getPrefferedName() into getNickName(), your standard refactoring tools will be able to change it. Unlike when you are using JSPX or JSF.
 
 ```java
 //First make the head of the page
@@ -83,7 +84,7 @@ Body body = body(orderedListOfUser);
 HTML html = html(head, body);
 ```
 
-Which means if you decide to refactor the getPrefferedName() into getNickName(), your standard refactoring tools will be able to change it. Unlike when you are using JSPX or JSF.
+This code shows it is easy to make elements on demand
 
 
 
