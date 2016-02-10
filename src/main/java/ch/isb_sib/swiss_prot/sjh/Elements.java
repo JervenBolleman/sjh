@@ -32,6 +32,22 @@ import ch.isb_sib.swiss_prot.sjh.elements.embedded.Param;
 import ch.isb_sib.swiss_prot.sjh.elements.embedded.Source;
 import ch.isb_sib.swiss_prot.sjh.elements.embedded.Track;
 import ch.isb_sib.swiss_prot.sjh.elements.embedded.Video;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Button;
+import ch.isb_sib.swiss_prot.sjh.elements.form.DataList;
+import ch.isb_sib.swiss_prot.sjh.elements.form.FieldSet;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Form;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Input;
+import ch.isb_sib.swiss_prot.sjh.elements.form.KeyGen;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Label;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Legend;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Meter;
+import ch.isb_sib.swiss_prot.sjh.elements.form.OptGroup;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Option;
+import ch.isb_sib.swiss_prot.sjh.elements.form.OptionOrOptGroup;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Output;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Progress;
+import ch.isb_sib.swiss_prot.sjh.elements.form.Select;
+import ch.isb_sib.swiss_prot.sjh.elements.form.TextArea;
 import ch.isb_sib.swiss_prot.sjh.elements.grouping.BlockQuote;
 import ch.isb_sib.swiss_prot.sjh.elements.grouping.DD;
 import ch.isb_sib.swiss_prot.sjh.elements.grouping.DL;
@@ -53,6 +69,10 @@ import ch.isb_sib.swiss_prot.sjh.elements.meta.Link;
 import ch.isb_sib.swiss_prot.sjh.elements.meta.Meta;
 import ch.isb_sib.swiss_prot.sjh.elements.meta.Style;
 import ch.isb_sib.swiss_prot.sjh.elements.meta.Title;
+import ch.isb_sib.swiss_prot.sjh.elements.script.Canvas;
+import ch.isb_sib.swiss_prot.sjh.elements.script.NoScript;
+import ch.isb_sib.swiss_prot.sjh.elements.script.Script;
+import ch.isb_sib.swiss_prot.sjh.elements.script.Template;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.Address;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.Article;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.Aside;
@@ -67,6 +87,18 @@ import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H3;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H4;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H5;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H6;
+import ch.isb_sib.swiss_prot.sjh.elements.table.Caption;
+import ch.isb_sib.swiss_prot.sjh.elements.table.Col;
+import ch.isb_sib.swiss_prot.sjh.elements.table.ColGroup;
+import ch.isb_sib.swiss_prot.sjh.elements.table.ColOrTemplate;
+import ch.isb_sib.swiss_prot.sjh.elements.table.TBody;
+import ch.isb_sib.swiss_prot.sjh.elements.table.TD;
+import ch.isb_sib.swiss_prot.sjh.elements.table.TDOrTH;
+import ch.isb_sib.swiss_prot.sjh.elements.table.TFoot;
+import ch.isb_sib.swiss_prot.sjh.elements.table.TH;
+import ch.isb_sib.swiss_prot.sjh.elements.table.THead;
+import ch.isb_sib.swiss_prot.sjh.elements.table.TR;
+import ch.isb_sib.swiss_prot.sjh.elements.table.Table;
 import ch.isb_sib.swiss_prot.sjh.elements.text.A;
 import ch.isb_sib.swiss_prot.sjh.elements.text.Abbr;
 import ch.isb_sib.swiss_prot.sjh.elements.text.B;
@@ -2613,5 +2645,316 @@ public class Elements {
 
     public static Pre Pre(Clazz clazz, String string) {
 	return new Pre(ga(clazz), Stream.of(new Text(string)));
+    }
+
+    public static Button button(Id id, Clazz clazz) {
+	return new Button(ga(id, clazz), Stream.empty());
+    }
+
+    public static DataList<Option> dataList(Id id, Clazz clazz) {
+	return new DataList<Option>(ga(id, clazz), Stream.empty());
+    }
+
+    public static FieldSet fieldSet(Id id, Clazz clazz) {
+	return new FieldSet(ga(id, clazz), null, null, null, null, Stream.empty());
+    }
+
+    public static Form form(Id id, Clazz clazz) {
+	return new Form(ga(id, clazz), Stream.empty());
+    }
+
+    public static Input input(Id id, Clazz clazz) {
+	return new Input(ga(id, clazz));
+    }
+
+    public static KeyGen keygen(Id id, Clazz clazz) {
+	return new KeyGen(ga(id, clazz), null, null, null, null, null, null);
+    }
+
+    public static Label label(Id id, Clazz clazz) {
+	return new Label(ga(id, clazz), null, null);
+    }
+
+    public static Legend legend(Id id, Clazz clazz) {
+	return new Legend(ga(id, clazz), Stream.empty());
+    }
+
+    public static Meter meter(Id id, Clazz clazz) {
+	return new Meter(ga(id, clazz), null, null, null, null, null, null);
+    }
+
+    public static OptGroup optgroup(Id id, Clazz clazz) {
+	return new OptGroup(ga(id, clazz), null, null, Stream.empty());
+    }
+
+    public static Option option(Id id, Clazz clazz) {
+	return new Option(ga(id, clazz), null, null, null, (Value) null);
+    }
+
+    public static Output output(Id id, Clazz clazz) {
+	return new Output(ga(id, clazz), null, null, null, Stream.empty());
+    }
+
+    public static Progress progress(Id id, Clazz clazz) {
+	return new Progress(ga(id, clazz), null, null);
+    }
+
+    public static Select select(Id id, Clazz clazz) {
+	return new Select(ga(id, clazz), null, null, null, null, null, null, null, null, Stream.empty());
+    }
+
+    public static TextArea textArea(Id id, Clazz clazz) {
+	return new TextArea(ga(id, clazz), null, null, null, null, null, null, null, null, null, null, null, null, null,
+		null, null);
+    }
+
+    public static Canvas canvas(Id id, Clazz clazz) {
+	return new Canvas(ga(id, clazz), null, null, Stream.empty());
+    }
+
+    public static NoScript noscript(Id id, Clazz clazz) {
+	return new NoScript(ga(id, clazz), Stream.empty());
+    }
+
+    public static Script script(Id id, Clazz clazz) {
+	return new Script(ga(id, clazz), null, null, null, null, null, null, null, null);
+    }
+
+    public static Template template(Id id, Clazz clazz) {
+	return new Template(ga(id, clazz), Stream.empty());
+    }
+
+    public static Caption caption(Id id, Clazz clazz) {
+	return new Caption(ga(id, clazz), Stream.empty());
+    }
+
+    public static Col col(Id id, Clazz clazz) {
+	return new Col(ga(id, clazz), null);
+    }
+
+    public static ColGroup colgroup(Id id, Clazz clazz) {
+	return new ColGroup(ga(id, clazz), Stream.empty());
+    }
+
+    public static Table table(Id id, Clazz clazz) {
+	return new Table(ga(id, clazz), null, Stream.empty(), null, null, Stream.empty(), Stream.empty(), null, null);
+    }
+
+    public static TBody tbody(Id id, Clazz clazz) {
+	return new TBody(ga(id, clazz), Stream.empty());
+    }
+
+    public static TD td(Id id, Clazz clazz) {
+	return new TD(ga(id, clazz), Stream.empty(), null, null, null);
+    }
+
+    public static TFoot tfoot(Id id, Clazz clazz) {
+	return new TFoot(ga(id, clazz), Stream.empty());
+    }
+
+    public static TH th(Id id, Clazz clazz) {
+	return new TH(ga(id, clazz), Stream.empty(), null, null, null, null, null, null);
+    }
+
+    public static THead thead(Id id, Clazz clazz) {
+	return new THead(ga(id, clazz), Stream.empty());
+    }
+
+    public static TR tr(Id id, Clazz clazz) {
+	return new TR(ga(id, clazz), Stream.empty());
+    }
+
+    public static Button button(Id id, Stream<OptionOrOptGroup> childeren) {
+	return new Button(ga(id), childeren);
+    }
+
+    public static DataList<Option> datalist(Id id, Stream<Option> childeren) {
+	return new DataList<Option>(ga(id), childeren);
+    }
+
+    public static FieldSet fieldset(Id id, Stream<? extends FlowContent> childeren) {
+	return new FieldSet(ga(id), null, null, null, null, childeren);
+    }
+
+    public static Form form(Id id, Stream<? extends FlowContent> childeren) {
+	return new Form(ga(id), childeren);
+    }
+
+    public static Legend legend(Id id, Stream<? extends PhrasingContent> childeren) {
+	return new Legend(ga(id), childeren);
+    }
+
+    public static Meter meter(Id id, Stream<? extends PhrasingContent> childeren) {
+	return new Meter(ga(id), null, null, null, null, null, null, childeren);
+    }
+
+    public static OptGroup optgroup(Id id, Stream<Option> childeren) {
+	return new OptGroup(ga(id), null, null, childeren);
+    }
+
+    public static Output output(Id id, Stream<? extends PhrasingContent> childeren) {
+	return new Output(ga(id), null, null, null, childeren);
+    }
+
+    public static Progress progress(Id id, Stream<? extends PhrasingContent> childeren) {
+	return new Progress(ga(id), null, null, childeren);
+    }
+
+    public static Select select(Id id, Stream<OptionOrOptGroup> childeren) {
+	return new Select(ga(id), null, null, null, null, null, null, null, null, childeren);
+    }
+
+    public static TextArea textArea(Id id, String text) {
+	return new TextArea(ga(id), null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+		new Text(text));
+    }
+
+    public static Canvas canvas(Id id, Stream<? extends FlowContent> childeren) {
+	return new Canvas(ga(id), null, null, childeren);
+    }
+
+    public static NoScript noscript(Id id, Stream<? extends FlowContent> childeren) {
+	return new NoScript(ga(id), childeren);
+    }
+
+    public static Script script(Id id, String text) {
+	return new Script(ga(id), null, null, null, null, null, null, null, new Text(text));
+    }
+
+    public static Template template(Id id, Stream<? extends FlowContent> childeren) {
+	return new Template(ga(id), childeren);
+    }
+
+    public static Caption caption(Id id, Stream<? extends FlowContent> childeren) {
+	return new Caption(ga(id), childeren);
+    }
+
+    public static Col col(Id id, String span) {
+	return new Col(ga(id), new ch.isb_sib.swiss_prot.sjh.attributes.table.Span(span));
+    }
+
+    public static ColGroup colgroup(Id id, Stream<ColOrTemplate> childeren) {
+	return new ColGroup(ga(id), childeren);
+    }
+
+    public static TBody tbody(Id id, Stream<TR> childeren) {
+	return new TBody(ga(id), childeren);
+    }
+
+    public static TD td(Id id, Stream<? extends FlowContent> childeren) {
+	return new TD(ga(id), childeren, null, null, null);
+    }
+
+    public static TFoot tfoot(Id id, Stream<TR> childeren) {
+	return new TFoot(ga(id), childeren);
+    }
+
+    public static TH th(Id id, Stream<? extends FlowContent> childeren) {
+	return new TH(ga(id), childeren, null, null, null, null, null, null);
+    }
+
+    public static THead thead(Id id, Stream<TR> childeren) {
+	return new THead(ga(id), childeren);
+    }
+
+    public static TR tr(Id id, Stream<TDOrTH> childeren) {
+	return new TR(ga(id), childeren);
+    }
+
+    public static Button button(Clazz clazz, Stream<OptionOrOptGroup> childeren) {
+	return new Button(ga(clazz), childeren);
+    }
+
+    public static DataList<Option> datalist(Clazz clazz, Stream<Option> childeren) {
+	return new DataList<Option>(ga(clazz), childeren);
+    }
+
+    public static FieldSet fieldset(Clazz clazz, Stream<? extends FlowContent> childeren) {
+	return new FieldSet(ga(clazz), null, null, null, null, childeren);
+    }
+
+    public static Form form(Clazz clazz, Stream<? extends FlowContent> childeren) {
+	return new Form(ga(clazz), childeren);
+    }
+
+    public static Legend legend(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+	return new Legend(ga(clazz), childeren);
+    }
+
+    public static Meter meter(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+	return new Meter(ga(clazz), null, null, null, null, null, null, childeren);
+    }
+
+    public static OptGroup optgroup(Clazz clazz, Stream<Option> childeren) {
+	return new OptGroup(ga(clazz), null, null, childeren);
+    }
+
+    public static Output output(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+	return new Output(ga(clazz), null, null, null, childeren);
+    }
+
+    public static Progress progress(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+	return new Progress(ga(clazz), null, null, childeren);
+    }
+
+    public static Select select(Clazz clazz, Stream<OptionOrOptGroup> childeren) {
+	return new Select(ga(clazz), null, null, null, null, null, null, null, null, childeren);
+    }
+
+    public static TextArea textArea(Clazz clazz, String text) {
+	return new TextArea(ga(clazz), null, null, null, null, null, null, null, null, null, null, null, null, null,
+		null, new Text(text));
+    }
+
+    public static Canvas canvas(Clazz clazz, Stream<? extends FlowContent> childeren) {
+	return new Canvas(ga(clazz), null, null, childeren);
+    }
+
+    public static NoScript noscript(Clazz clazz, Stream<? extends FlowContent> childeren) {
+	return new NoScript(ga(clazz), childeren);
+    }
+
+    public static Script script(Clazz clazz, String text) {
+	return new Script(ga(clazz), null, null, null, null, null, null, null, new Text(text));
+    }
+
+    public static Template template(Clazz clazz, Stream<? extends FlowContent> childeren) {
+	return new Template(ga(clazz), childeren);
+    }
+
+    public static Caption caption(Clazz clazz, Stream<? extends FlowContent> childeren) {
+	return new Caption(ga(clazz), childeren);
+    }
+
+    public static Col col(Clazz clazz, String span) {
+	return new Col(ga(clazz), new ch.isb_sib.swiss_prot.sjh.attributes.table.Span(span));
+    }
+
+    public static ColGroup colgroup(Clazz clazz, Stream<ColOrTemplate> childeren) {
+	return new ColGroup(ga(clazz), childeren);
+    }
+
+    public static TBody tbody(Clazz clazz, Stream<TR> childeren) {
+	return new TBody(ga(clazz), childeren);
+    }
+
+    public static TD td(Clazz clazz, Stream<? extends FlowContent> childeren) {
+	return new TD(ga(clazz), childeren, null, null, null);
+    }
+
+    public static TFoot tfoot(Clazz clazz, Stream<TR> childeren) {
+	return new TFoot(ga(clazz), childeren);
+    }
+
+    public static TH th(Clazz clazz, Stream<? extends FlowContent> childeren) {
+	return new TH(ga(clazz), childeren, null, null, null, null, null, null);
+    }
+
+    public static THead thead(Clazz clazz, Stream<TR> childeren) {
+	return new THead(ga(clazz), childeren);
+    }
+
+    public static TR tr(Clazz clazz, Stream<TDOrTH> childeren) {
+	return new TR(ga(clazz), childeren);
     }
 }

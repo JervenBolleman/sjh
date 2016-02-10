@@ -120,6 +120,11 @@ public class Input extends CommonElement implements FlowContent, PhrasingContent
 	this.width = width;
     }
 
+    public Input(Stream<GlobalAttribute> ga) {
+	this(ga, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+		null, null, null, null, null, null, null, null, null, null, null, null, null);
+    }
+
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
 	return Stream

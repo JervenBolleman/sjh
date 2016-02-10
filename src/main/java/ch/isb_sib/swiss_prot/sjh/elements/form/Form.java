@@ -48,6 +48,18 @@ public class Form extends CommonElement implements FlowContent, PhrasingContent 
 	this.target = target;
     }
 
+    public Form(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
+	super(ga, childeren);
+	this.ac = null;
+	this.action = null;
+	this.autocomplete = null;
+	this.enctype = null;
+	this.method = null;
+	this.name = null;
+	this.novalidate = null;
+	this.target = null;
+    }
+
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
 	return Stream.of(ac, action, autocomplete, enctype, method, name, novalidate, target).filter(Objects::nonNull);

@@ -25,6 +25,9 @@ public class Col extends CommonElement implements ColOrTemplate {
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(span);
+	if (span == null)
+	    return Stream.empty();
+	else
+	    return Stream.of(span);
     }
 }

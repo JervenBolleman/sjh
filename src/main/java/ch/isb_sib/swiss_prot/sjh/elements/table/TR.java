@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 
-public class TR extends CommonElement implements TROrTH {
+public class TR extends CommonElement {
     private final static byte[] NAME = "tr".getBytes(UTF_8);
 
     @Override
@@ -15,7 +15,7 @@ public class TR extends CommonElement implements TROrTH {
 	return NAME;
     }
 
-    public TR(Stream<GlobalAttribute> ga, Stream<TROrTH> children) {
+    public TR(Stream<GlobalAttribute> ga, Stream<TDOrTH> children) {
 	super(ga, children);
     }
 }

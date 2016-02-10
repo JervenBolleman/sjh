@@ -16,7 +16,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.table.Sorted;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 
-public class TH extends CommonElement implements TROrTH {
+public class TH extends CommonElement implements TDOrTH {
     private final static byte[] NAME = "th".getBytes(UTF_8);
     private final ColSpan colspan;
     private final RowSpan rowspan;

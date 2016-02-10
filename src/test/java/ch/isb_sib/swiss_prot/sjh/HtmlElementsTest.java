@@ -90,9 +90,13 @@ public class HtmlElementsTest {
 		String name = method.getReturnType().getSimpleName();
 		Class<?>[] pt = method.getParameterTypes();
 		if (pt[0].equals(Id.class) && pt[1].equals(Clazz.class)) {
+		    try {
 		    Element el = (Element) method.invoke(null, new Id("test"), new Clazz("test"));
 		    if (!(el instanceof HTML))
 			test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"/>");
+		    } catch (Exception e) {
+			fail(method.getName() + ' ' + e.getMessage());
+		    }
 		    count++;
 		}
 	    }

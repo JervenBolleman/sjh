@@ -13,7 +13,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.table.RowSpan;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 
-public class TD extends CommonElement {
+public class TD extends CommonElement implements TDOrTH {
     private final static byte[] NAME = "td".getBytes(UTF_8);
     private final ColSpan colspan;
     private final RowSpan rowspan;
