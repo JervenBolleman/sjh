@@ -27,78 +27,61 @@ import ch.isb_sib.swiss_prot.sjh.elements.grouping.OL;
 import ch.isb_sib.swiss_prot.sjh.elements.meta.Head;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.Body;
 
+public class HtmlWithHeadTest {
+    @Test
+    public void basichtml() throws IOException {
+	HTML html = html();
+	test(html, "<!DOCTYPE html><html/>");
+    }
 
-public class HtmlWithHeadTest
-{
-	@Test
-	public void basichtml()
-	    throws IOException
-	{
-		HTML html = html();
-		test(html, "<!DOCTYPE html><html/>");
-	}
+    @Test
+    public void basichtmlhead() throws IOException {
+	Head head = head(title("test"));
+	Body body = body();
+	HTML html = html(head, body);
 
-	@Test
-	public void basichtmlhead()
-	    throws IOException
-	{
-		Head head = head(title("test"));
-		Body body = body();
-		HTML html = html(head, body);
+	test(html, "<!DOCTYPE html><html><head><title>test</title></head><body/></html>");
+    }
 
-		test(html, "<!DOCTYPE html><html><head><title>test</title></head><body/></html>");
-	}
+    @Test
+    public void basichtmlheadlink() throws IOException {
+	Head head = head(title("test"), link(Attributes.href("/"), Attributes.rel("home")));
+	Body body = body();
+	HTML html = html(head, body);
 
-	@Test
-	public void basichtmlheadlink()
-	    throws IOException
-	{
-		Head head = head(title("test"), link(Attributes.href("/"), Attributes.rel("home")));
-		Body body = body();
-		HTML html = html(head, body);
+	test(html,
+		"<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body/></html>");
+    }
 
-		test(html,
-		    "<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body/></html>");
-	}
+    @Test
+    public void basichtmlheadlinkbody() throws IOException {
+	Head head = head(title("test"), link(Attributes.href("/"), Attributes.rel("home")));
+	Body body = body(main(), div());
+	HTML html = html(head, body);
 
-	@Test
-	public void basichtmlheadlinkbody()
-	    throws IOException
-	{
-		Head head = head(title("test"), link(Attributes.href("/"), Attributes.rel("home")));
-		Body body = body(main(), div());
-		HTML html = html(head, body);
+	test(html,
+		"<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body><main/><div/></body></html>");
+    }
 
-		test(html,
-		    "<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body><main/><div/></body></html>");
-	}
+    @Test
+    public void basichtmlheadlinkbodyolusers() throws IOException {
+	Head head = head(title("test"), link(Attributes.href("/"), Attributes.rel("home")));
+	List<String> users = new ArrayList<>();
+	users.add("me");
+	users.add("you");
 
-	@Test
-	public void basichtmlheadlinkbodyolusers()
-	    throws IOException
-	{
-		Head head = head(title("test"), link(Attributes.href("/"), Attributes.rel("home")));
-		List<String> users = new ArrayList<>();
-		users.add("me");
-		users.add("you");
+	Stream<LI> map = users.stream().map(u -> li(u));
+	OL orderedListOfUser = ol(map);
+	Body body = body(main(), div(orderedListOfUser));
+	HTML html = html(head, body);
 
-		Stream<LI> map = users
-			.stream()
-		    .map(u -> li(u));
-		OL orderedListOfUser = ol(map);
-		Body body = body(main(), div(orderedListOfUser));
-		HTML html = html(head, body);
+	test(html,
+		"<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body><main/><div><ol><li>me</li><li>you</li></ol></div></body></html>");
+    }
 
-		test(html,
-		    "<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body><main/><div><ol><li>me</li><li>you</li></ol></div></body></html>");
-	}
-
-	private void test(HTML html, String expectedRaw)
-	    throws IOException
-	{
-		ByteArrayOutputStream boas = new ByteArrayOutputStream();
-		html.render(boas);
-		assertEquals(expectedRaw,
-		    new String(boas.toByteArray(), UTF_8));
-	}
+    private void test(HTML html, String expectedRaw) throws IOException {
+	ByteArrayOutputStream boas = new ByteArrayOutputStream();
+	html.render(boas);
+	assertEquals(expectedRaw, new String(boas.toByteArray(), UTF_8));
+    }
 }
