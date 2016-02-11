@@ -7,6 +7,7 @@ import static ch.isb_sib.swiss_prot.sjh.Elements.html;
 import static ch.isb_sib.swiss_prot.sjh.Elements.li;
 import static ch.isb_sib.swiss_prot.sjh.Elements.link;
 import static ch.isb_sib.swiss_prot.sjh.Elements.main;
+import static ch.isb_sib.swiss_prot.sjh.Elements.p;
 import static ch.isb_sib.swiss_prot.sjh.Elements.ol;
 import static ch.isb_sib.swiss_prot.sjh.Elements.title;
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -21,6 +22,7 @@ import java.util.stream.Stream;
 import org.junit.Test;
 
 import ch.isb_sib.swiss_prot.sjh.Attributes;
+import ch.isb_sib.swiss_prot.sjh.elements.Element;
 import ch.isb_sib.swiss_prot.sjh.elements.HTML;
 import ch.isb_sib.swiss_prot.sjh.elements.grouping.LI;
 import ch.isb_sib.swiss_prot.sjh.elements.grouping.OL;
@@ -53,6 +55,19 @@ public class HtmlWithHeadTest {
 		"<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body/></html>");
     }
 
+    // @Test
+    // public void cantdivinp() throws IOException {
+    //
+    // Does not compile!
+    // test(p(div()),
+    // "<p><div/></p>");
+    // }
+
+    @Test
+    public void canpindiv() throws IOException {
+	test(div(p()), "<div><p/></div>");
+    }
+
     @Test
     public void basichtmlheadlinkbody() throws IOException {
 	Head head = head(title("test"), link(Attributes.href("/"), Attributes.rel("home")));
@@ -79,7 +94,7 @@ public class HtmlWithHeadTest {
 		"<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body><main/><div><ol><li>me</li><li>you</li></ol></div></body></html>");
     }
 
-    private void test(HTML html, String expectedRaw) throws IOException {
+    private void test(Element html, String expectedRaw) throws IOException {
 	ByteArrayOutputStream boas = new ByteArrayOutputStream();
 	html.render(boas);
 	assertEquals(expectedRaw, new String(boas.toByteArray(), UTF_8));
