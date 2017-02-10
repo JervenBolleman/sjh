@@ -1,4 +1,6 @@
 [![travis](https://api.travis-ci.org/JervenBolleman/sjh.svg?branch=master)](https://travis-ci.org/JervenBolleman/sjh)
+In case you are wondering if you should be using this. No if you think this kind of code makes sense we suggest either [ScalaTags](http://www.lihaoyi.com/scalatags/) or [J2HTML](http://j2html.com/).
+
 # What is SJH
 
 A proof of concept for generating HTML using java directly, hopefully no uglier than necesarry. While making it difficult to generate invalid HTML by leveraging the typesystem. 
