@@ -10,10 +10,10 @@
 		organisation="isb-sib" 
 		revision="${release.version}"
 		status="${release.status}"
-		module="expasy4j-annotations"
+		module="sjh"
 	>
 		<license name="GPL" url="http://www.opensource.org/licenses/gpl-license.php"/>
-		<description homepage="http://dev.isb-sib.ch/projects/expasy4j-sesame/"/>
+		<description homepage="https://github.com/JervenBolleman/sjh"/>
 	</info>
 	
 	<configurations>
@@ -23,7 +23,7 @@
 	</configurations>
 	
 	<publications>
-		<artifact name="expasy4j-annotations" type="jar"/>
+		<artifact name="sjh" type="jar"/>
 	</publications>
 
     <dependencies>

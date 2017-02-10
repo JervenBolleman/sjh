@@ -1,20 +1,9 @@
-release.version=2016_01
+release.version=0.1
 release.status=integration
-# release.status=release
 
-scp.keyfile=${user.home}/.ssh/id_dsa
-scp.pass=
+scp.keyfile=${user.home}/.ssh/id_rsa
+ivy.settings.file=lib/ivyconf.xml
 
 repository.cache=${user.home}/.ivy
 repository.path=../expasy4j-libs
-repository.url=http://dev.isb-sib.ch/projects/expasy4j-libs/
-repository.remotePath=/work/prod/${release.version}/expasy4j-libs
-repository.user=sdteam
-repository.host=upprodext.isb-sib.ch
 
-#ivy.retrieve.pattern=lib/[conf]/[artifact].[ext]
-test.path=doc/tests
-
-ivy.settings.file=lib/ivyconf.xml
-
-uniprot_internal=false
