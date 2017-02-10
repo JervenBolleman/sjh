@@ -3,30 +3,20 @@ package ch.isb_sib.swiss_prot.sjh.attributes.form;
 import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
+public class Checked extends BooleanAttribute {
+    private static final byte[] NAME = Attribute.fromString("checked");
 
-public class Checked
-    implements Attribute
-{
-	private static final byte[] NAME = Attribute.fromString("checked");
+    public Checked(boolean bool) {
+	super(bool);
+    }
 
-	private final byte[] value;
-
-	public Checked(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
-	}
-
-	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
-		return NAME;
-	}
+    @Override
+    public byte[] getAttributeName() {
+	if (val)
+	    return NAME;
+	else 
+	    return EMPTY;
+    }
 }

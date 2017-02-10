@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="sjh" default="package" basedir="." 
+<project name="sjh" default="jar:publish" basedir="." 
 	xmlns:ivy="antlib:fr.jayasoft.ivy.ant"
 >
 
@@ -91,23 +91,6 @@
 
 
 	<target 
-		name="package" 
-		depends="jar"
-		description="Package project"
-	>
-
-		<zip destfile="${project.zip}" update="no" level="9">
-			<zipfileset dir="." prefix="expasy4j-annotations">
-				<exclude name="build/**" />
-				<exclude name="dist/*.zip" />
-				<exclude name="doc/src/**" />
-			</zipfileset>
-		</zip>
-
-	</target>
-
-
-	<target 
 		name="jar" 
 		depends="jar:verify"
 		unless="jar.skip"
@@ -120,7 +103,7 @@
 			update="no"
 			index="yes"
 		>
-			<fileset dir="build" includes="org/expasy/**" excludes="**/*Test.class" />
+			<fileset dir="build" includes="ch/**" excludes="**/*Test.class" />
 		</jar>
 
 	</target>

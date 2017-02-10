@@ -8,6 +8,8 @@ import ch.isb_sib.swiss_prot.sjh.attributes.content.Href;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Rel;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Type;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Height;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Checked;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Disabled;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Clazz;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Id;
@@ -288,6 +290,18 @@ public class Elements {
 	return new A(childeren);
     }
 
+    public static A a(Id id, Clazz clazz, Href href, Stream<Element> childeren) {
+	return new A(Stream.of(id, clazz), childeren, href);
+    }
+    
+    public static A a(Id id, Clazz clazz, Href href, Element... childeren) {
+   	return new A(Stream.of(id, clazz), Stream.of(childeren), href);
+       }
+
+    public static A a(Id id, Clazz clazz, Href href) {
+	return new A(Stream.of(id, clazz), Stream.empty(), href);
+    }
+
     public static Em em() {
 	return new Em();
     }
@@ -396,6 +410,14 @@ public class Elements {
 	return new Bdo(Stream.empty(), childeren);
     }
 
+    public static Span span(Stream<GlobalAttribute> attributes, Stream<? extends PhrasingContent> childeren) {
+	return new Span(attributes, childeren);
+    }
+
+    public static Span span(Stream<GlobalAttribute> attributes, PhrasingContent... childeren) {
+	return new Span(attributes, Stream.of(childeren));
+    }
+    
     public static Span span(Stream<? extends PhrasingContent> childeren) {
 	return new Span(Stream.empty(), childeren);
     }
@@ -1094,6 +1116,10 @@ public class Elements {
 
     public static LI li(Clazz clazz) {
 	return new LI(ga(clazz), Stream.empty(), null);
+    }
+
+    public static LI li(Clazz clazz, FlowContent child) {
+	return new LI(ga(clazz), Stream.of(child), null);
     }
 
     public static DL dl(Clazz clazz) {
@@ -2667,6 +2693,15 @@ public class Elements {
 	return new Input(ga(id, clazz));
     }
 
+    public static Input input(Id id, Clazz clazz, ch.isb_sib.swiss_prot.sjh.attributes.form.Type type) {
+	return new Input(ga(id, clazz), type);
+    }
+
+    public static Input input(Id id, Clazz clazz, ch.isb_sib.swiss_prot.sjh.attributes.form.Type type, Checked checked,
+	    Disabled disabled) {
+	return new Input(ga(id, clazz), checked, disabled, type);
+    }
+
     public static KeyGen keygen(Id id, Clazz clazz) {
 	return new KeyGen(ga(id, clazz), null, null, null, null, null, null);
     }
@@ -2956,5 +2991,9 @@ public class Elements {
 
     public static TR tr(Clazz clazz, Stream<TDOrTH> childeren) {
 	return new TR(ga(clazz), childeren);
+    }
+    
+    public static Text text(String text){
+	return new Text(text);
     }
 }

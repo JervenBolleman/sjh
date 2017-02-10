@@ -1,32 +1,20 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.form;
 
-import java.util.Objects;
-
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
+public class Disabled extends BooleanAttribute {
+    private static final byte[] NAME = Attribute.fromString("disabled");
 
-public class Disabled
-    implements Attribute
-{
-	private static final byte[] NAME = Attribute.fromString("disabled");
+    public Disabled(boolean value) {
+	super(value);
+    }
 
-	private final byte[] value;
-
-	public Disabled(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
-	}
-
-	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
-		return NAME;
-	}
+    @Override
+    public byte[] getAttributeName() {
+	if (val)
+	    return NAME;
+	else 
+	    return EMPTY;
+    }
 }

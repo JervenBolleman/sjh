@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
-import ch.isb_sib.swiss_prot.sjh.attributes.content.Type;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Type;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Alt;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Form;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Height;
@@ -120,6 +120,75 @@ public class Input extends CommonElement implements FlowContent, PhrasingContent
 	this.width = width;
     }
 
+    public Input(Stream<GlobalAttribute> ga, Type type) {
+	super(ga, Stream.empty());
+	this.accept = null;
+	this.alt = null;
+	this.autoComplete = null;
+	this.autofocus = null;
+	this.checked = null;
+	this.dirname = null;
+	this.disabled = null;
+	this.form = null;
+	this.formaction = null;
+	this.formentype = null;
+	this.formmethod = null;
+	this.formnovalidate = null;
+	this.formtarget = null;
+	this.height = null;
+	this.inputMode = null;
+	this.list = null;
+	this.max = null;
+	this.minlength = null;
+	this.min = null;
+	this.multiple = null;
+	this.pattern = null;
+	this.placeholder = null;
+	this.readonly = null;
+	this.required = null;
+	this.size = null;
+	this.src = null;
+	this.step = null;
+	this.type = type;
+	this.value = null;
+	this.width = null;
+	    
+	}
+    
+    public Input(Stream<GlobalAttribute> ga, Checked checked, Disabled disabled, Type type) {
+   	super(ga, Stream.empty());
+   	this.accept = null;
+   	this.alt = null;
+   	this.autoComplete = null;
+   	this.autofocus = null;
+   	this.checked = checked;
+   	this.dirname = null;
+   	this.disabled = disabled;
+   	this.form = null;
+   	this.formaction = null;
+   	this.formentype = null;
+   	this.formmethod = null;
+   	this.formnovalidate = null;
+   	this.formtarget = null;
+   	this.height = null;
+   	this.inputMode = null;
+   	this.list = null;
+   	this.max = null;
+   	this.minlength = null;
+   	this.min = null;
+   	this.multiple = null;
+   	this.pattern = null;
+   	this.placeholder = null;
+   	this.readonly = null;
+   	this.required = null;
+   	this.size = null;
+   	this.src = null;
+   	this.step = null;
+   	this.type = type;
+   	this.value = null;
+   	this.width = null;
+   	    
+   	}
     public Input(Stream<GlobalAttribute> ga) {
 	this(ga, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
 		null, null, null, null, null, null, null, null, null, null, null, null, null);

@@ -2,6 +2,7 @@ package ch.isb_sib.swiss_prot.sjh;
 
 import java.time.temporal.TemporalAccessor;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Cite;
@@ -161,6 +162,46 @@ import ch.isb_sib.swiss_prot.sjh.attributes.table.Sorted;
 import ch.isb_sib.swiss_prot.sjh.attributes.table.Span;
 
 public class Attributes {
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type hidden = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.hidden
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type text = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.text
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type search = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.search
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type tel = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.tel
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type url = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.url
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type email = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.email
+	    .getType();
+
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type password = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.password
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type date = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.date
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type time = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.time
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type number = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.number
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type range = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.range
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type color = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.color
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type checkbox = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.checkbox
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type radio = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.radio
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type file = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.file
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type submit = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.submit
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type image = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.image
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type reset = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.reset
+	    .getType();
+    public static ch.isb_sib.swiss_prot.sjh.attributes.form.Type button = ch.isb_sib.swiss_prot.sjh.attributes.form.Type.Types.button
+	    .getType();
+
     public static CrossOrigin crossOrigin(String value) {
 	return new CrossOrigin(value);
     }
@@ -476,6 +517,10 @@ public class Attributes {
     public static Clazz clazz(String value) {
 	return new Clazz(value);
     }
+    
+    public static Clazz clazz(String... values) {
+   	return new Clazz(Stream.of(values).collect(Collectors.joining(" ")));
+       }
 
     public static DirAuto dirAuto() {
 	return new DirAuto();
@@ -585,16 +630,16 @@ public class Attributes {
 	return new AutoFocus(string);
     }
 
-    public static Checked checked(String string) {
-	return new Checked(string);
+    public static Checked checked(boolean bool) {
+	return new Checked(bool);
     }
 
     public static DirName dirName(String string) {
 	return new DirName(string);
     }
 
-    public static Disabled disabled(String string) {
-	return new Disabled(string);
+    public static Disabled disabled(boolean val) {
+	return new Disabled(val);
     }
 
     public static EncType encType(String string) {

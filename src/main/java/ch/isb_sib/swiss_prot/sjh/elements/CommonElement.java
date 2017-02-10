@@ -2,6 +2,8 @@ package ch.isb_sib.swiss_prot.sjh.elements;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -47,6 +49,38 @@ public abstract class CommonElement implements Element {
 	}
     }
 
+    public void render(Writer writer) throws IOException {
+	writer.write('<');
+	writer.write(new String(getName(), StandardCharsets.UTF_8));
+	Iterator<Attribute> sa = getAttributes().iterator();
+	if (sa.hasNext())
+	    writer.write(' ');
+	while (sa.hasNext()) {
+	    sa.next().render(writer);
+	    if (sa.hasNext())
+		writer.write(' ');
+	}
+	if (childeren != null) {
+
+	    Iterator<? extends Element> iter = childeren.iterator();
+	    if (iter.hasNext()) {
+		writer.write('>');
+		while (iter.hasNext())
+		    iter.next().render(writer);
+		writer.write('<');
+		writer.write('/');
+		writer.write(new String(getName(), StandardCharsets.UTF_8));
+		writer.write('>');
+	    } else {
+		writer.write('/');
+		writer.write('>');
+	    }
+	} else {
+	    writer.write('/');
+	    writer.write('>');
+	}
+    }
+
     protected CommonElement(Stream<GlobalAttribute> ga, Stream<? extends Element> childeren) {
 	super();
 	this.attributes = ga;
@@ -61,13 +95,13 @@ public abstract class CommonElement implements Element {
 
     private Stream<GlobalAttribute> getGlobalAttributes() {
 	if (attributes != null)
-	    return attributes;
+	    return attributes.filter(Objects::nonNull);
 	else
 	    return Stream.empty();
     }
 
     private final Stream<Attribute> getAttributes() {
-	return Stream.concat(getGlobalAttributes(), getElementSpecificAttributes());
+	return Stream.concat(getGlobalAttributes(), getElementSpecificAttributes()).filter(Objects::nonNull);
     }
 
     protected Stream<Attribute> getElementSpecificAttributes() {

@@ -34,6 +34,9 @@ public class A extends CommonElement implements FlowContent, PhrasingContent, In
 	return NAME;
     }
 
+    public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href) {
+	this(ga, childeren, href, null, null, null, null, null);
+    }
     public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href, Target target, Download download,
 	    Rel rel, HrefLang hreflang, Type type) {
 	super(ga, childeren);
