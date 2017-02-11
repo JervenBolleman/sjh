@@ -2,7 +2,6 @@ package ch.isb_sib.swiss_prot.sjh;
 
 import java.time.temporal.TemporalAccessor;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Cite;
@@ -517,10 +516,10 @@ public class Attributes {
     public static Clazz clazz(String value) {
 	return new Clazz(value);
     }
-    
+
     public static Clazz clazz(String... values) {
-   	return new Clazz(Stream.of(values).collect(Collectors.joining(" ")));
-       }
+	return new Clazz(values);
+    }
 
     public static DirAuto dirAuto() {
 	return new DirAuto();
@@ -730,8 +729,8 @@ public class Attributes {
 	return new Menu(string);
     }
 
-    public static Selected selected(String string) {
-	return new Selected(string);
+    public static Selected selected(boolean bool) {
+	return new Selected(bool);
     }
 
     public static Cols cols(String string) {

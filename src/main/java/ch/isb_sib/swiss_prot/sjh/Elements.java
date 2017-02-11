@@ -10,6 +10,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.content.Type;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Height;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Checked;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Disabled;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Selected;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Clazz;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Id;
@@ -293,10 +294,10 @@ public class Elements {
     public static A a(Id id, Clazz clazz, Href href, Stream<Element> childeren) {
 	return new A(Stream.of(id, clazz), childeren, href);
     }
-    
+
     public static A a(Id id, Clazz clazz, Href href, Element... childeren) {
-   	return new A(Stream.of(id, clazz), Stream.of(childeren), href);
-       }
+	return new A(Stream.of(id, clazz), Stream.of(childeren), href);
+    }
 
     public static A a(Id id, Clazz clazz, Href href) {
 	return new A(Stream.of(id, clazz), Stream.empty(), href);
@@ -417,7 +418,7 @@ public class Elements {
     public static Span span(Stream<GlobalAttribute> attributes, PhrasingContent... childeren) {
 	return new Span(attributes, Stream.of(childeren));
     }
-    
+
     public static Span span(Stream<? extends PhrasingContent> childeren) {
 	return new Span(Stream.empty(), childeren);
     }
@@ -651,6 +652,10 @@ public class Elements {
 	return new Sup(ga(id), Stream.empty());
     }
 
+    public static Sup sup(Text text) {
+	return new Sup(Stream.empty(), Stream.of(text));
+    }
+
     public static I i(Id id) {
 	return new I(ga(id), Stream.empty());
     }
@@ -810,6 +815,14 @@ public class Elements {
 
     public static P p(Id id) {
 	return new P(ga(id), Stream.empty());
+    }
+
+    public static P p(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+	return new P(ga(clazz), childeren);
+    }
+
+    public static P p(Clazz clazz, PhrasingContent... childeren) {
+	return new P(ga(clazz), Stream.of(childeren));
     }
 
     public static HR hr(Id id) {
@@ -1145,6 +1158,10 @@ public class Elements {
     public static Div div(Clazz clazz) {
 	return new Div(ga(clazz), Stream.empty());
     }
+    
+    public static Div div(Clazz clazz, FlowContent... childeren) {
+   	return new Div(ga(clazz), Stream.of(childeren));
+       }
 
     public static Main main(Clazz clazz) {
 	return new Main(ga(clazz), Stream.empty());
@@ -2413,6 +2430,10 @@ public class Elements {
 	return new Span(ga(clazz), Stream.of(new Text(string)));
     }
 
+    public static Span span(Clazz clazz, PhrasingContent... contents) {
+	return new Span(ga(clazz), Stream.of(contents));
+    }
+
     public static Strong strong(Clazz clazz, String string) {
 	return new Strong(ga(clazz), Stream.of(new Text(string)));
     }
@@ -2726,6 +2747,17 @@ public class Elements {
 	return new Option(ga(id, clazz), null, null, null, (Value) null);
     }
 
+    public static Option option(Stream<GlobalAttribute> gas, Value value) {
+	return new Option(gas, null, null, null, value);
+    }
+
+    public static Option option(Selected selected, Value value) {
+	return new Option(Stream.empty(), null, null, selected, value);
+    }
+
+    public static Option option(Selected selected, Value value, Text text) {
+	return new Option(Stream.empty(), null, null, selected, value,text);
+    }
     public static Output output(Id id, Clazz clazz) {
 	return new Output(ga(id, clazz), null, null, null, Stream.empty());
     }
@@ -2736,6 +2768,10 @@ public class Elements {
 
     public static Select select(Id id, Clazz clazz) {
 	return new Select(ga(id, clazz), null, null, null, null, null, null, null, null, Stream.empty());
+    }
+
+    public static Select select(Name name, Stream<OptionOrOptGroup> childeren) {
+	return new Select(Stream.empty(), null, null, null, null, null, null, name, null, childeren);
     }
 
     public static TextArea textArea(Id id, Clazz clazz) {
@@ -2992,8 +3028,12 @@ public class Elements {
     public static TR tr(Clazz clazz, Stream<TDOrTH> childeren) {
 	return new TR(ga(clazz), childeren);
     }
-    
-    public static Text text(String text){
+
+    public static Text text(String text) {
 	return new Text(text);
+    }
+
+    public static None none() {
+	return None.none;
     }
 }

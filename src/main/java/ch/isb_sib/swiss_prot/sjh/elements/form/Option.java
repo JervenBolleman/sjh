@@ -41,6 +41,14 @@ public class Option extends CommonElement implements OptionOrOptGroup {
 	this.selected = selected;
 	this.value = null;
     }
+    
+    public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label, Selected selected, Value value, Text text) {
+	super(ga, Stream.of(text));
+	this.disabled = disabled;
+	this.label = label;
+	this.selected = selected;
+	this.value = value;
+    }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
