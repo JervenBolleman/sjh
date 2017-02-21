@@ -12,9 +12,6 @@ public class Checked extends BooleanAttribute {
 
     @Override
     public byte[] getAttributeName() {
-	if (val)
-	    return NAME;
-	else 
-	    return EMPTY;
+	return NAME;
     }
 }

@@ -10,22 +10,23 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.MetaContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.ScriptSupporting;
 import ch.isb_sib.swiss_prot.sjh.elements.table.ColOrTemplate;
 
 public class Template extends CommonElement
-	implements FlowContent, PhrasingContent, MetaContent, PalpabaleContent, ColOrTemplate {
-    private final static byte[] NAME = "template".getBytes(UTF_8);
+		implements FlowContent, PhrasingContent, MetaContent, PalpabaleContent, ColOrTemplate, ScriptSupporting {
+	private final static byte[] NAME = "template".getBytes(UTF_8);
 
-    @Override
-    protected byte[] getName() {
-	return NAME;
-    }
+	@Override
+	protected byte[] getName() {
+		return NAME;
+	}
 
-    public Template(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
-    }
+	public Template(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
+		super(ga, childeren);
+	}
 
-    public Template() {
-	super();
-    }
+	public Template() {
+		super();
+	}
 }

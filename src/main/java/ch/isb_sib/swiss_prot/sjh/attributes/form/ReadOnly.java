@@ -1,32 +1,23 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.form;
 
-import java.util.Objects;
-
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
-
-public class ReadOnly
-    implements Attribute
-{
+/**
+ * The readonly attribute is a boolean attribute that controls whether or not
+ * the user can edit the form control. When specified, the element is not
+ * mutable
+ *
+ */
+public class ReadOnly extends BooleanAttribute {
 	private static final byte[] NAME = Attribute.fromString("readonly");
 
-	private final byte[] value;
-
-	public ReadOnly(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
+	public ReadOnly(boolean val) {
+		super(val);
 	}
 
 	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
+	public byte[] getAttributeName() {
 		return NAME;
 	}
 }

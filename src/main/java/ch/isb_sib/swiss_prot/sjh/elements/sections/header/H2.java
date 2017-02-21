@@ -7,11 +7,12 @@ import java.util.stream.Stream;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.HeadingContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
 
-public class H2 extends CommonElement implements FlowContent, SectioningContent, PalpabaleContent {
+public class H2 extends CommonElement implements FlowContent, SectioningContent, PalpabaleContent, HeadingContent {
     private final static byte[] NAME = "h2".getBytes(UTF_8);
 
     @Override

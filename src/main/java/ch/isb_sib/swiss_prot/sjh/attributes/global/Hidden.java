@@ -1,32 +1,17 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.global;
 
-import java.util.Objects;
-
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
+public class Hidden extends BooleanAttribute implements GlobalAttribute {
+    private static final byte[] NAME = Attribute.fromString("hidden");
 
-public class Hidden
-    implements GlobalAttribute
-{
-	private static final byte[] NAME = Attribute.fromString("hidden");
+    public Hidden(boolean bool) {
+	super(bool);
+    }
 
-	private final byte[] value;
-
-	public Hidden(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
-	}
-
-	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
-		return NAME;
-	}
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
 }

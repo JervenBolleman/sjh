@@ -1,32 +1,17 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.embedded;
 
-import java.util.Objects;
-
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
-
-public class Muted
-    implements Attribute
-{
+public class Muted extends BooleanAttribute {
 	private static final byte[] NAME = Attribute.fromString("muted");
 
-	private final byte[] value;
-
-	public Muted(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
+	public Muted(boolean val) {
+		super(val);
 	}
 
 	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
+	public byte[] getAttributeName() {
 		return NAME;
 	}
 }

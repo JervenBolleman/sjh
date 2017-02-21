@@ -1,32 +1,22 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.form;
 
-import java.util.Objects;
-
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
-
-public class Multiple
-    implements Attribute
-{
+/**
+ * The multiple attribute is a boolean attribute that indicates whether the user
+ * is to be allowed to specify more than one value.
+ *
+ */
+public class Multiple extends BooleanAttribute {
 	private static final byte[] NAME = Attribute.fromString("multiple");
 
-	private final byte[] value;
-
-	public Multiple(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
+	public Multiple(boolean val) {
+		super(val);
 	}
 
 	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
+	public byte[] getAttributeName() {
 		return NAME;
 	}
 }

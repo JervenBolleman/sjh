@@ -1,32 +1,17 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.embedded;
 
-import java.util.Objects;
-
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
-
-public class Controls
-    implements Attribute
-{
+public class Controls extends BooleanAttribute {
 	private static final byte[] NAME = Attribute.fromString("controls");
 
-	private final byte[] value;
-
-	public Controls(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
+	public Controls(boolean bool) {
+		super(bool);
 	}
 
 	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
+	public byte[] getAttributeName() {
 		return NAME;
 	}
 }

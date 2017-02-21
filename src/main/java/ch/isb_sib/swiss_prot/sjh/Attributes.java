@@ -237,12 +237,12 @@ public class Attributes {
 	return new Alt(value);
     }
 
-    public static Autoplay autoplay(String value) {
-	return new Autoplay(value);
+	public static Autoplay autoplay(boolean bool) {
+		return new Autoplay(bool);
     }
 
-    public static Controls controls(String value) {
-	return new Controls(value);
+	public static Controls controls(boolean bool) {
+		return new Controls(bool);
     }
 
     public static Coords coords(String value) {
@@ -253,8 +253,8 @@ public class Attributes {
 	return new Data(value);
     }
 
-    public static Default defaulta(String value) {
-	return new Default(value);
+	public static Default defaulta(boolean value) {
+		return new Default(value);
     }
 
     public static Form form(String value) {
@@ -265,24 +265,24 @@ public class Attributes {
 	return new Height(value);
     }
 
-    public static IsMap isMap(String value) {
-	return new IsMap(value);
+	public static IsMap isMap(boolean bool) {
+		return new IsMap(bool);
     }
 
     public static Label label(String value) {
 	return new Label(value);
     }
 
-    public static Loop loop(String value) {
-	return new Loop(value);
+	public static Loop loop(boolean bool) {
+		return new Loop(bool);
     }
 
     public static MediaGroup mediaGroup(String value) {
 	return new MediaGroup(value);
     }
 
-    public static Muted muted(String value) {
-	return new Muted(value);
+	public static Muted muted(boolean bool) {
+		return new Muted(bool);
     }
 
     public static Poster poster(String value) {
@@ -313,8 +313,8 @@ public class Attributes {
 	return new SrcLang(value);
     }
 
-    public static TypeMustMatch typeMustMatch(String value) {
-	return new TypeMustMatch(value);
+	public static TypeMustMatch typeMustMatch(boolean bool) {
+		return new TypeMustMatch(bool);
     }
 
     public static UseMap useMap(String value) {
@@ -533,8 +533,8 @@ public class Attributes {
 	return new DirRTL();
     }
 
-    public static Hidden hidden(String value) {
-	return new Hidden(value);
+    public static Hidden hidden(boolean bool) {
+	return new Hidden(bool);
     }
 
     public static Id id(String value) {
@@ -565,8 +565,8 @@ public class Attributes {
 	return new Kind(value);
     }
 
-    public static Reversed reversed(String value) {
-	return new Reversed(value);
+	public static Reversed reversed(boolean bool) {
+		return new Reversed(bool);
     }
 
     public static Start start(String value) {
@@ -625,8 +625,8 @@ public class Attributes {
 	return new AutoComplete(string);
     }
 
-    public static AutoFocus autoFocus(String string) {
-	return new AutoFocus(string);
+	public static AutoFocus autoFocus(boolean bool) {
+		return new AutoFocus(bool);
     }
 
     public static Checked checked(boolean bool) {
@@ -661,8 +661,8 @@ public class Attributes {
 	return new FormMethod(string);
     }
 
-    public static FormNoValidate formNoValidate(String string) {
-	return new FormNoValidate(string);
+    public static FormNoValidate formNoValidate(boolean bool) {
+	return new FormNoValidate(bool);
     }
 
     public static FormTarget formTarget(String string) {
@@ -693,12 +693,12 @@ public class Attributes {
 	return new MinLength(string);
     }
 
-    public static Multiple multiple(String string) {
-	return new Multiple(string);
+	public static Multiple multiple(boolean bool) {
+		return new Multiple(bool);
     }
 
-    public static NoValidate noValidate(String string) {
-	return new NoValidate(string);
+    public static NoValidate noValidate(boolean bool) {
+	return new NoValidate(bool);
     }
 
     public static Pattern pattern(String string) {
@@ -709,12 +709,12 @@ public class Attributes {
 	return new PlaceHolder(string);
     }
 
-    public static ReadOnly readOnly(String string) {
-	return new ReadOnly(string);
+	public static ReadOnly readOnly(boolean bool) {
+		return new ReadOnly(bool);
     }
 
-    public static Required required(String string) {
-	return new Required(string);
+	public static Required required(boolean bool) {
+		return new Required(bool);
     }
 
     public static Size size(String string) {
@@ -769,12 +769,12 @@ public class Attributes {
 	return new Optimum(string);
     }
 
-    public static Async async(String string) {
-	return new Async(string);
+    public static Async async(boolean bool) {
+	return new Async(bool);
     }
 
-    public static Defer defer(String string) {
-	return new Defer(string);
+    public static Defer defer(boolean bool) {
+	return new Defer(bool);
     }
 
     public static Nonce nonce(String string) {

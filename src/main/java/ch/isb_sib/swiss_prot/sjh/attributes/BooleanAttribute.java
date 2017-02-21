@@ -38,8 +38,6 @@ public abstract class BooleanAttribute implements Attribute {
 
     }
 
-    private static final byte[] TRUE = Attribute.fromString("true");
-    private static final byte[] FALSE = Attribute.fromString("false");
     protected static final byte[] EMPTY = new byte[0];
     protected final boolean val;
 
@@ -49,18 +47,15 @@ public abstract class BooleanAttribute implements Attribute {
 
     @Override
     public final byte[] getValue() {
-	if (val)
-	    return TRUE;
-	else
-	    return FALSE;
+	return EMPTY;
     }
 
-    public void render(OutputStream stream) throws IOException {
+    public final void render(OutputStream stream) throws IOException {
 	if (val)
 	    stream.write(getAttributeName());
     }
 
-    public void render(Writer stream) throws IOException {
+    public final void render(Writer stream) throws IOException {
 	if (val)
 	    stream.append(charSeq(getAttributeName()));
     }

@@ -9,29 +9,25 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.HeadingContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
-import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
-import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
+import ch.isb_sib.swiss_prot.sjh.elements.script.Template;
 
-
-public class H3
-    extends CommonElement
-		implements FlowContent, SectioningContent, PalpabaleContent, HeadingContent
-{
-	private final static byte[] NAME = "h3".getBytes(UTF_8);
+public class HGroup extends CommonElement implements FlowContent, PalpabaleContent, HeadingContent {
+	private final static byte[] NAME = "hgroup".getBytes(UTF_8);
 
 	@Override
-	protected byte[] getName()
-	{
+	protected byte[] getName() {
 		return NAME;
 	}
 
-	public H3(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren)
-	{
+	public HGroup(Stream<GlobalAttribute> ga, Stream<HeadingContent> childeren) {
 		super(ga, childeren);
 	}
 
-	public H3()
-	{
+	public HGroup(Stream<GlobalAttribute> ga, Stream<HeadingContent> subheaders, Stream<Template> templates) {
+		super(ga, Stream.concat(subheaders, templates));
+	}
+
+	public HGroup() {
 		super();
 	}
 }

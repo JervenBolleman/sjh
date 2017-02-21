@@ -1,27 +1,18 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.script;
 
-import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
 
 public class Async
-    implements Attribute
+	extends BooleanAttribute
 {
 	private static final byte[] LANG_IS = Attribute.fromString("async");
 
-	private final byte[] value;
-
-	public Async(String value)
+    public Async(boolean bool)
 	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
-	}
-
-	@Override
-	public byte[] getValue()
-	{
-		return value;
+	super(bool);
 	}
 
 	@Override

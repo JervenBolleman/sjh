@@ -1,27 +1,17 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.embedded;
 
-import java.util.Objects;
-
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
 
 public class Autoplay
-    implements Attribute
+		extends BooleanAttribute
 {
 	private static final byte[] NAME = Attribute.fromString("autoplay");
 
-	private final byte[] value;
-
-	public Autoplay(String value)
+	public Autoplay(boolean bool)
 	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
-	}
-
-	@Override
-	public byte[] getValue()
-	{
-		return value;
+		super(bool);
 	}
 
 	@Override

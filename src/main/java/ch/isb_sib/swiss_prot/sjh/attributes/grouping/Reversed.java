@@ -1,32 +1,17 @@
 package ch.isb_sib.swiss_prot.sjh.attributes.grouping;
 
-import java.util.Objects;
-
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
-
-public class Reversed
-    implements Attribute
-{
+public class Reversed extends BooleanAttribute {
 	private static final byte[] NAME = Attribute.fromString("reversed");
 
-	private final byte[] value;
-
-	public Reversed(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
+	public Reversed(boolean bool) {
+		super(bool);
 	}
 
 	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
+	public byte[] getAttributeName() {
 		return NAME;
 	}
 }
