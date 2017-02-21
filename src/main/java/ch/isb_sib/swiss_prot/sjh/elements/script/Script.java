@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.CrossOrigin;
+import ch.isb_sib.swiss_prot.sjh.attributes.content.NoModule;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Type;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Src;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
@@ -29,6 +30,7 @@ public class Script extends CommonElement implements FlowContent, MetaContent, S
 	private final Defer defer;
 	private final CrossOrigin crossOrigin;
 	private final Nonce nonce;
+	private final NoModule nomodule;
 
 	@Override
 	protected byte[] getName() {
@@ -36,7 +38,7 @@ public class Script extends CommonElement implements FlowContent, MetaContent, S
 	}
 
 	public Script(Stream<GlobalAttribute> ga, Src src, Type type, Charset charset, Async async, Defer defer,
-			CrossOrigin crossOrigin, Nonce nonce, Text content) {
+			CrossOrigin crossOrigin, Nonce nonce, NoModule nomudle, Text content) {
 		super(ga, Stream.of(content));
 		this.src = src;
 		this.type = type;
@@ -45,11 +47,12 @@ public class Script extends CommonElement implements FlowContent, MetaContent, S
 		this.defer = defer;
 		this.crossOrigin = crossOrigin;
 		this.nonce = nonce;
+		this.nomodule = nomudle;
 	}
 
 	@Override
 	protected Stream<Attribute> getElementSpecificAttributes() {
-		return Stream.of(src, type, charset, async, defer, crossOrigin, nonce).filter(Objects::nonNull);
+		return Stream.of(src, type, charset, async, defer, crossOrigin, nomodule, nonce).filter(Objects::nonNull);
 	}
 
 }

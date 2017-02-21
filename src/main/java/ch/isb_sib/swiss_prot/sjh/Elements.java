@@ -2816,7 +2816,7 @@ public class Elements {
     }
 
     public static Script script(Id id, Clazz clazz) {
-	return new Script(ga(id, clazz), null, null, null, null, null, null, null, null);
+		return new Script(ga(id, clazz), null, null, null, null, null, null, null, null, null);
     }
 
     public static Template template(Id id, Clazz clazz) {
@@ -2917,7 +2917,7 @@ public class Elements {
     }
 
     public static Script script(Id id, String text) {
-	return new Script(ga(id), null, null, null, null, null, null, null, new Text(text));
+		return new Script(ga(id), null, null, null, null, null, null, null, null, new Text(text));
     }
 
     public static Template template(Id id, Stream<? extends FlowContent> childeren) {
@@ -3014,7 +3014,7 @@ public class Elements {
     }
 
     public static Script script(Clazz clazz, String text) {
-	return new Script(ga(clazz), null, null, null, null, null, null, null, new Text(text));
+		return new Script(ga(clazz), null, null, null, null, null, null, null, null, new Text(text));
     }
 
     public static Template template(Clazz clazz, Stream<? extends FlowContent> childeren) {
