@@ -8,6 +8,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.content.Href;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Rel;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Type;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Height;
+import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Src;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Checked;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Disabled;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Selected;
@@ -292,15 +293,23 @@ public class Elements {
     }
 
     public static A a(Id id, Clazz clazz, Href href, Stream<Element> childeren) {
-	return new A(Stream.of(id, clazz), childeren, href);
+	return new A(ga(id, clazz), childeren, href);
+    }
+
+    public static A a(Href href, Stream<Element> childeren) {
+	return new A(Stream.empty(), childeren, href);
+    }
+
+    public static A a(Href href, Element... childeren) {
+	return new A(Stream.empty(), Stream.of(childeren), href);
     }
 
     public static A a(Id id, Clazz clazz, Href href, Element... childeren) {
-	return new A(Stream.of(id, clazz), Stream.of(childeren), href);
+	return new A(ga(id, clazz), Stream.of(childeren), href);
     }
 
     public static A a(Id id, Clazz clazz, Href href) {
-	return new A(Stream.of(id, clazz), Stream.empty(), href);
+	return new A(ga(id, clazz), Stream.empty(), href);
     }
 
     public static Em em() {
@@ -714,6 +723,10 @@ public class Elements {
 
     public static Img img(Id id) {
 	return new Img(ga(id), null, null, null, null, null, null, null);
+    }
+
+    public static Img img(Src src) {
+	return new Img(Stream.empty(), null, src, null, null, null, null, null);
     }
 
     public static Iframe iframe(Id id) {
@@ -1158,10 +1171,24 @@ public class Elements {
     public static Div div(Clazz clazz) {
 	return new Div(ga(clazz), Stream.empty());
     }
-    
+
     public static Div div(Clazz clazz, FlowContent... childeren) {
-   	return new Div(ga(clazz), Stream.of(childeren));
-       }
+	return new Div(ga(clazz), Stream.of(childeren));
+    }
+
+    public static Div div(Clazz clazz, ch.isb_sib.swiss_prot.sjh.attributes.global.Style style,
+	    FlowContent... childeren) {
+	return new Div(ga(clazz, style), Stream.of(childeren));
+    }
+
+    public static Div div(Clazz clazz, ch.isb_sib.swiss_prot.sjh.attributes.global.Style style,
+	    Stream<? extends FlowContent> childeren) {
+	return new Div(ga(clazz, style), childeren);
+    }
+
+    public static Div div(Clazz clazz, Stream<? extends FlowContent> childeren) {
+	return new Div(ga(clazz), childeren);
+    }
 
     public static Main main(Clazz clazz) {
 	return new Main(ga(clazz), Stream.empty());
@@ -2756,8 +2783,9 @@ public class Elements {
     }
 
     public static Option option(Selected selected, Value value, Text text) {
-	return new Option(Stream.empty(), null, null, selected, value,text);
+	return new Option(Stream.empty(), null, null, selected, value, text);
     }
+
     public static Output output(Id id, Clazz clazz) {
 	return new Output(ga(id, clazz), null, null, null, Stream.empty());
     }
