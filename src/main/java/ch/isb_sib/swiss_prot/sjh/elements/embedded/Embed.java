@@ -18,7 +18,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Embed extends CommonElement
+public non-sealed class Embed extends CommonElement
 	implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "embed".getBytes(UTF_8);
     private final Src src;

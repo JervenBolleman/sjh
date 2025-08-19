@@ -9,8 +9,9 @@ import ch.isb_sib.swiss_prot.sjh.attributes.content.Type;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Src;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
+import ch.isb_sib.swiss_prot.sjh.elements.contenttype.EmbeddedContent;
 
-public class Track extends CommonElement {
+public non-sealed class Track extends CommonElement implements EmbeddedContent {
     private final static byte[] NAME = "track".getBytes(UTF_8);
     private final Src src;
     private final Type type;

@@ -19,7 +19,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Form extends CommonElement implements FlowContent, PhrasingContent {
+public non-sealed class Form extends CommonElement implements FlowContent, PhrasingContent {
     private final static byte[] NAME = "form".getBytes(UTF_8);
     private final AcceptCharset ac;
     private final Action action;

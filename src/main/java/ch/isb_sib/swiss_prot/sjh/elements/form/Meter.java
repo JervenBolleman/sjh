@@ -19,7 +19,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Meter extends CommonElement implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+public non-sealed class Meter extends CommonElement implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "meter".getBytes(UTF_8);
     private final Max max;
     private final Value value;

@@ -10,7 +10,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Sub extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
+public non-sealed class Sub extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
     private final static byte[] NAME = "sub".getBytes(UTF_8);
 
     @Override

@@ -28,7 +28,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class TextArea extends CommonElement
+public non-sealed class TextArea extends CommonElement
 	implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "textarea".getBytes(UTF_8);
     private final Form form;

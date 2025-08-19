@@ -5,7 +5,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.ContentAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Media;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Type;

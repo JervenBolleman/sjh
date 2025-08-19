@@ -1,6 +1,13 @@
 package ch.isb_sib.swiss_prot.sjh.elements.contenttype;
 
 import ch.isb_sib.swiss_prot.sjh.elements.Element;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H1;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H2;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H3;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H4;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H5;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H6;
+import ch.isb_sib.swiss_prot.sjh.elements.sections.header.HGroup;
 
 /**
  * Heading content defines the header of a section (whether explicitly marked up
@@ -10,6 +17,6 @@ import ch.isb_sib.swiss_prot.sjh.elements.Element;
  *
  * 
  */
-public interface HeadingContent extends Element {
+public sealed interface HeadingContent extends Element permits H1, H2, H3, H4, H5, H6, HGroup {
 
 }

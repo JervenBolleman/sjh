@@ -15,7 +15,8 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.MetaContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Canvas extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent, MetaContent {
+public non-sealed class Canvas extends CommonElement
+	implements FlowContent, PhrasingContent, PalpabaleContent, MetaContent {
     private final static byte[] NAME = "canvas".getBytes(UTF_8);
     private Width width;
     private Height height;

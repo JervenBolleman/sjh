@@ -20,7 +20,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Area extends CommonElement implements FlowContent, PhrasingContent {
+public non-sealed class Area extends CommonElement implements FlowContent, PhrasingContent {
     private final static byte[] NAME = "area".getBytes(UTF_8);
     private final Alt alt;
     private final Coords coords;

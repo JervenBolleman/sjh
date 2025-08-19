@@ -5,7 +5,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Charset;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Content;
@@ -15,7 +14,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.meta.Name;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.MetaContent;
 
-public class Meta extends CommonElement implements MetaContent {
+public non-sealed class Meta extends CommonElement implements MetaContent {
     private final static byte[] NAME = "meta".getBytes(UTF_8);
     private final Name name;
     private final HttpEquiv httpEquiv;

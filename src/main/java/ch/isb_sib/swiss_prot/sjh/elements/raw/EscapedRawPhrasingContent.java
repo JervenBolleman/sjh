@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class EscapedRawPhrasingContent implements PhrasingContent {
+public  non-sealed class EscapedRawPhrasingContent implements PhrasingContent {
 
     private final String raw;
 

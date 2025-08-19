@@ -7,8 +7,8 @@ import static ch.isb_sib.swiss_prot.sjh.Elements.html;
 import static ch.isb_sib.swiss_prot.sjh.Elements.li;
 import static ch.isb_sib.swiss_prot.sjh.Elements.link;
 import static ch.isb_sib.swiss_prot.sjh.Elements.main;
-import static ch.isb_sib.swiss_prot.sjh.Elements.p;
 import static ch.isb_sib.swiss_prot.sjh.Elements.ol;
+import static ch.isb_sib.swiss_prot.sjh.Elements.p;
 import static ch.isb_sib.swiss_prot.sjh.Elements.title;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.Assert.assertEquals;
@@ -21,7 +21,6 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import ch.isb_sib.swiss_prot.sjh.Attributes;
 import ch.isb_sib.swiss_prot.sjh.elements.Element;
 import ch.isb_sib.swiss_prot.sjh.elements.HTML;
 import ch.isb_sib.swiss_prot.sjh.elements.grouping.LI;

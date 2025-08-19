@@ -10,7 +10,8 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Rtc extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
+@Deprecated(since = "0.1.0")
+public non-sealed class Rtc extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
     private final static byte[] NAME = "rtc".getBytes(UTF_8);
 
     @Override

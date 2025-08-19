@@ -16,7 +16,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Output extends CommonElement
+public non-sealed class Output extends CommonElement
 	implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "output".getBytes(UTF_8);
     private final Form form;

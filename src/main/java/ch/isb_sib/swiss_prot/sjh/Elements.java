@@ -135,6 +135,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.text.ruby.Rt;
 import ch.isb_sib.swiss_prot.sjh.elements.text.ruby.Rtc;
 import ch.isb_sib.swiss_prot.sjh.elements.text.ruby.Ruby;
 
+@SuppressWarnings("unused")
 public class Elements {
     public static HTML html() {
 	return new HTML();
@@ -396,16 +397,8 @@ public class Elements {
 	return new Ruby();
     }
 
-    public static Rb rb() {
-	return new Rb();
-    }
-
     public static Rt rt() {
 	return new Rt();
-    }
-
-    public static Rtc rtc() {
-	return new Rtc();
     }
 
     public static Rp rp() {
@@ -685,16 +678,8 @@ public class Elements {
 	return new Ruby(ga(id), Stream.empty());
     }
 
-    public static Rb rb(Id id) {
-	return new Rb(ga(id), Stream.empty());
-    }
-
     public static Rt rt(Id id) {
 	return new Rt(ga(id), Stream.empty());
-    }
-
-    public static Rtc rtc(Id id) {
-	return new Rtc(ga(id), Stream.empty());
     }
 
     public static Rp rp(Id id) {
@@ -987,16 +972,8 @@ public class Elements {
 	return new Ruby(ga(id), childeren);
     }
 
-    public static Rb rb(Id id, Stream<? extends PhrasingContent> childeren) {
-	return new Rb(ga(id), childeren);
-    }
-
     public static Rt rt(Id id, Stream<? extends PhrasingContent> childeren) {
 	return new Rt(ga(id), childeren);
-    }
-
-    public static Rtc rtc(Id id, Stream<? extends PhrasingContent> childeren) {
-	return new Rtc(ga(id), childeren);
     }
 
     public static Rp rp(Id id, Stream<? extends PhrasingContent> childeren) {
@@ -1282,16 +1259,8 @@ public class Elements {
 	return new Ruby(ga(clazz), childeren);
     }
 
-    public static Rb rb(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
-	return new Rb(ga(clazz), childeren);
-    }
-
     public static Rt rt(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
 	return new Rt(ga(clazz), childeren);
-    }
-
-    public static Rtc rtc(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
-	return new Rtc(ga(clazz), childeren);
     }
 
     public static Rp rp(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
@@ -1430,16 +1399,8 @@ public class Elements {
 	return new Ruby(ga(id, clazz), Stream.empty());
     }
 
-    public static Rb rb(Id id, Clazz clazz) {
-	return new Rb(ga(id, clazz), Stream.empty());
-    }
-
     public static Rt rt(Id id, Clazz clazz) {
 	return new Rt(ga(id, clazz), Stream.empty());
-    }
-
-    public static Rtc rtc(Id id, Clazz clazz) {
-	return new Rtc(ga(id, clazz), Stream.empty());
     }
 
     public static Rp rp(Id id, Clazz clazz) {
@@ -1812,16 +1773,8 @@ public class Elements {
 	return new Ruby(ga(id, clazz), childeren);
     }
 
-    public static Rb rb(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren) {
-	return new Rb(ga(id, clazz), childeren);
-    }
-
     public static Rt rt(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren) {
 	return new Rt(ga(id, clazz), childeren);
-    }
-
-    public static Rtc rtc(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren) {
-	return new Rtc(ga(id, clazz), childeren);
     }
 
     public static Rp rp(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren) {
@@ -1957,16 +1910,8 @@ public class Elements {
 	return new Ruby(ga(id, clazz), Stream.of(childeren));
     }
 
-    public static Rb rb(Id id, Clazz clazz, PhrasingContent... childeren) {
-	return new Rb(ga(id, clazz), Stream.of(childeren));
-    }
-
     public static Rt rt(Id id, Clazz clazz, PhrasingContent... childeren) {
 	return new Rt(ga(id, clazz), Stream.of(childeren));
-    }
-
-    public static Rtc rtc(Id id, Clazz clazz, PhrasingContent... childeren) {
-	return new Rtc(ga(id, clazz), Stream.of(childeren));
     }
 
     public static Rp rp(Id id, Clazz clazz, PhrasingContent... childeren) {
@@ -2748,10 +2693,6 @@ public class Elements {
     public static Input input(Id id, Clazz clazz, ch.isb_sib.swiss_prot.sjh.attributes.form.Type type, Checked checked,
 	    Disabled disabled) {
 	return new Input(ga(id, clazz), checked, disabled, type);
-    }
-
-    public static KeyGen keygen(Id id, Clazz clazz) {
-	return new KeyGen(ga(id, clazz), null, null, null, null, null, null);
     }
 
     public static Label label(Id id, Clazz clazz) {

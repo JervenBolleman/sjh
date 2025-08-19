@@ -15,7 +15,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Progress extends CommonElement
+public non-sealed class Progress extends CommonElement
 	implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "progress".getBytes(UTF_8);
     private final Max max;

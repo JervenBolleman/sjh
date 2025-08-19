@@ -14,7 +14,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 
-public class OL extends CommonElement implements FlowContent, PalpabaleContent {
+public non-sealed class OL extends CommonElement implements FlowContent, PalpabaleContent {
     private final static byte[] NAME = "ol".getBytes(UTF_8);
     private final Reversed rev;
     private final Start start;

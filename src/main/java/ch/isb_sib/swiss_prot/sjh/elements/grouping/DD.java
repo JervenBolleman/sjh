@@ -8,7 +8,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 
-public class DD extends CommonElement implements DtOrDd {
+public non-sealed class DD extends CommonElement implements DtOrDd {
     private final static byte[] NAME = "dd".getBytes(UTF_8);
 
     @Override

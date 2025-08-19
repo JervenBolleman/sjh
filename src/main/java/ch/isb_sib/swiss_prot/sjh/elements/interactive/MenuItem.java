@@ -16,7 +16,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.Text;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 
-public class MenuItem extends CommonElement implements FlowContent {
+public non-sealed class MenuItem extends CommonElement implements FlowContent {
 	private final static byte[] ATTR_NAME = "type".getBytes(UTF_8);
 	private final static byte[] NAME = "menuitem".getBytes(UTF_8);
 

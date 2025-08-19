@@ -14,7 +14,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Value;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.Text;
 
-public class Option extends CommonElement implements OptionOrOptGroup {
+public non-sealed class Option extends CommonElement implements OptionOrOptGroup {
     private final static byte[] NAME = "option".getBytes(UTF_8);
     private final Disabled disabled;
     private final Label label;

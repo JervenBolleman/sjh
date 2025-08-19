@@ -10,7 +10,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Bdo extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
+public non-sealed class Bdo extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
     private final static byte[] NAME = "bdo".getBytes(UTF_8);
 
     @Override

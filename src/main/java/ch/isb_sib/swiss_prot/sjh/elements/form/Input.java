@@ -43,7 +43,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Input extends CommonElement implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+public non-sealed class Input extends CommonElement implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "input".getBytes(UTF_8);
     private final Form form;
     private final Accept accept;

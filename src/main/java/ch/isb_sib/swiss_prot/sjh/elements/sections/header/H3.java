@@ -12,26 +12,20 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
 
+public non-sealed class H3 extends CommonElement
+	implements FlowContent, SectioningContent, PalpabaleContent, HeadingContent {
+    private final static byte[] NAME = "h3".getBytes(UTF_8);
 
-public class H3
-    extends CommonElement
-		implements FlowContent, SectioningContent, PalpabaleContent, HeadingContent
-{
-	private final static byte[] NAME = "h3".getBytes(UTF_8);
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected byte[] getName()
-	{
-		return NAME;
-	}
+    public H3(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
+	super(ga, childeren);
+    }
 
-	public H3(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren)
-	{
-		super(ga, childeren);
-	}
-
-	public H3()
-	{
-		super();
-	}
+    public H3() {
+	super();
+    }
 }

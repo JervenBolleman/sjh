@@ -22,7 +22,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Img extends CommonElement implements FlowContent, PhrasingContent, EmbeddedContent, FormAssociatedContent,
+public non-sealed class Img extends CommonElement implements FlowContent, PhrasingContent, EmbeddedContent, FormAssociatedContent,
 	InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "img".getBytes(UTF_8);
     private final Alt alt;

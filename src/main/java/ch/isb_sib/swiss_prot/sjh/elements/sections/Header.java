@@ -9,7 +9,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 
-public class Header extends CommonElement implements FlowContent, PalpabaleContent {
+public non-sealed class Header extends CommonElement implements FlowContent, PalpabaleContent {
     private final static byte[] NAME = "header".getBytes(UTF_8);
 
     @Override

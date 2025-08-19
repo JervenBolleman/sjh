@@ -23,11 +23,12 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Object extends CommonElement implements FlowContent, PhrasingContent, EmbeddedContent,
+public non-sealed class Object extends CommonElement implements FlowContent, PhrasingContent, EmbeddedContent,
 	FormAssociatedContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "object".getBytes(UTF_8);
     private final Data data;
     private final Type type;
+    @SuppressWarnings("deprecation")
     private final TypeMustMatch typemustmatch;
     private final UseMap um;
     private final Form form;
@@ -39,6 +40,7 @@ public class Object extends CommonElement implements FlowContent, PhrasingConten
 	return NAME;
     }
 
+    @SuppressWarnings("deprecation")
     public Object(Stream<GlobalAttribute> ga, Data data, Type type, TypeMustMatch typemustmatch, Name name, UseMap um,
 	    Form form, Width width, Height height, Stream<Param> param) {
 	super(ga, param);

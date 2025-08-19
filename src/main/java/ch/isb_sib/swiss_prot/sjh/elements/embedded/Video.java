@@ -25,7 +25,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Video extends CommonElement
+public non-sealed class Video extends CommonElement
 	implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "video".getBytes(UTF_8);
     private final Src src;

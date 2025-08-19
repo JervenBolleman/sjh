@@ -17,7 +17,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.MetaContent;
 
-public class Link extends CommonElement implements MetaContent {
+public non-sealed class Link extends CommonElement implements MetaContent {
     private final static byte[] NAME = "link".getBytes(UTF_8);
     private final Href href;
     private final CrossOrigin co;

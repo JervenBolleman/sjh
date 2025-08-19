@@ -11,7 +11,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.HeadingContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.script.Template;
 
-public class HGroup extends CommonElement implements FlowContent, PalpabaleContent, HeadingContent {
+public non-sealed class HGroup extends CommonElement implements FlowContent, PalpabaleContent, HeadingContent {
 	private final static byte[] NAME = "hgroup".getBytes(UTF_8);
 
 	@Override

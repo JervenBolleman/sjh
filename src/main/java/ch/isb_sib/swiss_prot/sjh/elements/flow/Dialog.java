@@ -26,26 +26,26 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningRoot;
  *
  * 
  */
-public class Dialog extends CommonElement implements FlowContent, SectioningRoot {
-	private final static byte[] NAME = "dialog".getBytes(UTF_8);
-	private final Open open;
+public non-sealed class Dialog extends CommonElement implements FlowContent, SectioningRoot {
+    private final static byte[] NAME = "dialog".getBytes(UTF_8);
+    private final Open open;
 
-	public Dialog(Stream<GlobalAttribute> ga, Open open) {
-		super(ga, Stream.empty());
-		this.open = open;
-	}
+    public Dialog(Stream<GlobalAttribute> ga, Open open) {
+	super(ga, Stream.empty());
+	this.open = open;
+    }
 
-	@Override
-	protected byte[] getName() {
-		return NAME;
-	}
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	@Override
-	protected Stream<Attribute> getElementSpecificAttributes() {
-		if (open != null)
-			return Stream.of(open);
-		else
-			return Stream.empty();
-	}
+    @Override
+    protected Stream<Attribute> getElementSpecificAttributes() {
+	if (open != null)
+	    return Stream.of(open);
+	else
+	    return Stream.empty();
+    }
 
 }

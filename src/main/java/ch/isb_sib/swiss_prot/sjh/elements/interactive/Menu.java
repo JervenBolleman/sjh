@@ -13,7 +13,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.ScriptSupporting;
 import ch.isb_sib.swiss_prot.sjh.elements.grouping.HR;
 
-public class Menu extends CommonElement implements FlowContent {
+public non-sealed class Menu extends CommonElement implements FlowContent {
 	private final static byte[] NAME = "menu".getBytes(UTF_8);
 	private final Type type;
 

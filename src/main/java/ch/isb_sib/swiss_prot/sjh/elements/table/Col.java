@@ -9,7 +9,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.table.Span;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 
-public class Col extends CommonElement implements ColOrTemplate {
+public non-sealed class Col extends CommonElement implements ColOrTemplate {
     private final static byte[] NAME = "col".getBytes(UTF_8);
     private final Span span;
 

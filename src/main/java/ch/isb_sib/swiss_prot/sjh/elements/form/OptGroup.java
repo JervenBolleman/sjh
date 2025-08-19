@@ -11,7 +11,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.form.Disabled;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 
-public class OptGroup extends CommonElement implements OptionOrOptGroup {
+public non-sealed class OptGroup extends CommonElement implements OptionOrOptGroup {
     private final static byte[] NAME = "optgroup".getBytes(UTF_8);
     private final Disabled disabled;
     private final Label label;

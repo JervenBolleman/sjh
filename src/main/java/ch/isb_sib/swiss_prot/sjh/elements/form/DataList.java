@@ -10,7 +10,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.Element;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class DataList<T extends Element> extends CommonElement implements FlowContent, PhrasingContent {
+public non-sealed class DataList<T extends Element> extends CommonElement implements FlowContent, PhrasingContent {
     private final static byte[] NAME = "datalist".getBytes(UTF_8);
 
     @Override

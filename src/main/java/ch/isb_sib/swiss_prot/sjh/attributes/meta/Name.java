@@ -3,7 +3,6 @@ package ch.isb_sib.swiss_prot.sjh.attributes.meta;
 import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.FormAttribute;
 
 public non-sealed class Name implements MetaAttribute {
     private static final byte[] LANG_IS = Attribute.fromString("name");

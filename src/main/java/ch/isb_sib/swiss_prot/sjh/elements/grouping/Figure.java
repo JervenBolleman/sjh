@@ -10,7 +10,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
 
-public class Figure extends CommonElement implements FlowContent, SectioningContent, PalpabaleContent {
+public non-sealed class Figure extends CommonElement implements FlowContent, SectioningContent, PalpabaleContent {
     private final static byte[] NAME = "figure".getBytes(UTF_8);
 
     @Override

@@ -17,19 +17,19 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
  * support scripting, by affecting how the document is parsed.
  * 
  */
-public class NoScript extends CommonElement implements FlowContent, PhrasingContent, MetaContent {
-	private final static byte[] NAME = "noscript".getBytes(UTF_8);
+public non-sealed class NoScript extends CommonElement implements FlowContent, PhrasingContent, MetaContent {
+    private final static byte[] NAME = "noscript".getBytes(UTF_8);
 
-	@Override
-	protected byte[] getName() {
-		return NAME;
-	}
+    @Override
+    protected byte[] getName() {
+	return NAME;
+    }
 
-	public NoScript(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-		super(ga, childeren);
-	}
+    public NoScript(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
+	super(ga, childeren);
+    }
 
-	public NoScript() {
-		super();
-	}
+    public NoScript() {
+	super();
+    }
 }

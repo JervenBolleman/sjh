@@ -13,7 +13,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 
-public class Table extends CommonElement implements FlowContent, PalpabaleContent {
+public non-sealed class Table extends CommonElement implements FlowContent, PalpabaleContent {
     private final static byte[] NAME = "table".getBytes(UTF_8);
     private final Border border;
     private final Sortable sortable;

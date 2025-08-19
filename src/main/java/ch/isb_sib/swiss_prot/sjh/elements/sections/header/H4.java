@@ -12,7 +12,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
 
-public class H4 extends CommonElement implements FlowContent, SectioningContent, PalpabaleContent, HeadingContent {
+public non-sealed  class H4 extends CommonElement implements FlowContent, SectioningContent, PalpabaleContent, HeadingContent {
     private final static byte[] NAME = "h4".getBytes(UTF_8);
 
     @Override

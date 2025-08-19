@@ -12,7 +12,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public class Data extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
+public non-sealed class Data extends CommonElement implements FlowContent, PhrasingContent, PalpabaleContent {
     private final static byte[] NAME = "data".getBytes(UTF_8);
     private final Value value;
 

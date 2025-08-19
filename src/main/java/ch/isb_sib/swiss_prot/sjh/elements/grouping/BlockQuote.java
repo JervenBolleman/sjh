@@ -11,7 +11,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningRoot;
 
-public class BlockQuote extends CommonElement implements FlowContent, SectioningRoot {
+public non-sealed class BlockQuote extends CommonElement implements FlowContent, SectioningRoot {
     private final static byte[] NAME = "blockquote".getBytes(UTF_8);
     private final Cite cite;
 

@@ -2,8 +2,6 @@ package ch.isb_sib.swiss_prot.sjh.attributes;
 
 import java.util.Objects;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
-
 public non-sealed class Download implements Attribute {
     private static final byte[] LANG_IS = Attribute.fromString("download");
 
