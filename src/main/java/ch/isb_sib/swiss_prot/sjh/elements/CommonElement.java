@@ -104,7 +104,7 @@ public abstract class CommonElement implements Element {
 		return Stream.concat(getGlobalAttributes(), getElementSpecificAttributes()).filter(Objects::nonNull);
 	}
 
-	protected Stream<Attribute> getElementSpecificAttributes() {
+	protected Stream<? extends Attribute> getElementSpecificAttributes() {
 		return Stream.empty();
 	}
 }

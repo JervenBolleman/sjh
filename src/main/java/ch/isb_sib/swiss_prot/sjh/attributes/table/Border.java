@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public class Border implements Attribute {
+public non-sealed class Border implements TableAttribute {
     private static final byte[] LANG_IS = Attribute.fromString("border");
 
     private final byte[] value;

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public class Headers implements Attribute {
+public non-sealed class Headers implements TableAttribute {
     private static final byte[] LANG_IS = Attribute.fromString("headers");
 
     private final byte[] value;

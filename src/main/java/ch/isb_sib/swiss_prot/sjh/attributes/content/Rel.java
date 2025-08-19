@@ -20,7 +20,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
  *      W3C HTML5 specification</a>
  * 
  */
-public class Rel implements Attribute {
+public non-sealed class Rel implements ContentAttribute {
     private static final byte[] NAME = Attribute.fromString("rel");
 
     private final byte[] value;

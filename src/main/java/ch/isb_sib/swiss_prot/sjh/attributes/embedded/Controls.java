@@ -3,15 +3,22 @@ package ch.isb_sib.swiss_prot.sjh.attributes.embedded;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
-public class Controls extends BooleanAttribute {
-	private static final byte[] NAME = Attribute.fromString("controls");
+public enum Controls implements BooleanAttribute, EmbeddedAttribute {
 
-	public Controls(boolean bool) {
-		super(bool);
-	}
+    TRUE(), FALSE();
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    private Controls() {
+    }
+
+    private static final byte[] NAME = Attribute.fromString("controls");
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

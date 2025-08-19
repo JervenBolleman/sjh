@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -9,8 +10,9 @@
 	<name>Static Java HTML</name>
 	<version>0.1.0-SNAPSHOT</version>
 
-    <description>A silly way for generating HTML responses. Do it all in java instead of JSPX/etc...</description>
-    <url>https://github.com/jervenbolleman/sjh</url>
+	<description>A silly way for generating HTML responses. Do it all in java
+		instead of JSPX/etc...</description>
+	<url>https://github.com/jervenbolleman/sjh</url>
 
 	<licenses>
 		<license>
@@ -47,11 +49,11 @@
 				<version>4.13.2</version>
 				<scope>test</scope>
 			</dependency>
-        </dependencies>
+		</dependencies>
 	</dependencyManagement>
 
-    <build>
-        <plugins>
+	<build>
+		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>

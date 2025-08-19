@@ -3,64 +3,52 @@ package ch.isb_sib.swiss_prot.sjh.attributes;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
-import static java.nio.charset.StandardCharsets.UTF_8;;
 
-public abstract class BooleanAttribute implements Attribute {
+import ch.isb_sib.swiss_prot.sjh.attributes.content.NoModule;
+import ch.isb_sib.swiss_prot.sjh.attributes.content.Open;
+import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Autoplay;
+import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Controls;
+import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Default;
+import ch.isb_sib.swiss_prot.sjh.attributes.embedded.IsMap;
+import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Loop;
+import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Muted;
+import ch.isb_sib.swiss_prot.sjh.attributes.embedded.TypeMustMatch;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.AutoFocus;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Checked;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Disabled;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.FormNoValidate;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Multiple;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.NoValidate;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.ReadOnly;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Required;
+import ch.isb_sib.swiss_prot.sjh.attributes.form.Selected;
+import ch.isb_sib.swiss_prot.sjh.attributes.global.Hidden;
+import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Reversed;
+import ch.isb_sib.swiss_prot.sjh.attributes.script.Async;
+import ch.isb_sib.swiss_prot.sjh.attributes.script.Defer;;
 
-    private final static class CharSequenceOfBytesValueLessThan128 implements CharSequence {
-	private final byte[] attributeName;
+@SuppressWarnings("deprecation")
+public sealed interface BooleanAttribute extends Attribute
+	permits Async, NoModule, Open, Autoplay, Controls, Default, IsMap, Loop, Muted, TypeMustMatch, AutoFocus,
+	Checked, Disabled, FormNoValidate, Selected, Required, ReadOnly, NoValidate, Multiple, Hidden, Reversed, Defer {
 
-	private CharSequenceOfBytesValueLessThan128(byte[] attributeName) {
-	    super();
-	    this.attributeName = attributeName;
-	}
+    static final byte[] EMPTY = new byte[0];
 
-	@Override
-	public CharSequence subSequence(int start, int end) {
-	    return new String(attributeName, UTF_8).subSequence(start, end);
-	}
+    boolean is();
 
-	@Override
-	public int length() {
-	    return attributeName.length;
-	}
-
-	@Override
-	public char charAt(int index) {
-	    return (char) attributeName[index];
-	}
-
-	@Override
-	public String toString() 
-	{
-	    return new String(attributeName, UTF_8);
-	}
-
-    }
-
-    protected static final byte[] EMPTY = new byte[0];
-    protected final boolean val;
-
-    public BooleanAttribute(boolean val) {
-	this.val = val;
-    }
-
-    @Override
-    public final byte[] getValue() {
-	return EMPTY;
-    }
-
-    public final void render(OutputStream stream) throws IOException {
-	if (val)
+    public default void render(OutputStream stream) throws IOException {
+	if (is())
 	    stream.write(getAttributeName());
     }
 
-    public final void render(Writer stream) throws IOException {
-	if (val)
-	    stream.append(charSeq(getAttributeName()));
+    @Override
+    public default byte[] getValue() {
+	return null;
     }
 
-    private CharSequence charSeq(byte[] attributeName) {
-	return new CharSequenceOfBytesValueLessThan128(attributeName);
+    
+    public default void render(Writer stream) throws IOException {
+	if (is())
+	    stream.append(new CharSequenceOfBytesValueLessThan128(getAttributeName()));
     }
 }

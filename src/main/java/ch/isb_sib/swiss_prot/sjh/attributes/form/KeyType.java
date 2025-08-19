@@ -5,8 +5,8 @@ import java.util.Objects;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
 
-public class KeyType
-    implements Attribute
+public non-sealed class KeyType
+    implements FormAttribute
 {
 	private static final byte[] NAME = Attribute.fromString("keytype");
 

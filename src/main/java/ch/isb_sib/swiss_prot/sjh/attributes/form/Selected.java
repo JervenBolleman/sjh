@@ -3,19 +3,23 @@ package ch.isb_sib.swiss_prot.sjh.attributes.form;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
+public enum Selected implements FormAttribute, BooleanAttribute {
 
-public class Selected
-    extends BooleanAttribute
-{
-	private static final byte[] NAME = Attribute.fromString("selected");
+    TRUE, FALSE;
 
-	public Selected(boolean value)
-	{
-	    super(value);
-	}
+    private static final byte[] NAME = Attribute.fromString("selected");
 
-	@Override
-	public byte[] getAttributeName() {
-	    return NAME;
-	}
+    private Selected() {
+
+    }
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

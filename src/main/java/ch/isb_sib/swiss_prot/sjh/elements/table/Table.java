@@ -5,10 +5,10 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.table.Border;
 import ch.isb_sib.swiss_prot.sjh.attributes.table.Sortable;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.TableAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
@@ -28,23 +28,23 @@ public class Table extends CommonElement implements FlowContent, PalpabaleConten
 	super(ga,
 		Stream.concat(Stream.concat(
 			Stream.concat(Stream.concat(Stream.of(caption), colGroups), Stream.of(thead, tfoot)), tbodies),
-		rows));
+			rows));
 	this.border = border;
 	this.sortable = sortable;
     }
 
-    public Table(Stream<GlobalAttribute> ga, Caption caption, Stream<ColGroup> colGroups, THead thead, Stream<TBody> tbodies,
-	    Stream<TR> rows, TFoot tfoot, Border border, Sortable sortable) {
+    public Table(Stream<GlobalAttribute> ga, Caption caption, Stream<ColGroup> colGroups, THead thead,
+	    Stream<TBody> tbodies, Stream<TR> rows, TFoot tfoot, Border border, Sortable sortable) {
 	super(ga,
 		Stream.concat(Stream.concat(Stream.concat(
 			Stream.concat(Stream.concat(Stream.of(caption), colGroups), Stream.of(thead)), tbodies), rows),
-		Stream.of(tfoot)));
+			Stream.of(tfoot)));
 	this.border = border;
 	this.sortable = sortable;
     }
 
     @Override
-    protected Stream<Attribute> getElementSpecificAttributes() {
+    protected Stream<TableAttribute> getElementSpecificAttributes() {
 	return Stream.of(border, sortable).filter(Objects::nonNull);
     }
 }

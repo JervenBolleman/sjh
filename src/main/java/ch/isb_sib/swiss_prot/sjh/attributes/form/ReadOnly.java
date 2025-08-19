@@ -9,15 +9,23 @@ import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
  * mutable
  *
  */
-public class ReadOnly extends BooleanAttribute {
-	private static final byte[] NAME = Attribute.fromString("readonly");
+public enum ReadOnly implements FormAttribute, BooleanAttribute {
 
-	public ReadOnly(boolean val) {
-		super(val);
-	}
+    TRUE, FALSE;
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    private static final byte[] NAME = Attribute.fromString("readonly");
+
+    private ReadOnly() {
+
+    }
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

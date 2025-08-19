@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public class Scope implements Attribute {
+public non-sealed class Scope implements TableAttribute {
     private static final byte[] LANG_IS = Attribute.fromString("scope");
 
     private final byte[] value;

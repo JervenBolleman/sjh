@@ -5,8 +5,8 @@ import java.util.Objects;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
 
-public class Label
-    implements Attribute
+public non-sealed class Label
+    implements EmbeddedAttribute
 {
 	private static final byte[] NAME = Attribute.fromString("label");
 

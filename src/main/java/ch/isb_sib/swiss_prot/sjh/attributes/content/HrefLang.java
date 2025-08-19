@@ -21,7 +21,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
  *      W3C HTML5 specification</a>
  * 
  */
-public class HrefLang implements Attribute {
+public non-sealed class HrefLang implements ContentAttribute {
     private static final byte[] NAME = Attribute.fromString("hreflang");
 
     private final byte[] value;

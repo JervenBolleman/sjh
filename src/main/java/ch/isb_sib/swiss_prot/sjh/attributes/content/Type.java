@@ -19,7 +19,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
  *      "https://www.w3.org/TR/html/single-page.html#attr-hyperlink-type"> W3C
  *      HTML5 specification</a>
  */
-public class Type implements Attribute {
+public non-sealed class Type implements ContentAttribute {
     private static final byte[] NAME = Attribute.fromString("type");
 
     private final byte[] value;

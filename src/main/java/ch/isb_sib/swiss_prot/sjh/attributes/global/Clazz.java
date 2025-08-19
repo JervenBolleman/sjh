@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public class Clazz implements GlobalAttribute {
+public non-sealed class Clazz implements GlobalAttribute {
     private static final byte[] CLAZZ = Attribute.fromString("class");
 
     private final byte[] value;

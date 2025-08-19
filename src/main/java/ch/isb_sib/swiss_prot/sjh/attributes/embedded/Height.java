@@ -5,8 +5,8 @@ import java.util.Objects;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
 
-public class Height
-    implements Attribute
+public non-sealed class Height
+    implements EmbeddedAttribute
 {
 	private static final byte[] NAME = Attribute.fromString("height");
 

@@ -5,7 +5,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.content.ContentAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.CrossOrigin;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Href;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.HrefLang;
@@ -45,7 +45,7 @@ public class Link extends CommonElement implements MetaContent {
     }
 
     @Override
-    protected Stream<Attribute> getElementSpecificAttributes() {
+    protected Stream<ContentAttribute> getElementSpecificAttributes() {
 	return Stream.of(href, co, rel, media, hrefLang, type, size).filter(Objects::nonNull);
     }
 

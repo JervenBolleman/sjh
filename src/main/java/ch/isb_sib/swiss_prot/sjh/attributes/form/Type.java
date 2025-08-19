@@ -4,7 +4,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public final class Type implements Attribute {
+public final class Type implements FormAttribute {
     private final static byte[] NAME = "type".getBytes(UTF_8);
 
     public enum Types {

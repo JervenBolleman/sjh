@@ -14,7 +14,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
  *      "https://www.w3.org/TR/html/single-page.html#attr-hyperlink-target"> W3C
  *      HTML5 specification</a>
  */
-public class Target implements Attribute {
+public non-sealed class Target implements ContentAttribute {
     private static final byte[] NAME = Attribute.fromString("target");
 
     private final byte[] value;

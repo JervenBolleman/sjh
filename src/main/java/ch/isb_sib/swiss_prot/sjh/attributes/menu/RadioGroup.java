@@ -4,7 +4,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public class RadioGroup implements Attribute {
+public non-sealed class RadioGroup implements MenuAttribute {
 
 	private final static byte[] NAME = "radiogroup".getBytes(UTF_8);
 

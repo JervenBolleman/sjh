@@ -4,29 +4,23 @@ import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
+public non-sealed class OnCancel implements EventAttribute {
+    private static final byte[] NAME = Attribute.fromString("oncancel");
 
-public class OnCancel
-    implements EventAttribute
-{
-	private static final byte[] NAME = Attribute.fromString("oncancel");
+    private final byte[] value;
 
-	private final byte[] value;
+    public OnCancel(String value) {
+	Objects.nonNull(value);
+	this.value = Attribute.fromString(value);
+    }
 
-	public OnCancel(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
-	}
+    @Override
+    public byte[] getValue() {
+	return value;
+    }
 
-	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
-		return NAME;
-	}
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
 }

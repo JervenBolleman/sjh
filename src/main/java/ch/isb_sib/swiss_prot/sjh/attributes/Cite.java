@@ -2,9 +2,7 @@ package ch.isb_sib.swiss_prot.sjh.attributes;
 
 import java.util.Objects;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
-
-public class Cite implements Attribute {
+public non-sealed class Cite implements Attribute {
     private static final byte[] LANG_IS = Attribute.fromString("cite");
 
     private final byte[] value;

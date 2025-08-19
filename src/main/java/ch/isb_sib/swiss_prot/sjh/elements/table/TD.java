@@ -5,11 +5,11 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.table.ColSpan;
 import ch.isb_sib.swiss_prot.sjh.attributes.table.Headers;
 import ch.isb_sib.swiss_prot.sjh.attributes.table.RowSpan;
+import ch.isb_sib.swiss_prot.sjh.attributes.table.TableAttribute;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.FlowContent;
 
@@ -33,7 +33,7 @@ public class TD extends CommonElement implements TDOrTH {
     }
 
     @Override
-    protected Stream<Attribute> getElementSpecificAttributes() {
+    protected Stream<TableAttribute> getElementSpecificAttributes() {
 	return Stream.of(rowspan, colspan, headers).filter(Objects::nonNull);
     }
 }

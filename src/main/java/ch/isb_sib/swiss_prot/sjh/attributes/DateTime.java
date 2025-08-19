@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 import java.util.Objects;
 
-public class DateTime implements Attribute {
+public non-sealed class DateTime implements Attribute {
     private static final byte[] LANG_IS = Attribute.fromString("datetime");
 
     private final byte[] value;

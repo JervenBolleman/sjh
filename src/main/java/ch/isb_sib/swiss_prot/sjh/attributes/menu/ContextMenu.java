@@ -16,37 +16,36 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
  * Here is an example of a context menu for an input control:
  * 
  * <form name="npc"> <label>Character name: <input name=char type=text
- * contextmenu=namemenu required></label>
- * <menu type=context id=namemenu> <menuitem onclick=
- * "document.forms.npc.elements.char.value = getRandomName()"> Pick random
- * name </menuitem>
+ * contextmenu=namemenu required></label> <menu type=context id=namemenu>
+ * <menuitem onclick= "document.forms.npc.elements.char.value =
+ * getRandomName()"> Pick random name </menuitem>
  * <menuitem onclick="prefillFields(document.forms.npc.elements.char.value)">
  * Prefill other fields based on name </menuitem> </menu> </form>
  * 
- * This adds two items to the control's context menu, one called
- * "Pick random name", and one called "Prefill other fields based on name". They
- * invoke scripts that are not shown in the example above.
+ * This adds two items to the control's context menu, one called "Pick random
+ * name", and one called "Prefill other fields based on name". They invoke
+ * scripts that are not shown in the example above.
  *
  * 
  */
-public class ContextMenu implements Attribute {
+public non-sealed class ContextMenu implements MenuAttribute {
 
-	private final static byte[] NAME = "contextmenu".getBytes(UTF_8);
+    private final static byte[] NAME = "contextmenu".getBytes(UTF_8);
 
-	private byte[] value;
+    private byte[] value;
 
-	private ContextMenu(String bytes) {
-		this.value = Attribute.fromString(bytes);
-	}
+    private ContextMenu(String bytes) {
+	this.value = Attribute.fromString(bytes);
+    }
 
-	@Override
-	public byte[] getValue() {
-		return value;
-	}
+    @Override
+    public byte[] getValue() {
+	return value;
+    }
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
 
 }

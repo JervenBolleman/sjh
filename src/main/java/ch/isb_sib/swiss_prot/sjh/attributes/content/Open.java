@@ -9,16 +9,23 @@ import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
  * @author jbollema
  *
  */
-public class Open extends BooleanAttribute {
-	private static final byte[] NAME = Attribute.fromString("open");
+public enum Open implements BooleanAttribute, ContentAttribute {
 
-	public Open(boolean val) {
-		super(val);
-	}
+    TRUE(), FALSE();
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    private static final byte[] NAME = Attribute.fromString("open");
 
+    private Open() {
+
+    }
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

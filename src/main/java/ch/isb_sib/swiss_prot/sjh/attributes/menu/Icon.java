@@ -14,7 +14,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
  * is no icon.
  *
  */
-public class Icon implements Attribute {
+public non-sealed class Icon implements MenuAttribute {
 
 	private final static byte[] NAME = "icon".getBytes(UTF_8);
 

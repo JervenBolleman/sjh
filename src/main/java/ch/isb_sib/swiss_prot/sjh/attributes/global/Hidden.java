@@ -3,15 +3,23 @@ package ch.isb_sib.swiss_prot.sjh.attributes.global;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
-public class Hidden extends BooleanAttribute implements GlobalAttribute {
+public enum Hidden implements GlobalAttribute, BooleanAttribute {
+
+    TRUE, FALSE;
+
     private static final byte[] NAME = Attribute.fromString("hidden");
 
-    public Hidden(boolean bool) {
-	super(bool);
+    private Hidden() {
+
     }
 
     @Override
     public byte[] getAttributeName() {
 	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
     }
 }

@@ -14,15 +14,22 @@ import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
  * 
  *
  */
-public class Required extends BooleanAttribute {
-	private static final byte[] NAME = Attribute.fromString("required");
+public enum Required implements FormAttribute, BooleanAttribute {
 
-	public Required(boolean val) {
-		super(val);
-	}
+    TRUE, FALSE;
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    private static final byte[] NAME = Attribute.fromString("required");
+
+    private Required() {
+    }
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

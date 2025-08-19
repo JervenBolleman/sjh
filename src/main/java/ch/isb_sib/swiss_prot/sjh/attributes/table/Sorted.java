@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public class Sorted implements Attribute {
+public non-sealed class Sorted implements TableAttribute {
     private static final byte[] LANG_IS = Attribute.fromString("sorted");
 
     private final byte[] value;

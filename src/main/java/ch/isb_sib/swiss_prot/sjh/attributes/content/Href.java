@@ -19,7 +19,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
  *      HTML5 specification</a>
  * 
  */
-public class Href implements Attribute {
+public non-sealed class Href implements ContentAttribute {
     private static final byte[] NAME = Attribute.fromString("href");
 
     private final byte[] value;

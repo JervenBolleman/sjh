@@ -3,15 +3,22 @@ package ch.isb_sib.swiss_prot.sjh.attributes.grouping;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
-public class Reversed extends BooleanAttribute {
-	private static final byte[] NAME = Attribute.fromString("reversed");
+public enum Reversed implements GroupingAttribute, BooleanAttribute {
 
-	public Reversed(boolean bool) {
-		super(bool);
-	}
+    TRUE, FALSE;
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    private static final byte[] NAME = Attribute.fromString("reversed");
+
+    private Reversed() {
+    }
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

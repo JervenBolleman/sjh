@@ -16,18 +16,14 @@ import ch.isb_sib.swiss_prot.sjh.attributes.content.Sizes;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Target;
 import ch.isb_sib.swiss_prot.sjh.attributes.content.Type;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Alt;
-import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Autoplay;
-import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Controls;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Coords;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Data;
-import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Default;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Form;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Height;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.IsMap;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Label;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Loop;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.MediaGroup;
-import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Muted;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Poster;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Preload;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.SandBox;
@@ -35,7 +31,6 @@ import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Shape;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Src;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.SrcDoc;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.SrcLang;
-import ch.isb_sib.swiss_prot.sjh.attributes.embedded.TypeMustMatch;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.UseMap;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Width;
 import ch.isb_sib.swiss_prot.sjh.attributes.event.OnAbort;
@@ -87,18 +82,14 @@ import ch.isb_sib.swiss_prot.sjh.attributes.form.Accept;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.AcceptCharset;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Action;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.AutoComplete;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.AutoFocus;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Challenge;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.Checked;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Cols;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.DirName;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.Disabled;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.EncType;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.For;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.FormAction;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.FormEnctype;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.FormMethod;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.FormNoValidate;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.FormTarget;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.High;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.InputMode;
@@ -111,15 +102,10 @@ import ch.isb_sib.swiss_prot.sjh.attributes.form.Menu;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Method;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Min;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.MinLength;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.Multiple;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.NoValidate;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Optimum;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Pattern;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.PlaceHolder;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.ReadOnly;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.Required;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Rows;
-import ch.isb_sib.swiss_prot.sjh.attributes.form.Selected;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Size;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Step;
 import ch.isb_sib.swiss_prot.sjh.attributes.form.Wrap;
@@ -131,7 +117,6 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.DirAuto;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.DirLTR;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.DirRTL;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
-import ch.isb_sib.swiss_prot.sjh.attributes.global.Hidden;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Id;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Lang;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.SpellCheck;
@@ -139,7 +124,6 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.Style;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.TabIndex;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.Translate;
 import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Kind;
-import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Reversed;
 import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Start;
 import ch.isb_sib.swiss_prot.sjh.attributes.grouping.Value;
 import ch.isb_sib.swiss_prot.sjh.attributes.head.Manifest;
@@ -147,8 +131,6 @@ import ch.isb_sib.swiss_prot.sjh.attributes.meta.Charset;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Content;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.HttpEquiv;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Name;
-import ch.isb_sib.swiss_prot.sjh.attributes.script.Async;
-import ch.isb_sib.swiss_prot.sjh.attributes.script.Defer;
 import ch.isb_sib.swiss_prot.sjh.attributes.script.Nonce;
 import ch.isb_sib.swiss_prot.sjh.attributes.table.Abbr;
 import ch.isb_sib.swiss_prot.sjh.attributes.table.Border;
@@ -237,24 +219,12 @@ public class Attributes {
 	return new Alt(value);
     }
 
-	public static Autoplay autoplay(boolean bool) {
-		return new Autoplay(bool);
-    }
-
-	public static Controls controls(boolean bool) {
-		return new Controls(bool);
-    }
-
     public static Coords coords(String value) {
 	return new Coords(value);
     }
 
     public static Data data(String value) {
 	return new Data(value);
-    }
-
-	public static Default defaulta(boolean value) {
-		return new Default(value);
     }
 
     public static Form form(String value) {
@@ -265,24 +235,28 @@ public class Attributes {
 	return new Height(value);
     }
 
-	public static IsMap isMap(boolean bool) {
-		return new IsMap(bool);
+    public static IsMap isMap(boolean bool) {
+	if (bool) {
+	    return IsMap.TRUE;
+	} else {
+	    return IsMap.FALSE;
+	}
     }
 
     public static Label label(String value) {
 	return new Label(value);
     }
 
-	public static Loop loop(boolean bool) {
-		return new Loop(bool);
+    public static Loop loop(boolean bool) {
+	if (bool) {
+	    return Loop.TRUE;
+	} else {
+	    return Loop.FALSE;
+	}
     }
 
     public static MediaGroup mediaGroup(String value) {
 	return new MediaGroup(value);
-    }
-
-	public static Muted muted(boolean bool) {
-		return new Muted(bool);
     }
 
     public static Poster poster(String value) {
@@ -311,10 +285,6 @@ public class Attributes {
 
     public static SrcLang srcLang(String value) {
 	return new SrcLang(value);
-    }
-
-	public static TypeMustMatch typeMustMatch(boolean bool) {
-		return new TypeMustMatch(bool);
     }
 
     public static UseMap useMap(String value) {
@@ -533,10 +503,6 @@ public class Attributes {
 	return new DirRTL();
     }
 
-    public static Hidden hidden(boolean bool) {
-	return new Hidden(bool);
-    }
-
     public static Id id(String value) {
 	return new Id(value);
     }
@@ -563,10 +529,6 @@ public class Attributes {
 
     public static Kind kind(String value) {
 	return new Kind(value);
-    }
-
-	public static Reversed reversed(boolean bool) {
-		return new Reversed(bool);
     }
 
     public static Start start(String value) {
@@ -625,20 +587,8 @@ public class Attributes {
 	return new AutoComplete(string);
     }
 
-	public static AutoFocus autoFocus(boolean bool) {
-		return new AutoFocus(bool);
-    }
-
-    public static Checked checked(boolean bool) {
-	return new Checked(bool);
-    }
-
     public static DirName dirName(String string) {
 	return new DirName(string);
-    }
-
-    public static Disabled disabled(boolean val) {
-	return new Disabled(val);
     }
 
     public static EncType encType(String string) {
@@ -659,10 +609,6 @@ public class Attributes {
 
     public static FormMethod formMethod(String string) {
 	return new FormMethod(string);
-    }
-
-    public static FormNoValidate formNoValidate(boolean bool) {
-	return new FormNoValidate(bool);
     }
 
     public static FormTarget formTarget(String string) {
@@ -693,28 +639,12 @@ public class Attributes {
 	return new MinLength(string);
     }
 
-	public static Multiple multiple(boolean bool) {
-		return new Multiple(bool);
-    }
-
-    public static NoValidate noValidate(boolean bool) {
-	return new NoValidate(bool);
-    }
-
     public static Pattern pattern(String string) {
 	return new Pattern(string);
     }
 
     public static PlaceHolder placeHolder(String string) {
 	return new PlaceHolder(string);
-    }
-
-	public static ReadOnly readOnly(boolean bool) {
-		return new ReadOnly(bool);
-    }
-
-	public static Required required(boolean bool) {
-		return new Required(bool);
     }
 
     public static Size size(String string) {
@@ -727,10 +657,6 @@ public class Attributes {
 
     public static Menu menu(String string) {
 	return new Menu(string);
-    }
-
-    public static Selected selected(boolean bool) {
-	return new Selected(bool);
     }
 
     public static Cols cols(String string) {
@@ -767,14 +693,6 @@ public class Attributes {
 
     public static Optimum optimum(String string) {
 	return new Optimum(string);
-    }
-
-    public static Async async(boolean bool) {
-	return new Async(bool);
-    }
-
-    public static Defer defer(boolean bool) {
-	return new Defer(bool);
     }
 
     public static Nonce nonce(String string) {

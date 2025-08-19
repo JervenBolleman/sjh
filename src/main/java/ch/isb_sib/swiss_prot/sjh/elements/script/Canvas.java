@@ -5,7 +5,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
+import ch.isb_sib.swiss_prot.sjh.attributes.embedded.EmbeddedAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Height;
 import ch.isb_sib.swiss_prot.sjh.attributes.embedded.Width;
 import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
@@ -36,7 +36,7 @@ public class Canvas extends CommonElement implements FlowContent, PhrasingConten
     }
 
     @Override
-    protected Stream<Attribute> getElementSpecificAttributes() {
+    protected Stream<EmbeddedAttribute> getElementSpecificAttributes() {
 	return Stream.of(width, height).filter(Objects::nonNull);
     }
 }

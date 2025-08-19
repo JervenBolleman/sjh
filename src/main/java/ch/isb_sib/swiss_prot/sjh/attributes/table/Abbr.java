@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public class Abbr implements Attribute {
+public non-sealed class Abbr implements TableAttribute {
     private static final byte[] LANG_IS = Attribute.fromString("abbr");
 
     private final byte[] value;

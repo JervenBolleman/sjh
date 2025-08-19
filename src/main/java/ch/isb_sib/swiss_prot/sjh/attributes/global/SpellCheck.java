@@ -5,7 +5,7 @@ import java.util.Objects;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
 
-public class SpellCheck
+public non-sealed class SpellCheck
     implements GlobalAttribute
 {
 	private static final byte[] NAME = Attribute.fromString("spellcheck");

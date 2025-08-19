@@ -10,6 +10,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.global.GlobalAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Charset;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Content;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.HttpEquiv;
+import ch.isb_sib.swiss_prot.sjh.attributes.meta.MetaAttribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.meta.Name;
 import ch.isb_sib.swiss_prot.sjh.elements.CommonElement;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.MetaContent;
@@ -35,7 +36,7 @@ public class Meta extends CommonElement implements MetaContent {
     }
 
     @Override
-    protected Stream<Attribute> getElementSpecificAttributes() {
+    protected Stream<MetaAttribute> getElementSpecificAttributes() {
 	return Stream.of(name, httpEquiv, content, charset).filter(Objects::nonNull);
     }
 

@@ -24,7 +24,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
  * 
  */
 
-public class CrossOrigin implements Attribute {
+public non-sealed class CrossOrigin implements ContentAttribute {
     private static final byte[] NAME = Attribute.fromString("crossorigin");
 
     private final byte[] value;

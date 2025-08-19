@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public class Span implements Attribute {
+public non-sealed class Span implements TableAttribute {
     private static final byte[] LANG_IS = Attribute.fromString("span");
 
     private final byte[] value;

@@ -3,21 +3,22 @@ package ch.isb_sib.swiss_prot.sjh.attributes.form;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
+public enum FormNoValidate implements FormAttribute, BooleanAttribute {
 
-public class FormNoValidate
-	extends BooleanAttribute
-{
-	private static final byte[] NAME = Attribute.fromString("formnovalidate");
+    TRUE(), FALSE();
 
+    private static final byte[] NAME = Attribute.fromString("formnovalidate");
 
-    public FormNoValidate(boolean bool)
-	{
-	super(bool);
-	}
+    private FormNoValidate() {
+    }
 
-	@Override
-	public byte[] getAttributeName()
-	{
-		return NAME;
-	}
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

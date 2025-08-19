@@ -5,7 +5,7 @@ import java.util.Objects;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
 
-public class OnPlaying
+public non-sealed class OnPlaying
     implements EventAttribute
 {
 	private static final byte[] NAME = Attribute.fromString("onplaying");

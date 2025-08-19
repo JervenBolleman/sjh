@@ -12,15 +12,18 @@ import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
  * 
  */
 
-public class NoModule extends BooleanAttribute {
-	private static final byte[] NAME = Attribute.fromString("nomodule");
+public enum NoModule implements BooleanAttribute, ContentAttribute {
+    TRUE, FALSE;
 
-	public NoModule(boolean val) {
-		super(val);
-	}
+    private static final byte[] NAME = Attribute.fromString("nomodule");
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

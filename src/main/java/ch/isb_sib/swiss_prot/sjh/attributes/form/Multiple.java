@@ -8,15 +8,22 @@ import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
  * is to be allowed to specify more than one value.
  *
  */
-public class Multiple extends BooleanAttribute {
-	private static final byte[] NAME = Attribute.fromString("multiple");
+public enum Multiple implements FormAttribute, BooleanAttribute {
 
-	public Multiple(boolean val) {
-		super(val);
-	}
+    TRUE, FALSE;
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    private static final byte[] NAME = Attribute.fromString("multiple");
+
+    private Multiple() {
+    }
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

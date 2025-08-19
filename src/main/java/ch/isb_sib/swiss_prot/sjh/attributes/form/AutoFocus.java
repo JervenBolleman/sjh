@@ -17,15 +17,23 @@ import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
  * ancestor element.
  * 
  */
-public class AutoFocus extends BooleanAttribute {
-	private static final byte[] NAME = Attribute.fromString("autofocus");
+public enum AutoFocus implements BooleanAttribute {
 
-	public AutoFocus(boolean val) {
-		super(val);
-	}
+    TRUE(), FALSE();
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    private static final byte[] NAME = Attribute.fromString("autofocus");
+
+    private AutoFocus() {
+
+    }
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

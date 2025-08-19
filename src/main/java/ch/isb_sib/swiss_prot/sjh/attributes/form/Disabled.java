@@ -22,15 +22,22 @@ import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
  * 
  * The disabled IDL attribute must reflect the disabled content attribute.
  */
-public class Disabled extends BooleanAttribute {
-	private static final byte[] NAME = Attribute.fromString("disabled");
+public enum Disabled implements FormAttribute, BooleanAttribute {
 
-	public Disabled(boolean value) {
-		super(value);
-	}
+    TRUE(), FALSE();
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    private static final byte[] NAME = Attribute.fromString("disabled");
+
+    private Disabled() {
+    }
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
+
+    @Override
+    public boolean is() {
+	return this == TRUE;
+    }
 }

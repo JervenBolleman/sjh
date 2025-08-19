@@ -4,29 +4,23 @@ import java.util.Objects;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
+public non-sealed class Wrap implements FormAttribute {
+    private static final byte[] NAME = Attribute.fromString("wrap");
 
-public class Wrap
-    implements Attribute
-{
-	private static final byte[] NAME = Attribute.fromString("wrap");
+    private final byte[] value;
 
-	private final byte[] value;
+    public Wrap(String value) {
+	Objects.nonNull(value);
+	this.value = Attribute.fromString(value);
+    }
 
-	public Wrap(String value)
-	{
-		Objects.nonNull(value);
-		this.value = Attribute.fromString(value);
-	}
+    @Override
+    public byte[] getValue() {
+	return value;
+    }
 
-	@Override
-	public byte[] getValue()
-	{
-		return value;
-	}
-
-	@Override
-	public byte[] getAttributeName()
-	{
-		return NAME;
-	}
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
 }

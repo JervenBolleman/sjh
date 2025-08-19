@@ -4,30 +4,31 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
-public enum Type implements Attribute {
+public enum Type implements MenuAttribute {
 
-	context("context"), // The attribute has two states. The "context"
-						// keyword maps to the context menu state, in which
-						// the element is declaring a context menu.
-	toolbar("toolbar"); // The "toolbar" keyword maps to the toolbar state,
-						// in which the element is declaring a toolbar. The
-						// attribute may also be omitted.
-	private final static byte[] NAME = "type".getBytes(UTF_8);
+    context("context"), // The attribute has two states. The "context"
+			// keyword maps to the context menu state, in which
+			// the element is declaring a context menu.
+    toolbar("toolbar"); // The "toolbar" keyword maps to the toolbar state,
+			// in which the element is declaring a toolbar. The
+			// attribute may also be omitted.
 
-	private byte[] value;
+    private final static byte[] NAME = "type".getBytes(UTF_8);
 
-	private Type(String bytes) {
-		this.value = Attribute.fromString(bytes);
-	}
+    private byte[] value;
 
-	@Override
-	public byte[] getValue() {
-		return value;
-	}
+    private Type(String bytes) {
+	this.value = Attribute.fromString(bytes);
+    }
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    @Override
+    public byte[] getValue() {
+	return value;
+    }
+
+    @Override
+    public byte[] getAttributeName() {
+	return NAME;
+    }
 
 }

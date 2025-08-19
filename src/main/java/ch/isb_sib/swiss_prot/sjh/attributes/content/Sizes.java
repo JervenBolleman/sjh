@@ -14,7 +14,7 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
  *      W3C HTML5 specification</a>
  * 
  */
-public class Sizes implements Attribute {
+public non-sealed class Sizes implements ContentAttribute {
     private static final byte[] NAME = Attribute.fromString("sizes");
 
     private final byte[] value;
