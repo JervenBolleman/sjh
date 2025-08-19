@@ -13,19 +13,19 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningContent;
 
 public non-sealed class H1 extends CommonElement
-	implements FlowContent, SectioningContent, PalpabaleContent, HeadingContent {
+        implements FlowContent, SectioningContent, PalpabaleContent, HeadingContent {
     private final static byte[] NAME = "h1".getBytes(UTF_8);
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public H1(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public H1() {
-	super();
+        super();
     }
 }

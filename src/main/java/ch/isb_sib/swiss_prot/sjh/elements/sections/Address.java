@@ -14,14 +14,14 @@ public non-sealed class Address extends CommonElement implements FlowContent, Pa
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Address(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Address() {
-	super();
+        super();
     }
 }

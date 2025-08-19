@@ -22,6 +22,6 @@ import ch.isb_sib.swiss_prot.sjh.elements.text.A;
 
 @SuppressWarnings("deprecation")
 public sealed interface InteractiveContent extends Element permits A, Audio, Button, Details, Embed, FieldSet, Iframe,
-	Img, Input, KeyGen, Label, Meter, Object, Output, Progress, Select, TextArea, Video {
+        Img, Input, KeyGen, Label, Meter, Object, Output, Progress, Select, TextArea, Video {
 
 }

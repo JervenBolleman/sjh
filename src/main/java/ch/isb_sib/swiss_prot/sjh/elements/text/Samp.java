@@ -15,15 +15,15 @@ public non-sealed class Samp extends CommonElement implements FlowContent, Phras
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Samp(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Samp() {
-	super();
+        super();
     }
 
 }

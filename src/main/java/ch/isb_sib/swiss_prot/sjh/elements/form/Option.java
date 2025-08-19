@@ -23,35 +23,36 @@ public non-sealed class Option extends CommonElement implements OptionOrOptGroup
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label, Selected selected, Value value) {
-	super(ga, Stream.empty());
-	this.disabled = disabled;
-	this.label = label;
-	this.selected = selected;
-	this.value = value;
+        super(ga, Stream.empty());
+        this.disabled = disabled;
+        this.label = label;
+        this.selected = selected;
+        this.value = value;
     }
 
     public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label, Selected selected, Text text) {
-	super(ga, Stream.of(text));
-	this.disabled = disabled;
-	this.label = label;
-	this.selected = selected;
-	this.value = null;
+        super(ga, Stream.of(text));
+        this.disabled = disabled;
+        this.label = label;
+        this.selected = selected;
+        this.value = null;
     }
-    
-    public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label, Selected selected, Value value, Text text) {
-	super(ga, Stream.of(text));
-	this.disabled = disabled;
-	this.label = label;
-	this.selected = selected;
-	this.value = value;
+
+    public Option(Stream<GlobalAttribute> ga, Disabled disabled, Label label, Selected selected, Value value,
+            Text text) {
+        super(ga, Stream.of(text));
+        this.disabled = disabled;
+        this.label = label;
+        this.selected = selected;
+        this.value = value;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(disabled, label, selected, value).filter(Objects::nonNull);
+        return Stream.of(disabled, label, selected, value).filter(Objects::nonNull);
     }
 }

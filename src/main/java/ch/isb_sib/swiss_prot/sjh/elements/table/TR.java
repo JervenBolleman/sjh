@@ -12,10 +12,10 @@ public class TR extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public TR(Stream<GlobalAttribute> ga, Stream<TDOrTH> children) {
-	super(ga, children);
+        super(ga, children);
     }
 }

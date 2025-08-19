@@ -15,14 +15,14 @@ public non-sealed class Kbd extends CommonElement implements FlowContent, Phrasi
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Kbd(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Kbd() {
-	super();
+        super();
     }
 }

@@ -15,24 +15,25 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public non-sealed class Label extends CommonElement implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+public non-sealed class Label extends CommonElement
+        implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "label".getBytes(UTF_8);
     private final Form form;
     private final For fora;
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Label(Stream<GlobalAttribute> ga, Form form, For fora) {
-	super(ga, Stream.empty());
-	this.form = form;
-	this.fora = fora;
+        super(ga, Stream.empty());
+        this.form = form;
+        this.fora = fora;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(form, fora).filter(Objects::nonNull);
+        return Stream.of(form, fora).filter(Objects::nonNull);
     }
 }

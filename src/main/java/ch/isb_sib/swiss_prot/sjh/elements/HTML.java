@@ -16,24 +16,24 @@ public class HTML extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public HTML(Stream<GlobalAttribute> ga, Head head, Body body) {
-	super(ga, Stream.of(head, body));
+        super(ga, Stream.of(head, body));
     }
 
     public HTML() {
-	super();
+        super();
     }
 
     public HTML(Head head, Body body) {
-	super(Stream.<GlobalAttribute> empty(), Stream.of(head, body));
+        super(Stream.<GlobalAttribute> empty(), Stream.of(head, body));
     }
 
     @Override
     public void render(OutputStream stream) throws IOException {
-	stream.write(DOCTYPE);
-	super.render(stream);
+        stream.write(DOCTYPE);
+        super.render(stream);
     }
 }

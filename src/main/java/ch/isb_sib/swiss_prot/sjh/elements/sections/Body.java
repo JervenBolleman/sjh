@@ -14,14 +14,14 @@ public non-sealed class Body extends CommonElement implements SectioningRoot {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Body(Stream<GlobalAttribute> ga, Stream<Element> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Body() {
-	super();
+        super();
     }
 }

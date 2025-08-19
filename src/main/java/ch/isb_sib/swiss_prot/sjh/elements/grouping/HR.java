@@ -13,14 +13,14 @@ public non-sealed class HR extends CommonElement implements FlowContent {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public HR(Stream<GlobalAttribute> ga) {
-	super(ga, Stream.empty());
+        super(ga, Stream.empty());
     }
 
     public HR() {
-	super();
+        super();
     }
 }

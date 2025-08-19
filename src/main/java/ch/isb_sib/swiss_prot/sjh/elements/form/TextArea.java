@@ -29,7 +29,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 public non-sealed class TextArea extends CommonElement
-	implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+        implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "textarea".getBytes(UTF_8);
     private final Form form;
     private final AutoFocus autofocus;
@@ -49,34 +49,34 @@ public non-sealed class TextArea extends CommonElement
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public TextArea(Stream<GlobalAttribute> ga, AutoComplete autoComplete, AutoFocus autofocus, Cols cols,
-	    DirName dirname, Disabled disabled, Form form, MaxLength maxlength, MinLength minLength, Name name,
-	    PlaceHolder placeHolder, ReadOnly readOnly, Required required, Rows rows, Wrap wrap, Text text) {
-	super(ga, Stream.of(text));
-	this.autoComplete = autoComplete;
-	this.autofocus = autofocus;
-	this.cols = cols;
-	this.dirname = dirname;
-	this.disabled = disabled;
-	this.form = form;
-	this.maxlength = maxlength;
-	this.minLength = minLength;
+            DirName dirname, Disabled disabled, Form form, MaxLength maxlength, MinLength minLength, Name name,
+            PlaceHolder placeHolder, ReadOnly readOnly, Required required, Rows rows, Wrap wrap, Text text) {
+        super(ga, Stream.of(text));
+        this.autoComplete = autoComplete;
+        this.autofocus = autofocus;
+        this.cols = cols;
+        this.dirname = dirname;
+        this.disabled = disabled;
+        this.form = form;
+        this.maxlength = maxlength;
+        this.minLength = minLength;
 
-	this.name = name;
-	this.placeHolder = placeHolder;
-	this.readOnly = readOnly;
-	this.required = required;
-	this.rows = rows;
-	this.wrap = wrap;
+        this.name = name;
+        this.placeHolder = placeHolder;
+        this.readOnly = readOnly;
+        this.required = required;
+        this.rows = rows;
+        this.wrap = wrap;
 
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(autoComplete, autofocus, cols, dirname, disabled, form, maxlength, minLength, name,
-		placeHolder, readOnly, required, rows, wrap).filter(Objects::nonNull);
+        return Stream.of(autoComplete, autofocus, cols, dirname, disabled, form, maxlength, minLength, name,
+                placeHolder, readOnly, required, rows, wrap).filter(Objects::nonNull);
     }
 }

@@ -22,7 +22,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 public non-sealed class Button extends CommonElement
-	implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+        implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "button".getBytes(UTF_8);
     private final Form form;
     private final AutoFocus autofocus;
@@ -35,38 +35,38 @@ public non-sealed class Button extends CommonElement
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Button(Stream<GlobalAttribute> ga, AutoComplete autoComplete, AutoFocus autofocus, Disabled disabled,
-	    Form form, Multiple multiple, Required required, Name name, Size size,
-	    Stream<OptionOrOptGroup> childreren) {
-	super(ga, childreren);
-	this.autoComplete = autoComplete;
-	this.autofocus = autofocus;
-	this.disabled = disabled;
-	this.form = form;
-	this.multiple = multiple;
-	this.name = name;
-	this.required = required;
-	this.size = size;
+            Form form, Multiple multiple, Required required, Name name, Size size,
+            Stream<OptionOrOptGroup> childreren) {
+        super(ga, childreren);
+        this.autoComplete = autoComplete;
+        this.autofocus = autofocus;
+        this.disabled = disabled;
+        this.form = form;
+        this.multiple = multiple;
+        this.name = name;
+        this.required = required;
+        this.size = size;
     }
 
     public Button(Stream<GlobalAttribute> ga, Stream<OptionOrOptGroup> childreren) {
-	super(ga, childreren);
-	this.autoComplete = null;
-	this.autofocus = null;
-	this.disabled = null;
-	this.form = null;
-	this.multiple = null;
-	this.name = null;
-	this.required = null;
-	this.size = null;
+        super(ga, childreren);
+        this.autoComplete = null;
+        this.autofocus = null;
+        this.disabled = null;
+        this.form = null;
+        this.multiple = null;
+        this.name = null;
+        this.required = null;
+        this.size = null;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(this.autoComplete, this.autofocus, this.disabled, this.form, this.multiple, this.name,
-		this.required, this.size).filter(Objects::nonNull);
+        return Stream.of(this.autoComplete, this.autofocus, this.disabled, this.form, this.multiple, this.name,
+                this.required, this.size).filter(Objects::nonNull);
     }
 }

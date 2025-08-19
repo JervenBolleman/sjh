@@ -15,14 +15,14 @@ public non-sealed class Sup extends CommonElement implements FlowContent, Phrasi
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Sup(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Sup() {
-	super();
+        super();
     }
 }

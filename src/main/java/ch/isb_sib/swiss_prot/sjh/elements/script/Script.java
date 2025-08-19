@@ -34,25 +34,25 @@ public non-sealed class Script extends CommonElement implements FlowContent, Met
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Script(Stream<GlobalAttribute> ga, Src src, Type type, Charset charset, Async async, Defer defer,
-	    CrossOrigin crossOrigin, Nonce nonce, NoModule nomudle, Text content) {
-	super(ga, Stream.of(content));
-	this.src = src;
-	this.type = type;
-	this.charset = charset;
-	this.async = async;
-	this.defer = defer;
-	this.crossOrigin = crossOrigin;
-	this.nonce = nonce;
-	this.nomodule = nomudle;
+            CrossOrigin crossOrigin, Nonce nonce, NoModule nomudle, Text content) {
+        super(ga, Stream.of(content));
+        this.src = src;
+        this.type = type;
+        this.charset = charset;
+        this.async = async;
+        this.defer = defer;
+        this.crossOrigin = crossOrigin;
+        this.nonce = nonce;
+        this.nomodule = nomudle;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(src, type, charset, async, defer, crossOrigin, nomodule, nonce).filter(Objects::nonNull);
+        return Stream.of(src, type, charset, async, defer, crossOrigin, nomodule, nonce).filter(Objects::nonNull);
     }
 
 }

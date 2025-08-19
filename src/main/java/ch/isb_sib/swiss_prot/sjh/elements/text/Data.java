@@ -18,25 +18,25 @@ public non-sealed class Data extends CommonElement implements FlowContent, Phras
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Data(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren, Value value) {
-	super(ga, childeren);
-	this.value = value;
+        super(ga, childeren);
+        this.value = value;
     }
 
     public Data(Stream<? extends PhrasingContent> childeren) {
-	super(Stream.<GlobalAttribute> empty(), childeren);
-	this.value = null;
+        super(Stream.<GlobalAttribute> empty(), childeren);
+        this.value = null;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (value != null)
-	    return Stream.of(value);
-	else
-	    return Stream.empty();
+        if (value != null)
+            return Stream.of(value);
+        else
+            return Stream.empty();
     }
 
 }

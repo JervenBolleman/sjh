@@ -14,14 +14,14 @@ public non-sealed class Footer extends CommonElement implements FlowContent, Pal
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Footer(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Footer() {
-	super();
+        super();
     }
 }

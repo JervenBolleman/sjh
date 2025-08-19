@@ -15,24 +15,24 @@ public class ColGroup extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public ColGroup(Stream<GlobalAttribute> ga, Span span) {
-	super(ga, Stream.empty());
-	this.span = span;
+        super(ga, Stream.empty());
+        this.span = span;
     }
 
     public ColGroup(Stream<GlobalAttribute> ga, Stream<ColOrTemplate> childeren) {
-	super(ga, childeren);
-	this.span = null;
+        super(ga, childeren);
+        this.span = null;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (span == null)
-	    return Stream.empty();
-	else
-	    return Stream.of(span);
+        if (span == null)
+            return Stream.empty();
+        else
+            return Stream.of(span);
     }
 }

@@ -15,14 +15,14 @@ public non-sealed class Small extends CommonElement implements FlowContent, Phra
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Small(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Small() {
-	super();
+        super();
     }
 }

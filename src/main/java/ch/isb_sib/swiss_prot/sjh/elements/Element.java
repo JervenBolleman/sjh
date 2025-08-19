@@ -6,5 +6,6 @@ import java.io.Writer;
 
 public interface Element {
     public void render(OutputStream stream) throws IOException;
+
     public void render(Writer write) throws IOException;
 }

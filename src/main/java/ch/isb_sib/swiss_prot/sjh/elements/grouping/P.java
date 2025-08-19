@@ -15,15 +15,15 @@ public non-sealed class P extends CommonElement implements FlowContent, Palpabal
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public P(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public P() {
-	super();
+        super();
     }
 
 }

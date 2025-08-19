@@ -13,18 +13,18 @@ public class Title extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Title(Stream<GlobalAttribute> ga, Text text) {
-	super(ga, Stream.of(text));
+        super(ga, Stream.of(text));
     }
 
     public Title() {
-	super();
+        super();
     }
 
     public Title(Text text) {
-	super(Stream.<GlobalAttribute> empty(), Stream.of(text));
+        super(Stream.<GlobalAttribute> empty(), Stream.of(text));
     }
 }

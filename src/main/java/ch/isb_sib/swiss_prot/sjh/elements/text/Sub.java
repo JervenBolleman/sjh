@@ -15,14 +15,14 @@ public non-sealed class Sub extends CommonElement implements FlowContent, Phrasi
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Sub(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Sub() {
-	super();
+        super();
     }
 }

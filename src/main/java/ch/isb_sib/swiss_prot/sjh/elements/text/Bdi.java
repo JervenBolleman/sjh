@@ -15,10 +15,10 @@ public non-sealed class Bdi extends CommonElement implements FlowContent, Phrasi
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Bdi(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 }

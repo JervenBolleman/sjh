@@ -19,7 +19,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 public non-sealed class Embed extends CommonElement
-	implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent, PalpabaleContent {
+        implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "embed".getBytes(UTF_8);
     private final Src src;
     private final Width width;
@@ -28,19 +28,19 @@ public non-sealed class Embed extends CommonElement
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Embed(Stream<GlobalAttribute> ga, Src src, Type type, Width width, Height height) {
-	super(ga, Stream.empty());
-	this.src = src;
-	this.type = type;
-	this.width = width;
-	this.height = height;
+        super(ga, Stream.empty());
+        this.src = src;
+        this.type = type;
+        this.width = width;
+        this.height = height;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(src, type, width, height).filter(Objects::nonNull);
+        return Stream.of(src, type, width, height).filter(Objects::nonNull);
     }
 }

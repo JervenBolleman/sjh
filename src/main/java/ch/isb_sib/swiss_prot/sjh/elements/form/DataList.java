@@ -15,10 +15,10 @@ public non-sealed class DataList<T extends Element> extends CommonElement implem
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public DataList(Stream<GlobalAttribute> ga, Stream<T> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 }

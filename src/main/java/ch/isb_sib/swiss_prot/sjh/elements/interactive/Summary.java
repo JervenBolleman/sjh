@@ -13,16 +13,16 @@ public class Summary extends CommonElement {
     private final static byte[] NAME = "summary".getBytes(UTF_8);
 
     public Summary(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childern) {
-	super(ga, childern);
+        super(ga, childern);
     }
 
     public Summary(Stream<GlobalAttribute> ga, HeadingContent heading) {
-	super(ga, Stream.of(heading));
+        super(ga, Stream.of(heading));
     }
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
 }

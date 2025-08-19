@@ -14,14 +14,14 @@ public non-sealed class Header extends CommonElement implements FlowContent, Pal
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Header(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Header() {
-	super();
+        super();
     }
 }

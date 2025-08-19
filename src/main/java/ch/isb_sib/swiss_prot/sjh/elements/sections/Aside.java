@@ -15,14 +15,14 @@ public non-sealed class Aside extends CommonElement implements FlowContent, Sect
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Aside(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Aside() {
-	super();
+        super();
     }
 }

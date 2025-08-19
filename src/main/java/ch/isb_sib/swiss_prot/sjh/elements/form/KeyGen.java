@@ -21,7 +21,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 @Deprecated(since = "0.1.0")
 public non-sealed class KeyGen extends CommonElement
-	implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+        implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "keygen".getBytes(UTF_8);
     private final Form form;
     private final AutoFocus autofocus;
@@ -33,24 +33,24 @@ public non-sealed class KeyGen extends CommonElement
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public KeyGen(Stream<GlobalAttribute> ga, AutoFocus autofocus, Challenge challenge, Disabled disabled, Form form,
-	    KeyType keytype, Name name) {
-	super(ga, Stream.empty());
-	this.autofocus = autofocus;
-	this.challenge = challenge;
-	this.disabled = disabled;
-	this.form = form;
-	this.keytype = keytype;
-	this.name = name;
+            KeyType keytype, Name name) {
+        super(ga, Stream.empty());
+        this.autofocus = autofocus;
+        this.challenge = challenge;
+        this.disabled = disabled;
+        this.form = form;
+        this.keytype = keytype;
+        this.name = name;
 
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(this.autofocus, challenge, this.disabled, this.form, this.keytype, this.name)
-		.filter(Objects::nonNull);
+        return Stream.of(this.autofocus, challenge, this.disabled, this.form, this.keytype, this.name)
+                .filter(Objects::nonNull);
     }
 }

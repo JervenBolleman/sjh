@@ -15,15 +15,15 @@ public non-sealed class Pre extends CommonElement implements FlowContent, Palpab
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Pre(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Pre() {
-	super();
+        super();
     }
 
 }

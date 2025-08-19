@@ -24,7 +24,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 public non-sealed class Object extends CommonElement implements FlowContent, PhrasingContent, EmbeddedContent,
-	FormAssociatedContent, InteractiveContent, PalpabaleContent {
+        FormAssociatedContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "object".getBytes(UTF_8);
     private final Data data;
     private final Type type;
@@ -37,24 +37,24 @@ public non-sealed class Object extends CommonElement implements FlowContent, Phr
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     @SuppressWarnings("deprecation")
     public Object(Stream<GlobalAttribute> ga, Data data, Type type, TypeMustMatch typemustmatch, Name name, UseMap um,
-	    Form form, Width width, Height height, Stream<Param> param) {
-	super(ga, param);
-	this.data = data;
-	this.type = type;
-	this.typemustmatch = typemustmatch;
-	this.um = um;
-	this.form = form;
-	this.width = width;
-	this.height = height;
+            Form form, Width width, Height height, Stream<Param> param) {
+        super(ga, param);
+        this.data = data;
+        this.type = type;
+        this.typemustmatch = typemustmatch;
+        this.um = um;
+        this.form = form;
+        this.width = width;
+        this.height = height;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(data, type, typemustmatch, um, form, width, height).filter(Objects::nonNull);
+        return Stream.of(data, type, typemustmatch, um, form, width, height).filter(Objects::nonNull);
     }
 }

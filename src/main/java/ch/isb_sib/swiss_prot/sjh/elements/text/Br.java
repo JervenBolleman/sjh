@@ -15,14 +15,14 @@ public non-sealed class Br extends CommonElement implements FlowContent, Phrasin
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Br(Stream<GlobalAttribute> ga) {
-	super(ga, Stream.empty());
+        super(ga, Stream.empty());
     }
 
     public Br() {
-	super();
+        super();
     }
 }

@@ -22,8 +22,8 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.InteractiveContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
-public non-sealed class Img extends CommonElement implements FlowContent, PhrasingContent, EmbeddedContent, FormAssociatedContent,
-	InteractiveContent, PalpabaleContent {
+public non-sealed class Img extends CommonElement implements FlowContent, PhrasingContent, EmbeddedContent,
+        FormAssociatedContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "img".getBytes(UTF_8);
     private final Alt alt;
     private final Src src;
@@ -35,23 +35,23 @@ public non-sealed class Img extends CommonElement implements FlowContent, Phrasi
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Img(Stream<GlobalAttribute> ga, Alt alt, Src src, CrossOrigin co, UseMap um, IsMap im, Width width,
-	    Height height) {
-	super(ga, Stream.empty());
-	this.alt = alt;
-	this.src = src;
-	this.co = co;
-	this.um = um;
-	this.im = im;
-	this.width = width;
-	this.height = height;
+            Height height) {
+        super(ga, Stream.empty());
+        this.alt = alt;
+        this.src = src;
+        this.co = co;
+        this.um = um;
+        this.im = im;
+        this.width = width;
+        this.height = height;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(alt, src, co, um, im, width, height).filter(Objects::nonNull);
+        return Stream.of(alt, src, co, um, im, width, height).filter(Objects::nonNull);
     }
 }

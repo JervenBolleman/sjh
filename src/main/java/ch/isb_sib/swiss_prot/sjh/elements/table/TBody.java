@@ -12,10 +12,10 @@ public class TBody extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public TBody(Stream<GlobalAttribute> ga, Stream<TR> children) {
-	super(ga, children);
+        super(ga, children);
     }
 }

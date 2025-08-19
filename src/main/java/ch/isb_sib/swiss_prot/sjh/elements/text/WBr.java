@@ -15,14 +15,14 @@ public non-sealed class WBr extends CommonElement implements FlowContent, Phrasi
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public WBr(Stream<GlobalAttribute> ga) {
-	super(ga, Stream.empty());
+        super(ga, Stream.empty());
     }
 
     public WBr() {
-	super();
+        super();
     }
 }

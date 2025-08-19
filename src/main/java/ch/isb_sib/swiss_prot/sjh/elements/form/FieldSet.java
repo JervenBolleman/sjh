@@ -17,7 +17,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 public non-sealed class FieldSet extends CommonElement
-	implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+        implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "fieldset".getBytes(UTF_8);
     private final Disabled disabled;
     private final Form form;
@@ -25,20 +25,20 @@ public non-sealed class FieldSet extends CommonElement
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public FieldSet(Stream<GlobalAttribute> ga, Disabled disabled, Form form, Name name, Legend legend,
-	    Stream<? extends FlowContent> childreren) {
-	super(ga, Stream.concat(Stream.of(legend), childreren));
-	this.disabled = disabled;
-	this.form = form;
-	this.name = name;
+            Stream<? extends FlowContent> childreren) {
+        super(ga, Stream.concat(Stream.of(legend), childreren));
+        this.disabled = disabled;
+        this.form = form;
+        this.name = name;
 
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(this.disabled, this.form, this.name).filter(Objects::nonNull);
+        return Stream.of(this.disabled, this.form, this.name).filter(Objects::nonNull);
     }
 }

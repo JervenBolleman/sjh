@@ -18,25 +18,25 @@ public non-sealed class Track extends CommonElement implements EmbeddedContent {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Track(Stream<GlobalAttribute> ga, Src src, Type type) {
-	super(ga, Stream.empty());
-	this.src = src;
-	this.type = type;
+        super(ga, Stream.empty());
+        this.src = src;
+        this.type = type;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (src != null) {
-	    if (type != null)
-		return Stream.of(src, type);
-	    else
-		return Stream.of(src);
-	} else if (type != null)
-	    return Stream.of(type);
-	else
-	    return Stream.empty();
+        if (src != null) {
+            if (type != null)
+                return Stream.of(src, type);
+            else
+                return Stream.of(src);
+        } else if (type != null)
+            return Stream.of(type);
+        else
+            return Stream.empty();
     }
 }

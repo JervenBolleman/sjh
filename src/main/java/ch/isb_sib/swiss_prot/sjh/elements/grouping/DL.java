@@ -14,18 +14,18 @@ public non-sealed class DL extends CommonElement implements FlowContent, Palpaba
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public DL(Stream<GlobalAttribute> ga, Stream<? extends DtOrDd> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public DL() {
-	super();
+        super();
     }
 
     public DL(Stream<? extends DtOrDd> childeren) {
-	super(Stream.<GlobalAttribute> empty(), childeren);
+        super(Stream.<GlobalAttribute> empty(), childeren);
     }
 }

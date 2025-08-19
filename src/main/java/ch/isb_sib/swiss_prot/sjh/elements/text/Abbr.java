@@ -17,14 +17,14 @@ public non-sealed class Abbr extends CommonElement implements FlowContent, Phras
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Abbr(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Abbr() {
-	super();
+        super();
     }
 }

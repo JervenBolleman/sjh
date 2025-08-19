@@ -15,14 +15,14 @@ public non-sealed class Code extends CommonElement implements FlowContent, Phras
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Code(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Code() {
-	super();
+        super();
     }
 }

@@ -14,26 +14,26 @@ public class Head extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Head(Stream<GlobalAttribute> ga, Title title, Base base, Stream<MetaContent> metacontent) {
-	super(ga, concat(title, base, metacontent));
+        super(ga, concat(title, base, metacontent));
     }
 
     public Head(Title title, Base base, Stream<MetaContent> metacontent) {
-	super(Stream.<GlobalAttribute> empty(), concat(title, base, metacontent));
+        super(Stream.<GlobalAttribute> empty(), concat(title, base, metacontent));
     }
 
     public Head(Title title) {
-	super(Stream.<GlobalAttribute> empty(), Stream.of(title));
+        super(Stream.<GlobalAttribute> empty(), Stream.of(title));
     }
 
     public Head(Title title, Stream<MetaContent> metacontent) {
-	super(Stream.<GlobalAttribute> empty(), Stream.concat(Stream.of(title), metacontent));
+        super(Stream.<GlobalAttribute> empty(), Stream.concat(Stream.of(title), metacontent));
     }
 
     private static Stream<Element> concat(Title title, Base base, Stream<MetaContent> metacontent) {
-	return Stream.<Element> concat(Stream.of(title), Stream.<Element> concat(Stream.of(base), metacontent));
+        return Stream.<Element> concat(Stream.of(title), Stream.<Element> concat(Stream.of(base), metacontent));
     }
 }

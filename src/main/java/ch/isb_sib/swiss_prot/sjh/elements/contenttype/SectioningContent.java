@@ -14,6 +14,6 @@ import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H5;
 import ch.isb_sib.swiss_prot.sjh.elements.sections.header.H6;
 
 public sealed interface SectioningContent extends Element
-	permits Article, Aside, Figure, H1, H2, H3, H4, H5, H6, Nav, Section {
+        permits Article, Aside, Figure, H1, H2, H3, H4, H5, H6, Nav, Section {
 
 }

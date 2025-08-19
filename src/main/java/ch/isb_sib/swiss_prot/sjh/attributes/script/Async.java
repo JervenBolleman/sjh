@@ -11,11 +11,11 @@ public enum Async implements BooleanAttribute, ScriptAttribute {
 
     @Override
     public byte[] getAttributeName() {
-	return LANG_IS;
+        return LANG_IS;
     }
 
     @Override
     public boolean is() {
-	return this == TRUE;
+        return this == TRUE;
     }
 }

@@ -22,30 +22,30 @@ public non-sealed class OL extends CommonElement implements FlowContent, Palpaba
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public OL(Stream<GlobalAttribute> ga, Reversed rev, Start start, Type type, Stream<LI> childeren) {
-	super(ga, childeren);
-	this.rev = rev;
-	this.start = start;
-	this.type = type;
+        super(ga, childeren);
+        this.rev = rev;
+        this.start = start;
+        this.type = type;
     }
 
     public OL() {
-	this(Stream.empty());
+        this(Stream.empty());
 
     }
 
     public OL(Stream<LI> childeren) {
-	super(Stream.<GlobalAttribute> empty(), childeren);
-	this.rev = null;
-	this.start = null;
-	this.type = null;
+        super(Stream.<GlobalAttribute> empty(), childeren);
+        this.rev = null;
+        this.start = null;
+        this.type = null;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(rev, start, type).filter(Objects::nonNull);
+        return Stream.of(rev, start, type).filter(Objects::nonNull);
     }
 }

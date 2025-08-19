@@ -20,31 +20,31 @@ public non-sealed class Table extends CommonElement implements FlowContent, Palp
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Table(Stream<GlobalAttribute> ga, Caption caption, Stream<ColGroup> colGroups, THead thead, TFoot tfoot,
-	    Stream<TBody> tbodies, Stream<TR> rows, Border border, Sortable sortable) {
-	super(ga,
-		Stream.concat(Stream.concat(
-			Stream.concat(Stream.concat(Stream.of(caption), colGroups), Stream.of(thead, tfoot)), tbodies),
-			rows));
-	this.border = border;
-	this.sortable = sortable;
+            Stream<TBody> tbodies, Stream<TR> rows, Border border, Sortable sortable) {
+        super(ga,
+                Stream.concat(Stream.concat(
+                        Stream.concat(Stream.concat(Stream.of(caption), colGroups), Stream.of(thead, tfoot)), tbodies),
+                        rows));
+        this.border = border;
+        this.sortable = sortable;
     }
 
     public Table(Stream<GlobalAttribute> ga, Caption caption, Stream<ColGroup> colGroups, THead thead,
-	    Stream<TBody> tbodies, Stream<TR> rows, TFoot tfoot, Border border, Sortable sortable) {
-	super(ga,
-		Stream.concat(Stream.concat(Stream.concat(
-			Stream.concat(Stream.concat(Stream.of(caption), colGroups), Stream.of(thead)), tbodies), rows),
-			Stream.of(tfoot)));
-	this.border = border;
-	this.sortable = sortable;
+            Stream<TBody> tbodies, Stream<TR> rows, TFoot tfoot, Border border, Sortable sortable) {
+        super(ga,
+                Stream.concat(Stream.concat(Stream.concat(
+                        Stream.concat(Stream.concat(Stream.of(caption), colGroups), Stream.of(thead)), tbodies), rows),
+                        Stream.of(tfoot)));
+        this.border = border;
+        this.sortable = sortable;
     }
 
     @Override
     protected Stream<TableAttribute> getElementSpecificAttributes() {
-	return Stream.of(border, sortable).filter(Objects::nonNull);
+        return Stream.of(border, sortable).filter(Objects::nonNull);
     }
 }

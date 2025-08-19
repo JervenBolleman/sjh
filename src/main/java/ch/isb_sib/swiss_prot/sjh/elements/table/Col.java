@@ -15,19 +15,19 @@ public non-sealed class Col extends CommonElement implements ColOrTemplate {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Col(Stream<GlobalAttribute> ga, Span span) {
-	super(ga, Stream.empty());
-	this.span = span;
+        super(ga, Stream.empty());
+        this.span = span;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (span == null)
-	    return Stream.empty();
-	else
-	    return Stream.of(span);
+        if (span == null)
+            return Stream.empty();
+        else
+            return Stream.of(span);
     }
 }

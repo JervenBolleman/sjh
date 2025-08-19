@@ -6,22 +6,22 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
 public non-sealed class RadioGroup implements MenuAttribute {
 
-	private final static byte[] NAME = "radiogroup".getBytes(UTF_8);
+    private final static byte[] NAME = "radiogroup".getBytes(UTF_8);
 
-	private byte[] value;
+    private byte[] value;
 
-	private RadioGroup(String bytes) {
-		this.value = Attribute.fromString(bytes);
-	}
+    private RadioGroup(String bytes) {
+        this.value = Attribute.fromString(bytes);
+    }
 
-	@Override
-	public byte[] getValue() {
-		return value;
-	}
+    @Override
+    public byte[] getValue() {
+        return value;
+    }
 
-	@Override
-	public byte[] getAttributeName() {
-		return NAME;
-	}
+    @Override
+    public byte[] getAttributeName() {
+        return NAME;
+    }
 
 }

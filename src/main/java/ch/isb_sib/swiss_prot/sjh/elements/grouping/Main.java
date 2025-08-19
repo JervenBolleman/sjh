@@ -14,14 +14,14 @@ public non-sealed class Main extends CommonElement implements FlowContent, Palpa
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Main(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Main() {
-	super();
+        super();
     }
 }

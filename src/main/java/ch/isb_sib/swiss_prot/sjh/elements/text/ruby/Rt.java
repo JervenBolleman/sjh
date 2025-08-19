@@ -15,14 +15,14 @@ public non-sealed class Rt extends CommonElement implements FlowContent, Phrasin
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Rt(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Rt() {
-	super();
+        super();
     }
 }

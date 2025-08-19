@@ -10,17 +10,17 @@ public non-sealed class AutoComplete implements FormAttribute {
     private final byte[] value;
 
     public AutoComplete(String value) {
-	Objects.nonNull(value);
-	this.value = Attribute.fromString(value);
+        Objects.nonNull(value);
+        this.value = Attribute.fromString(value);
     }
 
     @Override
     public byte[] getValue() {
-	return value;
+        return value;
     }
 
     @Override
     public byte[] getAttributeName() {
-	return NAME;
+        return NAME;
     }
 }

@@ -5,16 +5,10 @@ import java.util.Objects;
 import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 
 /**
- * Media attribute
+ * Media attribute "The media attribute says which media the resource applies to. The value must be a valid media
+ * query." From W3C Recommendation Copyright © 2014 W3C® (MIT, ERCIM, Keio, Beihang)
  *
- * "The media attribute says which media the resource applies to. The value must
- * be a valid media query."
- * 
- * From W3C Recommendation Copyright © 2014 W3C® (MIT, ERCIM, Keio, Beihang)
- * 
- * @see <a href= "https://www.w3.org/TR/html/single-page.html#attr-link-media">
- *      W3C HTML5 specification</a>
- * 
+ * @see <a href= "https://www.w3.org/TR/html/single-page.html#attr-link-media"> W3C HTML5 specification</a>
  */
 public non-sealed class Media implements ContentAttribute {
     private static final byte[] NAME = Attribute.fromString("media");
@@ -22,17 +16,17 @@ public non-sealed class Media implements ContentAttribute {
     private final byte[] value;
 
     public Media(String value) {
-	Objects.nonNull(value);
-	this.value = Attribute.fromString(value);
+        Objects.nonNull(value);
+        this.value = Attribute.fromString(value);
     }
 
     @Override
     public byte[] getValue() {
-	return value;
+        return value;
     }
 
     @Override
     public byte[] getAttributeName() {
-	return NAME;
+        return NAME;
     }
 }

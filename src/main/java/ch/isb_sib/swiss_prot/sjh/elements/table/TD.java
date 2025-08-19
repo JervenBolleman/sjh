@@ -21,19 +21,19 @@ public non-sealed class TD extends CommonElement implements TDOrTH {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public TD(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> children, ColSpan colspan, RowSpan rowspan,
-	    Headers headers) {
-	super(ga, children);
-	this.colspan = colspan;
-	this.rowspan = rowspan;
-	this.headers = headers;
+            Headers headers) {
+        super(ga, children);
+        this.colspan = colspan;
+        this.rowspan = rowspan;
+        this.headers = headers;
     }
 
     @Override
     protected Stream<TableAttribute> getElementSpecificAttributes() {
-	return Stream.of(rowspan, colspan, headers).filter(Objects::nonNull);
+        return Stream.of(rowspan, colspan, headers).filter(Objects::nonNull);
     }
 }

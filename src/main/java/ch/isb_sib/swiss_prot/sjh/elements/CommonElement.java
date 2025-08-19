@@ -18,93 +18,93 @@ public abstract class CommonElement implements Element {
     protected abstract byte[] getName();
 
     public void render(OutputStream stream) throws IOException {
-	stream.write('<');
-	stream.write(getName());
-	Iterator<Attribute> sa = getAttributes().iterator();
-	if (sa.hasNext())
-	    stream.write(' ');
-	while (sa.hasNext()) {
-	    sa.next().render(stream);
-	    if (sa.hasNext())
-		stream.write(' ');
-	}
-	if (childeren != null) {
+        stream.write('<');
+        stream.write(getName());
+        Iterator<Attribute> sa = getAttributes().iterator();
+        if (sa.hasNext())
+            stream.write(' ');
+        while (sa.hasNext()) {
+            sa.next().render(stream);
+            if (sa.hasNext())
+                stream.write(' ');
+        }
+        if (childeren != null) {
 
-	    Iterator<? extends Element> iter = childeren.iterator();
-	    if (iter.hasNext()) {
-		stream.write('>');
-		while (iter.hasNext())
-		    iter.next().render(stream);
-		stream.write('<');
-		stream.write('/');
-		stream.write(getName());
-		stream.write('>');
-	    } else {
-		stream.write('/');
-		stream.write('>');
-	    }
-	} else {
-	    stream.write('/');
-	    stream.write('>');
-	}
+            Iterator<? extends Element> iter = childeren.iterator();
+            if (iter.hasNext()) {
+                stream.write('>');
+                while (iter.hasNext())
+                    iter.next().render(stream);
+                stream.write('<');
+                stream.write('/');
+                stream.write(getName());
+                stream.write('>');
+            } else {
+                stream.write('/');
+                stream.write('>');
+            }
+        } else {
+            stream.write('/');
+            stream.write('>');
+        }
     }
 
     public void render(Writer writer) throws IOException {
-	writer.write('<');
-	writer.write(new String(getName(), StandardCharsets.UTF_8));
-	Iterator<Attribute> sa = getAttributes().iterator();
-	if (sa.hasNext())
-	    writer.write(' ');
-	while (sa.hasNext()) {
-	    sa.next().render(writer);
-	    if (sa.hasNext())
-		writer.write(' ');
-	}
-	if (childeren != null) {
+        writer.write('<');
+        writer.write(new String(getName(), StandardCharsets.UTF_8));
+        Iterator<Attribute> sa = getAttributes().iterator();
+        if (sa.hasNext())
+            writer.write(' ');
+        while (sa.hasNext()) {
+            sa.next().render(writer);
+            if (sa.hasNext())
+                writer.write(' ');
+        }
+        if (childeren != null) {
 
-	    Iterator<? extends Element> iter = childeren.iterator();
-	    if (iter.hasNext()) {
-		writer.write('>');
-		while (iter.hasNext())
-		    iter.next().render(writer);
-		writer.write('<');
-		writer.write('/');
-		writer.write(new String(getName(), StandardCharsets.UTF_8));
-		writer.write('>');
-	    } else {
-		writer.write('/');
-		writer.write('>');
-	    }
-	} else {
-	    writer.write('/');
-	    writer.write('>');
-	}
+            Iterator<? extends Element> iter = childeren.iterator();
+            if (iter.hasNext()) {
+                writer.write('>');
+                while (iter.hasNext())
+                    iter.next().render(writer);
+                writer.write('<');
+                writer.write('/');
+                writer.write(new String(getName(), StandardCharsets.UTF_8));
+                writer.write('>');
+            } else {
+                writer.write('/');
+                writer.write('>');
+            }
+        } else {
+            writer.write('/');
+            writer.write('>');
+        }
     }
 
     protected CommonElement(Stream<GlobalAttribute> ga, Stream<? extends Element> childeren) {
-	super();
-	this.attributes = ga;
-	this.childeren = childeren.filter(Objects::nonNull);
+        super();
+        this.attributes = ga;
+        this.childeren = childeren.filter(Objects::nonNull);
     }
 
     protected CommonElement() {
-	super();
-	this.attributes = null;
-	this.childeren = null;
+        super();
+        this.attributes = null;
+        this.childeren = null;
     }
 
     private Stream<GlobalAttribute> getGlobalAttributes() {
-	if (attributes != null)
-	    return attributes.filter(Objects::nonNull);
-	else
-	    return Stream.empty();
+        if (attributes != null)
+            return attributes.filter(Objects::nonNull);
+        else
+            return Stream.empty();
     }
 
     private final Stream<Attribute> getAttributes() {
-	return Stream.concat(getGlobalAttributes(), getElementSpecificAttributes()).filter(Objects::nonNull);
+        return Stream.concat(getGlobalAttributes(), getElementSpecificAttributes()).filter(Objects::nonNull);
     }
 
     protected Stream<? extends Attribute> getElementSpecificAttributes() {
-	return Stream.empty();
+        return Stream.empty();
     }
 }

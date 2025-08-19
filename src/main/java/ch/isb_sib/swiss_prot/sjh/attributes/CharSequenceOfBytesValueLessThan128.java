@@ -6,28 +6,28 @@ final class CharSequenceOfBytesValueLessThan128 implements CharSequence {
     private final byte[] attributeName;
 
     CharSequenceOfBytesValueLessThan128(byte[] attributeName) {
-	super();
-	this.attributeName = attributeName;
+        super();
+        this.attributeName = attributeName;
     }
 
     @Override
     public CharSequence subSequence(int start, int end) {
-	return new String(attributeName, UTF_8).subSequence(start, end);
+        return new String(attributeName, UTF_8).subSequence(start, end);
     }
 
     @Override
     public int length() {
-	return attributeName.length;
+        return attributeName.length;
     }
 
     @Override
     public char charAt(int index) {
-	return (char) attributeName[index];
+        return (char) attributeName[index];
     }
 
     @Override
     public String toString() {
-	return new String(attributeName, UTF_8);
+        return new String(attributeName, UTF_8);
     }
 
 }

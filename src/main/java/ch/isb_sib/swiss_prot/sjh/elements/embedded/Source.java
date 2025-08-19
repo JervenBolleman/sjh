@@ -24,20 +24,20 @@ public class Source extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Source(Stream<GlobalAttribute> ga, Kind kind, Src src, Label label, SrcLang srclang, Default def) {
-	super(ga, Stream.empty());
-	this.kind = kind;
-	this.src = src;
-	this.label = label;
-	this.srclang = srclang;
-	this.def = def;
+        super(ga, Stream.empty());
+        this.kind = kind;
+        this.src = src;
+        this.label = label;
+        this.srclang = srclang;
+        this.def = def;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(kind, src, label, srclang, def).filter(Objects::nonNull);
+        return Stream.of(kind, src, label, srclang, def).filter(Objects::nonNull);
     }
 }

@@ -17,36 +17,36 @@ public class Base extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Base(Stream<GlobalAttribute> ga, Href href, Target target) {
-	super(ga, Stream.empty());
-	this.href = href;
-	this.target = target;
+        super(ga, Stream.empty());
+        this.href = href;
+        this.target = target;
     }
 
     public Base() {
-	super();
-	this.href = null;
-	this.target = null;
+        super();
+        this.href = null;
+        this.target = null;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (href != null && target != null)
-	    return Stream.of(href, target);
-	else if (href != null)
-	    return Stream.of(href);
-	else if (target != null)
-	    return Stream.of(target);
-	else
-	    return Stream.empty();
+        if (href != null && target != null)
+            return Stream.of(href, target);
+        else if (href != null)
+            return Stream.of(href);
+        else if (target != null)
+            return Stream.of(target);
+        else
+            return Stream.empty();
     }
 
     public Base(Href href, Target target) {
-	super();
-	this.href = href;
-	this.target = target;
+        super();
+        this.href = href;
+        this.target = target;
     }
 }

@@ -16,32 +16,32 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 public non-sealed class Progress extends CommonElement
-	implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
+        implements FlowContent, PhrasingContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "progress".getBytes(UTF_8);
     private final Max max;
     private final Value value;
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Progress(Stream<GlobalAttribute> ga, Value value, Max max) {
-	super(ga, Stream.empty());
-	this.value = value;
-	this.max = max;
+        super(ga, Stream.empty());
+        this.value = value;
+        this.max = max;
 
     }
 
     public Progress(Stream<GlobalAttribute> ga, Value value, Max max, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
-	this.value = value;
-	this.max = max;
+        super(ga, childeren);
+        this.value = value;
+        this.max = max;
 
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(this.value, this.max).filter(Objects::nonNull);
+        return Stream.of(this.value, this.max).filter(Objects::nonNull);
     }
 }

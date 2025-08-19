@@ -15,14 +15,14 @@ public non-sealed class Section extends CommonElement implements FlowContent, Se
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Section(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Section() {
-	super();
+        super();
     }
 }

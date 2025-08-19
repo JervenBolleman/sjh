@@ -18,24 +18,24 @@ public non-sealed class Q extends CommonElement implements FlowContent, Phrasing
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Q(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren, Cite cite) {
-	super(ga, childeren);
-	this.cite = cite;
+        super(ga, childeren);
+        this.cite = cite;
     }
 
     public Q(Stream<? extends PhrasingContent> childeren) {
-	super(Stream.<GlobalAttribute> empty(), childeren);
-	this.cite = null;
+        super(Stream.<GlobalAttribute> empty(), childeren);
+        this.cite = null;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (this.cite != null)
-	    return Stream.of(this.cite);
-	else
-	    return Stream.empty();
+        if (this.cite != null)
+            return Stream.of(this.cite);
+        else
+            return Stream.empty();
     }
 }

@@ -18,11 +18,11 @@ public enum TypeMustMatch implements EmbeddedAttribute, BooleanAttribute {
 
     @Override
     public byte[] getAttributeName() {
-	return NAME;
+        return NAME;
     }
 
     @Override
     public boolean is() {
-	return this == TRUE;
+        return this == TRUE;
     }
 }

@@ -16,28 +16,28 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 public non-sealed class Canvas extends CommonElement
-	implements FlowContent, PhrasingContent, PalpabaleContent, MetaContent {
+        implements FlowContent, PhrasingContent, PalpabaleContent, MetaContent {
     private final static byte[] NAME = "canvas".getBytes(UTF_8);
     private Width width;
     private Height height;
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Canvas(Stream<GlobalAttribute> ga, Width width, Height height, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
-	this.width = width;
-	this.height = height;
+        super(ga, childeren);
+        this.width = width;
+        this.height = height;
     }
 
     public Canvas() {
-	super();
+        super();
     }
 
     @Override
     protected Stream<EmbeddedAttribute> getElementSpecificAttributes() {
-	return Stream.of(width, height).filter(Objects::nonNull);
+        return Stream.of(width, height).filter(Objects::nonNull);
     }
 }

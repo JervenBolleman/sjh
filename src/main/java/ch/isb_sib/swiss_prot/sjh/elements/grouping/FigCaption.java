@@ -13,14 +13,14 @@ public class FigCaption extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public FigCaption(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public FigCaption() {
-	super();
+        super();
     }
 }

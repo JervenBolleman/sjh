@@ -4,10 +4,8 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
 /**
- * The readonly attribute is a boolean attribute that controls whether or not
- * the user can edit the form control. When specified, the element is not
- * mutable
- *
+ * The readonly attribute is a boolean attribute that controls whether or not the user can edit the form control. When
+ * specified, the element is not mutable
  */
 public enum ReadOnly implements FormAttribute, BooleanAttribute {
 
@@ -21,11 +19,11 @@ public enum ReadOnly implements FormAttribute, BooleanAttribute {
 
     @Override
     public byte[] getAttributeName() {
-	return NAME;
+        return NAME;
     }
 
     @Override
     public boolean is() {
-	return this == TRUE;
+        return this == TRUE;
     }
 }

@@ -17,25 +17,25 @@ public class Param extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Param(Stream<GlobalAttribute> ga, Name name, Value value) {
-	super(ga, Stream.empty());
-	this.name = name;
-	this.value = value;
+        super(ga, Stream.empty());
+        this.name = name;
+        this.value = value;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (name != null) {
-	    if (value != null)
-		return Stream.of(name, value);
-	    else
-		return Stream.of(name);
-	} else if (value != null)
-	    return Stream.of(value);
-	else
-	    return Stream.empty();
+        if (name != null) {
+            if (value != null)
+                return Stream.of(name, value);
+            else
+                return Stream.of(name);
+        } else if (value != null)
+            return Stream.of(value);
+        else
+            return Stream.empty();
     }
 }

@@ -15,14 +15,14 @@ public non-sealed class Article extends CommonElement implements FlowContent, Se
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Article(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Article() {
-	super();
+        super();
     }
 }

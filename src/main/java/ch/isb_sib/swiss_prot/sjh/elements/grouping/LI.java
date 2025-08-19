@@ -14,14 +14,14 @@ public class LI extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public LI(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren, Value value) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public LI() {
-	super();
+        super();
     }
 }

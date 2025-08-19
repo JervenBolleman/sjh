@@ -5,9 +5,8 @@ import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
 /**
  * Whether the dialog box is showing or Whether the details are visible
- * 
- * @author jbollema
  *
+ * @author jbollema
  */
 public enum Open implements BooleanAttribute, ContentAttribute {
 
@@ -21,11 +20,11 @@ public enum Open implements BooleanAttribute, ContentAttribute {
 
     @Override
     public byte[] getAttributeName() {
-	return NAME;
+        return NAME;
     }
 
     @Override
     public boolean is() {
-	return this == TRUE;
+        return this == TRUE;
     }
 }

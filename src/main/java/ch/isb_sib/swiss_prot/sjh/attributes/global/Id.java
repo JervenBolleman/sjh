@@ -10,17 +10,17 @@ public non-sealed class Id implements GlobalAttribute {
     private final byte[] value;
 
     public Id(String value) {
-	Objects.nonNull(value);
-	this.value = Attribute.fromString(value);
+        Objects.nonNull(value);
+        this.value = Attribute.fromString(value);
     }
 
     @Override
     public byte[] getValue() {
-	return value;
+        return value;
     }
 
     @Override
     public byte[] getAttributeName() {
-	return NAME;
+        return NAME;
     }
 }

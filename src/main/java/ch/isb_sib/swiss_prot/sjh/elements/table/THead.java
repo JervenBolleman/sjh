@@ -12,10 +12,10 @@ public class THead extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public THead(Stream<GlobalAttribute> ga, Stream<TR> children) {
-	super(ga, children);
+        super(ga, children);
     }
 }

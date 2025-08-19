@@ -29,26 +29,25 @@ import ch.isb_sib.swiss_prot.sjh.attributes.script.Defer;;
 
 @SuppressWarnings("deprecation")
 public sealed interface BooleanAttribute extends Attribute
-	permits Async, NoModule, Open, Autoplay, Controls, Default, IsMap, Loop, Muted, TypeMustMatch, AutoFocus,
-	Checked, Disabled, FormNoValidate, Selected, Required, ReadOnly, NoValidate, Multiple, Hidden, Reversed, Defer {
+        permits Async, NoModule, Open, Autoplay, Controls, Default, IsMap, Loop, Muted, TypeMustMatch, AutoFocus,
+        Checked, Disabled, FormNoValidate, Selected, Required, ReadOnly, NoValidate, Multiple, Hidden, Reversed, Defer {
 
     static final byte[] EMPTY = new byte[0];
 
     boolean is();
 
     public default void render(OutputStream stream) throws IOException {
-	if (is())
-	    stream.write(getAttributeName());
+        if (is())
+            stream.write(getAttributeName());
     }
 
     @Override
     public default byte[] getValue() {
-	return null;
+        return null;
     }
 
-    
     public default void render(Writer stream) throws IOException {
-	if (is())
-	    stream.append(new CharSequenceOfBytesValueLessThan128(getAttributeName()));
+        if (is())
+            stream.append(new CharSequenceOfBytesValueLessThan128(getAttributeName()));
     }
 }

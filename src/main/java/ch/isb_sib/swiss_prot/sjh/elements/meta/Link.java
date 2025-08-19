@@ -29,24 +29,24 @@ public non-sealed class Link extends CommonElement implements MetaContent {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Link(Stream<GlobalAttribute> ga, Href href, CrossOrigin co, Rel rel, Media media, HrefLang hreflang,
-	    Type type, Sizes size) {
-	super(ga, Stream.empty());
-	this.href = href;
-	this.co = co;
-	this.rel = rel;
-	this.media = media;
-	this.hrefLang = hreflang;
-	this.type = type;
-	this.size = size;
+            Type type, Sizes size) {
+        super(ga, Stream.empty());
+        this.href = href;
+        this.co = co;
+        this.rel = rel;
+        this.media = media;
+        this.hrefLang = hreflang;
+        this.type = type;
+        this.size = size;
     }
 
     @Override
     protected Stream<ContentAttribute> getElementSpecificAttributes() {
-	return Stream.of(href, co, rel, media, hrefLang, type, size).filter(Objects::nonNull);
+        return Stream.of(href, co, rel, media, hrefLang, type, size).filter(Objects::nonNull);
     }
 
 }

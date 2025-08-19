@@ -23,20 +23,20 @@ public non-sealed class Meta extends CommonElement implements MetaContent {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Meta(Stream<GlobalAttribute> ga, Name name, HttpEquiv httpEquiv, Content content, Charset charset) {
-	super(ga, Stream.empty());
-	this.name = name;
-	this.httpEquiv = httpEquiv;
-	this.content = content;
-	this.charset = charset;
+        super(ga, Stream.empty());
+        this.name = name;
+        this.httpEquiv = httpEquiv;
+        this.content = content;
+        this.charset = charset;
     }
 
     @Override
     protected Stream<MetaAttribute> getElementSpecificAttributes() {
-	return Stream.of(name, httpEquiv, content, charset).filter(Objects::nonNull);
+        return Stream.of(name, httpEquiv, content, charset).filter(Objects::nonNull);
     }
 
 }

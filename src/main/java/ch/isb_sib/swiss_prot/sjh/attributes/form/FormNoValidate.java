@@ -14,11 +14,11 @@ public enum FormNoValidate implements FormAttribute, BooleanAttribute {
 
     @Override
     public byte[] getAttributeName() {
-	return NAME;
+        return NAME;
     }
 
     @Override
     public boolean is() {
-	return this == TRUE;
+        return this == TRUE;
     }
 }

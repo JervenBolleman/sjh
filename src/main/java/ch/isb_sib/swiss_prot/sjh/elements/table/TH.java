@@ -27,22 +27,22 @@ public non-sealed class TH extends CommonElement implements TDOrTH {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public TH(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> children, ColSpan colspan, RowSpan rowspan,
-	    Headers headers, Scope scope, Abbr abbr, Sorted sorted) {
-	super(ga, children);
-	this.colspan = colspan;
-	this.rowspan = rowspan;
-	this.headers = headers;
-	this.scope = scope;
-	this.abbr = abbr;
-	this.sorted = sorted;
+            Headers headers, Scope scope, Abbr abbr, Sorted sorted) {
+        super(ga, children);
+        this.colspan = colspan;
+        this.rowspan = rowspan;
+        this.headers = headers;
+        this.scope = scope;
+        this.abbr = abbr;
+        this.sorted = sorted;
     }
 
     @Override
     protected Stream<TableAttribute> getElementSpecificAttributes() {
-	return Stream.of(colspan, rowspan, headers, scope, abbr, sorted).filter(Objects::nonNull);
+        return Stream.of(colspan, rowspan, headers, scope, abbr, sorted).filter(Objects::nonNull);
     }
 }

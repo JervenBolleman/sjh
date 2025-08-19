@@ -13,14 +13,14 @@ public non-sealed class DT extends CommonElement implements DtOrDd {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public DT(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public DT() {
-	super();
+        super();
     }
 }

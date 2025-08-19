@@ -21,7 +21,7 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PhrasingContent;
 
 public non-sealed class Iframe extends CommonElement
-	implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent, PalpabaleContent {
+        implements FlowContent, PhrasingContent, EmbeddedContent, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "iframe".getBytes(UTF_8);
     private final Src src;
     private final SrcDoc srcdoc;
@@ -32,22 +32,22 @@ public non-sealed class Iframe extends CommonElement
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Iframe(Stream<GlobalAttribute> ga, Src src, SrcDoc srcdoc, Name name, SandBox sandbox, Width width,
-	    Height height) {
-	super(ga, Stream.empty());
-	this.src = src;
-	this.srcdoc = srcdoc;
-	this.name = name;
-	this.sandbox = sandbox;
-	this.width = width;
-	this.height = height;
+            Height height) {
+        super(ga, Stream.empty());
+        this.src = src;
+        this.srcdoc = srcdoc;
+        this.name = name;
+        this.sandbox = sandbox;
+        this.width = width;
+        this.height = height;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(src, srcdoc, name, sandbox, width, height).filter(Objects::nonNull);
+        return Stream.of(src, srcdoc, name, sandbox, width, height).filter(Objects::nonNull);
     }
 }

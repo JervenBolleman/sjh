@@ -18,24 +18,24 @@ public non-sealed class Time extends CommonElement implements FlowContent, Phras
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Time(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren, DateTime datetime) {
-	super(ga, childeren);
-	this.datetime = datetime;
+        super(ga, childeren);
+        this.datetime = datetime;
     }
 
     public Time() {
-	super();
-	datetime = null;
+        super();
+        datetime = null;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (datetime != null)
-	    return Stream.of(datetime);
-	else
-	    return Stream.empty();
+        if (datetime != null)
+            return Stream.of(datetime);
+        else
+            return Stream.empty();
     }
 }

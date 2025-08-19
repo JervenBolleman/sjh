@@ -15,15 +15,15 @@ public non-sealed class Strong extends CommonElement implements FlowContent, Phr
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Strong(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Strong() {
-	super();
+        super();
     }
 
 }

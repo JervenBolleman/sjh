@@ -12,10 +12,10 @@ public class TFoot extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public TFoot(Stream<GlobalAttribute> ga, Stream<TR> children) {
-	super(ga, children);
+        super(ga, children);
     }
 }

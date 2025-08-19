@@ -15,14 +15,14 @@ public non-sealed class U extends CommonElement implements FlowContent, Phrasing
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public U(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public U() {
-	super();
+        super();
     }
 }

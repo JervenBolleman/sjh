@@ -15,14 +15,14 @@ public non-sealed class Rp extends CommonElement implements FlowContent, Phrasin
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Rp(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Rp() {
-	super();
+        super();
     }
 }

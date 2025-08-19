@@ -14,31 +14,31 @@ import ch.isb_sib.swiss_prot.sjh.elements.contenttype.PalpabaleContent;
 import ch.isb_sib.swiss_prot.sjh.elements.contenttype.SectioningRoot;
 
 public non-sealed class Details extends CommonElement
-	implements FlowContent, SectioningRoot, InteractiveContent, PalpabaleContent {
+        implements FlowContent, SectioningRoot, InteractiveContent, PalpabaleContent {
     private final static byte[] NAME = "details".getBytes(UTF_8);
     private final Open open;
 
     public Details(Stream<GlobalAttribute> ga, Open open) {
-	super(ga, Stream.empty());
-	this.open = open;
+        super(ga, Stream.empty());
+        this.open = open;
     }
 
     public Details(Stream<GlobalAttribute> ga, Summary summary, Open open) {
-	super(ga, Stream.of(summary));
-	this.open = open;
+        super(ga, Stream.of(summary));
+        this.open = open;
     }
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (open != null)
-	    return Stream.of(open);
-	else
-	    return Stream.empty();
+        if (open != null)
+            return Stream.of(open);
+        else
+            return Stream.empty();
     }
 
 }

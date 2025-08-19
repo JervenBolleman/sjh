@@ -15,18 +15,18 @@ public non-sealed class Text implements Element, PhrasingContent, FlowContent {
 
     @Override
     public void render(OutputStream stream) throws IOException {
-	stream.write(value);
+        stream.write(value);
     }
 
     @Override
     public void render(Writer writer) throws IOException {
-	writer.write(new String(value, UTF_8));
+        writer.write(new String(value, UTF_8));
     }
 
     public Text(String value) {
-	super();
-	Objects.nonNull(value);
-	this.value = value.getBytes(UTF_8);
+        super();
+        Objects.nonNull(value);
+        this.value = value.getBytes(UTF_8);
     }
 
 }

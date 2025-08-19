@@ -14,15 +14,15 @@ public class Legend extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Legend(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childreren) {
-	super(ga, childreren);
+        super(ga, childreren);
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.empty();
+        return Stream.empty();
     }
 }

@@ -19,29 +19,29 @@ public class Style extends CommonElement {
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Style(Stream<GlobalAttribute> ga, Media media, Type type, Text text) {
-	super(ga, Stream.of(text));
-	this.media = media;
-	this.type = type;
+        super(ga, Stream.of(text));
+        this.media = media;
+        this.type = type;
     }
 
     public Style() {
-	super();
-	this.media = null;
-	this.type = null;
+        super();
+        this.media = null;
+        this.type = null;
     }
 
     public Style(Text text) {
-	super(Stream.<GlobalAttribute> empty(), Stream.of(text));
-	this.media = null;
-	this.type = null;
+        super(Stream.<GlobalAttribute> empty(), Stream.of(text));
+        this.media = null;
+        this.type = null;
     }
 
     @Override
     protected Stream<ContentAttribute> getElementSpecificAttributes() {
-	return Stream.of(media, type).filter(Objects::nonNull);
+        return Stream.of(media, type).filter(Objects::nonNull);
     }
 }

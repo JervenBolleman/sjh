@@ -8,17 +8,17 @@ public non-sealed class Download implements Attribute {
     private final byte[] value;
 
     public Download(String value) {
-	Objects.nonNull(value);
-	this.value = Attribute.fromString(value);
+        Objects.nonNull(value);
+        this.value = Attribute.fromString(value);
     }
 
     @Override
     public byte[] getValue() {
-	return value;
+        return value;
     }
 
     @Override
     public byte[] getAttributeName() {
-	return LANG_IS;
+        return LANG_IS;
     }
 }

@@ -15,14 +15,14 @@ public non-sealed class B extends CommonElement implements FlowContent, Phrasing
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public B(Stream<GlobalAttribute> ga, Stream<? extends PhrasingContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public B() {
-	super();
+        super();
     }
 }

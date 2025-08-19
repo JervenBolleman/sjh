@@ -17,25 +17,25 @@ public non-sealed class BlockQuote extends CommonElement implements FlowContent,
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public BlockQuote(Stream<GlobalAttribute> ga, Cite cite, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
-	this.cite = cite;
+        super(ga, childeren);
+        this.cite = cite;
     }
 
     public BlockQuote() {
-	super();
-	this.cite = null;
+        super();
+        this.cite = null;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (this.cite != null)
-	    return Stream.of(this.cite);
-	else
-	    return Stream.empty();
+        if (this.cite != null)
+            return Stream.of(this.cite);
+        else
+            return Stream.empty();
     }
 
 }

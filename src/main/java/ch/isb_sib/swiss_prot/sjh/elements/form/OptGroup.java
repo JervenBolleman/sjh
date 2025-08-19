@@ -18,18 +18,18 @@ public non-sealed class OptGroup extends CommonElement implements OptionOrOptGro
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public OptGroup(Stream<GlobalAttribute> ga, Disabled disabled, Label label, Stream<Option> childreren) {
-	super(ga, childreren);
-	this.disabled = disabled;
-	this.label = label;
+        super(ga, childreren);
+        this.disabled = disabled;
+        this.label = label;
 
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(this.disabled, this.label).filter(Objects::nonNull);
+        return Stream.of(this.disabled, this.label).filter(Objects::nonNull);
     }
 }

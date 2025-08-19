@@ -10,11 +10,11 @@ public enum Defer implements ScriptAttribute, BooleanAttribute {
 
     @Override
     public byte[] getAttributeName() {
-	return LANG_IS;
+        return LANG_IS;
     }
 
     @Override
     public boolean is() {
-	return this == TRUE;
+        return this == TRUE;
     }
 }

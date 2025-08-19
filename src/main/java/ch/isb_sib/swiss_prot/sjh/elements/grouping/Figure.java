@@ -15,14 +15,14 @@ public non-sealed class Figure extends CommonElement implements FlowContent, Sec
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Figure(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren, FigCaption caption) {
-	super(ga, Stream.concat(childeren, Stream.of(caption)));
+        super(ga, Stream.concat(childeren, Stream.of(caption)));
     }
 
     public Figure(Stream<GlobalAttribute> ga, FigCaption caption, Stream<? extends FlowContent> childeren) {
-	super(ga, Stream.concat(Stream.of(caption), childeren));
+        super(ga, Stream.concat(Stream.of(caption), childeren));
     }
 }

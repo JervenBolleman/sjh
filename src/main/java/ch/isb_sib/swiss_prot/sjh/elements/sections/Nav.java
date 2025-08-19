@@ -15,14 +15,14 @@ public non-sealed class Nav extends CommonElement implements FlowContent, Sectio
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Nav(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
+        super(ga, childeren);
     }
 
     public Nav() {
-	super();
+        super();
     }
 }

@@ -18,19 +18,19 @@ public non-sealed class Map extends CommonElement implements FlowContent, Phrasi
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Map(Stream<GlobalAttribute> ga, Name name, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
-	this.name = name;
+        super(ga, childeren);
+        this.name = name;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	if (name != null)
-	    return Stream.of(name);
-	else
-	    return Stream.empty();
+        if (name != null)
+            return Stream.of(name);
+        else
+            return Stream.empty();
     }
 }

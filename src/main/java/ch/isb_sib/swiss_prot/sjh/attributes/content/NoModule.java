@@ -4,12 +4,10 @@ import ch.isb_sib.swiss_prot.sjh.attributes.Attribute;
 import ch.isb_sib.swiss_prot.sjh.attributes.BooleanAttribute;
 
 /**
- * The nomodule attribute is a boolean attribute that prevents a script from
- * being executed in user agents that support module scripts. This allows
- * selective execution of module scripts in modern user agents and classic
- * scripts in older user agents, as shown below. The nomodule attribute must not
- * be specified on module scripts (and will be ignored if it is).
- * 
+ * The nomodule attribute is a boolean attribute that prevents a script from being executed in user agents that support
+ * module scripts. This allows selective execution of module scripts in modern user agents and classic scripts in older
+ * user agents, as shown below. The nomodule attribute must not be specified on module scripts (and will be ignored if
+ * it is).
  */
 
 public enum NoModule implements BooleanAttribute, ContentAttribute {
@@ -19,11 +17,11 @@ public enum NoModule implements BooleanAttribute, ContentAttribute {
 
     @Override
     public byte[] getAttributeName() {
-	return NAME;
+        return NAME;
     }
 
     @Override
     public boolean is() {
-	return this == TRUE;
+        return this == TRUE;
     }
 }

@@ -32,36 +32,36 @@ public non-sealed class Form extends CommonElement implements FlowContent, Phras
 
     @Override
     protected byte[] getName() {
-	return NAME;
+        return NAME;
     }
 
     public Form(Stream<GlobalAttribute> ga, AcceptCharset ac, Action action, AutoComplete autocomplete, EncType enctype,
-	    Method method, Name name, NoValidate novalidate, Target target, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
-	this.ac = ac;
-	this.action = action;
-	this.autocomplete = autocomplete;
-	this.enctype = enctype;
-	this.method = method;
-	this.name = name;
-	this.novalidate = novalidate;
-	this.target = target;
+            Method method, Name name, NoValidate novalidate, Target target, Stream<? extends FlowContent> childeren) {
+        super(ga, childeren);
+        this.ac = ac;
+        this.action = action;
+        this.autocomplete = autocomplete;
+        this.enctype = enctype;
+        this.method = method;
+        this.name = name;
+        this.novalidate = novalidate;
+        this.target = target;
     }
 
     public Form(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
-	super(ga, childeren);
-	this.ac = null;
-	this.action = null;
-	this.autocomplete = null;
-	this.enctype = null;
-	this.method = null;
-	this.name = null;
-	this.novalidate = null;
-	this.target = null;
+        super(ga, childeren);
+        this.ac = null;
+        this.action = null;
+        this.autocomplete = null;
+        this.enctype = null;
+        this.method = null;
+        this.name = null;
+        this.novalidate = null;
+        this.target = null;
     }
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-	return Stream.of(ac, action, autocomplete, enctype, method, name, novalidate, target).filter(Objects::nonNull);
+        return Stream.of(ac, action, autocomplete, enctype, method, name, novalidate, target).filter(Objects::nonNull);
     }
 }
