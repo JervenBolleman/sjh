@@ -50,8 +50,8 @@ public class HtmlWithHeadTest {
 	Body body = body();
 	HTML html = html(head, body);
 
-	test(html,
-		"<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body/></html>");
+	test(html, """
+		<!DOCTYPE html><html><head><title>test</title><link href="/" rel="home"/></head><body/></html>""");
     }
 
     // @Test
@@ -73,8 +73,8 @@ public class HtmlWithHeadTest {
 	Body body = body(main(), div());
 	HTML html = html(head, body);
 
-	test(html,
-		"<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body><main/><div/></body></html>");
+	test(html, """
+	<!DOCTYPE html><html><head><title>test</title><link href="/" rel="home"/></head><body><main/><div/></body></html>""");
     }
 
     @Test
@@ -89,8 +89,8 @@ public class HtmlWithHeadTest {
 	Body body = body(main(), div(orderedListOfUser));
 	HTML html = html(head, body);
 
-	test(html,
-		"<!DOCTYPE html><html><head><title>test</title><link href=\"/\" rel=\"home\"/></head><body><main/><div><ol><li>me</li><li>you</li></ol></div></body></html>");
+	test(html, """
+		<!DOCTYPE html><html><head><title>test</title><link href="/" rel="home"/></head><body><main/><div><ol><li>me</li><li>you</li></ol></div></body></html>""");
     }
 
     private void test(Element html, String expectedRaw) throws IOException {
@@ -98,4 +98,5 @@ public class HtmlWithHeadTest {
 	html.render(boas);
 	assertEquals(expectedRaw, new String(boas.toByteArray(), UTF_8));
     }
+
 }
