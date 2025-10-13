@@ -3,8 +3,9 @@ package swiss.sib.swissprot.sjh.attributes.meta;
 import java.util.Objects;
 
 import swiss.sib.swissprot.sjh.attributes.Attribute;
+import swiss.sib.swissprot.sjh.attributes.rdfa.core.RdfaCoreAttribute;
 
-public non-sealed class Content implements MetaAttribute {
+public non-sealed class Content implements MetaAttribute, RdfaCoreAttribute {
     private static final byte[] LANG_IS = Attribute.fromString("content");
 
     private final byte[] value;

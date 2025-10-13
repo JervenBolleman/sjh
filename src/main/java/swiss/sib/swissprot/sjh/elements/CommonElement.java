@@ -10,9 +10,11 @@ import java.util.stream.Stream;
 
 import swiss.sib.swissprot.sjh.attributes.Attribute;
 import swiss.sib.swissprot.sjh.attributes.global.GlobalAttribute;
+import swiss.sib.swissprot.sjh.attributes.rdfa.RdfaAttribute;
 
 public abstract class CommonElement implements Element {
     private final Stream<GlobalAttribute> attributes;
+    private final Stream<RdfaAttribute> rdfaAttr;
     private final Stream<? extends Element> childeren;
 
     protected abstract byte[] getName();
@@ -20,14 +22,10 @@ public abstract class CommonElement implements Element {
     public void render(OutputStream stream) throws IOException {
         stream.write('<');
         stream.write(getName());
-        Iterator<Attribute> sa = getAttributes().iterator();
-        if (sa.hasNext())
-            stream.write(' ');
-        while (sa.hasNext()) {
-            sa.next().render(stream);
-            if (sa.hasNext())
-                stream.write(' ');
-        }
+
+        writeAttributes(stream, attributes);
+        writeAttributes(stream, rdfaAttr);
+        writeAttributes(stream, getElementSpecificAttributes());
         if (childeren != null) {
 
             Iterator<? extends Element> iter = childeren.iterator();
@@ -48,18 +46,13 @@ public abstract class CommonElement implements Element {
             stream.write('>');
         }
     }
-
+	
     public void render(Writer writer) throws IOException {
         writer.write('<');
         writer.write(new String(getName(), StandardCharsets.UTF_8));
-        Iterator<Attribute> sa = getAttributes().iterator();
-        if (sa.hasNext())
-            writer.write(' ');
-        while (sa.hasNext()) {
-            sa.next().render(writer);
-            if (sa.hasNext())
-                writer.write(' ');
-        }
+        writeAttributes(writer, attributes);
+        writeAttributes(writer, rdfaAttr);
+        writeAttributes(writer, getElementSpecificAttributes());
         if (childeren != null) {
 
             Iterator<? extends Element> iter = childeren.iterator();
@@ -84,27 +77,53 @@ public abstract class CommonElement implements Element {
     protected CommonElement(Stream<GlobalAttribute> ga, Stream<? extends Element> childeren) {
         super();
         this.attributes = ga;
+		this.rdfaAttr = null;
+        this.childeren = childeren.filter(Objects::nonNull);
+    }
+    
+    protected CommonElement(Stream<GlobalAttribute> ga, Stream<RdfaAttribute> rdfa, Stream<? extends Element> childeren) {
+        super();
+        this.attributes = ga;
+		this.rdfaAttr = rdfa;
         this.childeren = childeren.filter(Objects::nonNull);
     }
 
     protected CommonElement() {
         super();
         this.attributes = null;
+		this.rdfaAttr = null;
         this.childeren = null;
     }
+    
+    private void writeAttributes(OutputStream stream, Stream<? extends Attribute> sa) throws IOException {
+		if (sa == null)
+			return;
 
-    private Stream<GlobalAttribute> getGlobalAttributes() {
-        if (attributes != null)
-            return attributes.filter(Objects::nonNull);
-        else
-            return Stream.empty();
-    }
+		Iterator<? extends Attribute> iter = sa.iterator();
+		if (iter.hasNext())
+			stream.write(' ');
+		while (iter.hasNext()) {
+			iter.next().render(stream);
+			if (iter.hasNext())
+				stream.write(' ');
+		}
+	}
 
-    private final Stream<Attribute> getAttributes() {
-        return Stream.concat(getGlobalAttributes(), getElementSpecificAttributes()).filter(Objects::nonNull);
-    }
+	private void writeAttributes(Writer stream, Stream<? extends Attribute> sa) throws IOException {
+		if (sa == null)
+			return;
 
-    protected Stream<? extends Attribute> getElementSpecificAttributes() {
+		Iterator<? extends Attribute> iter = sa.iterator();
+		if (iter.hasNext())
+			stream.write(' ');
+		while (iter.hasNext()) {
+			iter.next().render(stream);
+			if (iter.hasNext())
+				stream.write(' ');
+		}
+	}
+    
+	protected Stream<? extends Attribute> getElementSpecificAttributes() {
         return Stream.empty();
     }
 }

@@ -5,6 +5,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import java.util.stream.Stream;
 
 import swiss.sib.swissprot.sjh.attributes.global.GlobalAttribute;
+import swiss.sib.swissprot.sjh.attributes.rdfa.RdfaAttribute;
 import swiss.sib.swissprot.sjh.elements.CommonElement;
 import swiss.sib.swissprot.sjh.elements.contenttype.FlowContent;
 import swiss.sib.swissprot.sjh.elements.contenttype.PalpabaleContent;
@@ -18,10 +19,14 @@ public non-sealed class Article extends CommonElement implements FlowContent, Se
         return NAME;
     }
 
-    public Article(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
+    public Article(Stream<GlobalAttribute> ga, Stream<FlowContent> childeren) {
         super(ga, childeren);
     }
-
+    
+    public Article(Stream<GlobalAttribute> ga, Stream<RdfaAttribute> rdfa, Stream<FlowContent> childeren) {
+        super(ga, rdfa, childeren);
+    }
+    
     public Article() {
         super();
     }

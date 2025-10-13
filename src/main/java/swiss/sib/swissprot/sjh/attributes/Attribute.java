@@ -16,13 +16,14 @@ import swiss.sib.swissprot.sjh.attributes.grouping.GroupingAttribute;
 import swiss.sib.swissprot.sjh.attributes.head.Manifest;
 import swiss.sib.swissprot.sjh.attributes.menu.MenuAttribute;
 import swiss.sib.swissprot.sjh.attributes.meta.MetaAttribute;
+import swiss.sib.swissprot.sjh.attributes.rdfa.RdfaAttribute;
 import swiss.sib.swissprot.sjh.attributes.script.ScriptAttribute;
 import swiss.sib.swissprot.sjh.attributes.table.TableAttribute;
 import swiss.sib.swissprot.sjh.elements.interactive.MenuItem;
 
 public sealed interface Attribute permits BooleanAttribute, GlobalAttribute, FormAttribute, Cite, DateTime, Download,
         ContentAttribute, GroupingAttribute, EmbeddedAttribute, EventAttribute, Manifest, MenuAttribute, MetaAttribute,
-        ScriptAttribute, TableAttribute, MenuItem.Type {
+        ScriptAttribute, TableAttribute, MenuItem.Type, RdfaAttribute {
     static final byte DOUBLE_QUOTE = '"';
     static final byte[] EQUALS_DOUBLE_QUOTE = new byte[] { '=', '"' };
 

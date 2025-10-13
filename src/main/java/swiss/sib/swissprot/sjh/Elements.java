@@ -483,7 +483,7 @@ public class Elements {
         return new Area(Stream.empty());
     }
 
-    public static Article article(Id id, Stream<? extends FlowContent> childeren) {
+    public static Article article(Id id, Stream<FlowContent> childeren) {
         return new Article(ga(id), childeren);
     }
 
@@ -1485,7 +1485,7 @@ public class Elements {
         return new Map(ga(clazz), null, childeren);
     }
 
-    public static Article article(Id id, Clazz clazz, Stream<? extends FlowContent> childeren) {
+    public static Article article(Id id, Clazz clazz, Stream<FlowContent> childeren) {
         return new Article(ga(id, clazz), childeren);
     }
 

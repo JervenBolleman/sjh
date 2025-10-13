@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import swiss.sib.swissprot.sjh.attributes.global.GlobalAttribute;
 import swiss.sib.swissprot.sjh.attributes.grouping.Value;
+import swiss.sib.swissprot.sjh.attributes.rdfa.RdfaAttribute;
 import swiss.sib.swissprot.sjh.elements.CommonElement;
 import swiss.sib.swissprot.sjh.elements.contenttype.FlowContent;
 
@@ -19,6 +20,10 @@ public class LI extends CommonElement {
 
     public LI(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren, Value value) {
         super(ga, childeren);
+    }
+    
+    public LI(Stream<GlobalAttribute> ga, Stream<RdfaAttribute> rdf, Stream<? extends FlowContent> childeren, Value value) {
+        super(ga, rdf, childeren);
     }
 
     public LI() {
