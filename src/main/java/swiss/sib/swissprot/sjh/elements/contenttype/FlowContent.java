@@ -1,5 +1,6 @@
 package swiss.sib.swissprot.sjh.elements.contenttype;
 
+import swiss.sib.swissprot.sjh.Comment;
 import swiss.sib.swissprot.sjh.elements.Element;
 import swiss.sib.swissprot.sjh.elements.Text;
 import swiss.sib.swissprot.sjh.elements.embedded.Area;
@@ -93,6 +94,6 @@ public sealed interface FlowContent extends Element
         Data, DataList, Details, Dfn, Dialog, Div, DL, Em, Embed, FieldSet, Figure, Footer, Form, H1, H2, H3, H4, H5,
         H6, Header, HGroup, HR, I, Iframe, Img, Input, Kbd, KeyGen, Label, Main, Map, Mark, Menu, MenuItem, Meter, Nav,
         NoScript, Object, OL, Output, P, Pre, Progress, Q, Rb, Rp, Rt, Rtc, Ruby, S, Samp, Script, Section, Select,
-        Small, Span, Strong, Sub, Sup, Table, Template, Text, TextArea, Time, U, UL, Var, Video, WBr {
+        Small, Span, Strong, Sub, Sup, Table, Template, Text, TextArea, Time, U, UL, Var, Video, WBr, Comment {
 
 }

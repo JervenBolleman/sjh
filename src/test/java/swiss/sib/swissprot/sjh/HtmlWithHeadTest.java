@@ -99,7 +99,7 @@ public class HtmlWithHeadTest {
     private void test(Element html, String expectedRaw) throws IOException {
         ByteArrayOutputStream boas = new ByteArrayOutputStream();
         html.render(boas);
-        assertEquals(expectedRaw, new String(boas.toByteArray(), UTF_8));
+        assertEquals(expectedRaw, new String(boas.toByteArray(), UTF_8).replaceAll("\n",""));
     }
 
 }

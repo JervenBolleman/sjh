@@ -1,5 +1,6 @@
 package swiss.sib.swissprot.sjh.elements.contenttype;
 
+import swiss.sib.swissprot.sjh.Comment;
 import swiss.sib.swissprot.sjh.elements.Element;
 import swiss.sib.swissprot.sjh.elements.embedded.Audio;
 import swiss.sib.swissprot.sjh.elements.embedded.Embed;
@@ -81,6 +82,6 @@ public sealed interface PalpabaleContent extends Element permits A, Abbr, Addres
         Br, Button, Canvas, Cite, Code, Data, Details, Dfn, Div, DL, Em, Embed, FieldSet, Figure, Footer, H1, H2, H3,
         H4, H5, H6, Header, HGroup, I, Iframe, Img, Input, Kbd, KeyGen, Label, Main, Map, Mark, Meter, Nav, Object, OL,
         Output, P, Pre, Progress, Q, Rp, Rb, Rt, Rtc, Ruby, S, Samp, Section, Select, Small, Span, Strong, Sub, Sup,
-        Table, Template, TextArea, Time, U, UL, Var, Video, WBr {
+        Table, Template, TextArea, Time, U, UL, Var, Video, WBr, Comment {
 
 }

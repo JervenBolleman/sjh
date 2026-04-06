@@ -38,6 +38,10 @@ public non-sealed class A extends CommonElement
     public A(Stream<Element> childeren, Href href, Rel rel) {
         this(null, childeren, href, null, null, rel, null, null);
     }
+    
+    public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href, Rel rel) {
+        this(ga, childeren, href, null, null, rel, null, null);
+    }
 
     public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href) {
         this(ga, childeren, href, null, null, null, null, null);

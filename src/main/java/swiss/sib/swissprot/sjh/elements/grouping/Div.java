@@ -2,9 +2,12 @@ package swiss.sib.swissprot.sjh.elements.grouping;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.stream.Stream;
 
 import swiss.sib.swissprot.sjh.attributes.global.GlobalAttribute;
+import swiss.sib.swissprot.sjh.attributes.rdfa.RdfaAttribute;
 import swiss.sib.swissprot.sjh.elements.CommonElement;
 import swiss.sib.swissprot.sjh.elements.contenttype.FlowContent;
 import swiss.sib.swissprot.sjh.elements.contenttype.PalpabaleContent;
@@ -20,8 +23,24 @@ public non-sealed class Div extends CommonElement implements FlowContent, Palpab
     public Div(Stream<GlobalAttribute> ga, Stream<? extends FlowContent> childeren) {
         super(ga, childeren);
     }
+    
+    public Div(Stream<GlobalAttribute> ga, Stream<RdfaAttribute> rdfa, Stream<? extends FlowContent> childeren) {
+        super(ga, rdfa, childeren);
+    }
 
     public Div() {
         super();
     }
+    
+    
+    @Override
+    public boolean  isSelfClosing() {
+    	return false;
+    }
+    
+    @Override
+	public void render(OutputStream stream) throws IOException {
+		super.render(stream);
+		stream.write('\n');
+	}
 }

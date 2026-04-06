@@ -2,6 +2,8 @@ package swiss.sib.swissprot.sjh.elements.table;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.stream.Stream;
 
 import swiss.sib.swissprot.sjh.attributes.global.GlobalAttribute;
@@ -18,4 +20,10 @@ public class TR extends CommonElement {
     public TR(Stream<GlobalAttribute> ga, Stream<TDOrTH> children) {
         super(ga, children);
     }
+    
+    @Override
+   	public void render(OutputStream stream) throws IOException {
+   		super.render(stream);
+   		stream.write('\n');
+   	}
 }

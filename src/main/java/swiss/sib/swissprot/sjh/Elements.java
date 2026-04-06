@@ -1,9 +1,14 @@
 package swiss.sib.swissprot.sjh;
 
+import static java.util.stream.Stream.empty;
+import static java.util.stream.Stream.of;
 import static swiss.sib.swissprot.sjh.Attributes.ga;
 
+import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.stream.Stream;
 
+import swiss.sib.swissprot.sjh.attributes.Attribute;
 import swiss.sib.swissprot.sjh.attributes.DateTime;
 import swiss.sib.swissprot.sjh.attributes.content.Href;
 import swiss.sib.swissprot.sjh.attributes.content.Rel;
@@ -19,7 +24,10 @@ import swiss.sib.swissprot.sjh.attributes.global.Id;
 import swiss.sib.swissprot.sjh.attributes.grouping.Reversed;
 import swiss.sib.swissprot.sjh.attributes.grouping.Start;
 import swiss.sib.swissprot.sjh.attributes.grouping.Value;
+import swiss.sib.swissprot.sjh.attributes.meta.Content;
+import swiss.sib.swissprot.sjh.attributes.meta.HttpEquiv;
 import swiss.sib.swissprot.sjh.attributes.meta.Name;
+import swiss.sib.swissprot.sjh.attributes.rdfa.lite.Property;
 import swiss.sib.swissprot.sjh.elements.Element;
 import swiss.sib.swissprot.sjh.elements.HTML;
 import swiss.sib.swissprot.sjh.elements.Text;
@@ -151,7 +159,7 @@ public class Elements {
     }
 
     public static Head head(Title title, MetaContent... metacontent) {
-        return new Head(title, Stream.of(metacontent));
+        return new Head(title, of(metacontent));
     }
 
     public static Title title(String title) {
@@ -165,13 +173,27 @@ public class Elements {
     public static Meta meta() {
         return new Meta(null, null, null, null, null);
     }
-
-    public static Link link(Href href, Rel rel) {
-        return new Link(null, href, null, rel, null, null, null, null);
+    
+    public static Meta meta(String name, String content, String httpEquivalent) {
+    	HttpEquiv httpEquiv = null;
+    	if (httpEquivalent != null)
+    		httpEquiv = Attributes.httpEquiv(httpEquivalent);
+    	Content con = null;
+		if (content != null)
+    		con = Attributes.content(content);
+        return new Meta(null, Attributes.name(name), httpEquiv, con, null);
+    }
+    
+    public static Meta meta(String name, Charset charset, String httpEquivalent) {
+        return new Meta(null, Attributes.name(name), Attributes.httpEquiv(httpEquivalent), null, Attributes.charset(charset.name()));
     }
 
     public static Style style() {
         return new Style();
+    }
+    
+    public static Style style(String css) {
+        return new Style(text(css));
     }
 
     public static Body body() {
@@ -179,7 +201,7 @@ public class Elements {
     }
 
     public static Body body(Element... content) {
-        return new Body(Stream.<GlobalAttribute> empty(), Stream.of(content));
+        return new Body(empty(), of(content));
     }
 
     public static Article article() {
@@ -262,9 +284,9 @@ public class Elements {
         return new LI();
     }
 
-    public static DL dl() {
-        return new DL();
-    }
+//    public static DL dl() {
+//        return new DL();
+//    }
 
     public static DT dt() {
         return new DT();
@@ -275,7 +297,7 @@ public class Elements {
     }
 
     public static Figure figure(Stream<? extends FlowContent> childeren) {
-        return new Figure(Stream.<GlobalAttribute> empty(), childeren, null);
+        return new Figure(empty(), childeren, null);
     }
 
     public static FigCaption figcaption() {
@@ -299,19 +321,23 @@ public class Elements {
     }
 
     public static A a(Href href, Stream<Element> childeren) {
-        return new A(Stream.empty(), childeren, href);
+        return new A(empty(), childeren, href);
     }
+    
+    public static A a(Href href, Stream<Element> childeren, Rel rel) {
+		return new A(childeren, href, rel);
+	}
 
     public static A a(Href href, Element... childeren) {
-        return new A(Stream.empty(), Stream.of(childeren), href);
+        return new A(empty(), of(childeren), href);
     }
 
     public static A a(Id id, Clazz clazz, Href href, Element... childeren) {
-        return new A(ga(id, clazz), Stream.of(childeren), href);
+        return new A(ga(id, clazz), of(childeren), href);
     }
 
     public static A a(Id id, Clazz clazz, Href href) {
-        return new A(ga(id, clazz), Stream.empty(), href);
+        return new A(ga(id, clazz), empty(), href);
     }
 
     public static Em em() {
@@ -407,11 +433,11 @@ public class Elements {
     }
 
     public static Bdi bdi(Stream<? extends PhrasingContent> childeren) {
-        return new Bdi(Stream.empty(), childeren);
+        return new Bdi(empty(), childeren);
     }
 
     public static Bdo bdo(Stream<? extends PhrasingContent> childeren) {
-        return new Bdo(Stream.empty(), childeren);
+        return new Bdo(empty(), childeren);
     }
 
     public static Span span(Stream<GlobalAttribute> attributes, Stream<? extends PhrasingContent> childeren) {
@@ -419,15 +445,19 @@ public class Elements {
     }
 
     public static Span span(Stream<GlobalAttribute> attributes, PhrasingContent... childeren) {
-        return new Span(attributes, Stream.of(childeren));
+        return new Span(attributes, of(childeren));
+    }
+    
+    public static Span span(PhrasingContent... childeren) {
+        return new Span(empty(), of(childeren));
     }
 
     public static Span span(Stream<? extends PhrasingContent> childeren) {
-        return new Span(Stream.empty(), childeren);
+        return new Span(empty(), childeren);
     }
 
     public static Span span() {
-        return new Span(Stream.empty(), Stream.empty());
+        return new Span(empty(), empty());
     }
 
     public static Br br() {
@@ -451,7 +481,7 @@ public class Elements {
     }
 
     public static Object object() {
-        return new Object(null, null, null, null, null, null, null, null, null, Stream.<Param> empty());
+        return new Object(null, null, null, null, null, null, null, null, null, empty());
     }
 
     public static Param param() {
@@ -459,12 +489,12 @@ public class Elements {
     }
 
     public static Video video() {
-        return new Video(Stream.empty(), null, null, null, null, null, null, null, null, null, null, (Height) null,
-                Stream.<Track> empty());
+        return new Video(empty(), null, null, null, null, null, null, null, null, null, null, (Height) null,
+                empty());
     }
 
     public static Audio audio() {
-        return new Audio(Stream.empty());
+        return new Audio(empty());
     }
 
     public static Source source() {
@@ -476,11 +506,11 @@ public class Elements {
     }
 
     public static Map map() {
-        return new Map(null, null, Stream.<FlowContent> empty());
+        return new Map(null, null, empty());
     }
 
     public static Area area() {
-        return new Area(Stream.empty());
+        return new Area(empty());
     }
 
     public static Article article(Id id, Stream<FlowContent> childeren) {
@@ -566,6 +596,14 @@ public class Elements {
     public static DL dl(Id id, Stream<? extends DtOrDd> childeren) {
         return new DL(ga(id), childeren);
     }
+    
+    public static DL dl(Id id, DT dt, DD dd) {
+        return new DL(ga(id),Stream.of(dt, dd));
+    }
+    
+    public static DL dl(Clazz clazz, DT dt, DD dd) {
+        return new DL(ga(clazz),Stream.of(dt, dd));
+    }
 
     public static DT dt(Id id, Stream<? extends FlowContent> childeren) {
         return new DT(ga(id), childeren);
@@ -582,33 +620,41 @@ public class Elements {
     public static Div div(Id id, Stream<? extends FlowContent> childeren) {
         return new Div(ga(id), childeren);
     }
+    
+    public static Div div(Id id, FlowContent... childeren) {
+        return new Div(ga(id), Stream.of(childeren));
+    }
+    
+    public static Div div(Id id, swiss.sib.swissprot.sjh.attributes.global.Style style, Stream<? extends FlowContent> childeren) {
+        return new Div(ga(id, style), childeren);
+    }
 
     public static Main main(Id id, Stream<? extends FlowContent> childeren) {
         return new Main(ga(id), childeren);
     }
 
     public static A a(Id id) {
-        return new A(ga(id), Stream.empty());
+        return new A(ga(id), empty());
     }
 
     public static Em em(Id id) {
-        return new Em(ga(id), Stream.empty());
+        return new Em(ga(id), empty());
     }
 
     public static Strong strong(Id id) {
-        return new Strong(ga(id), Stream.empty());
+        return new Strong(ga(id), empty());
     }
 
     public static Small small(Id id) {
-        return new Small(ga(id), Stream.empty());
+        return new Small(ga(id), empty());
     }
 
     public static S s(Id id) {
-        return new S(ga(id), Stream.empty());
+        return new S(ga(id), empty());
     }
 
     public static Cite cite(Id id) {
-        return new Cite(ga(id), Stream.empty());
+        return new Cite(ga(id), empty());
     }
 
     public static Q q(Id id, Stream<? extends PhrasingContent> childeren) {
@@ -616,11 +662,11 @@ public class Elements {
     }
 
     public static Dfn dfn(Id id) {
-        return new Dfn(ga(id), Stream.empty());
+        return new Dfn(ga(id), empty());
     }
 
     public static Abbr abbr(Id id) {
-        return new Abbr(ga(id), Stream.empty());
+        return new Abbr(ga(id), empty());
     }
 
     public static Data data(Id id, Stream<? extends PhrasingContent> childeren) {
@@ -628,63 +674,71 @@ public class Elements {
     }
 
     public static Time time(Id id, DateTime dt) {
-        return new Time(ga(id), Stream.empty(), dt);
+        return new Time(ga(id), empty(), dt);
     }
 
     public static Code code(Id id) {
-        return new Code(ga(id), Stream.empty());
+        return new Code(ga(id), empty());
     }
 
     public static Var var(Id id) {
-        return new Var(ga(id), Stream.empty());
+        return new Var(ga(id), empty());
     }
 
     public static Samp samp(Id id) {
-        return new Samp(ga(id), Stream.empty());
+        return new Samp(ga(id), empty());
     }
 
     public static Kbd kbd(Id id) {
-        return new Kbd(ga(id), Stream.empty());
+        return new Kbd(ga(id), empty());
     }
 
     public static Sub sub(Id id) {
-        return new Sub(ga(id), Stream.empty());
+        return new Sub(ga(id), empty());
     }
 
     public static Sup sup(Id id) {
-        return new Sup(ga(id), Stream.empty());
+        return new Sup(ga(id), empty());
     }
 
     public static Sup sup(Text text) {
-        return new Sup(Stream.empty(), Stream.of(text));
+        return new Sup(empty(), of(text));
+    }
+    
+    public static Sup sup(PhrasingContent... text) {
+        return new Sup(empty(), of(text));
     }
 
     public static I i(Id id) {
-        return new I(ga(id), Stream.empty());
+        return new I(ga(id), empty());
     }
 
     public static B b(Id id) {
-        return new B(ga(id), Stream.empty());
+        return new B(ga(id), empty());
+    }
+    
+    public static B b(String text) {
+        return new B(empty(), of(text(text)));
     }
 
     public static U u(Id id) {
-        return new U(ga(id), Stream.empty());
+        return new U(ga(id), empty());
     }
 
     public static Mark mark(Id id) {
-        return new Mark(ga(id), Stream.empty());
+        return new Mark(ga(id), empty());
     }
 
     public static Ruby ruby(Id id) {
-        return new Ruby(ga(id), Stream.empty());
+        return new Ruby(ga(id), empty());
     }
 
     public static Rt rt(Id id) {
-        return new Rt(ga(id), Stream.empty());
+        return new Rt(ga(id), empty());
     }
 
     public static Rp rp(Id id) {
-        return new Rp(ga(id), Stream.empty());
+        return new Rp(ga(id), empty());
     }
 
     public static Bdi bdi(Id id, Stream<? extends PhrasingContent> childeren) {
@@ -712,9 +766,9 @@ public class Elements {
     }
 
     public static Img img(Src src) {
-        return new Img(Stream.empty(), null, src, null, null, null, null, null);
+        return new Img(empty(), null, src, null, null, null, null, null);
     }
-
+    
     public static Iframe iframe(Id id) {
         return new Iframe(ga(id), null, null, null, null, null, null);
     }
@@ -724,7 +778,7 @@ public class Elements {
     }
 
     public static Object object(Id id) {
-        return new Object(ga(id), null, null, null, null, null, null, null, null, Stream.<Param> empty());
+        return new Object(ga(id), null, null, null, null, null, null, null, null, empty());
     }
 
     public static Param param(Id id) {
@@ -733,7 +787,7 @@ public class Elements {
 
     public static Video video(Id id) {
         return new Video(ga(id), null, null, null, null, null, null, null, null, null, null, (Height) null,
-                Stream.<Track> empty());
+                empty());
     }
 
     public static Audio audio(Id id) {
@@ -749,7 +803,7 @@ public class Elements {
     }
 
     public static Map map(Id id) {
-        return new Map(ga(id), null, Stream.<FlowContent> empty());
+        return new Map(ga(id), null, empty());
     }
 
     public static Area area(Id id) {
@@ -761,67 +815,79 @@ public class Elements {
     }
 
     public static Article article(Id id) {
-        return new Article(ga(id), Stream.empty());
+        return new Article(ga(id), empty());
     }
 
     public static Section section(Id id) {
-        return new Section(ga(id), Stream.empty());
+        return new Section(ga(id), empty());
     }
 
     public static Nav nav(Id id) {
-        return new Nav(ga(id), Stream.empty());
+        return new Nav(ga(id), empty());
     }
 
     public static Aside aside(Id id) {
-        return new Aside(ga(id), Stream.empty());
+        return new Aside(ga(id), empty());
     }
 
     public static H1 h1(Id id) {
-        return new H1(ga(id), Stream.empty());
+        return new H1(ga(id), empty());
     }
 
     public static H2 h2(Id id) {
-        return new H2(ga(id), Stream.empty());
+        return new H2(ga(id), empty());
     }
 
     public static H3 h3(Id id) {
-        return new H3(ga(id), Stream.empty());
+        return new H3(ga(id), empty());
     }
 
     public static H4 h4(Id id) {
-        return new H4(ga(id), Stream.empty());
+        return new H4(ga(id), empty());
     }
 
     public static H5 h5(Id id) {
-        return new H5(ga(id), Stream.empty());
+        return new H5(ga(id), empty());
     }
 
     public static H6 h6(Id id) {
-        return new H6(ga(id), Stream.empty());
+        return new H6(ga(id), empty());
     }
 
     public static Header header(Id id) {
-        return new Header(ga(id), Stream.empty());
+        return new Header(ga(id), empty());
     }
 
     public static Footer footer(Id id) {
-        return new Footer(ga(id), Stream.empty());
+        return new Footer(ga(id), empty());
+    }
+    
+    public static Footer footer(Stream<FlowContent> children) {
+        return new Footer(empty(), children);
     }
 
     public static Address address(Id id) {
-        return new Address(ga(id), Stream.empty());
+        return new Address(ga(id), empty());
     }
 
     public static P p(Id id) {
-        return new P(ga(id), Stream.empty());
+        return new P(ga(id), empty());
     }
 
     public static P p(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
         return new P(ga(clazz), childeren);
     }
+    
+    public static P p(Stream<? extends PhrasingContent> childeren) {
+        return new P(empty(), childeren);
+    }
+    
+    public static P p(Clazz clazz, swiss.sib.swissprot.sjh.attributes.global.Style style, Stream<? extends PhrasingContent> childeren) {
+        return new P(ga(clazz, style), childeren);
+    }
 
     public static P p(Clazz clazz, PhrasingContent... childeren) {
-        return new P(ga(clazz), Stream.of(childeren));
+        return new P(ga(clazz), Arrays.stream(childeren));
     }
 
     public static HR hr(Id id) {
@@ -829,11 +895,11 @@ public class Elements {
     }
 
     public static Pre pre(Id id) {
-        return new Pre(ga(id), Stream.empty());
+        return new Pre(ga(id), empty());
     }
 
     public static BlockQuote blockquote(Id id) {
-        return new BlockQuote(ga(id), null, Stream.empty());
+        return new BlockQuote(ga(id), null, empty());
     }
 
     public static OL ol(Id id) {
@@ -841,32 +907,32 @@ public class Elements {
         Reversed reversed = (Reversed) null;
         Start start = (Start) null;
         Type type = (Type) null;
-        Stream<LI> childeren = Stream.<LI> empty();
+        Stream<LI> childeren = empty();
         return new OL(ga, reversed, start, type, childeren);
     }
 
     public static UL ul(Id id) {
-        return new UL(ga(id), Stream.empty());
+        return new UL(ga(id), empty());
     }
 
     public static LI li(Id id) {
-        return new LI(ga(id), Stream.empty(), null);
+        return new LI(ga(id), empty(), empty(), null);
     }
 
     public static LI li(String string) {
-        return new LI(Stream.empty(), Stream.of(new Text(string)), null);
+        return new LI(empty(), of(new Text(string)), null);
     }
 
     public static DL dl(Id id) {
-        return new DL(ga(id), Stream.empty());
+        return new DL(ga(id), empty());
     }
 
     public static DT dt(Id id) {
-        return new DT(ga(id), Stream.empty());
+        return new DT(ga(id), empty());
     }
 
     public static DD dd(Id id) {
-        return new DD(ga(id), Stream.empty());
+        return new DD(ga(id), empty());
     }
 
     public static Figure figure(Id id, Stream<? extends FlowContent> childeren) {
@@ -874,15 +940,15 @@ public class Elements {
     }
 
     public static FigCaption figcaption(Id id) {
-        return new FigCaption(ga(id), Stream.empty());
+        return new FigCaption(ga(id), empty());
     }
 
     public static Div div(Id id) {
-        return new Div(ga(id), Stream.empty());
+        return new Div(ga(id), empty());
     }
 
     public static Main main(Id id) {
-        return new Main(ga(id), Stream.empty());
+        return new Main(ga(id), empty());
     }
 
     public static A a(Id id, Stream<Element> childeren) {
@@ -910,7 +976,7 @@ public class Elements {
     }
 
     public static Q q(Id id) {
-        return new Q(ga(id), Stream.empty(), null);
+        return new Q(ga(id), empty(), null);
     }
 
     public static Dfn dfn(Id id, Stream<? extends PhrasingContent> childeren) {
@@ -922,11 +988,15 @@ public class Elements {
     }
 
     public static Data data(Id id) {
-        return new Data(ga(id), Stream.empty(), null);
+        return new Data(ga(id), empty(), null);
     }
 
     public static Time time(Id id, DateTime dt, Stream<? extends PhrasingContent> childeren) {
         return new Time(ga(id), childeren, dt);
+    }
+    
+    public static Time time(Id id, DateTime dt, PhrasingContent... childeren) {
+        return new Time(ga(id), of(childeren), dt);
     }
 
     public static Code code(Id id, Stream<? extends PhrasingContent> childeren) {
@@ -982,15 +1052,15 @@ public class Elements {
     }
 
     public static Bdi bdi(Id id) {
-        return new Bdi(ga(id), Stream.empty());
+        return new Bdi(ga(id), empty());
     }
 
     public static Bdo bdo(Id id) {
-        return new Bdo(ga(id), Stream.empty());
+        return new Bdo(ga(id), empty());
     }
 
     public static Span span(Id id) {
-        return new Span(ga(id), Stream.empty());
+        return new Span(ga(id), empty());
     }
 
     public static Object object(Id id, Stream<Param> params) {
@@ -1038,59 +1108,59 @@ public class Elements {
     }
 
     public static Article article(Clazz clazz) {
-        return new Article(ga(clazz), Stream.empty());
+        return new Article(ga(clazz), empty());
     }
 
     public static Section section(Clazz clazz) {
-        return new Section(ga(clazz), Stream.empty());
+        return new Section(ga(clazz), empty());
     }
 
     public static Nav nav(Clazz clazz) {
-        return new Nav(ga(clazz), Stream.empty());
+        return new Nav(ga(clazz), empty());
     }
 
     public static Aside aside(Clazz clazz) {
-        return new Aside(ga(clazz), Stream.empty());
+        return new Aside(ga(clazz), empty());
     }
 
     public static H1 h1(Clazz clazz) {
-        return new H1(ga(clazz), Stream.empty());
+        return new H1(ga(clazz), empty());
     }
 
     public static H2 h2(Clazz clazz) {
-        return new H2(ga(clazz), Stream.empty());
+        return new H2(ga(clazz), empty());
     }
 
     public static H3 h3(Clazz clazz) {
-        return new H3(ga(clazz), Stream.empty());
+        return new H3(ga(clazz), empty());
     }
 
     public static H4 h4(Clazz clazz) {
-        return new H4(ga(clazz), Stream.empty());
+        return new H4(ga(clazz), empty());
     }
 
     public static H5 h5(Clazz clazz) {
-        return new H5(ga(clazz), Stream.empty());
+        return new H5(ga(clazz), empty());
     }
 
     public static H6 h6(Clazz clazz) {
-        return new H6(ga(clazz), Stream.empty());
+        return new H6(ga(clazz), empty());
     }
 
     public static Header header(Clazz clazz) {
-        return new Header(ga(clazz), Stream.empty());
+        return new Header(ga(clazz), empty());
     }
 
     public static Footer footer(Clazz clazz) {
-        return new Footer(ga(clazz), Stream.empty());
+        return new Footer(ga(clazz), empty());
     }
 
     public static Address address(Clazz clazz) {
-        return new Address(ga(clazz), Stream.empty());
+        return new Address(ga(clazz), empty());
     }
 
     public static P p(Clazz clazz) {
-        return new P(ga(clazz), Stream.empty());
+        return new P(ga(clazz), empty());
     }
 
     public static HR hr(Clazz clazz) {
@@ -1098,11 +1168,11 @@ public class Elements {
     }
 
     public static Pre pre(Clazz clazz) {
-        return new Pre(ga(clazz), Stream.empty());
+        return new Pre(ga(clazz), empty());
     }
 
     public static BlockQuote blockquote(Clazz clazz) {
-        return new BlockQuote(ga(clazz), null, Stream.empty());
+        return new BlockQuote(ga(clazz), null, empty());
     }
 
     public static OL ol(Clazz clazz) {
@@ -1110,32 +1180,40 @@ public class Elements {
         Reversed reversed = (Reversed) null;
         Start start = (Start) null;
         Type type = (Type) null;
-        Stream<LI> childeren = Stream.<LI> empty();
+        Stream<LI> childeren = empty();
         return new OL(ga, reversed, start, type, childeren);
     }
 
     public static UL ul(Clazz clazz) {
-        return new UL(ga(clazz), Stream.empty());
+        return new UL(ga(clazz), empty());
     }
 
     public static LI li(Clazz clazz) {
-        return new LI(ga(clazz), Stream.empty(), null);
+        return new LI(ga(clazz), empty(), empty(), null);
     }
 
-    public static LI li(Clazz clazz, FlowContent child) {
-        return new LI(ga(clazz), Stream.of(child), null);
+    public static LI li(Clazz clazz, FlowContent... children) {
+        return new LI(ga(clazz), of(children), null);
     }
 
     public static DL dl(Clazz clazz) {
-        return new DL(ga(clazz), Stream.empty());
+        return new DL(ga(clazz), empty());
     }
 
     public static DT dt(Clazz clazz) {
-        return new DT(ga(clazz), Stream.empty());
+        return new DT(ga(clazz), empty());
     }
 
     public static DD dd(Clazz clazz) {
-        return new DD(ga(clazz), Stream.empty());
+        return new DD(ga(clazz), empty());
+    }
+    
+    public static DD dd(Clazz clazz, Stream<FlowContent> children) {
+        return new DD(ga(clazz), children);
+    }
+    
+    public static DD dd(Clazz clazz, FlowContent... children) {
+        return new DD(ga(clazz), Stream.of(children));
     }
 
     public static Figure figure(Clazz clazz, Stream<? extends FlowContent> childeren) {
@@ -1143,20 +1221,29 @@ public class Elements {
     }
 
     public static FigCaption figcaption(Clazz clazz) {
-        return new FigCaption(ga(clazz), Stream.empty());
+        return new FigCaption(ga(clazz), empty());
     }
 
     public static Div div(Clazz clazz) {
-        return new Div(ga(clazz), Stream.empty());
+        return new Div(ga(clazz), empty());
     }
 
     public static Div div(Clazz clazz, FlowContent... childeren) {
-        return new Div(ga(clazz), Stream.of(childeren));
+        return new Div(ga(clazz), of(childeren));
     }
 
     public static Div div(Clazz clazz, swiss.sib.swissprot.sjh.attributes.global.Style style,
             FlowContent... childeren) {
-        return new Div(ga(clazz, style), Stream.of(childeren));
+        return new Div(ga(clazz, style), of(childeren));
+    }
+    
+    public static Div div(Id id, swiss.sib.swissprot.sjh.attributes.global.Style style,
+            FlowContent... childeren) {
+        return new Div(ga(id, style), of(childeren));
+    }
+    
+    public static Div div(Id id, swiss.sib.swissprot.sjh.attributes.global.Style style) {
+        return new Div(ga(id, style), null);
     }
 
     public static Div div(Clazz clazz, swiss.sib.swissprot.sjh.attributes.global.Style style,
@@ -1169,7 +1256,7 @@ public class Elements {
     }
 
     public static Main main(Clazz clazz) {
-        return new Main(ga(clazz), Stream.empty());
+        return new Main(ga(clazz), null);
     }
 
     public static A a(Clazz clazz, Stream<Element> childeren) {
@@ -1197,7 +1284,7 @@ public class Elements {
     }
 
     public static Q q(Clazz clazz) {
-        return new Q(ga(clazz), Stream.empty(), null);
+        return new Q(ga(clazz), empty(), null);
     }
 
     public static Dfn dfn(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
@@ -1209,11 +1296,19 @@ public class Elements {
     }
 
     public static Data data(Clazz clazz) {
-        return new Data(ga(clazz), Stream.empty(), null);
+        return new Data(ga(clazz), empty(), null);
     }
 
     public static Time time(Clazz clazz, DateTime dt, Stream<? extends PhrasingContent> childeren) {
         return new Time(ga(clazz), childeren, dt);
+    }
+    
+    public static Time time(Clazz clazz, DateTime dt, PhrasingContent... childeren) {
+        return new Time(ga(clazz), Stream.of(childeren), dt);
+    }
+    
+    public static Time time(Clazz clazz, DateTime dt) {
+        return new Time(ga(clazz), Stream.of(text("")), dt);
     }
 
     public static Code code(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
@@ -1269,15 +1364,15 @@ public class Elements {
     }
 
     public static Bdi bdi(Clazz clazz) {
-        return new Bdi(ga(clazz), Stream.empty());
+        return new Bdi(ga(clazz), empty());
     }
 
     public static Bdo bdo(Clazz clazz) {
-        return new Bdo(ga(clazz), Stream.empty());
+        return new Bdo(ga(clazz), empty());
     }
 
     public static Span span(Clazz clazz) {
-        return new Span(ga(clazz), Stream.empty());
+        return new Span(ga(clazz), empty());
     }
 
     public static Object object(Clazz clazz, Stream<Param> params) {
@@ -1305,107 +1400,107 @@ public class Elements {
     }
 
     public static A a(Id id, Clazz clazz) {
-        return new A(ga(id, clazz), Stream.empty());
+        return new A(ga(id, clazz), empty());
     }
 
     public static Em em(Id id, Clazz clazz) {
-        return new Em(ga(id, clazz), Stream.empty());
+        return new Em(ga(id, clazz), empty());
     }
 
     public static Small small(Id id, Clazz clazz) {
-        return new Small(ga(id, clazz), Stream.empty());
+        return new Small(ga(id, clazz), empty());
     }
 
     public static S s(Id id, Clazz clazz) {
-        return new S(ga(id, clazz), Stream.empty());
+        return new S(ga(id, clazz), empty());
     }
 
     public static Cite cite(Id id, Clazz clazz) {
-        return new Cite(ga(id, clazz), Stream.empty());
+        return new Cite(ga(id, clazz), empty());
     }
 
     public static Q q(Id id, Clazz clazz) {
-        return new Q(ga(id, clazz), Stream.empty(), null);
+        return new Q(ga(id, clazz), empty(), null);
     }
 
     public static Dfn dfn(Id id, Clazz clazz) {
-        return new Dfn(ga(id, clazz), Stream.empty());
+        return new Dfn(ga(id, clazz), empty());
     }
 
     public static Abbr abbr(Id id, Clazz clazz) {
-        return new Abbr(ga(id, clazz), Stream.empty());
+        return new Abbr(ga(id, clazz), empty());
     }
 
     public static Data data(Id id, Clazz clazz) {
-        return new Data(ga(id, clazz), Stream.empty(), null);
+        return new Data(ga(id, clazz), empty(), null);
     }
 
     public static Time time(Id id, Clazz clazz, DateTime dt) {
-        return new Time(ga(id, clazz), Stream.empty(), dt);
+        return new Time(ga(id, clazz), empty(), dt);
     }
 
     public static Code code(Id id, Clazz clazz) {
-        return new Code(ga(id, clazz), Stream.empty());
+        return new Code(ga(id, clazz), empty());
     }
 
     public static Bdi bdi(Id id, Clazz clazz) {
-        return new Bdi(ga(id, clazz), Stream.empty());
+        return new Bdi(ga(id, clazz), empty());
     }
 
     public static Bdo bdo(Id id, Clazz clazz) {
-        return new Bdo(ga(id, clazz), Stream.empty());
+        return new Bdo(ga(id, clazz), empty());
     }
 
     public static Span span(Id id, Clazz clazz) {
-        return new Span(ga(id, clazz), Stream.empty());
+        return new Span(ga(id, clazz), empty());
     }
 
     public static Var var(Id id, Clazz clazz) {
-        return new Var(ga(id, clazz), Stream.empty());
+        return new Var(ga(id, clazz), empty());
     }
 
     public static Samp samp(Id id, Clazz clazz) {
-        return new Samp(ga(id, clazz), Stream.empty());
+        return new Samp(ga(id, clazz), empty());
     }
 
     public static Kbd kbd(Id id, Clazz clazz) {
-        return new Kbd(ga(id, clazz), Stream.empty());
+        return new Kbd(ga(id, clazz), empty());
     }
 
     public static Sub sub(Id id, Clazz clazz) {
-        return new Sub(ga(id, clazz), Stream.empty());
+        return new Sub(ga(id, clazz), empty());
     }
 
     public static Sup sup(Id id, Clazz clazz) {
-        return new Sup(ga(id, clazz), Stream.empty());
+        return new Sup(ga(id, clazz), empty());
     }
 
     public static I i(Id id, Clazz clazz) {
-        return new I(ga(id, clazz), Stream.empty());
+        return new I(ga(id, clazz), empty());
     }
 
     public static B b(Id id, Clazz clazz) {
-        return new B(ga(id, clazz), Stream.empty());
+        return new B(ga(id, clazz), empty());
     }
 
     public static U u(Id id, Clazz clazz) {
-        return new U(ga(id, clazz), Stream.empty());
+        return new U(ga(id, clazz), empty());
     }
 
     public static Mark mark(Id id, Clazz clazz) {
-        return new Mark(ga(id, clazz), Stream.empty());
+        return new Mark(ga(id, clazz), empty());
     }
 
     public static Ruby ruby(Id id, Clazz clazz) {
-        return new Ruby(ga(id, clazz), Stream.empty());
+        return new Ruby(ga(id, clazz), empty());
     }
 
     public static Rt rt(Id id, Clazz clazz) {
-        return new Rt(ga(id, clazz), Stream.empty());
+        return new Rt(ga(id, clazz), empty());
     }
 
     public static Rp rp(Id id, Clazz clazz) {
-        return new Rp(ga(id, clazz), Stream.empty());
+        return new Rp(ga(id, clazz), empty());
     }
 
     public static Br br(Id id, Clazz clazz) {
@@ -1429,7 +1524,7 @@ public class Elements {
     }
 
     public static Object object(Id id, Clazz clazz) {
-        return new Object(ga(id, clazz), null, null, null, null, null, null, null, null, Stream.<Param> empty());
+        return new Object(ga(id, clazz), null, null, null, null, null, null, null, null, empty());
     }
 
     public static Param param(Id id, Clazz clazz) {
@@ -1438,7 +1533,7 @@ public class Elements {
 
     public static Video video(Id id, Clazz clazz) {
         return new Video(ga(id, clazz), null, null, null, null, null, null, null, null, null, null, (Height) null,
-                Stream.<Track> empty());
+                empty());
     }
 
     public static Audio audio(Id id, Clazz clazz) {
@@ -1454,7 +1549,7 @@ public class Elements {
     }
 
     public static Map map(Id id, Clazz clazz) {
-        return new Map(ga(id, clazz), null, Stream.<FlowContent> empty());
+        return new Map(ga(id, clazz), null, empty());
     }
 
     public static Area area(Id id, Clazz clazz) {
@@ -1466,19 +1561,19 @@ public class Elements {
     }
 
     public static Article article(Id id, Clazz clazz) {
-        return new Article(ga(id, clazz), Stream.empty());
+        return new Article(ga(id, clazz), empty());
     }
 
     public static Section section(Id id, Clazz clazz) {
-        return new Section(ga(id, clazz), Stream.empty());
+        return new Section(ga(id, clazz), empty());
     }
 
     public static Nav nav(Id id, Clazz clazz) {
-        return new Nav(ga(id, clazz), Stream.empty());
+        return new Nav(ga(id, clazz), empty());
     }
 
     public static Aside aside(Id id, Clazz clazz) {
-        return new Aside(ga(id, clazz), Stream.empty());
+        return new Aside(ga(id, clazz), empty());
     }
 
     public static Map map(Clazz clazz, Stream<? extends FlowContent> childeren) {
@@ -1565,8 +1660,8 @@ public class Elements {
         return new LI(ga(id, clazz), childeren, null);
     }
 
-    public static DL dl(Id id, Clazz clazz, Stream<? extends DtOrDd> childeren) {
-        return new DL(ga(id, clazz), childeren);
+    public static DL dl(Id id, Clazz clazz, DT dt, Stream<? extends DtOrDd> childeren) {
+        return new DL(ga(id, clazz), dt, childeren);
     }
 
     public static DT dt(Id id, Clazz clazz, Stream<? extends FlowContent> childeren) {
@@ -1588,45 +1683,45 @@ public class Elements {
     public static Main main(Id id, Clazz clazz, Stream<? extends FlowContent> childeren) {
         return new Main(ga(id, clazz), childeren);
     }
-
+    
     public static H1 h1(Id id, Clazz clazz) {
-        return new H1(ga(id, clazz), Stream.empty());
+        return new H1(ga(id, clazz), empty());
     }
 
     public static H2 h2(Id id, Clazz clazz) {
-        return new H2(ga(id, clazz), Stream.empty());
+        return new H2(ga(id, clazz), empty());
     }
 
     public static H3 h3(Id id, Clazz clazz) {
-        return new H3(ga(id, clazz), Stream.empty());
+        return new H3(ga(id, clazz), empty());
     }
 
     public static H4 h4(Id id, Clazz clazz) {
-        return new H4(ga(id, clazz), Stream.empty());
+        return new H4(ga(id, clazz), empty());
     }
 
     public static H5 h5(Id id, Clazz clazz) {
-        return new H5(ga(id, clazz), Stream.empty());
+        return new H5(ga(id, clazz), empty());
     }
 
     public static H6 h6(Id id, Clazz clazz) {
-        return new H6(ga(id, clazz), Stream.empty());
+        return new H6(ga(id, clazz), empty());
     }
 
     public static Header header(Id id, Clazz clazz) {
-        return new Header(ga(id, clazz), Stream.empty());
+        return new Header(ga(id, clazz), empty());
     }
 
     public static Footer footer(Id id, Clazz clazz) {
-        return new Footer(ga(id, clazz), Stream.empty());
+        return new Footer(ga(id, clazz), empty());
     }
 
     public static Address address(Id id, Clazz clazz) {
-        return new Address(ga(id, clazz), Stream.empty());
+        return new Address(ga(id, clazz), empty());
     }
 
     public static P p(Id id, Clazz clazz) {
-        return new P(ga(id, clazz), Stream.empty());
+        return new P(ga(id, clazz), empty());
     }
 
     public static HR hr(Id id, Clazz clazz) {
@@ -1634,11 +1729,11 @@ public class Elements {
     }
 
     public static Pre pre(Id id, Clazz clazz) {
-        return new Pre(ga(id, clazz), Stream.empty());
+        return new Pre(ga(id, clazz), empty());
     }
 
     public static BlockQuote blockquote(Id id, Clazz clazz) {
-        return new BlockQuote(ga(id, clazz), null, Stream.empty());
+        return new BlockQuote(ga(id, clazz), null, empty());
     }
 
     public static OL ol(Id id, Clazz clazz) {
@@ -1646,28 +1741,28 @@ public class Elements {
         Reversed reversed = (Reversed) null;
         Start start = (Start) null;
         Type type = (Type) null;
-        Stream<LI> childeren = Stream.<LI> empty();
+        Stream<LI> childeren = empty();
         return new OL(ga, reversed, start, type, childeren);
     }
 
     public static UL ul(Id id, Clazz clazz) {
-        return new UL(ga(id, clazz), Stream.empty());
+        return new UL(ga(id, clazz), empty());
     }
 
     public static LI li(Id id, Clazz clazz) {
-        return new LI(ga(id, clazz), Stream.empty(), null);
+        return new LI(ga(id, clazz), empty(), empty(), null);
     }
 
     public static DL dl(Id id, Clazz clazz) {
-        return new DL(ga(id, clazz), Stream.empty());
+        return new DL(ga(id, clazz), empty());
     }
 
     public static DT dt(Id id, Clazz clazz) {
-        return new DT(ga(id, clazz), Stream.empty());
+        return new DT(ga(id, clazz), empty());
     }
 
     public static DD dd(Id id, Clazz clazz) {
-        return new DD(ga(id, clazz), Stream.empty());
+        return new DD(ga(id, clazz), empty());
     }
 
     public static Figure figure(Id id, Clazz clazz, Stream<? extends FlowContent> childeren) {
@@ -1675,15 +1770,15 @@ public class Elements {
     }
 
     public static FigCaption figcaption(Id id, Clazz clazz) {
-        return new FigCaption(ga(id, clazz), Stream.empty());
+        return new FigCaption(ga(id, clazz), empty());
     }
 
     public static Div div(Id id, Clazz clazz) {
-        return new Div(ga(id, clazz), Stream.empty());
+        return new Div(ga(id, clazz), empty());
     }
 
     public static Main main(Id id, Clazz clazz) {
-        return new Main(ga(id, clazz), Stream.empty());
+        return new Main(ga(id, clazz), empty());
     }
 
     public static A a(Id id, Clazz clazz, Stream<Element> childeren) {
@@ -1824,184 +1919,184 @@ public class Elements {
     }
 
     public static A a(Id id, Clazz clazz, Element... childeren) {
-        return new A(ga(id, clazz), Stream.of(childeren));
+        return new A(ga(id, clazz), of(childeren));
     }
 
     public static Em em(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Em(ga(id, clazz), Stream.of(childeren));
+        return new Em(ga(id, clazz), of(childeren));
     }
 
     public static Strong strong(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Strong(ga(id, clazz), Stream.of(childeren));
+        return new Strong(ga(id, clazz), of(childeren));
     }
 
     public static Small small(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Small(ga(id, clazz), Stream.of(childeren));
+        return new Small(ga(id, clazz), of(childeren));
     }
 
     public static S s(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new S(ga(id, clazz), Stream.of(childeren));
+        return new S(ga(id, clazz), of(childeren));
     }
 
     public static Cite cite(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Cite(ga(id, clazz), Stream.of(childeren));
+        return new Cite(ga(id, clazz), of(childeren));
     }
 
     public static Q q(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Q(ga(id, clazz), Stream.of(childeren), null);
+        return new Q(ga(id, clazz), of(childeren), null);
     }
 
     public static Dfn dfn(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Dfn(ga(id, clazz), Stream.of(childeren));
+        return new Dfn(ga(id, clazz), of(childeren));
     }
 
     public static Abbr abbr(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Abbr(ga(id, clazz), Stream.of(childeren));
+        return new Abbr(ga(id, clazz), of(childeren));
     }
 
     public static Data data(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Data(ga(id, clazz), Stream.of(childeren), null);
+        return new Data(ga(id, clazz), of(childeren), null);
     }
 
     public static Time time(Id id, Clazz clazz, DateTime dt, PhrasingContent... childeren) {
-        return new Time(ga(id, clazz), Stream.of(childeren), dt);
+        return new Time(ga(id, clazz), of(childeren), dt);
     }
 
     public static Code code(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Code(ga(id, clazz), Stream.of(childeren));
+        return new Code(ga(id, clazz), of(childeren));
     }
 
     public static Var var(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Var(ga(id, clazz), Stream.of(childeren));
+        return new Var(ga(id, clazz), of(childeren));
     }
 
     public static Samp samp(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Samp(ga(id, clazz), Stream.of(childeren));
+        return new Samp(ga(id, clazz), of(childeren));
     }
 
     public static Kbd kbd(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Kbd(ga(id, clazz), Stream.of(childeren));
+        return new Kbd(ga(id, clazz), of(childeren));
     }
 
     public static Sub sub(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Sub(ga(id, clazz), Stream.of(childeren));
+        return new Sub(ga(id, clazz), of(childeren));
     }
 
     public static Sup sup(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Sup(ga(id, clazz), Stream.of(childeren));
+        return new Sup(ga(id, clazz), of(childeren));
     }
 
     public static I i(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new I(ga(id, clazz), Stream.of(childeren));
+        return new I(ga(id, clazz), of(childeren));
     }
 
     public static B b(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new B(ga(id, clazz), Stream.of(childeren));
+        return new B(ga(id, clazz), of(childeren));
     }
 
     public static U u(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new U(ga(id, clazz), Stream.of(childeren));
+        return new U(ga(id, clazz), of(childeren));
     }
 
     public static Mark mark(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Mark(ga(id, clazz), Stream.of(childeren));
+        return new Mark(ga(id, clazz), of(childeren));
     }
 
     public static Ruby ruby(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Ruby(ga(id, clazz), Stream.of(childeren));
+        return new Ruby(ga(id, clazz), of(childeren));
     }
 
     public static Rt rt(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Rt(ga(id, clazz), Stream.of(childeren));
+        return new Rt(ga(id, clazz), of(childeren));
     }
 
     public static Rp rp(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Rp(ga(id, clazz), Stream.of(childeren));
+        return new Rp(ga(id, clazz), of(childeren));
     }
 
     public static Bdi bdi(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Bdi(ga(id, clazz), Stream.of(childeren));
+        return new Bdi(ga(id, clazz), of(childeren));
     }
 
     public static Bdo bdo(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Bdo(ga(id, clazz), Stream.of(childeren));
+        return new Bdo(ga(id, clazz), of(childeren));
     }
 
     public static Span span(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Span(ga(id, clazz), Stream.of(childeren));
+        return new Span(ga(id, clazz), of(childeren));
     }
 
     public static Object object(Id id, Clazz clazz, Param... params) {
-        return new Object(ga(id, clazz), null, null, null, null, null, null, null, null, Stream.of(params));
+        return new Object(ga(id, clazz), null, null, null, null, null, null, null, null, of(params));
     }
 
     public static Video video(Id id, Clazz clazz, Track... tracks) {
         return new Video(ga(id, clazz), null, null, null, null, null, null, null, null, null, null, (Height) null,
-                Stream.of(tracks));
+                of(tracks));
     }
 
     public static Audio audio(Id id, Clazz clazz, Track tracks) {
-        return new Audio(ga(id, clazz), Stream.of(tracks));
+        return new Audio(ga(id, clazz), of(tracks));
     }
 
     public static Map map(Id id, Clazz clazz, FlowContent... childeren) {
-        return new Map(ga(id, clazz), null, Stream.of(childeren));
+        return new Map(ga(id, clazz), null, of(childeren));
     }
 
     public static Nav nav(Id id, Clazz clazz, FlowContent... childeren) {
-        return new Nav(ga(id, clazz), Stream.of(childeren));
+        return new Nav(ga(id, clazz), of(childeren));
     }
 
     public static Aside aside(Id id, Clazz clazz, FlowContent... childeren) {
-        return new Aside(ga(id, clazz), Stream.of(childeren));
+        return new Aside(ga(id, clazz), of(childeren));
     }
 
     public static H1 h1(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new H1(ga(id, clazz), Stream.of(childeren));
+        return new H1(ga(id, clazz), of(childeren));
     }
 
     public static H2 h2(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new H2(ga(id, clazz), Stream.of(childeren));
+        return new H2(ga(id, clazz), of(childeren));
     }
 
     public static H3 h3(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new H3(ga(id, clazz), Stream.of(childeren));
+        return new H3(ga(id, clazz), of(childeren));
     }
 
     public static H4 h4(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new H4(ga(id, clazz), Stream.of(childeren));
+        return new H4(ga(id, clazz), of(childeren));
     }
 
     public static H5 h5(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new H5(ga(id, clazz), Stream.of(childeren));
+        return new H5(ga(id, clazz), of(childeren));
     }
 
     public static H6 h6(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new H6(ga(id, clazz), Stream.of(childeren));
+        return new H6(ga(id, clazz), of(childeren));
     }
 
     public static Header header(Id id, Clazz clazz, FlowContent... childeren) {
-        return new Header(ga(id, clazz), Stream.of(childeren));
+        return new Header(ga(id, clazz), of(childeren));
     }
 
     public static Footer footer(Id id, Clazz clazz, FlowContent... childeren) {
-        return new Footer(ga(id, clazz), Stream.of(childeren));
+        return new Footer(ga(id, clazz), of(childeren));
     }
 
     public static Address address(Id id, Clazz clazz, FlowContent... childeren) {
-        return new Address(ga(id, clazz), Stream.of(childeren));
+        return new Address(ga(id, clazz), of(childeren));
     }
 
     public static P p(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new P(ga(id, clazz), Stream.of(childeren));
+        return new P(ga(id, clazz), of(childeren));
     }
 
     public static Pre pre(Id id, Clazz clazz, PhrasingContent... childeren) {
-        return new Pre(ga(id, clazz), Stream.of(childeren));
+        return new Pre(ga(id, clazz), of(childeren));
     }
 
     public static BlockQuote blockquote(Id id, Clazz clazz, FlowContent... childeren) {
-        return new BlockQuote(ga(id, clazz), null, Stream.of(childeren));
+        return new BlockQuote(ga(id, clazz), null, of(childeren));
     }
 
     public static OL ol(Id id, Clazz clazz, LI... childeren) {
@@ -2009,103 +2104,103 @@ public class Elements {
         Reversed reversed = (Reversed) null;
         Start start = (Start) null;
         Type type = (Type) null;
-        return new OL(ga, reversed, start, type, Stream.of(childeren));
+        return new OL(ga, reversed, start, type, of(childeren));
     }
 
     public static UL ul(Id id, Clazz clazz, LI... childeren) {
-        return new UL(ga(id, clazz), Stream.of(childeren));
+        return new UL(ga(id, clazz), of(childeren));
     }
 
     public static LI li(Id id, Clazz clazz, FlowContent... childeren) {
-        return new LI(ga(id, clazz), Stream.of(childeren), null);
+        return new LI(ga(id, clazz), of(childeren), null);
     }
 
     public static DL dl(Id id, Clazz clazz, DtOrDd... childeren) {
-        return new DL(ga(id, clazz), Stream.of(childeren));
+        return new DL(ga(id, clazz), of(childeren));
     }
 
     public static DT dt(Id id, Clazz clazz, FlowContent... childeren) {
-        return new DT(ga(id, clazz), Stream.of(childeren));
+        return new DT(ga(id, clazz), of(childeren));
     }
 
     public static DD dd(Id id, Clazz clazz, FlowContent... childeren) {
-        return new DD(ga(id, clazz), Stream.of(childeren));
+        return new DD(ga(id, clazz), of(childeren));
     }
 
     public static FigCaption figcaption(Id id, Clazz clazz, FlowContent... childeren) {
-        return new FigCaption(ga(id, clazz), Stream.of(childeren));
+        return new FigCaption(ga(id, clazz), of(childeren));
     }
 
     public static Div div(Id id, Clazz clazz, FlowContent... childeren) {
-        return new Div(ga(id, clazz), Stream.of(childeren));
+        return new Div(ga(id, clazz), of(childeren));
     }
 
     public static Main main(Id id, Clazz clazz, FlowContent... childeren) {
-        return new Main(ga(id, clazz), Stream.of(childeren));
+        return new Main(ga(id, clazz), of(childeren));
     }
 
     public static Article article(FlowContent... childeren) {
-        return new Article(Stream.<GlobalAttribute> empty(), Stream.of(childeren));
+        return new Article(empty(), of(childeren));
     }
 
     public static Section section(FlowContent... childeren) {
-        return new Section(Stream.<GlobalAttribute> empty(), Stream.of(childeren));
+        return new Section(empty(), of(childeren));
     }
 
     public static Nav nav(FlowContent... childeren) {
-        return new Nav(Stream.empty(), Stream.of(childeren));
+        return new Nav(empty(), of(childeren));
     }
 
     public static Aside aside(FlowContent... childeren) {
-        return new Aside(Stream.empty(), Stream.of(childeren));
+        return new Aside(empty(), of(childeren));
     }
 
     public static H1 h1(PhrasingContent... childeren) {
-        return new H1(Stream.empty(), Stream.of(childeren));
+        return new H1(empty(), of(childeren));
     }
 
     public static H2 h2(PhrasingContent... childeren) {
-        return new H2(Stream.empty(), Stream.of(childeren));
+        return new H2(empty(), of(childeren));
     }
 
     public static H3 h3(PhrasingContent... childeren) {
-        return new H3(Stream.empty(), Stream.of(childeren));
+        return new H3(empty(), of(childeren));
     }
 
     public static H4 h4(PhrasingContent... childeren) {
-        return new H4(Stream.empty(), Stream.of(childeren));
+        return new H4(empty(), of(childeren));
     }
 
     public static H5 h5(PhrasingContent... childeren) {
-        return new H5(Stream.empty(), Stream.of(childeren));
+        return new H5(empty(), of(childeren));
     }
 
     public static H6 h6(PhrasingContent... childeren) {
-        return new H6(Stream.empty(), Stream.of(childeren));
+        return new H6(empty(), of(childeren));
     }
 
     public static Header header(FlowContent... childeren) {
-        return new Header(Stream.empty(), Stream.of(childeren));
+        return new Header(empty(), of(childeren));
     }
 
     public static Footer footer(FlowContent... childeren) {
-        return new Footer(Stream.empty(), Stream.of(childeren));
+        return new Footer(empty(), of(childeren));
     }
 
     public static Address address(FlowContent... childeren) {
-        return new Address(Stream.empty(), Stream.of(childeren));
+        return new Address(empty(), of(childeren));
     }
 
     public static P p(PhrasingContent... childeren) {
-        return new P(Stream.empty(), Stream.of(childeren));
+        return new P(empty(), of(childeren));
     }
 
     public static Pre pre(PhrasingContent... childeren) {
-        return new Pre(Stream.empty(), Stream.of(childeren));
+        return new Pre(empty(), of(childeren));
     }
 
     public static BlockQuote blockquote(FlowContent... childeren) {
-        return new BlockQuote(Stream.empty(), null, Stream.of(childeren));
+        return new BlockQuote(empty(), null, of(childeren));
     }
 
     public static OL ol(Stream<LI> childeren) {
@@ -2116,571 +2211,579 @@ public class Elements {
     }
 
     public static UL ul(LI... childeren) {
-        return new UL(Stream.empty(), Stream.of(childeren));
+        return new UL(empty(), of(childeren));
     }
 
     public static LI li(FlowContent... childeren) {
-        return new LI(Stream.empty(), Stream.of(childeren), null);
+        return new LI(empty(), of(childeren), null);
     }
 
+    public static Link link(Href href, Rel rel) {
+    	return new Link(empty(), href,null, rel, null, null, null, null);
+    }
+    
     public static DL dl(DtOrDd... childeren) {
-        return new DL(Stream.of(childeren));
+        return new DL(of(childeren));
     }
 
     public static DT dt(FlowContent... childeren) {
-        return new DT(Stream.empty(), Stream.of(childeren));
+        return new DT(empty(), of(childeren));
     }
 
     public static DD dd(FlowContent... childeren) {
-        return new DD(Stream.empty(), Stream.of(childeren));
+        return new DD(empty(), of(childeren));
     }
 
     public static FigCaption figcaption(FlowContent... childeren) {
-        return new FigCaption(Stream.empty(), Stream.of(childeren));
+        return new FigCaption(empty(), of(childeren));
     }
 
     public static Div div(FlowContent... childeren) {
-        return new Div(Stream.empty(), Stream.of(childeren));
+        return new Div(empty(), of(childeren));
     }
 
     public static Main main(FlowContent... childeren) {
-        return new Main(Stream.empty(), Stream.of(childeren));
+        return new Main(empty(), of(childeren));
     }
 
     public static A a(Id id, Clazz clazz, String string) {
-        return new A(ga(id, clazz), Stream.of(new Text(string)));
+        return new A(ga(id, clazz), of(new Text(string)));
     }
 
     public static Abbr abbr(Id id, Clazz clazz, String string) {
-        return new Abbr(ga(id, clazz), Stream.of(new Text(string)));
+        return new Abbr(ga(id, clazz), of(new Text(string)));
     }
 
     public static B b(Id id, Clazz clazz, String string) {
-        return new B(ga(id, clazz), Stream.of(new Text(string)));
+        return new B(ga(id, clazz), of(new Text(string)));
     }
 
     public static Bdi bdi(Id id, Clazz clazz, String string) {
-        return new Bdi(ga(id, clazz), Stream.of(new Text(string)));
+        return new Bdi(ga(id, clazz), of(new Text(string)));
     }
 
     public static Bdo bdo(Id id, Clazz clazz, String string) {
-        return new Bdo(ga(id, clazz), Stream.of(new Text(string)));
+        return new Bdo(ga(id, clazz), of(new Text(string)));
     }
 
     public static Cite cite(Id id, Clazz clazz, String string) {
-        return new Cite(ga(id, clazz), Stream.of(new Text(string)));
+        return new Cite(ga(id, clazz), of(new Text(string)));
     }
 
     public static Code code(Id id, Clazz clazz, String string) {
-        return new Code(ga(id, clazz), Stream.of(new Text(string)));
+        return new Code(ga(id, clazz), of(new Text(string)));
     }
 
     public static Data data(Id id, Clazz clazz, String string) {
-        return new Data(ga(id, clazz), Stream.of(new Text(string)), null);
+        return new Data(ga(id, clazz), of(new Text(string)), null);
     }
 
     public static Dfn ffn(Id id, Clazz clazz, String string) {
-        return new Dfn(ga(id, clazz), Stream.of(new Text(string)));
+        return new Dfn(ga(id, clazz), of(new Text(string)));
     }
 
     public static Em em(Id id, Clazz clazz, String string) {
-        return new Em(ga(id, clazz), Stream.of(new Text(string)));
+        return new Em(ga(id, clazz), of(new Text(string)));
     }
 
     public static I i(Id id, Clazz clazz, String string) {
-        return new I(ga(id, clazz), Stream.of(new Text(string)));
+        return new I(ga(id, clazz), of(new Text(string)));
     }
 
     public static Kbd kbd(Id id, Clazz clazz, String string) {
-        return new Kbd(ga(id, clazz), Stream.of(new Text(string)));
+        return new Kbd(ga(id, clazz), of(new Text(string)));
     }
 
     public static Mark mark(Id id, Clazz clazz, String string) {
-        return new Mark(ga(id, clazz), Stream.of(new Text(string)));
+        return new Mark(ga(id, clazz), of(new Text(string)));
     }
 
     public static Q q(Id id, Clazz clazz, String string) {
-        return new Q(ga(id, clazz), Stream.of(new Text(string)), null);
+        return new Q(ga(id, clazz), of(new Text(string)), null);
     }
 
     public static S s(Id id, Clazz clazz, String string) {
-        return new S(ga(id, clazz), Stream.of(new Text(string)));
+        return new S(ga(id, clazz), of(new Text(string)));
     }
 
     public static Samp samp(Id id, Clazz clazz, String string) {
-        return new Samp(ga(id, clazz), Stream.of(new Text(string)));
+        return new Samp(ga(id, clazz), of(new Text(string)));
     }
 
     public static Small small(Id id, Clazz clazz, String string) {
-        return new Small(ga(id, clazz), Stream.of(new Text(string)));
+        return new Small(ga(id, clazz), of(new Text(string)));
     }
 
     public static Span span(Id id, Clazz clazz, String string) {
-        return new Span(ga(id, clazz), Stream.of(new Text(string)));
+        return new Span(ga(id, clazz), of(new Text(string)));
     }
 
     public static Strong strong(Id id, Clazz clazz, String string) {
-        return new Strong(ga(id, clazz), Stream.of(new Text(string)));
+        return new Strong(ga(id, clazz), of(new Text(string)));
     }
 
     public static Sub sub(Id id, Clazz clazz, String string) {
-        return new Sub(ga(id, clazz), Stream.of(new Text(string)));
+        return new Sub(ga(id, clazz), of(new Text(string)));
     }
 
     public static Sup sup(Id id, Clazz clazz, String string) {
-        return new Sup(ga(id, clazz), Stream.of(new Text(string)));
+        return new Sup(ga(id, clazz), of(new Text(string)));
     }
 
     public static U u(Id id, Clazz clazz, String string) {
-        return new U(ga(id, clazz), Stream.of(new Text(string)));
+        return new U(ga(id, clazz), of(new Text(string)));
     }
 
     public static Var var(Id id, Clazz clazz, String string) {
-        return new Var(ga(id, clazz), Stream.of(new Text(string)));
+        return new Var(ga(id, clazz), of(new Text(string)));
     }
 
     public static A a(Id id, String string) {
-        return new A(ga(id), Stream.of(new Text(string)));
+        return new A(ga(id), of(new Text(string)));
     }
 
     public static Abbr abbr(Id id, String string) {
-        return new Abbr(ga(id), Stream.of(new Text(string)));
+        return new Abbr(ga(id), of(new Text(string)));
     }
 
     public static B b(Id id, String string) {
-        return new B(ga(id), Stream.of(new Text(string)));
+        return new B(ga(id), of(new Text(string)));
     }
 
     public static Bdi bdi(Id id, String string) {
-        return new Bdi(ga(id), Stream.of(new Text(string)));
+        return new Bdi(ga(id), of(new Text(string)));
     }
 
     public static Bdo bdo(Id id, String string) {
-        return new Bdo(ga(id), Stream.of(new Text(string)));
+        return new Bdo(ga(id), of(new Text(string)));
     }
 
     public static Cite cite(Id id, String string) {
-        return new Cite(ga(id), Stream.of(new Text(string)));
+        return new Cite(ga(id), of(new Text(string)));
     }
 
     public static Code code(Id id, String string) {
-        return new Code(ga(id), Stream.of(new Text(string)));
+        return new Code(ga(id), of(new Text(string)));
     }
 
     public static Data data(Id id, String string) {
-        return new Data(ga(id), Stream.of(new Text(string)), null);
+        return new Data(ga(id), of(new Text(string)), null);
     }
 
     public static Dfn ffn(Id id, String string) {
-        return new Dfn(ga(id), Stream.of(new Text(string)));
+        return new Dfn(ga(id), of(new Text(string)));
     }
 
     public static Em em(Id id, String string) {
-        return new Em(ga(id), Stream.of(new Text(string)));
+        return new Em(ga(id), of(new Text(string)));
     }
 
     public static I i(Id id, String string) {
-        return new I(ga(id), Stream.of(new Text(string)));
+        return new I(ga(id), of(new Text(string)));
     }
 
     public static Kbd kbd(Id id, String string) {
-        return new Kbd(ga(id), Stream.of(new Text(string)));
+        return new Kbd(ga(id), of(new Text(string)));
     }
 
     public static Mark mark(Id id, String string) {
-        return new Mark(ga(id), Stream.of(new Text(string)));
+        return new Mark(ga(id), of(new Text(string)));
     }
 
     public static Q q(Id id, String string) {
-        return new Q(ga(id), Stream.of(new Text(string)), null);
+        return new Q(ga(id), of(new Text(string)), null);
     }
 
     public static S s(Id id, String string) {
-        return new S(ga(id), Stream.of(new Text(string)));
+        return new S(ga(id), of(new Text(string)));
     }
 
     public static Samp samp(Id id, String string) {
-        return new Samp(ga(id), Stream.of(new Text(string)));
+        return new Samp(ga(id), of(new Text(string)));
     }
 
     public static Small small(Id id, String string) {
-        return new Small(ga(id), Stream.of(new Text(string)));
+        return new Small(ga(id), of(new Text(string)));
     }
 
     public static Span span(Id id, String string) {
-        return new Span(ga(id), Stream.of(new Text(string)));
+        return new Span(ga(id), of(new Text(string)));
     }
 
     public static Strong strong(Id id, String string) {
-        return new Strong(ga(id), Stream.of(new Text(string)));
+        return new Strong(ga(id), of(new Text(string)));
     }
 
     public static Sub sub(Id id, String string) {
-        return new Sub(ga(id), Stream.of(new Text(string)));
+        return new Sub(ga(id), of(new Text(string)));
     }
 
     public static Sup sup(Id id, String string) {
-        return new Sup(ga(id), Stream.of(new Text(string)));
+        return new Sup(ga(id), of(new Text(string)));
     }
 
     public static U u(Id id, String string) {
-        return new U(ga(id), Stream.of(new Text(string)));
+        return new U(ga(id), of(new Text(string)));
     }
 
     public static Var var(Id id, String string) {
-        return new Var(ga(id), Stream.of(new Text(string)));
+        return new Var(ga(id), of(new Text(string)));
     }
 
     public static A a(Clazz clazz, String string) {
-        return new A(ga(clazz), Stream.of(new Text(string)));
+        return new A(ga(clazz), of(new Text(string)));
     }
 
     public static Abbr abbr(Clazz clazz, String string) {
-        return new Abbr(ga(clazz), Stream.of(new Text(string)));
+        return new Abbr(ga(clazz), of(new Text(string)));
     }
 
     public static B b(Clazz clazz, String string) {
-        return new B(ga(clazz), Stream.of(new Text(string)));
+        return new B(ga(clazz), of(new Text(string)));
     }
 
     public static Bdi bdi(Clazz clazz, String string) {
-        return new Bdi(ga(clazz), Stream.of(new Text(string)));
+        return new Bdi(ga(clazz), of(new Text(string)));
     }
 
     public static Bdo bdo(Clazz clazz, String string) {
-        return new Bdo(ga(clazz), Stream.of(new Text(string)));
+        return new Bdo(ga(clazz), of(new Text(string)));
     }
 
     public static Cite cite(Clazz clazz, String string) {
-        return new Cite(ga(clazz), Stream.of(new Text(string)));
+        return new Cite(ga(clazz), of(new Text(string)));
     }
 
     public static Code code(Clazz clazz, String string) {
-        return new Code(ga(clazz), Stream.of(new Text(string)));
+        return new Code(ga(clazz), of(new Text(string)));
     }
 
     public static Data data(Clazz clazz, String string) {
-        return new Data(ga(clazz), Stream.of(new Text(string)), null);
+        return new Data(ga(clazz), of(new Text(string)), null);
     }
 
     public static Dfn ffn(Clazz clazz, String string) {
-        return new Dfn(ga(clazz), Stream.of(new Text(string)));
+        return new Dfn(ga(clazz), of(new Text(string)));
     }
 
     public static Em em(Clazz clazz, String string) {
-        return new Em(ga(clazz), Stream.of(new Text(string)));
+        return new Em(ga(clazz), of(new Text(string)));
     }
 
     public static I i(Clazz clazz, String string) {
-        return new I(ga(clazz), Stream.of(new Text(string)));
+        return new I(ga(clazz), of(new Text(string)));
     }
 
     public static Kbd kbd(Clazz clazz, String string) {
-        return new Kbd(ga(clazz), Stream.of(new Text(string)));
+        return new Kbd(ga(clazz), of(new Text(string)));
     }
 
     public static Mark mark(Clazz clazz, String string) {
-        return new Mark(ga(clazz), Stream.of(new Text(string)));
+        return new Mark(ga(clazz), of(new Text(string)));
     }
 
     public static Q q(Clazz clazz, String string) {
-        return new Q(ga(clazz), Stream.of(new Text(string)), null);
+        return new Q(ga(clazz), of(new Text(string)), null);
     }
 
     public static S s(Clazz clazz, String string) {
-        return new S(ga(clazz), Stream.of(new Text(string)));
+        return new S(ga(clazz), of(new Text(string)));
     }
 
     public static Samp samp(Clazz clazz, String string) {
-        return new Samp(ga(clazz), Stream.of(new Text(string)));
+        return new Samp(ga(clazz), of(new Text(string)));
     }
 
     public static Small small(Clazz clazz, String string) {
-        return new Small(ga(clazz), Stream.of(new Text(string)));
+        return new Small(ga(clazz), of(new Text(string)));
     }
 
     public static Span span(Clazz clazz, String string) {
-        return new Span(ga(clazz), Stream.of(new Text(string)));
+        return new Span(ga(clazz), of(new Text(string)));
+    }
+    
+    public static Span span(Clazz clazz, Property property, String string) {
+        return new Span(ga(clazz), of(property), of(new Text(string)));
     }
 
     public static Span span(Clazz clazz, PhrasingContent... contents) {
-        return new Span(ga(clazz), Stream.of(contents));
+        return new Span(ga(clazz), of(contents));
     }
 
     public static Strong strong(Clazz clazz, String string) {
-        return new Strong(ga(clazz), Stream.of(new Text(string)));
+        return new Strong(ga(clazz), of(new Text(string)));
     }
 
     public static Sub sub(Clazz clazz, String string) {
-        return new Sub(ga(clazz), Stream.of(new Text(string)));
+        return new Sub(ga(clazz), of(new Text(string)));
     }
 
     public static Sup sup(Clazz clazz, String string) {
-        return new Sup(ga(clazz), Stream.of(new Text(string)));
+        return new Sup(ga(clazz), of(new Text(string)));
     }
 
     public static U u(Clazz clazz, String string) {
-        return new U(ga(clazz), Stream.of(new Text(string)));
+        return new U(ga(clazz), of(new Text(string)));
     }
 
     public static Var var(Clazz clazz, String string) {
-        return new Var(ga(clazz), Stream.of(new Text(string)));
+        return new Var(ga(clazz), of(new Text(string)));
     }
 
     public static H1 h1(Id id, Clazz clazz, String string) {
-        return new H1(ga(id, clazz), Stream.of(new Text(string)));
+        return new H1(ga(id, clazz), of(new Text(string)));
     }
 
     public static H2 h2(Id id, Clazz clazz, String string) {
-        return new H2(ga(id, clazz), Stream.of(new Text(string)));
+        return new H2(ga(id, clazz), of(new Text(string)));
     }
 
     public static H3 h3(Id id, Clazz clazz, String string) {
-        return new H3(ga(id, clazz), Stream.of(new Text(string)));
+        return new H3(ga(id, clazz), of(new Text(string)));
     }
 
     public static H4 h4(Id id, Clazz clazz, String string) {
-        return new H4(ga(id, clazz), Stream.of(new Text(string)));
+        return new H4(ga(id, clazz), of(new Text(string)));
     }
 
     public static H5 h5(Id id, Clazz clazz, String string) {
-        return new H5(ga(id, clazz), Stream.of(new Text(string)));
+        return new H5(ga(id, clazz), of(new Text(string)));
     }
 
     public static H6 h6(Id id, Clazz clazz, String string) {
-        return new H6(ga(id, clazz), Stream.of(new Text(string)));
+        return new H6(ga(id, clazz), of(new Text(string)));
     }
 
     public static Address address(Id id, Clazz clazz, String string) {
-        return new Address(ga(id, clazz), Stream.of(new Text(string)));
+        return new Address(ga(id, clazz), of(new Text(string)));
     }
 
     public static Article article(Id id, Clazz clazz, String string) {
-        return new Article(ga(id, clazz), Stream.of(new Text(string)));
+        return new Article(ga(id, clazz), of(new Text(string)));
     }
 
     public static Aside aside(Id id, Clazz clazz, String string) {
-        return new Aside(ga(id, clazz), Stream.of(new Text(string)));
+        return new Aside(ga(id, clazz), of(new Text(string)));
     }
 
     public static Body body(Id id, Clazz clazz, String string) {
-        return new Body(ga(id, clazz), Stream.of(new Text(string)));
+        return new Body(ga(id, clazz), of(new Text(string)));
     }
 
     public static Footer footer(Id id, Clazz clazz, String string) {
-        return new Footer(ga(id, clazz), Stream.of(new Text(string)));
+        return new Footer(ga(id, clazz), of(new Text(string)));
     }
 
     public static Header header(Id id, Clazz clazz, String string) {
-        return new Header(ga(id, clazz), Stream.of(new Text(string)));
+        return new Header(ga(id, clazz), of(new Text(string)));
     }
 
     public static Nav nav(Id id, Clazz clazz, String string) {
-        return new Nav(ga(id, clazz), Stream.of(new Text(string)));
+        return new Nav(ga(id, clazz), of(new Text(string)));
     }
 
     public static Section section(Id id, Clazz clazz, String string) {
-        return new Section(ga(id, clazz), Stream.of(new Text(string)));
+        return new Section(ga(id, clazz), of(new Text(string)));
     }
 
     public static BlockQuote BlockQuote(Id id, Clazz clazz, String string) {
-        return new BlockQuote(ga(id, clazz), null, Stream.of(new Text(string)));
+        return new BlockQuote(ga(id, clazz), null, of(new Text(string)));
     }
 
     public static Div Div(Id id, Clazz clazz, String string) {
-        return new Div(ga(id, clazz), Stream.of(new Text(string)));
+        return new Div(ga(id, clazz), of(new Text(string)));
     }
 
     public static LI LI(Id id, Clazz clazz, String string) {
-        return new LI(ga(id, clazz), Stream.of(new Text(string)), null);
+        return new LI(ga(id, clazz), of(new Text(string)), null);
     }
 
     public static Main Main(Id id, Clazz clazz, String string) {
-        return new Main(ga(id, clazz), Stream.of(new Text(string)));
+        return new Main(ga(id, clazz), of(new Text(string)));
     }
 
     public static P P(Id id, Clazz clazz, String string) {
-        return new P(ga(id, clazz), Stream.of(new Text(string)));
+        return new P(ga(id, clazz), of(new Text(string)));
     }
 
     public static Pre Pre(Id id, Clazz clazz, String string) {
-        return new Pre(ga(id, clazz), Stream.of(new Text(string)));
+        return new Pre(ga(id, clazz), of(new Text(string)));
     }
 
     public static H1 h1(Id id, String string) {
-        return new H1(ga(id), Stream.of(new Text(string)));
+        return new H1(ga(id), of(new Text(string)));
     }
 
     public static H2 h2(Id id, String string) {
-        return new H2(ga(id), Stream.of(new Text(string)));
+        return new H2(ga(id), of(new Text(string)));
     }
 
     public static H3 h3(Id id, String string) {
-        return new H3(ga(id), Stream.of(new Text(string)));
+        return new H3(ga(id), of(new Text(string)));
     }
 
     public static H4 h4(Id id, String string) {
-        return new H4(ga(id), Stream.of(new Text(string)));
+        return new H4(ga(id), of(new Text(string)));
     }
 
     public static H5 h5(Id id, String string) {
-        return new H5(ga(id), Stream.of(new Text(string)));
+        return new H5(ga(id), of(new Text(string)));
     }
 
     public static H6 h6(Id id, String string) {
-        return new H6(ga(id), Stream.of(new Text(string)));
+        return new H6(ga(id), of(new Text(string)));
     }
 
     public static Address address(Id id, String string) {
-        return new Address(ga(id), Stream.of(new Text(string)));
+        return new Address(ga(id), of(new Text(string)));
     }
 
     public static Article article(Id id, String string) {
-        return new Article(ga(id), Stream.of(new Text(string)));
+        return new Article(ga(id), of(new Text(string)));
     }
 
     public static Aside aside(Id id, String string) {
-        return new Aside(ga(id), Stream.of(new Text(string)));
+        return new Aside(ga(id), of(new Text(string)));
     }
 
     public static Body body(Id id, String string) {
-        return new Body(ga(id), Stream.of(new Text(string)));
+        return new Body(ga(id), of(new Text(string)));
     }
 
     public static Footer footer(Id id, String string) {
-        return new Footer(ga(id), Stream.of(new Text(string)));
+        return new Footer(ga(id), of(new Text(string)));
     }
 
     public static Header header(Id id, String string) {
-        return new Header(ga(id), Stream.of(new Text(string)));
+        return new Header(ga(id), of(new Text(string)));
     }
 
     public static Nav nav(Id id, String string) {
-        return new Nav(ga(id), Stream.of(new Text(string)));
+        return new Nav(ga(id), of(new Text(string)));
     }
 
     public static Section section(Id id, String string) {
-        return new Section(ga(id), Stream.of(new Text(string)));
+        return new Section(ga(id), of(new Text(string)));
     }
 
     public static BlockQuote BlockQuote(Id id, String string) {
-        return new BlockQuote(ga(id), null, Stream.of(new Text(string)));
+        return new BlockQuote(ga(id), null, of(new Text(string)));
     }
 
     public static Div Div(Id id, String string) {
-        return new Div(ga(id), Stream.of(new Text(string)));
+        return new Div(ga(id), of(new Text(string)));
     }
 
     public static LI LI(Id id, String string) {
-        return new LI(ga(id), Stream.of(new Text(string)), null);
+        return new LI(ga(id), of(new Text(string)), null);
     }
 
     public static Main Main(Id id, String string) {
-        return new Main(ga(id), Stream.of(new Text(string)));
+        return new Main(ga(id), of(new Text(string)));
     }
 
     public static P P(Id id, String string) {
-        return new P(ga(id), Stream.of(new Text(string)));
+        return new P(ga(id), of(new Text(string)));
     }
 
     public static Pre Pre(Id id, String string) {
-        return new Pre(ga(id), Stream.of(new Text(string)));
+        return new Pre(ga(id), of(new Text(string)));
     }
 
     public static H1 h1(Clazz clazz, String string) {
-        return new H1(ga(clazz), Stream.of(new Text(string)));
+        return new H1(ga(clazz), of(new Text(string)));
     }
 
     public static H2 h2(Clazz clazz, String string) {
-        return new H2(ga(clazz), Stream.of(new Text(string)));
+        return new H2(ga(clazz), of(new Text(string)));
     }
 
     public static H3 h3(Clazz clazz, String string) {
-        return new H3(ga(clazz), Stream.of(new Text(string)));
+        return new H3(ga(clazz), of(new Text(string)));
     }
 
     public static H4 h4(Clazz clazz, String string) {
-        return new H4(ga(clazz), Stream.of(new Text(string)));
+        return new H4(ga(clazz), of(new Text(string)));
     }
 
     public static H5 h5(Clazz clazz, String string) {
-        return new H5(ga(clazz), Stream.of(new Text(string)));
+        return new H5(ga(clazz), of(new Text(string)));
     }
 
     public static H6 h6(Clazz clazz, String string) {
-        return new H6(ga(clazz), Stream.of(new Text(string)));
+        return new H6(ga(clazz), of(new Text(string)));
     }
 
     public static Address address(Clazz clazz, String string) {
-        return new Address(ga(clazz), Stream.of(new Text(string)));
+        return new Address(ga(clazz), of(new Text(string)));
     }
 
     public static Article article(Clazz clazz, String string) {
-        return new Article(ga(clazz), Stream.of(new Text(string)));
+        return new Article(ga(clazz), of(new Text(string)));
     }
 
     public static Aside aside(Clazz clazz, String string) {
-        return new Aside(ga(clazz), Stream.of(new Text(string)));
+        return new Aside(ga(clazz), of(new Text(string)));
     }
 
     public static Body body(Clazz clazz, String string) {
-        return new Body(ga(clazz), Stream.of(new Text(string)));
+        return new Body(ga(clazz), of(new Text(string)));
     }
 
     public static Footer footer(Clazz clazz, String string) {
-        return new Footer(ga(clazz), Stream.of(new Text(string)));
+        return new Footer(ga(clazz), of(new Text(string)));
     }
 
     public static Header header(Clazz clazz, String string) {
-        return new Header(ga(clazz), Stream.of(new Text(string)));
+        return new Header(ga(clazz), of(new Text(string)));
     }
 
     public static Nav nav(Clazz clazz, String string) {
-        return new Nav(ga(clazz), Stream.of(new Text(string)));
+        return new Nav(ga(clazz), of(new Text(string)));
     }
 
     public static Section section(Clazz clazz, String string) {
-        return new Section(ga(clazz), Stream.of(new Text(string)));
+        return new Section(ga(clazz), of(new Text(string)));
     }
 
     public static BlockQuote BlockQuote(Clazz clazz, String string) {
-        return new BlockQuote(ga(clazz), null, Stream.of(new Text(string)));
+        return new BlockQuote(ga(clazz), null, of(new Text(string)));
     }
 
     public static Div Div(Clazz clazz, String string) {
-        return new Div(ga(clazz), Stream.of(new Text(string)));
+        return new Div(ga(clazz), of(new Text(string)));
     }
 
     public static LI LI(Clazz clazz, String string) {
-        return new LI(ga(clazz), Stream.of(new Text(string)), null);
+        return new LI(ga(clazz), of(new Text(string)), null);
     }
 
     public static Main Main(Clazz clazz, String string) {
-        return new Main(ga(clazz), Stream.of(new Text(string)));
+        return new Main(ga(clazz), of(new Text(string)));
     }
 
     public static P P(Clazz clazz, String string) {
-        return new P(ga(clazz), Stream.of(new Text(string)));
+        return new P(ga(clazz), of(new Text(string)));
     }
 
     public static Pre Pre(Clazz clazz, String string) {
-        return new Pre(ga(clazz), Stream.of(new Text(string)));
+        return new Pre(ga(clazz), of(new Text(string)));
     }
 
     public static Button button(Id id, Clazz clazz) {
-        return new Button(ga(id, clazz), Stream.empty());
+        return new Button(ga(id, clazz), empty());
     }
 
     public static DataList<Option> dataList(Id id, Clazz clazz) {
-        return new DataList<Option>(ga(id, clazz), Stream.empty());
+        return new DataList<Option>(ga(id, clazz), empty());
     }
 
     public static FieldSet fieldSet(Id id, Clazz clazz) {
-        return new FieldSet(ga(id, clazz), null, null, null, null, Stream.empty());
+        return new FieldSet(ga(id, clazz), null, null, null, null, empty());
     }
 
     public static Form form(Id id, Clazz clazz) {
-        return new Form(ga(id, clazz), Stream.empty());
+        return new Form(ga(id, clazz), empty());
     }
 
     public static Input input(Id id, Clazz clazz) {
@@ -2701,7 +2804,7 @@ public class Elements {
     }
 
     public static Legend legend(Id id, Clazz clazz) {
-        return new Legend(ga(id, clazz), Stream.empty());
+        return new Legend(ga(id, clazz), empty());
     }
 
     public static Meter meter(Id id, Clazz clazz) {
@@ -2709,7 +2812,7 @@ public class Elements {
     }
 
     public static OptGroup optgroup(Id id, Clazz clazz) {
-        return new OptGroup(ga(id, clazz), null, null, Stream.empty());
+        return new OptGroup(ga(id, clazz), null, null, empty());
     }
 
     public static Option option(Id id, Clazz clazz) {
@@ -2721,15 +2824,15 @@ public class Elements {
     }
 
     public static Option option(Selected selected, Value value) {
-        return new Option(Stream.empty(), null, null, selected, value);
+        return new Option(empty(), null, null, selected, value);
     }
 
     public static Option option(Selected selected, Value value, Text text) {
-        return new Option(Stream.empty(), null, null, selected, value, text);
+        return new Option(empty(), null, null, selected, value, text);
     }
 
     public static Output output(Id id, Clazz clazz) {
-        return new Output(ga(id, clazz), null, null, null, Stream.empty());
+        return new Output(ga(id, clazz), null, null, null, empty());
     }
 
     public static Progress progress(Id id, Clazz clazz) {
@@ -2737,11 +2840,11 @@ public class Elements {
     }
 
     public static Select select(Id id, Clazz clazz) {
-        return new Select(ga(id, clazz), null, null, null, null, null, null, null, null, Stream.empty());
+        return new Select(ga(id, clazz), null, null, null, null, null, null, null, null, empty());
     }
 
     public static Select select(Name name, Stream<OptionOrOptGroup> childeren) {
-        return new Select(Stream.empty(), null, null, null, null, null, null, name, null, childeren);
+        return new Select(empty(), null, null, null, null, null, null, name, null, childeren);
     }
 
     public static TextArea textArea(Id id, Clazz clazz) {
@@ -2750,11 +2853,11 @@ public class Elements {
     }
 
     public static Canvas canvas(Id id, Clazz clazz) {
-        return new Canvas(ga(id, clazz), null, null, Stream.empty());
+        return new Canvas(ga(id, clazz), null, null, empty());
     }
 
     public static NoScript noscript(Id id, Clazz clazz) {
-        return new NoScript(ga(id, clazz), Stream.empty());
+        return new NoScript(ga(id, clazz), empty());
     }
 
     public static Script script(Id id, Clazz clazz) {
@@ -2762,11 +2865,11 @@ public class Elements {
     }
 
     public static Template template(Id id, Clazz clazz) {
-        return new Template(ga(id, clazz), Stream.empty());
+        return new Template(ga(id, clazz), empty());
     }
 
     public static Caption caption(Id id, Clazz clazz) {
-        return new Caption(ga(id, clazz), Stream.empty());
+        return new Caption(ga(id, clazz), empty());
     }
 
     public static Col col(Id id, Clazz clazz) {
@@ -2774,35 +2877,43 @@ public class Elements {
     }
 
     public static ColGroup colgroup(Id id, Clazz clazz) {
-        return new ColGroup(ga(id, clazz), Stream.empty());
+        return new ColGroup(ga(id, clazz), empty());
     }
 
     public static Table table(Id id, Clazz clazz) {
-        return new Table(ga(id, clazz), null, Stream.empty(), null, null, Stream.empty(), Stream.empty(), null, null);
+        return new Table(ga(id, clazz), null, empty(), null, null, empty(), empty(), null, null);
     }
 
     public static TBody tbody(Id id, Clazz clazz) {
-        return new TBody(ga(id, clazz), Stream.empty());
+        return new TBody(ga(id, clazz), empty());
     }
 
     public static TD td(Id id, Clazz clazz) {
-        return new TD(ga(id, clazz), Stream.empty(), null, null, null);
+        return new TD(ga(id, clazz), empty(), null, null, null);
+    }
+    
+    public static TD td(String css, Stream<FlowContent> children) {
+        return new TD(of(Attributes.style(css)), children, null, null, null);
     }
 
     public static TFoot tfoot(Id id, Clazz clazz) {
-        return new TFoot(ga(id, clazz), Stream.empty());
+        return new TFoot(ga(id, clazz), empty());
     }
 
     public static TH th(Id id, Clazz clazz) {
-        return new TH(ga(id, clazz), Stream.empty(), null, null, null, null, null, null);
+        return new TH(ga(id, clazz), empty(), null, null, null, null, null, null);
     }
 
     public static THead thead(Id id, Clazz clazz) {
-        return new THead(ga(id, clazz), Stream.empty());
+        return new THead(ga(id, clazz), empty());
     }
 
     public static TR tr(Id id, Clazz clazz) {
-        return new TR(ga(id, clazz), Stream.empty());
+        return new TR(ga(id, clazz), empty());
+    }
+    
+    public static TR tr(Stream<TDOrTH> tds) {
+        return new TR(empty(), tds);
     }
 
     public static Button button(Id id, Stream<OptionOrOptGroup> childeren) {

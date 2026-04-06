@@ -2,6 +2,8 @@ package swiss.sib.swissprot.sjh.elements.table;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -36,4 +38,10 @@ public non-sealed class TD extends CommonElement implements TDOrTH {
     protected Stream<TableAttribute> getElementSpecificAttributes() {
         return Stream.of(rowspan, colspan, headers).filter(Objects::nonNull);
     }
+    
+    @Override
+   	public void render(OutputStream stream) throws IOException {
+   		super.render(stream);
+   		stream.write('\n');
+   	}
 }

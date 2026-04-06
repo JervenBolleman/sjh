@@ -35,7 +35,7 @@ public class HtmlElementsTest {
                 String name = method.getReturnType().getSimpleName();
                 Element el = (Element) method.invoke(null, (Object[]) null);
                 if (!(el instanceof None || el instanceof HTML))
-                    test(el, "<" + name.toLowerCase() + "/>");
+                    test(el, "<" + name.toLowerCase() + "/>", method.getName());
             }
         }
     }
@@ -52,7 +52,7 @@ public class HtmlElementsTest {
                 if (pt[0].equals(Id.class)) {
                     Element el = (Element) method.invoke(null, new Id("test"));
                     if (!(el instanceof HTML))
-                        test(el, "<" + name.toLowerCase() + " id=\"test\"/>");
+                        test(el, "<" + name.toLowerCase() + " id=\"test\"/>", method.getName());
                     count++;
                 }
             }
@@ -73,7 +73,7 @@ public class HtmlElementsTest {
                 if (pt[0].equals(Clazz.class)) {
                     Element el = (Element) method.invoke(null, new Clazz("test"));
                     if (!(el instanceof HTML))
-                        test(el, "<" + name.toLowerCase() + " class=\"test\"/>");
+                        test(el, "<" + name.toLowerCase() + " class=\"test\"/>", method.getName());
                     count++;
                 }
             }
@@ -94,9 +94,14 @@ public class HtmlElementsTest {
                 if (pt[0].equals(Id.class) && pt[1].equals(Clazz.class)) {
                     try {
                         Element el = (Element) method.invoke(null, new Id("test"), new Clazz("test"));
-                        if (!(el instanceof HTML))
-                            test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"/>");
+                        if (!(el instanceof HTML)) {
+//                        	if (el.isSelfClosing())
+                        	test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"/>", method.getName());
+//                        	else
+//                        		test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"></"+name.toLowerCase()+">", method.getName());
+                        }
                     } catch (Exception e) {
+                    	e.printStackTrace();
                         fail(method.getName() + ' ' + e.getMessage());
                     }
                     count++;
@@ -129,7 +134,7 @@ public class HtmlElementsTest {
                                     Stream.of(Elements.div()));
                             if (!(el instanceof HTML))
                                 test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"><div/></"
-                                        + name.toLowerCase() + ">");
+                                        + name.toLowerCase() + ">", method.getName());
                             countFlow++;
                         }
 
@@ -138,7 +143,7 @@ public class HtmlElementsTest {
                                     Stream.of(Elements.span()));
                             if (!(el instanceof HTML))
                                 test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"><span/></"
-                                        + name.toLowerCase() + ">");
+                                        + name.toLowerCase() + ">", method.getName());
                             countPhrase++;
                         }
                     } else if (ata[0].equals(LI.class)) {
@@ -146,7 +151,7 @@ public class HtmlElementsTest {
                                 Stream.of(Elements.li()));
                         if (!(el instanceof HTML))
                             test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"><li/></"
-                                    + name.toLowerCase() + ">");
+                                    + name.toLowerCase() + ">", method.getName());
                         countLI++;
                     }
 
@@ -177,13 +182,13 @@ public class HtmlElementsTest {
                             Element el = (Element) method.invoke(null, new Id("test"), new Clazz("test"),
                                     new FlowContent[] { Elements.div() });
                             test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"><div/></"
-                                    + name.toLowerCase() + ">");
+                                    + name.toLowerCase() + ">", method.getName());
                             countFlow++;
                         } else if (array.getComponentType().equals(PhrasingContent.class)) {
                             Element el = (Element) method.invoke(null, new Id("test"), new Clazz("test"),
                                     new PhrasingContent[] { Elements.span() });
                             test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"><span/></"
-                                    + name.toLowerCase() + ">");
+                                    + name.toLowerCase() + ">", method.getName());
                             countPhrase++;
 
                         } else if (array.getComponentType().equals(LI.class)) {
@@ -191,7 +196,7 @@ public class HtmlElementsTest {
                                     new LI[] { Elements.li() });
                             if (!(el instanceof HTML))
                                 test(el, "<" + name.toLowerCase() + " id=\"test\" class=\"test\"><li/></"
-                                        + name.toLowerCase() + ">");
+                                        + name.toLowerCase() + ">", method.getName());
                             countLI++;
                         }
                     } catch (IllegalArgumentException e) {
@@ -206,9 +211,11 @@ public class HtmlElementsTest {
         assertEquals("Make sure we test ", countLI, 2);
     }
 
-    private void test(Element el, String expectedRaw) throws IOException {
+    private void test(Element el, String expectedRaw, String methodName) throws IOException {
         ByteArrayOutputStream boas = new ByteArrayOutputStream();
         el.render(boas);
-        assertEquals(expectedRaw, new String(boas.toByteArray(), UTF_8));
+        String htmlText = new String(boas.toByteArray(), UTF_8);
+        htmlText = htmlText.replaceAll("\n", "");
+		assertEquals(methodName, expectedRaw, htmlText);
     }
 }

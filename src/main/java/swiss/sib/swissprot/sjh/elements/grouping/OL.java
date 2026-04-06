@@ -3,6 +3,8 @@ package swiss.sib.swissprot.sjh.elements.grouping;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.stream.Stream.empty;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -60,9 +62,22 @@ public non-sealed class OL extends CommonElement implements FlowContent, Palpaba
 		this.start = null;
 		this.type = null;
 	}
+	
+	public OL(Stream<GlobalAttribute> ga, Stream<RdfaAttribute> rdfa, Stream<LI> childeren) {
+		super(ga, rdfa, childeren);
+		this.rev = null;
+		this.start = null;
+		this.type = null;
+	}
 
 	@Override
 	protected Stream<Attribute> getElementSpecificAttributes() {
 		return Stream.of(rev, start, type).filter(Objects::nonNull);
+	}
+
+	@Override
+	public void render(OutputStream stream) throws IOException {
+		super.render(stream);
+		stream.write('\n');
 	}
 }

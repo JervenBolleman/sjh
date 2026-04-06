@@ -31,23 +31,33 @@ public abstract class CommonElement implements Element {
             Iterator<? extends Element> iter = childeren.iterator();
             if (iter.hasNext()) {
                 stream.write('>');
-                while (iter.hasNext())
-                    iter.next().render(stream);
-                stream.write('<');
-                stream.write('/');
-                stream.write(getName());
-                stream.write('>');
+                while (iter.hasNext()) {
+					Element next = iter.next();
+					if (next != null)
+						next.render(stream);
+				}
+                closeNamedTag(stream);
             } else {
-                stream.write('/');
-                stream.write('>');
+                endElementOpen(stream);
             }
         } else {
-            stream.write('/');
-            stream.write('>');
-        }
+            endElementOpen(stream);
+        } 
     }
-	
-    public void render(Writer writer) throws IOException {
+
+	private void endElementOpen(OutputStream stream) throws IOException {
+		stream.write('/');
+		stream.write('>');
+	}
+
+	private void closeNamedTag(OutputStream stream) throws IOException {
+		stream.write('<');
+		stream.write('/');
+		stream.write(getName());
+		stream.write('>');
+	}
+
+	public void render(Writer writer) throws IOException {
         writer.write('<');
         writer.write(new String(getName(), StandardCharsets.UTF_8));
         writeAttributes(writer, attributes);
@@ -78,14 +88,14 @@ public abstract class CommonElement implements Element {
         super();
         this.attributes = ga;
 		this.rdfaAttr = null;
-        this.childeren = childeren.filter(Objects::nonNull);
+        this.childeren = childeren;
     }
     
     protected CommonElement(Stream<GlobalAttribute> ga, Stream<RdfaAttribute> rdfa, Stream<? extends Element> childeren) {
         super();
         this.attributes = ga;
 		this.rdfaAttr = rdfa;
-        this.childeren = childeren.filter(Objects::nonNull);
+        this.childeren = childeren;
     }
 
     protected CommonElement() {
@@ -99,27 +109,36 @@ public abstract class CommonElement implements Element {
 		if (sa == null)
 			return;
 
-		Iterator<? extends Attribute> iter = sa.iterator();
-		if (iter.hasNext())
-			stream.write(' ');
-		while (iter.hasNext()) {
-			iter.next().render(stream);
+		try {
+			Iterator<? extends Attribute> iter = sa.iterator();
 			if (iter.hasNext())
 				stream.write(' ');
+			while (iter.hasNext()) {
+				iter.next().render(stream);
+				if (iter.hasNext())
+					stream.write(' ');
+			}
+		} catch (IllegalStateException e) {
+			throw new IllegalStateException("Element " + new String(getName()) + " calls iterator on stream twice", e);
+		} catch (NullPointerException e) {
+			throw new IllegalStateException("Element " + new String(getName()) + " has null attribute", e);
 		}
 	}
 
 	private void writeAttributes(Writer stream, Stream<? extends Attribute> sa) throws IOException {
 		if (sa == null)
 			return;
-
-		Iterator<? extends Attribute> iter = sa.iterator();
-		if (iter.hasNext())
-			stream.write(' ');
-		while (iter.hasNext()) {
-			iter.next().render(stream);
+		try {
+			Iterator<? extends Attribute> iter = sa.iterator();
 			if (iter.hasNext())
 				stream.write(' ');
+			while (iter.hasNext()) {
+				iter.next().render(stream);
+				if (iter.hasNext())
+					stream.write(' ');
+			}
+		} catch (IllegalStateException e) {
+			throw new IllegalStateException("Element " + new String(getName()) + " calls iterator on stream twice", e);
 		}
 	}
     

@@ -2,6 +2,8 @@ package swiss.sib.swissprot.sjh.elements.meta;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -48,5 +50,10 @@ public non-sealed class Link extends CommonElement implements MetaContent {
     protected Stream<ContentAttribute> getElementSpecificAttributes() {
         return Stream.of(href, co, rel, media, hrefLang, type, size).filter(Objects::nonNull);
     }
-
+    
+    @Override
+   	public void render(OutputStream stream) throws IOException {
+   		super.render(stream);
+   		stream.write('\n');
+   	}
 }

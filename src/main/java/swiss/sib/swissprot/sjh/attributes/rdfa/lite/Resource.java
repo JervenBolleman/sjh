@@ -6,7 +6,7 @@ import swiss.sib.swissprot.sjh.attributes.Attribute;
 
 public non-sealed class Resource implements RdfaLiteAttribute {
 
-	private static final byte[] ATTR_NAME = Attribute.fromString("prefix");
+	private static final byte[] ATTR_NAME = Attribute.fromString("resource");
 	private final byte[] value;
 
 	public Resource(String value) {

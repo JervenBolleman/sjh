@@ -1,5 +1,6 @@
 package swiss.sib.swissprot.sjh.elements.contenttype;
 
+import swiss.sib.swissprot.sjh.Comment;
 import swiss.sib.swissprot.sjh.elements.Element;
 import swiss.sib.swissprot.sjh.elements.embedded.Audio;
 import swiss.sib.swissprot.sjh.elements.embedded.Embed;
@@ -22,6 +23,6 @@ import swiss.sib.swissprot.sjh.elements.text.A;
 
 @SuppressWarnings("deprecation")
 public sealed interface InteractiveContent extends Element permits A, Audio, Button, Details, Embed, FieldSet, Iframe,
-        Img, Input, KeyGen, Label, Meter, Object, Output, Progress, Select, TextArea, Video {
+        Img, Input, KeyGen, Label, Meter, Object, Output, Progress, Select, TextArea, Video, Comment {
 
 }

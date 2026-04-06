@@ -20,6 +20,10 @@ public non-sealed class DL extends CommonElement implements FlowContent, Palpaba
     public DL(Stream<GlobalAttribute> ga, Stream<? extends DtOrDd> childeren) {
         super(ga, childeren);
     }
+    
+    public DL(Stream<GlobalAttribute> ga, DT dt, Stream<? extends DtOrDd> childeren) {
+        super(ga, Stream.concat(Stream.of(dt), childeren));
+    }
 
     public DL() {
         super();

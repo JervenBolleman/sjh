@@ -7,7 +7,8 @@ import swiss.sib.swissprot.sjh.attributes.Attribute;
 public enum Datatype implements RdfaCoreAttribute {
 	XSD_INTEGER("xsd:integer"),
 	XSD_STRING("xsd:string"),
-	XSD_NON_NEGATIVE_INTEGER("xsd:nonNegativeInteger");
+	XSD_NON_NEGATIVE_INTEGER("xsd:nonNegativeInteger"),
+	RDF_HTML("rdf:html");
 
 	private final byte[] value;
 	private static final byte[] ATTR_NAME = Attribute.fromString("datatype");

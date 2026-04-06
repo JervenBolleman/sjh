@@ -55,7 +55,7 @@ public non-sealed class TextArea extends CommonElement
     public TextArea(Stream<GlobalAttribute> ga, AutoComplete autoComplete, AutoFocus autofocus, Cols cols,
             DirName dirname, Disabled disabled, Form form, MaxLength maxlength, MinLength minLength, Name name,
             PlaceHolder placeHolder, ReadOnly readOnly, Required required, Rows rows, Wrap wrap, Text text) {
-        super(ga, Stream.of(text));
+        super(ga, text == null ? null : Stream.of(text));
         this.autoComplete = autoComplete;
         this.autofocus = autofocus;
         this.cols = cols;
