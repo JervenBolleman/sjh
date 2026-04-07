@@ -24,13 +24,14 @@ import swiss.sib.swissprot.sjh.attributes.form.Required;
 import swiss.sib.swissprot.sjh.attributes.form.Selected;
 import swiss.sib.swissprot.sjh.attributes.global.Hidden;
 import swiss.sib.swissprot.sjh.attributes.grouping.Reversed;
+import swiss.sib.swissprot.sjh.attributes.microdata.Itemscope;
 import swiss.sib.swissprot.sjh.attributes.script.Async;
 import swiss.sib.swissprot.sjh.attributes.script.Defer;;
 
 @SuppressWarnings("deprecation")
 public sealed interface BooleanAttribute extends Attribute
         permits Async, NoModule, Open, Autoplay, Controls, Default, IsMap, Loop, Muted, TypeMustMatch, AutoFocus,
-        Checked, Disabled, FormNoValidate, Selected, Required, ReadOnly, NoValidate, Multiple, Hidden, Reversed, Defer {
+        Checked, Disabled, FormNoValidate, Selected, Required, ReadOnly, NoValidate, Multiple, Hidden, Reversed, Defer, Itemscope {
 
     static final byte[] EMPTY = new byte[0];
 
