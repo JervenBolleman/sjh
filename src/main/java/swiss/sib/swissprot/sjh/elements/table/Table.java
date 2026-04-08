@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 import swiss.sib.swissprot.sjh.attributes.global.GlobalAttribute;
+import swiss.sib.swissprot.sjh.attributes.global.Style;
 import swiss.sib.swissprot.sjh.attributes.table.Border;
 import swiss.sib.swissprot.sjh.attributes.table.Sortable;
 import swiss.sib.swissprot.sjh.attributes.table.TableAttribute;
@@ -26,6 +27,18 @@ public non-sealed class Table extends CommonElement implements FlowContent, Palp
     @Override
     protected byte[] getName() {
         return NAME;
+    }
+    
+    public Table(Style style, TBody tbody) {
+        super(of(style), of(tbody));
+        this.border = null;
+        this.sortable = null;
+    }
+    
+    public Table(TBody tbody) {
+        super(null, of(tbody));
+        this.border = null;
+        this.sortable = null;
     }
     
     public Table(Stream<GlobalAttribute> ga, THead thead, TFoot tfoot,

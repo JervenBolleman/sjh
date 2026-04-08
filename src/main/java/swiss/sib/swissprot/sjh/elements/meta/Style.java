@@ -11,8 +11,9 @@ import swiss.sib.swissprot.sjh.attributes.content.Type;
 import swiss.sib.swissprot.sjh.attributes.global.GlobalAttribute;
 import swiss.sib.swissprot.sjh.elements.CommonElement;
 import swiss.sib.swissprot.sjh.elements.Text;
+import swiss.sib.swissprot.sjh.elements.contenttype.MetaContent;
 
-public class Style extends CommonElement {
+public non-sealed class Style extends CommonElement implements MetaContent {
     private final static byte[] NAME = "style".getBytes(UTF_8);
     private final Media media;
     private final Type type;

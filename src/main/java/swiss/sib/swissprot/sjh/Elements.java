@@ -2883,6 +2883,9 @@ public class Elements {
     public static Table table(Id id, Clazz clazz) {
         return new Table(ga(id, clazz), null, empty(), null, null, empty(), empty(), null, null);
     }
+    public static Table table(Stream<TR> rows) {
+        return new Table(tbody(rows));
+    }
 
     public static TBody tbody(Id id, Clazz clazz) {
         return new TBody(ga(id, clazz), empty());
@@ -2892,14 +2895,26 @@ public class Elements {
         return new TD(ga(id, clazz), empty(), null, null, null);
     }
     
-    public static TD td(String css, Stream<FlowContent> children) {
-        return new TD(of(Attributes.style(css)), children, null, null, null);
+    public static TD td(Text text) {
+        return new TD(empty(), of(text), null, null, null);
+    }
+    
+    public static TD td(FlowContent child) {
+        return new TD(empty(), of(child), null, null, null);
+    }
+    
+    public static TD td(swiss.sib.swissprot.sjh.attributes.global.Style css, Stream<FlowContent> children) {
+        return new TD(of(css), children, null, null, null);
     }
 
     public static TFoot tfoot(Id id, Clazz clazz) {
         return new TFoot(ga(id, clazz), empty());
     }
 
+    public static TH th(Text text) {
+        return new TH(empty(), of(text), null, null, null, null, null, null);
+    }
+    
     public static TH th(Id id, Clazz clazz) {
         return new TH(ga(id, clazz), empty(), null, null, null, null, null, null);
     }
@@ -2991,6 +3006,10 @@ public class Elements {
 
     public static TBody tbody(Id id, Stream<TR> childeren) {
         return new TBody(ga(id), childeren);
+    }
+    
+    public static TBody tbody(Stream<TR> childeren) {
+        return new TBody(empty(), childeren);
     }
 
     public static TD td(Id id, Stream<? extends FlowContent> childeren) {

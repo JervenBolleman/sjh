@@ -35,19 +35,19 @@ public non-sealed class A extends CommonElement
         return NAME;
     }
     
-    public A(Stream<Element> childeren, Href href, Rel rel) {
+    public A(Stream<? extends Element> childeren, Href href, Rel rel) {
         this(null, childeren, href, null, null, rel, null, null);
     }
     
-    public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href, Rel rel) {
+    public A(Stream<GlobalAttribute> ga, Stream<? extends Element> childeren, Href href, Rel rel) {
         this(ga, childeren, href, null, null, rel, null, null);
     }
 
-    public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href) {
+    public A(Stream<GlobalAttribute> ga, Stream<? extends Element> childeren, Href href) {
         this(ga, childeren, href, null, null, null, null, null);
     }
 
-    public A(Stream<GlobalAttribute> ga, Stream<Element> childeren, Href href, Target target, Download download,
+    public A(Stream<GlobalAttribute> ga, Stream<? extends Element> childeren, Href href, Target target, Download download,
             Rel rel, HrefLang hreflang, Type type) {
         super(ga, childeren);
         this.href = href;
