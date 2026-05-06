@@ -708,6 +708,9 @@ public class Elements {
     public static Sup sup(PhrasingContent... text) {
         return new Sup(empty(), of(text));
     }
+    public static Sup sup(Stream<PhrasingContent> text) {
+        return new Sup(empty(), text);
+    }
 
     public static I i(Id id) {
         return new I(ga(id), empty());
