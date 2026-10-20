@@ -58,11 +58,16 @@ import swiss.sib.swissprot.sjh.elements.text.ruby.Rp;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Rt;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Rtc;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Ruby;
+import swiss.sib.swissprot.sjh.elements.text.Del;
+import swiss.sib.swissprot.sjh.elements.text.Ins;
+import swiss.sib.swissprot.sjh.elements.script.Slot;
+import swiss.sib.swissprot.sjh.elements.embedded.Picture;
 
 @SuppressWarnings("deprecation")
 public sealed interface PhrasingContent extends Element permits A, Abbr, Area, Audio, B, Bdi, Bdo, Br, Button, Canvas,
         Cite, Code, Data, DataList, Dfn, Em, Embed, EscapedRawPhrasingContent, FieldSet, Form, I, Iframe, Img, Input,
         Kbd, KeyGen, Label, Map, Mark, Meter, NoScript, Object, Output, Progress, Q, Rb, Rp, Rt, Rtc, Ruby, S, Samp,
-        Select, Small, Span, Strong, Sub, Sup, Template, Text, TextArea, Time, U, Var, Video, WBr, Comment {
+        Select, Small, Span, Strong, Sub, Sup, Template, Text, TextArea, Time, U, Var, Video, WBr, Comment,
+        Del, Ins, Slot, Picture {
 
 }

@@ -76,12 +76,16 @@ import swiss.sib.swissprot.sjh.elements.text.ruby.Rp;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Rt;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Rtc;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Ruby;
+import swiss.sib.swissprot.sjh.elements.text.Del;
+import swiss.sib.swissprot.sjh.elements.text.Ins;
+import swiss.sib.swissprot.sjh.elements.grouping.Search;
 
 @SuppressWarnings("deprecation")
 public sealed interface PalpabaleContent extends Element permits A, Abbr, Address, Article, Aside, Audio, B, Bdi, Bdo,
         Br, Button, Canvas, Cite, Code, Data, Details, Dfn, Div, DL, Em, Embed, FieldSet, Figure, Footer, H1, H2, H3,
         H4, H5, H6, Header, HGroup, I, Iframe, Img, Input, Kbd, KeyGen, Label, Main, Map, Mark, Meter, Nav, Object, OL,
         Output, P, Pre, Progress, Q, Rp, Rb, Rt, Rtc, Ruby, S, Samp, Section, Select, Small, Span, Strong, Sub, Sup,
-        Table, Template, TextArea, Time, U, UL, Var, Video, WBr, Comment {
+        Table, Template, TextArea, Time, U, UL, Var, Video, WBr, Comment,
+        Del, Ins, Search {
 
 }

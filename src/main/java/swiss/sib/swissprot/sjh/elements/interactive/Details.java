@@ -28,6 +28,11 @@ public non-sealed class Details extends CommonElement
         this.open = open;
     }
 
+    public Details(Stream<GlobalAttribute> ga, Open open, Summary summary, Stream<? extends FlowContent> content) {
+        super(ga, Stream.concat(Stream.of(summary), content));
+        this.open = open;
+    }
+
     @Override
     protected byte[] getName() {
         return NAME;

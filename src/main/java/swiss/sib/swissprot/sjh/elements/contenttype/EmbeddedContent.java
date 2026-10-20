@@ -8,7 +8,9 @@ import swiss.sib.swissprot.sjh.elements.embedded.Img;
 import swiss.sib.swissprot.sjh.elements.embedded.Object;
 import swiss.sib.swissprot.sjh.elements.embedded.Track;
 import swiss.sib.swissprot.sjh.elements.embedded.Video;
+import swiss.sib.swissprot.sjh.elements.embedded.Picture;
 
-public sealed interface EmbeddedContent extends Element permits Audio, Embed, Iframe, Img, Object, Track, Video {
+public sealed interface EmbeddedContent extends Element permits Audio, Embed, Iframe, Img, Object, Track, Video,
+        Picture {
 
 }

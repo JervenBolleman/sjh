@@ -19,12 +19,12 @@ public non-sealed class Menu extends CommonElement implements FlowContent {
 
     public Menu(Stream<GlobalAttribute> ga, Text text) {
         super(ga, Stream.of(text));
-        type = Type.toolbar;
+        type = null; // toolbar is the default, so it needs no attribute
     }
 
     public Menu(Stream<GlobalAttribute> ga, Stream<FlowContent> flows) {
         super(ga, flows);
-        type = Type.toolbar;
+        type = null; // toolbar is the default, so it needs no attribute
     }
 
     public Menu(Stream<GlobalAttribute> ga, Stream<MenuItem> menuitems, Stream<HR> hrs, Stream<Menu> menus,
@@ -40,6 +40,6 @@ public non-sealed class Menu extends CommonElement implements FlowContent {
 
     @Override
     protected Stream<Attribute> getElementSpecificAttributes() {
-        return Stream.of(type);
+        return type == null ? Stream.empty() : Stream.of(type);
     }
 }

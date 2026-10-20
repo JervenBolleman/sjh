@@ -87,6 +87,11 @@ import swiss.sib.swissprot.sjh.elements.text.ruby.Rp;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Rt;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Rtc;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Ruby;
+import swiss.sib.swissprot.sjh.elements.text.Del;
+import swiss.sib.swissprot.sjh.elements.text.Ins;
+import swiss.sib.swissprot.sjh.elements.script.Slot;
+import swiss.sib.swissprot.sjh.elements.grouping.Search;
+import swiss.sib.swissprot.sjh.elements.embedded.Picture;
 
 @SuppressWarnings("deprecation")
 public sealed interface FlowContent extends Element
@@ -94,6 +99,7 @@ public sealed interface FlowContent extends Element
         Data, DataList, Details, Dfn, Dialog, Div, DL, Em, Embed, FieldSet, Figure, Footer, Form, H1, H2, H3, H4, H5,
         H6, Header, HGroup, HR, I, Iframe, Img, Input, Kbd, KeyGen, Label, Main, Map, Mark, Menu, MenuItem, Meter, Nav,
         NoScript, Object, OL, Output, P, Pre, Progress, Q, Rb, Rp, Rt, Rtc, Ruby, S, Samp, Script, Section, Select,
-        Small, Span, Strong, Sub, Sup, Table, Template, Text, TextArea, Time, U, UL, Var, Video, WBr, Comment {
+        Small, Span, Strong, Sub, Sup, Table, Template, Text, TextArea, Time, U, UL, Var, Video, WBr, Comment,
+        Del, Ins, Slot, Search, Picture {
 
 }

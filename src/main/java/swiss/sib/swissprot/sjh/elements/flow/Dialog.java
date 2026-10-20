@@ -28,6 +28,11 @@ public non-sealed class Dialog extends CommonElement implements FlowContent, Sec
         this.open = open;
     }
 
+    public Dialog(Stream<GlobalAttribute> ga, Open open, Stream<? extends FlowContent> childeren) {
+        super(ga, childeren);
+        this.open = open;
+    }
+
     @Override
     protected byte[] getName() {
         return NAME;

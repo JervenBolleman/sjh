@@ -143,6 +143,20 @@ import swiss.sib.swissprot.sjh.elements.text.ruby.Rp;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Rt;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Rtc;
 import swiss.sib.swissprot.sjh.elements.text.ruby.Ruby;
+import swiss.sib.swissprot.sjh.attributes.content.Open;
+import swiss.sib.swissprot.sjh.elements.contenttype.HeadingContent;
+import swiss.sib.swissprot.sjh.elements.embedded.Picture;
+import swiss.sib.swissprot.sjh.elements.flow.Dialog;
+import swiss.sib.swissprot.sjh.elements.form.SelectedContent;
+import swiss.sib.swissprot.sjh.elements.grouping.Search;
+import swiss.sib.swissprot.sjh.elements.interactive.Details;
+import swiss.sib.swissprot.sjh.elements.interactive.Menu;
+import swiss.sib.swissprot.sjh.elements.interactive.MenuItem;
+import swiss.sib.swissprot.sjh.elements.interactive.Summary;
+import swiss.sib.swissprot.sjh.elements.script.Slot;
+import swiss.sib.swissprot.sjh.elements.sections.header.HGroup;
+import swiss.sib.swissprot.sjh.elements.text.Del;
+import swiss.sib.swissprot.sjh.elements.text.Ins;
 
 @SuppressWarnings("unused")
 public class Elements {
@@ -3139,4 +3153,646 @@ public class Elements {
     public static None none() {
         return None.none;
     }
+
+    public static Del del() {
+        return new Del();
+    }
+
+    public static Del del(Id id) {
+        return new Del(ga(id), empty());
+    }
+
+    public static Del del(Id id, Stream<? extends Element> childeren) {
+        return new Del(ga(id), childeren);
+    }
+
+    public static Del del(Id id, Element... childeren) {
+        return new Del(ga(id), of(childeren));
+    }
+
+    public static Del del(Id id, String string) {
+        return new Del(ga(id), of(new Text(string)));
+    }
+
+    public static Del del(Clazz clazz) {
+        return new Del(ga(clazz), empty());
+    }
+
+    public static Del del(Clazz clazz, Stream<? extends Element> childeren) {
+        return new Del(ga(clazz), childeren);
+    }
+
+    public static Del del(Clazz clazz, Element... childeren) {
+        return new Del(ga(clazz), of(childeren));
+    }
+
+    public static Del del(Clazz clazz, String string) {
+        return new Del(ga(clazz), of(new Text(string)));
+    }
+
+    public static Del del(Id id, Clazz clazz) {
+        return new Del(ga(id, clazz), empty());
+    }
+
+    public static Del del(Id id, Clazz clazz, Stream<? extends Element> childeren) {
+        return new Del(ga(id, clazz), childeren);
+    }
+
+    public static Del del(Id id, Clazz clazz, Element... childeren) {
+        return new Del(ga(id, clazz), of(childeren));
+    }
+
+    public static Del del(Id id, Clazz clazz, String string) {
+        return new Del(ga(id, clazz), of(new Text(string)));
+    }
+
+    public static Ins ins() {
+        return new Ins();
+    }
+
+    public static Ins ins(Id id) {
+        return new Ins(ga(id), empty());
+    }
+
+    public static Ins ins(Id id, Stream<? extends Element> childeren) {
+        return new Ins(ga(id), childeren);
+    }
+
+    public static Ins ins(Id id, Element... childeren) {
+        return new Ins(ga(id), of(childeren));
+    }
+
+    public static Ins ins(Id id, String string) {
+        return new Ins(ga(id), of(new Text(string)));
+    }
+
+    public static Ins ins(Clazz clazz) {
+        return new Ins(ga(clazz), empty());
+    }
+
+    public static Ins ins(Clazz clazz, Stream<? extends Element> childeren) {
+        return new Ins(ga(clazz), childeren);
+    }
+
+    public static Ins ins(Clazz clazz, Element... childeren) {
+        return new Ins(ga(clazz), of(childeren));
+    }
+
+    public static Ins ins(Clazz clazz, String string) {
+        return new Ins(ga(clazz), of(new Text(string)));
+    }
+
+    public static Ins ins(Id id, Clazz clazz) {
+        return new Ins(ga(id, clazz), empty());
+    }
+
+    public static Ins ins(Id id, Clazz clazz, Stream<? extends Element> childeren) {
+        return new Ins(ga(id, clazz), childeren);
+    }
+
+    public static Ins ins(Id id, Clazz clazz, Element... childeren) {
+        return new Ins(ga(id, clazz), of(childeren));
+    }
+
+    public static Ins ins(Id id, Clazz clazz, String string) {
+        return new Ins(ga(id, clazz), of(new Text(string)));
+    }
+
+    public static Slot slot() {
+        return new Slot();
+    }
+
+    public static Slot slot(Id id) {
+        return new Slot(ga(id), empty());
+    }
+
+    public static Slot slot(Id id, Stream<? extends Element> childeren) {
+        return new Slot(ga(id), childeren);
+    }
+
+    public static Slot slot(Id id, Element... childeren) {
+        return new Slot(ga(id), of(childeren));
+    }
+
+    public static Slot slot(Id id, String string) {
+        return new Slot(ga(id), of(new Text(string)));
+    }
+
+    public static Slot slot(Clazz clazz) {
+        return new Slot(ga(clazz), empty());
+    }
+
+    public static Slot slot(Clazz clazz, Stream<? extends Element> childeren) {
+        return new Slot(ga(clazz), childeren);
+    }
+
+    public static Slot slot(Clazz clazz, Element... childeren) {
+        return new Slot(ga(clazz), of(childeren));
+    }
+
+    public static Slot slot(Clazz clazz, String string) {
+        return new Slot(ga(clazz), of(new Text(string)));
+    }
+
+    public static Slot slot(Id id, Clazz clazz) {
+        return new Slot(ga(id, clazz), empty());
+    }
+
+    public static Slot slot(Id id, Clazz clazz, Stream<? extends Element> childeren) {
+        return new Slot(ga(id, clazz), childeren);
+    }
+
+    public static Slot slot(Id id, Clazz clazz, Element... childeren) {
+        return new Slot(ga(id, clazz), of(childeren));
+    }
+
+    public static Slot slot(Id id, Clazz clazz, String string) {
+        return new Slot(ga(id, clazz), of(new Text(string)));
+    }
+
+    public static Search search() {
+        return new Search();
+    }
+
+    public static Search search(Id id) {
+        return new Search(ga(id), empty());
+    }
+
+    public static Search search(Id id, Stream<? extends FlowContent> childeren) {
+        return new Search(ga(id), childeren);
+    }
+
+    public static Search search(Id id, FlowContent... childeren) {
+        return new Search(ga(id), of(childeren));
+    }
+
+    public static Search search(Id id, String string) {
+        return new Search(ga(id), of(new Text(string)));
+    }
+
+    public static Search search(Clazz clazz) {
+        return new Search(ga(clazz), empty());
+    }
+
+    public static Search search(Clazz clazz, Stream<? extends FlowContent> childeren) {
+        return new Search(ga(clazz), childeren);
+    }
+
+    public static Search search(Clazz clazz, FlowContent... childeren) {
+        return new Search(ga(clazz), of(childeren));
+    }
+
+    public static Search search(Clazz clazz, String string) {
+        return new Search(ga(clazz), of(new Text(string)));
+    }
+
+    public static Search search(Id id, Clazz clazz) {
+        return new Search(ga(id, clazz), empty());
+    }
+
+    public static Search search(Id id, Clazz clazz, Stream<? extends FlowContent> childeren) {
+        return new Search(ga(id, clazz), childeren);
+    }
+
+    public static Search search(Id id, Clazz clazz, FlowContent... childeren) {
+        return new Search(ga(id, clazz), of(childeren));
+    }
+
+    public static Search search(Id id, Clazz clazz, String string) {
+        return new Search(ga(id, clazz), of(new Text(string)));
+    }
+
+    public static SelectedContent selectedcontent() {
+        return new SelectedContent();
+    }
+
+    public static SelectedContent selectedcontent(Id id) {
+        return new SelectedContent(ga(id));
+    }
+
+    public static Picture picture(Id id, Stream<Source> sources, Img img) {
+        return new Picture(ga(id), sources, img);
+    }
+
+    public static Picture picture(Id id, Img img) {
+        return new Picture(ga(id), empty(), img);
+    }
+
+    public static SelectedContent selectedcontent(Clazz clazz) {
+        return new SelectedContent(ga(clazz));
+    }
+
+    public static Picture picture(Clazz clazz, Stream<Source> sources, Img img) {
+        return new Picture(ga(clazz), sources, img);
+    }
+
+    public static Picture picture(Clazz clazz, Img img) {
+        return new Picture(ga(clazz), empty(), img);
+    }
+
+    public static SelectedContent selectedcontent(Id id, Clazz clazz) {
+        return new SelectedContent(ga(id, clazz));
+    }
+
+    public static Picture picture(Id id, Clazz clazz, Stream<Source> sources, Img img) {
+        return new Picture(ga(id, clazz), sources, img);
+    }
+
+    public static Picture picture(Id id, Clazz clazz, Img img) {
+        return new Picture(ga(id, clazz), empty(), img);
+    }
+
+    public static Picture picture(Img img) {
+        return new Picture(empty(), empty(), img);
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb() {
+        return new Rb();
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Id id) {
+        return new Rb(ga(id), empty());
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Id id, Stream<? extends PhrasingContent> childeren) {
+        return new Rb(ga(id), childeren);
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Id id, PhrasingContent... childeren) {
+        return new Rb(ga(id), of(childeren));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Id id, String string) {
+        return new Rb(ga(id), of(new Text(string)));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Clazz clazz) {
+        return new Rb(ga(clazz), empty());
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+        return new Rb(ga(clazz), childeren);
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Clazz clazz, PhrasingContent... childeren) {
+        return new Rb(ga(clazz), of(childeren));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Clazz clazz, String string) {
+        return new Rb(ga(clazz), of(new Text(string)));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Id id, Clazz clazz) {
+        return new Rb(ga(id, clazz), empty());
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+        return new Rb(ga(id, clazz), childeren);
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Id id, Clazz clazz, PhrasingContent... childeren) {
+        return new Rb(ga(id, clazz), of(childeren));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rb rb(Id id, Clazz clazz, String string) {
+        return new Rb(ga(id, clazz), of(new Text(string)));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc() {
+        return new Rtc();
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Id id) {
+        return new Rtc(ga(id), empty());
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Id id, Stream<? extends PhrasingContent> childeren) {
+        return new Rtc(ga(id), childeren);
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Id id, PhrasingContent... childeren) {
+        return new Rtc(ga(id), of(childeren));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Id id, String string) {
+        return new Rtc(ga(id), of(new Text(string)));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Clazz clazz) {
+        return new Rtc(ga(clazz), empty());
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+        return new Rtc(ga(clazz), childeren);
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Clazz clazz, PhrasingContent... childeren) {
+        return new Rtc(ga(clazz), of(childeren));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Clazz clazz, String string) {
+        return new Rtc(ga(clazz), of(new Text(string)));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Id id, Clazz clazz) {
+        return new Rtc(ga(id, clazz), empty());
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+        return new Rtc(ga(id, clazz), childeren);
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Id id, Clazz clazz, PhrasingContent... childeren) {
+        return new Rtc(ga(id, clazz), of(childeren));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Rtc rtc(Id id, Clazz clazz, String string) {
+        return new Rtc(ga(id, clazz), of(new Text(string)));
+    }
+
+    public static HGroup hgroup() {
+        return new HGroup();
+    }
+
+    public static HGroup hgroup(Id id) {
+        return new HGroup(ga(id), empty());
+    }
+
+    public static HGroup hgroup(Id id, Stream<HeadingContent> childeren) {
+        return new HGroup(ga(id), childeren);
+    }
+
+    public static HGroup hgroup(Id id, HeadingContent... childeren) {
+        return new HGroup(ga(id), of(childeren));
+    }
+
+    public static HGroup hgroup(Clazz clazz) {
+        return new HGroup(ga(clazz), empty());
+    }
+
+    public static HGroup hgroup(Clazz clazz, Stream<HeadingContent> childeren) {
+        return new HGroup(ga(clazz), childeren);
+    }
+
+    public static HGroup hgroup(Clazz clazz, HeadingContent... childeren) {
+        return new HGroup(ga(clazz), of(childeren));
+    }
+
+    public static HGroup hgroup(Id id, Clazz clazz) {
+        return new HGroup(ga(id, clazz), empty());
+    }
+
+    public static HGroup hgroup(Id id, Clazz clazz, Stream<HeadingContent> childeren) {
+        return new HGroup(ga(id, clazz), childeren);
+    }
+
+    public static HGroup hgroup(Id id, Clazz clazz, HeadingContent... childeren) {
+        return new HGroup(ga(id, clazz), of(childeren));
+    }
+
+    public static Summary summary(Id id, Stream<? extends PhrasingContent> childeren) {
+        return new Summary(ga(id), childeren);
+    }
+
+    public static Summary summary(Id id, PhrasingContent... childeren) {
+        return new Summary(ga(id), of(childeren));
+    }
+
+    public static Summary summary(Id id, String string) {
+        return new Summary(ga(id), of(new Text(string)));
+    }
+
+    public static Summary summary(Id id, HeadingContent heading) {
+        return new Summary(ga(id), heading);
+    }
+
+    public static Dialog dialog(Id id, Open open) {
+        return new Dialog(ga(id), open);
+    }
+
+    public static Dialog dialog(Id id, Open open, Stream<? extends FlowContent> childeren) {
+        return new Dialog(ga(id), open, childeren);
+    }
+
+    public static Dialog dialog(Id id, Open open, FlowContent... childeren) {
+        return new Dialog(ga(id), open, of(childeren));
+    }
+
+    public static Dialog dialog(Id id, Stream<? extends FlowContent> childeren) {
+        return new Dialog(ga(id), null, childeren);
+    }
+
+    public static Dialog dialog(Id id, FlowContent... childeren) {
+        return new Dialog(ga(id), null, of(childeren));
+    }
+
+    public static Details details(Id id, Summary summary, Stream<? extends FlowContent> childeren) {
+        return new Details(ga(id), null, summary, childeren);
+    }
+
+    public static Details details(Id id, Summary summary, FlowContent... childeren) {
+        return new Details(ga(id), null, summary, of(childeren));
+    }
+
+    public static Details details(Id id, Open open, Summary summary, Stream<? extends FlowContent> childeren) {
+        return new Details(ga(id), open, summary, childeren);
+    }
+
+    public static Details details(Id id, Open open, Summary summary, FlowContent... childeren) {
+        return new Details(ga(id), open, summary, of(childeren));
+    }
+
+    public static Menu menu(Id id, Stream<FlowContent> childeren) {
+        return new Menu(ga(id), childeren);
+    }
+
+    public static Menu menu(Id id, FlowContent... childeren) {
+        return new Menu(ga(id), of(childeren));
+    }
+
+    public static Menu menu(Id id, String string) {
+        return new Menu(ga(id), new Text(string));
+    }
+
+    public static MenuItem menuitem(Id id, MenuItem.Type type, String string) {
+        return new MenuItem(ga(id), type, new Text(string));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static KeyGen keygen(Id id, Name name) {
+        return new KeyGen(ga(id), null, null, null, null, null, name);
+    }
+
+    public static Summary summary(Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+        return new Summary(ga(clazz), childeren);
+    }
+
+    public static Summary summary(Clazz clazz, PhrasingContent... childeren) {
+        return new Summary(ga(clazz), of(childeren));
+    }
+
+    public static Summary summary(Clazz clazz, String string) {
+        return new Summary(ga(clazz), of(new Text(string)));
+    }
+
+    public static Summary summary(Clazz clazz, HeadingContent heading) {
+        return new Summary(ga(clazz), heading);
+    }
+
+    public static Dialog dialog(Clazz clazz, Open open) {
+        return new Dialog(ga(clazz), open);
+    }
+
+    public static Dialog dialog(Clazz clazz, Open open, Stream<? extends FlowContent> childeren) {
+        return new Dialog(ga(clazz), open, childeren);
+    }
+
+    public static Dialog dialog(Clazz clazz, Open open, FlowContent... childeren) {
+        return new Dialog(ga(clazz), open, of(childeren));
+    }
+
+    public static Dialog dialog(Clazz clazz, Stream<? extends FlowContent> childeren) {
+        return new Dialog(ga(clazz), null, childeren);
+    }
+
+    public static Dialog dialog(Clazz clazz, FlowContent... childeren) {
+        return new Dialog(ga(clazz), null, of(childeren));
+    }
+
+    public static Details details(Clazz clazz, Summary summary, Stream<? extends FlowContent> childeren) {
+        return new Details(ga(clazz), null, summary, childeren);
+    }
+
+    public static Details details(Clazz clazz, Summary summary, FlowContent... childeren) {
+        return new Details(ga(clazz), null, summary, of(childeren));
+    }
+
+    public static Details details(Clazz clazz, Open open, Summary summary, Stream<? extends FlowContent> childeren) {
+        return new Details(ga(clazz), open, summary, childeren);
+    }
+
+    public static Details details(Clazz clazz, Open open, Summary summary, FlowContent... childeren) {
+        return new Details(ga(clazz), open, summary, of(childeren));
+    }
+
+    public static Menu menu(Clazz clazz, Stream<FlowContent> childeren) {
+        return new Menu(ga(clazz), childeren);
+    }
+
+    public static Menu menu(Clazz clazz, FlowContent... childeren) {
+        return new Menu(ga(clazz), of(childeren));
+    }
+
+    public static Menu menu(Clazz clazz, String string) {
+        return new Menu(ga(clazz), new Text(string));
+    }
+
+    public static MenuItem menuitem(Clazz clazz, MenuItem.Type type, String string) {
+        return new MenuItem(ga(clazz), type, new Text(string));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static KeyGen keygen(Clazz clazz, Name name) {
+        return new KeyGen(ga(clazz), null, null, null, null, null, name);
+    }
+
+    public static Summary summary(Id id, Clazz clazz, Stream<? extends PhrasingContent> childeren) {
+        return new Summary(ga(id, clazz), childeren);
+    }
+
+    public static Summary summary(Id id, Clazz clazz, PhrasingContent... childeren) {
+        return new Summary(ga(id, clazz), of(childeren));
+    }
+
+    public static Summary summary(Id id, Clazz clazz, String string) {
+        return new Summary(ga(id, clazz), of(new Text(string)));
+    }
+
+    public static Summary summary(Id id, Clazz clazz, HeadingContent heading) {
+        return new Summary(ga(id, clazz), heading);
+    }
+
+    public static Dialog dialog(Id id, Clazz clazz, Open open) {
+        return new Dialog(ga(id, clazz), open);
+    }
+
+    public static Dialog dialog(Id id, Clazz clazz, Open open, Stream<? extends FlowContent> childeren) {
+        return new Dialog(ga(id, clazz), open, childeren);
+    }
+
+    public static Dialog dialog(Id id, Clazz clazz, Open open, FlowContent... childeren) {
+        return new Dialog(ga(id, clazz), open, of(childeren));
+    }
+
+    public static Dialog dialog(Id id, Clazz clazz, Stream<? extends FlowContent> childeren) {
+        return new Dialog(ga(id, clazz), null, childeren);
+    }
+
+    public static Dialog dialog(Id id, Clazz clazz, FlowContent... childeren) {
+        return new Dialog(ga(id, clazz), null, of(childeren));
+    }
+
+    public static Details details(Id id, Clazz clazz, Summary summary, Stream<? extends FlowContent> childeren) {
+        return new Details(ga(id, clazz), null, summary, childeren);
+    }
+
+    public static Details details(Id id, Clazz clazz, Summary summary, FlowContent... childeren) {
+        return new Details(ga(id, clazz), null, summary, of(childeren));
+    }
+
+    public static Details details(Id id, Clazz clazz, Open open, Summary summary, Stream<? extends FlowContent> childeren) {
+        return new Details(ga(id, clazz), open, summary, childeren);
+    }
+
+    public static Details details(Id id, Clazz clazz, Open open, Summary summary, FlowContent... childeren) {
+        return new Details(ga(id, clazz), open, summary, of(childeren));
+    }
+
+    public static Menu menu(Id id, Clazz clazz, Stream<FlowContent> childeren) {
+        return new Menu(ga(id, clazz), childeren);
+    }
+
+    public static Menu menu(Id id, Clazz clazz, FlowContent... childeren) {
+        return new Menu(ga(id, clazz), of(childeren));
+    }
+
+    public static Menu menu(Id id, Clazz clazz, String string) {
+        return new Menu(ga(id, clazz), new Text(string));
+    }
+
+    public static MenuItem menuitem(Id id, Clazz clazz, MenuItem.Type type, String string) {
+        return new MenuItem(ga(id, clazz), type, new Text(string));
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static KeyGen keygen(Id id, Clazz clazz, Name name) {
+        return new KeyGen(ga(id, clazz), null, null, null, null, null, name);
+    }
+
 }
