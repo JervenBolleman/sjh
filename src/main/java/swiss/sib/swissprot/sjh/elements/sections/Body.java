@@ -5,6 +5,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import java.util.stream.Stream;
 
 import swiss.sib.swissprot.sjh.attributes.global.GlobalAttribute;
+import swiss.sib.swissprot.sjh.attributes.rdfa.RdfaAttribute;
 import swiss.sib.swissprot.sjh.elements.CommonElement;
 import swiss.sib.swissprot.sjh.elements.Element;
 import swiss.sib.swissprot.sjh.elements.contenttype.SectioningRoot;
@@ -19,6 +20,10 @@ public non-sealed class Body extends CommonElement implements SectioningRoot {
 
     public Body(Stream<GlobalAttribute> ga, Stream<Element> childeren) {
         super(ga, childeren);
+    }
+    
+    public Body(Stream<GlobalAttribute> ga, Stream<RdfaAttribute> rdfa, Stream<Element> childeren) {
+        super(ga, rdfa, childeren);
     }
 
     public Body() {
